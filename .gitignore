@@ -1,0 +1,75 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.log
+
+# venv / ambientes
+.env
+.venv/
+venv/
+ENV/
+env/
+pip-wheel-metadata/
+*.env
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# Arquivos de Tradução
+# =========================
+*.DAT
+SLUS*
+*.DIR
+*.STR
+*.7z
+CDmage*
+/duckstation
+
+# Arquivos de texto temporários
+*.bak
+*.tmp
+*.swp
+*.old
+
+# =========================
+# Arquivos de Disco / Emulador
+# =========================
+*.iso
+*.bin
+*.img
+*.cue
+*.ccd
+*.sub
+*.mdf
+*.mds
+*.gz
+*.zst
+*.sav
+*.srm
+*.state*
+*.mcr
+*.psv
+
+# =========================
+# Arquivos do Projeto
+# =========================
+# Arquivos gerados pelos scripts
+*_PATCHED.DAT
+
+
+# =========================
+# Outros
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
