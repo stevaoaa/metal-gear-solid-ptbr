@@ -10,7 +10,6 @@ Scripts utilizados para:
 
 - `scan_texts.py`: Extrai textos legíveis com encoding Shift-JIS de arquivos binários.
 - `translate_texts.py`: Usa um modelo de LLM para traduzir os textos extraídos.
-- `pad_missing_translations.py`: Preenche os campos de tradução vazios com o texto original.
 - `rebuild_dat.py`: Substitui os textos no arquivo original `.DAT` com traduções (com padding e validação de tamanho).
 
 ## Requisitos

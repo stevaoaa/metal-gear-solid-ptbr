@@ -10,8 +10,7 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 - Desenvolvido um pipeline de scripts que:
   - Extrai textos binários (`scan_texts.py`);
   - Traduz usando a API do OpenRouter com modelos como GPT-4 (`translate_texts.py`);
-  - Realiza padding automático de textos não traduzidos para fins de teste (`pad_missing_translations.py`);
-  - Reinsere os textos traduzidos respeitando o limite de bytes do original (`rebuild_text.py`);
+  - Reinsere os textos traduzidos respeitando o limite de bytes do original, indicando traduções que possam quebrar os ponteiros do jogo, assim como usando linhas originais em caso de problemas (`rebuild_text.py`);
 - Os arquivos modificados são salvos como `.DAT` novos (`*_PATCHED.DAT`), prontos para serem reimportados para a ISO do jogo.
 - Estrutura organizada por pastas, com README individual em cada diretório técnico.
 - Scripts prontos para serem automatizados em pipeline de tradução em massa.
