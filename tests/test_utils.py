@@ -1,6 +1,8 @@
+import os
 import sys
 import unittest
 
+import pandas as pd
 from pathlib import Path
 
 # Adiciona o diretório raiz ao sys.path para permitir importações internas
@@ -39,6 +41,24 @@ class TestRemoveAccentsSafe(unittest.TestCase):
             print(f"Original: {sentence}")
             print(f"Processado: {processed}")
             print("-" * 50)
+
+    
+
+    def test_remove_accents_simple(self):
+        
+        input_file = os.path.join('.', 'translated', 'strings_RADIO_traduzido.csv')
+        output_file = os.path.join('.', 'translated', 'strings_RADIO_traduzido_sem_acentos.csv')
+
+        # Lê CSV
+        df = pd.read_csv(input_file, sep='\t')
+
+        # Aplica transformação
+        df['texto_traduzido'] = df['texto_traduzido'].apply(self.rebuilder.remove_accents_simple)
+
+        # Salva resultado
+        df.to_csv(output_file, sep='\t', index=False)
+        print(f'Arquivo salvo em {output_file}')
+
 
 if __name__ == "__main__":
     unittest.main()
