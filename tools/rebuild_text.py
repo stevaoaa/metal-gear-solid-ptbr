@@ -303,6 +303,38 @@ class MGSRebuilder:
         except Exception as e:
             logger.error(f"Erro durante análise e exportação: {e}")
     
+    @staticmethod
+    def remove_accents_simple(text: str) -> str:
+        """
+        Remove acentos de forma simples usando apenas o mapeamento manual.
+        """
+
+        accent_map = {
+                    # Vogais acentuadas
+                    'á': 'a', 'à': 'a', 'ã': 'a', 'â': 'a', 'ä': 'a',
+                    'é': 'eh', 'è': 'e', 'ê': 'e', 'ë': 'e',
+                    'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
+                    'ó': 'o', 'ò': 'o', 'õ': 'o', 'ô': 'o', 'ö': 'o',
+                    'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
+                    'Á': 'A', 'À': 'A', 'Ã': 'A', 'Â': 'A', 'Ä': 'A',
+                    'É': 'E', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
+                    'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
+                    'Ó': 'O', 'Ò': 'O', 'Õ': 'O', 'Ô': 'O', 'Ö': 'O',
+                    'Ú': 'U', 'Ù': 'U', 'Û': 'U', 'Ü': 'U',
+                    # Caracteres específicos
+                    'ç': 'c', 'Ç': 'C',
+                    'ñ': 'n', 'Ñ': 'N',
+        }
+
+        if not isinstance(text, str):
+            return text
+
+        result = text
+        for accented, replacement in accent_map.items():
+            result = result.replace(accented, replacement)
+        
+        return result
+
     def remove_accents_safe(self, text: str) -> str:
         """
         Remove acentos de forma segura para compatibilidade com Shift-JIS.
