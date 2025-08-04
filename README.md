@@ -53,7 +53,7 @@ O projeto faz uso de diversas ferramentas da comunidade:
 | ------------------ | ------------------------------------------ | ----------------------------- |
 | **CDMage**         | Editor de ISOs do PS1                      | `CDMAGE_URL`                  |
 | **DuckStation**    | Emulador moderno com suporte a save states | `DUCKSTATION_URL`             |
-| **OpenRouter API** | Interface com modelos de linguagem (GPT)   | `OPENROUTER_API_KEY`          |
+| **LM Studio**      | Fornece modelos de linguagem localmente    |                               |
 
 O caminho dos programas pode ser configurado via `.env` ou variáveis de ambiente para facilitar automações.
 

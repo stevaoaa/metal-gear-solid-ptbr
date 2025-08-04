@@ -65,7 +65,7 @@ CDmage*
 # =========================
 # Arquivos gerados pelos scripts
 *_PATCHED.DAT
-
+/output/*
 
 # =========================
 # Outros

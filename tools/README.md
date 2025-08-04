@@ -16,8 +16,7 @@ Scripts utilizados para:
 - Python 3.9+
 - `.env` com:
   ```env
-  OPENROUTER_API_KEY=your_api_key
-  OPENROUTER_MODEL=moonshotai/kimi-k2:free
+
     ````
 
 ## Executando
