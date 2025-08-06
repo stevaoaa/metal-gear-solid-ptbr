@@ -4,12 +4,12 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 
 > **Nota:** Este é um projeto experimental de aprendizado. Não tenho experiência prévia com ROM hacking e estou aprendendo ao longo do processo, através de tentativa e erro, estudo de ferramentas da comunidade e engenharia reversa dos arquivos do jogo.
 
-## Estado Atual do Projeto (20/07/2025)
+## Estado Atual do Projeto (06/08/2025)
 
 - Foi possível extrair e mapear com precisão os textos armazenados em arquivos `.DAT` (como `RADIO.DAT`) do disco 1.
 - Desenvolvido um pipeline de scripts que:
   - Extrai textos binários (`scan_texts.py`);
-  - Traduz usando a API do OpenRouter com modelos como GPT-4 (`translate_texts.py`);
+  - Pode traduzir usando a API do do LMStudio com modelos locais (`translate_with_ai.py`);
   - Reinsere os textos traduzidos respeitando o limite de bytes do original, indicando traduções que possam quebrar os ponteiros do jogo, assim como usando linhas originais em caso de problemas (`rebuild_text.py`);
 - Os arquivos modificados são salvos como `.DAT` novos (`*_PATCHED.DAT`), prontos para serem reimportados para a ISO do jogo.
 - Estrutura organizada por pastas, com README individual em cada diretório técnico.
@@ -17,17 +17,17 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 
 ### Desafios Atuais
 
-- **Acentuação**: Embora o jogo use encoding `Shift_JIS`, os caracteres acentuados do português não são reconhecidos nativamente pelo jogo. Soluções pode envolver:
-  - Modificação da fonte do jogo;
-  - Substituição de caracteres raramente usados no japonês por acentuados do português;
-  - Outras?
+- **Acentuação**: Embora o jogo use encoding `Shift_JIS`, os caracteres acentuados do português não são reconhecidos nativamente pelo jogo.
+
 
 - **Textos maiores que o original**: O jogo tem espaço visual para textos maiores no Codec, mas os arquivos `.DAT` usam alocação fixa por ponteiro. Ainda não sei:
   - Como localizar e editar os ponteiros;
   - Se o engine do jogo aceita realocação de texto;
   - Ou se é preciso manter o tamanho byte-a-byte.
 
--  **Testes in-game**: Foram feitos testes iniciais com os arquivos `.DAT` reimportados. O próximo passo será traduzir a primeira seção inteira do jogo e validar o texto no console/emulador.
+-> Decidi ajustar a tradução nesses cenários para que ela ocupe no maximo o mesmo espaço do texto original em inglês, portanto, a tradução fará uso de algumas contrações, como o: voce -> vc, tambem -> tbm, Coronel -> Cel, entre outros ajustes que facilitem a adequação do tamanho da tradução.
+
+-  **Testes in-game**: Foram feitos testes com o arquivo `RADIO.DAT` reimportado. Foram reinseridos todos os textos de forma a não violar a estrutura do jogo evitando crashes.
 
 ---
 
@@ -67,16 +67,16 @@ O caminho dos programas pode ser configurado via `.env` ou variáveis de ambient
 python tools/scan_texts.py
 ```
 
-### 2. Tradução automática (via API OpenRouter)
+### 2. Tradução automática (via API LMStudio)
 
 ```bash
 python tools/translate_texts.py
 ```
 
-### 3. Preencher textos não traduzidos
+### 3. Analisar traduções maiores que o texto original
 
 ```bash
-python tools/pad_missing_translations.py
+python tools/overflow_checker.py
 ```
 
 ### 4. Reempacotar binário com os textos traduzidos
