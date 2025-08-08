@@ -630,7 +630,7 @@ class MGSRebuilder:
                 #f.seek(23595)  # pega um pouco antes do erro
                 #fragmento = f.read(20)
                 #print(fragmento)
-                
+
             # Carrega as traduções
             logger.info(f"Carregando traduções: {csv_path}")
             df = pd.read_csv(csv_path, delimiter="\t")
@@ -765,6 +765,9 @@ class MGSRebuilder:
         
         success_rate = (self.stats['applied'] / self.stats['processed'] * 100) if self.stats['processed'] > 0 else 0
         logger.info(f"Taxa de sucesso: {success_rate:.1f}%")
+
+        general_translation = ( (self.stats['applied'] + self.stats['identical_preserved']) / self.stats['processed'] * 100) if self.stats['processed'] > 0 else 0
+        logger.info(f"Taxa de sucesso geral (traduzidos + preservados): {general_translation:.1f}%")
         
         if self.stats['critical_pattern_preserved'] > 0:
             logger.info(f"PADRÕES CRÍTICOS 00 FF PRESERVADOS COM SUCESSO!")
