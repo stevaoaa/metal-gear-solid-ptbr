@@ -214,7 +214,7 @@ class MGSRebuilder:
                     analysis_content.append(no_critical)
                 
                 # Calcula requisitos do texto traduzido
-                clean_translated = self.remove_accents_safe(translated_text)
+                clean_translated = translated_text
                 try:
                     translated_bytes = clean_translated.encode('shift_jis', errors='ignore')
                     bytes_needed = f"Texto traduzido requer: {len(translated_bytes)} bytes"
@@ -289,7 +289,7 @@ class MGSRebuilder:
                     else:
                         logger.info(f"ESPAÇO: {len(original_chunk)} bytes disponíveis (sem padrão crítico)")
                         
-                    clean_translated = self.remove_accents_safe(translated_text)
+                    clean_translated = translated_text
                     translated_bytes = clean_translated.encode('shift_jis', errors='ignore')
                     logger.info(f"NECESSÁRIO: {len(translated_bytes)} bytes")
                     
@@ -335,35 +335,6 @@ class MGSRebuilder:
         
         return result
 
-    def remove_accents_safe(self, text: str) -> str:
-        """
-        Remove acentos de forma segura para compatibilidade com Shift-JIS.
-        """
-        try:
-            # Primeiro, aplica o mapeamento manual
-            result = text
-            for accented, replacement in self.accent_map.items():
-                result = result.replace(accented, replacement)
-            
-            # Depois, usa unicodedata para casos não cobertos
-            normalized = unicodedata.normalize('NFD', result)
-            ascii_text = ''.join(c for c in normalized if unicodedata.category(c) != 'Mn')
-            
-            # Verifica se consegue codificar em Shift-JIS
-            try:
-                ascii_text.encode('shift_jis')
-                self.stats['encoding_fixes'] += 1
-                return ascii_text
-            except UnicodeEncodeError:
-                # Se ainda não conseguir, força ASCII puro
-                ascii_only = ''.join(c if ord(c) < 128 else '?' for c in ascii_text)
-                logger.warning(f"Forçando ASCII puro para: '{text}' -> '{ascii_only}'")
-                return ascii_only
-                
-        except Exception as e:
-            logger.error(f"Erro na remoção de acentos: {e}")
-            # Fallback: ASCII puro
-            return ''.join(c if ord(c) < 128 else '?' for c in text)
     
     def detect_string_exact(self, binary_data: bytes, offset: int, expected_text: str) -> Tuple[int, bytes]:
         """
@@ -371,7 +342,7 @@ class MGSRebuilder:
         """
         try:
             # Primeiro, limpa o texto esperado
-            clean_expected = self.remove_accents_safe(expected_text)
+            clean_expected = expected_text
             
             # Tenta diferentes encodings para encontrar o match
             for encoding in ['shift_jis', 'ascii', 'latin-1']:
@@ -480,7 +451,7 @@ class MGSRebuilder:
         """
         try:
             # Remove acentos do novo texto
-            clean_text = self.remove_accents_safe(new_text)
+            clean_text = new_text
             
             # Preserva códigos de controle
             for control in self.codec_controls:
@@ -654,6 +625,12 @@ class MGSRebuilder:
             # Cria uma cópia para modificação
             binary_data = bytearray(original_data)
             
+            # Debug de possiveis erros
+            #with open(csv_path, 'rb') as f:
+                #f.seek(23595)  # pega um pouco antes do erro
+                #fragmento = f.read(20)
+                #print(fragmento)
+                
             # Carrega as traduções
             logger.info(f"Carregando traduções: {csv_path}")
             df = pd.read_csv(csv_path, delimiter="\t")
