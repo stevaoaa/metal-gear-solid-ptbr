@@ -2,15 +2,17 @@
 
 Scripts utilizados para:
 - Extrair textos dos arquivos `.DAT`
-- Traduzir textos usando LLMs
 - Recriar arquivos `.DAT` com traduções
-- Fazer padding ou fallback de traduções
+- Analisar overflows
+- Comparar patches com arquivos originais
 
 ## Scripts
 
 - `scan_texts.py`: Extrai textos legíveis com encoding Shift-JIS de arquivos binários.
-- `translate_texts.py`: Usa um modelo de LLM para traduzir os textos extraídos.
-- `rebuild_dat.py`: Substitui os textos no arquivo original `.DAT` com traduções (com padding e validação de tamanho).
+- `rebuild_text.py`: Substitui os textos no arquivo original `.DAT` com traduções (com padding e validação de tamanho).
+- `overflow_checker.py`: Script para analisar overflows em traduções. Calcula tamanhos em bytes, identifica overflows e destaca células problemáticas
+- `offset_analyzer.py`: Inspetor de Offsets - Análise detalhada do arquivo após patch
+Verifica exatamente o que está nos offsets especificados.
 
 ## Requisitos
 - Python 3.9+
@@ -23,7 +25,7 @@ Scripts utilizados para:
 
 ```bash
 python tools/scan_texts.py
-python tools/translate_texts.py
-python tools/pad_missing_translations.py
-python tools/rebuild_dat.py
+python tools/rebuild_text.py
+python tools/overflow_checker.py
+python tools/offset_analyzer.py
 ```

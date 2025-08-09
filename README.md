@@ -9,7 +9,6 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 - Foi possível extrair e mapear com precisão os textos armazenados em arquivos `.DAT` (como `RADIO.DAT`) do disco 1.
 - Desenvolvido um pipeline de scripts que:
   - Extrai textos binários (`scan_texts.py`);
-  - Pode traduzir usando a API do do LMStudio com modelos locais (`translate_with_ai.py`);
   - Reinsere os textos traduzidos respeitando o limite de bytes do original, indicando traduções que possam quebrar os ponteiros do jogo, assim como usando linhas originais em caso de problemas (`rebuild_text.py`);
 - Os arquivos modificados são salvos como `.DAT` novos (`*_PATCHED.DAT`), prontos para serem reimportados para a ISO do jogo.
 - Estrutura organizada por pastas, com README individual em cada diretório técnico.
@@ -53,7 +52,6 @@ O projeto faz uso de diversas ferramentas da comunidade:
 | ------------------ | ------------------------------------------ | ----------------------------- |
 | **CDMage**         | Editor de ISOs do PS1                      | `CDMAGE_URL`                  |
 | **DuckStation**    | Emulador moderno com suporte a save states | `DUCKSTATION_URL`             |
-| **LM Studio**      | Fornece modelos de linguagem localmente    |                               |
 
 O caminho dos programas pode ser configurado via `.env` ou variáveis de ambiente para facilitar automações.
 
@@ -67,29 +65,29 @@ O caminho dos programas pode ser configurado via `.env` ou variáveis de ambient
 python tools/scan_texts.py
 ```
 
-### 2. Tradução automática (via API LMStudio)
 
-```bash
-python tools/translate_texts.py
-```
-
-### 3. Analisar traduções maiores que o texto original
+### 2. Analisar traduções maiores que o texto original
 
 ```bash
 python tools/overflow_checker.py
 ```
 
-### 4. Reempacotar binário com os textos traduzidos
+### 3. Reempacotar binário com os textos traduzidos
 
 ```bash
 python tools/rebuild_text.py
+```
+
+### 4. Comparar offsets Originais e Patechados
+
+```bash
+python tools/offset_analyzer.py
 ```
 
 ---
 
 ## Contribuições Futuras
 
-* Investigar estrutura interna dos ponteiros nos arquivos `.DAT`;
 * Desenvolver ou adaptar ferramentas de localização de ponteiros;
 * Criar um patch `.xdelta` ou `.ppf` para aplicar a tradução na ISO original;
 * Traduzir menus, videos, legendas e assets gráficos.
