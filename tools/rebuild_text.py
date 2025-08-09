@@ -444,7 +444,7 @@ class MGSRebuilder:
         return analysis
     
     def create_exact_replacement_with_critical_preservation(self, original_chunk: bytes, new_text: str,
-                                                          offset: int, binary_data: bytes, original_text: str) -> Tuple[bytes, bool]:
+                                                        offset: int, binary_data: bytes, original_text: str) -> Tuple[bytes, bool]:
         """
         Cria substituição GARANTINDO preservação do padrão crítico 00 FF.
         Se não conseguir preservar, REJEITA a substituição e analisa o problema.
@@ -470,7 +470,6 @@ class MGSRebuilder:
                     new_bytes = clean_text.encode('ascii', errors='ignore')
                 except:
                     logger.error(f"Falha total no encoding para: {new_text}")
-                    # Analisa o problema de encoding
                     self.analyze_problem_and_export(
                         binary_data, offset, original_text, new_text,
                         "ERRO DE ENCODING", 
@@ -481,99 +480,101 @@ class MGSRebuilder:
             # VERIFICA SE TEM PADRÃO CRÍTICO
             if critical_analysis['has_00_ff']:
                 # MODO CRÍTICO: Deve preservar 00 FF obrigatoriamente
-                text_space = critical_analysis['text_space']
+                ff_position = critical_analysis['ff_position']
                 
-                # Considera byte de controle inicial (como 08)
-                control_byte = b''
+                # Detecta se há byte de controle inicial
+                control_prefix = b''
+                text_start_pos = 0
+                
+                # Se o primeiro byte é um código de controle (< 32), preserva
                 if len(original_chunk) > 0 and original_chunk[0] < 32:
-                    control_byte = original_chunk[0:1]
-                    text_space = max(0, text_space - 1)
+                    control_prefix = original_chunk[0:1]
+                    text_start_pos = 1
                 
-                # Verifica se o texto cabe no espaço disponível
-                min_space_needed = len(new_bytes) + 1  # +1 para null terminator antes do FF
+                # CALCULA ESPAÇO REAL DISPONÍVEL
+                available_space = ff_position - text_start_pos
                 
-                if text_space < min_space_needed:
-                    logger.warning(f"REJEIÇÃO: Texto muito grande para preservar 00 FF: {min_space_needed} > {text_space}")
+                # Verifica se o texto cabe (SEM adicionar null terminator extra)
+                if len(new_bytes) > available_space:
+                    logger.warning(f"REJEIÇÃO: Texto muito grande: {len(new_bytes)} > {available_space}")
                     self.stats['critical_pattern_lost'] += 1
                     
-                    # Analisa o problema de tamanho com padrão crítico
                     self.analyze_problem_and_export(
                         binary_data, offset, original_text, new_text,
                         "OVERFLOW COM PADRÃO CRÍTICO",
-                        f"Texto requer {min_space_needed} bytes mas só há {text_space} disponíveis antes do padrão crítico 00 FF"
+                        f"Texto requer {len(new_bytes)} bytes mas só há {available_space} disponíveis antes do padrão crítico 00 FF"
                     )
                     return original_chunk, False
                 
-                # RECONSTRÓI PRESERVANDO 00 FF OBRIGATORIAMENTE
+                # RECONSTRÓI DE FORMA PRECISA
                 result = bytearray()
                 
-                # Adiciona byte de controle se existir
-                if control_byte:
-                    result.extend(control_byte)
+                # 1. Adiciona prefixo de controle se existir
+                if control_prefix:
+                    result.extend(control_prefix)
                 
-                # Adiciona o novo texto
+                # 2. Adiciona o novo texto
                 result.extend(new_bytes)
                 
-                # Calcula padding necessário até o 00 FF
-                current_size = len(result)
-                target_size = len(control_byte) + critical_analysis['ff_position']
+                # 3. Preenche com zeros até a posição do FF (se necessário)
+                while len(result) < ff_position:
+                    result.append(0x00)
                 
-                if current_size < target_size:
-                    # Adiciona null padding até a posição do FF
-                    padding_needed = target_size - current_size
-                    result.extend(b'\x00' * padding_needed)
-                elif current_size > target_size:
-                    # Texto muito grande - trunca
-                    logger.warning(f"Truncando texto para preservar 00 FF")
-                    result = result[:target_size]
+                # 4. Se passou da posição do FF, trunca (não deveria acontecer devido à verificação acima)
+                if len(result) > ff_position:
+                    logger.warning(f"Truncando para preservar FF: {len(result)} -> {ff_position}")
+                    result = result[:ff_position]
                 
-                # ADICIONA O TERMINADOR COMPLETO (incluindo 00 FF)
+                # 5. ADICIONA TODO O TERMINADOR PRESERVADO (incluindo 00 FF e tudo depois)
                 result.extend(critical_analysis['full_terminator'])
                 
-                # VERIFICA TAMANHO FINAL
-                if len(result) != len(original_chunk):
-                    logger.error(f"ERRO CRÍTICO: Tamanho final incorreto {len(result)} != {len(original_chunk)}")
+                # VERIFICAÇÃO FINAL DE TAMANHO
+                expected_size = len(original_chunk)
+                actual_size = len(result)
+                
+                if actual_size != expected_size:
+                    logger.error(f"ERRO: Tamanho final incorreto {actual_size} != {expected_size}")
                     
-                    # Analisa problema de tamanho final
                     self.analyze_problem_and_export(
                         binary_data, offset, original_text, new_text,
                         "ERRO DE TAMANHO FINAL",
-                        f"Chunk final tem {len(result)} bytes mas deveria ter {len(original_chunk)} bytes"
+                        f"Chunk final tem {actual_size} bytes mas deveria ter {expected_size} bytes. "
+                        f"FF pos: {ff_position}, terminator: {len(critical_analysis['full_terminator'])} bytes"
                     )
                     return original_chunk, False
                 
-                # VERIFICAÇÃO FINAL: Confirma que 00 FF está presente
+                # VERIFICAÇÃO CRÍTICA: Confirma presença do padrão 00 FF
                 if b'\x00\xff' not in result:
-                    logger.error(f"FALHA CRÍTICA: Padrão 00 FF foi perdido durante a reconstrução!")
+                    logger.error(f"FALHA CRÍTICA: Padrão 00 FF foi perdido!")
                     self.stats['critical_pattern_lost'] += 1
                     
-                    # Analisa perda do padrão crítico
                     self.analyze_problem_and_export(
                         binary_data, offset, original_text, new_text,
                         "PERDA DO PADRÃO CRÍTICO",
-                        "O padrão 00 FF foi perdido durante a reconstrução apesar das verificações"
+                        "O padrão 00 FF foi perdido durante a reconstrução"
                     )
                     return original_chunk, False
                 
                 self.stats['critical_pattern_preserved'] += 1
+                
+                if self.debug_mode:
+                    logger.debug(f"SUCESSO em {hex(offset)}: {len(new_bytes)} bytes inseridos, FF preservado")
+                
                 return bytes(result), True
                 
             else:
-                # MODO NORMAL: Não há padrão crítico
+                # MODO NORMAL: Não há padrão crítico - usa lógica original
                 available_space = len(original_chunk)
                 
-                # Considera byte de controle inicial
-                control_byte = b''
+                control_prefix = b''
                 if len(original_chunk) > 0 and original_chunk[0] < 32:
-                    control_byte = original_chunk[0:1]
+                    control_prefix = original_chunk[0:1]
                     available_space -= 1
                 
-                # Verifica se cabe
                 if len(new_bytes) > available_space:
                     logger.warning(f"Texto muito grande: {len(new_bytes)} > {available_space}")
                     self.stats['skipped_size'] += 1
                     
-                    # Analisa problema de tamanho normal
                     self.analyze_problem_and_export(
                         binary_data, offset, original_text, new_text,
                         "OVERFLOW SEM PADRÃO CRÍTICO",
@@ -584,8 +585,8 @@ class MGSRebuilder:
                 # Reconstrói normalmente
                 result = bytearray()
                 
-                if control_byte:
-                    result.extend(control_byte)
+                if control_prefix:
+                    result.extend(control_prefix)
                 
                 result.extend(new_bytes)
                 
@@ -601,7 +602,6 @@ class MGSRebuilder:
         except Exception as e:
             logger.error(f"Erro na criação de substituição crítica: {e}")
             
-            # Analisa erro geral
             self.analyze_problem_and_export(
                 binary_data, offset, original_text, new_text,
                 "ERRO GERAL NA SUBSTITUIÇÃO",
