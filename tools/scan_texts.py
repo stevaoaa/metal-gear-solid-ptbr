@@ -189,13 +189,7 @@ class TextExtractor:
     def _is_valid_text(self, text: str) -> bool:
         """
         Verifica se o texto extraído é válido.
-        Validação mais permissiva, filtrando apenas casos claramente problemáticos.
-        
-        Args:
-            text: Texto para validar
-            
-        Returns:
-            True se o texto for válido
+        Versão simples focada em ASCII para filtrar dados binários.
         """
         if len(text) < self.config.min_length:
             return False
@@ -204,26 +198,27 @@ class TextExtractor:
         if not stripped_text:
             return False
         
-        # Filtra apenas casos claramente problemáticos
-        # 1. Textos que são só caracteres \xff
-        if all(ord(c) == 255 for c in text):
-            logger.debug(f"Texto rejeitado: só caracteres \\xff")
+        # 1. FILTRO PRINCIPAL: Porcentagem de ASCII imprimível (32-126)
+        ascii_printable = sum(1 for c in text if 32 <= ord(c) <= 126)
+        ascii_ratio = ascii_printable / len(text)
+        
+        if ascii_ratio < 0.90:  # Pelo menos 90% ASCII
+            logger.debug(f"Rejeitado: {ascii_ratio:.1%} ASCII: '{stripped_text[:30]}...'")
             return False
         
-        # 2. Textos com mais de 50% de caracteres \xff
-        xff_count = sum(1 for c in text if ord(c) == 255)
-        if xff_count / len(text) > 0.5:
-            logger.debug(f"Texto rejeitado: muitos caracteres \\xff ({xff_count}/{len(text)})")
+        # 2. FILTRO ANTI-LIXO: Caracteres comuns em dados binários
+        binary_junk = 'ÁßÀáàâäãåæçèéêëìíîïðñòóôõöøùúûüýþÿĀāĂ©®±²³µ¶·¸¹½¼¾'
+        if any(c in text for c in binary_junk):
+            logger.debug(f"Rejeitado: caracteres binários: '{stripped_text[:30]}...'")
             return False
         
-        # 3. Textos que são só caracteres de controle (exceto quebras de linha comuns)
-        control_only = all(ord(c) < 32 and c not in '\n\r\t' for c in text)
-        if control_only:
-            logger.debug(f"Texto rejeitado: só caracteres de controle")
+        # 3. Deve ter letras suficientes (não só números/símbolos)
+        letters = sum(1 for c in text if c.isalpha())
+        if letters < max(3, len(text) * 0.3):  # Mínimo 3 letras OU 30%
+            logger.debug(f"Rejeitado: poucas letras: '{stripped_text[:30]}...'")
             return False
         
-        # Se passou pelos filtros básicos, é válido
-        logger.debug(f"Texto validado: '{stripped_text[:50]}...'")
+        logger.debug(f"✓ Aceito: '{stripped_text[:50]}...'")
         return True
     
     def save_results(self, file_path: Path, results: List[Tuple[int, str, int, str]]) -> Path:
