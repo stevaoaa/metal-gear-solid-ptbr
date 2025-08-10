@@ -1,0 +1,11 @@
+offset,texto,tamanho_bytes,encoding,texto_traduzido
+0x9b4,Japan was the first country to|successfully make bipedal robots.,65,latin-1,
+0xa08,They're still the best|in the field of robotics.,49,latin-1,
+0xa4c,And Japanese cartoons played|some part in that?,48,latin-1,
+0xa90,They did.,9,shift_jis,
+0xaac,"I didn't get into science to make|nuclear weapons, you know.",61,latin-1,
+0xafc,That's what all scientists say.,31,shift_jis,
+0xb2c,I became a scientist,20,shift_jis,
+0xb54,because I wanted to make robots like|the ones in the Japanese Animes.,70,latin-1,
+0xbac,"Really, it's true.",18,shift_jis,
+0xbd0,It just sounds like a childish|excuse to me.,45,latin-1
