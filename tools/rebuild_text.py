@@ -622,9 +622,25 @@ class MGSRebuilder:
             with open(binary_path, "rb") as f:
                 original_data = f.read()
             
+            # Valida se há bytes inválidos para UTF-8
+            try:
+                original_data.decode("utf-8")
+            except UnicodeDecodeError as e:
+                # Descobre linha e coluna contando bytes até o erro
+                before_error = original_data[:e.start]
+                line_number = before_error.count(b'\n') + 1
+                col_number = len(before_error.split(b'\n')[-1]) + 1
+
+                logger.error(
+                    f"Erro de decodificação UTF-8 na posição {e.start} "
+                    f"(linha {line_number}, coluna {col_number}): "
+                    f"bytes={original_data[e.start:e.end]} "
+                    f"(hex={original_data[e.start:e.end].hex()})"
+                )
+
             # Cria uma cópia para modificação
             binary_data = bytearray(original_data)
-            
+
             # Carrega as traduções
             logger.info(f"Carregando traduções: {csv_path}")
             df = pd.read_csv(csv_path, delimiter="\t")
