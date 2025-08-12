@@ -4,12 +4,15 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 
 > **Nota:** Este é um projeto experimental de aprendizado. Não tenho experiência prévia com ROM hacking e estou aprendendo ao longo do processo, através de tentativa e erro, estudo de ferramentas da comunidade e engenharia reversa dos arquivos do jogo.
 
-## Estado Atual do Projeto (06/08/2025)
+## Estado Atual do Projeto (12/08/2025)
 
-- Foi possível extrair e mapear com precisão os textos armazenados em arquivos `.DAT` (como `RADIO.DAT`) do disco 1.
+- Foi possível extrair e mapear com precisão os textos armazenados em todos os arquivos (como `RADIO.DAT` e `DEMO.DAT`) do disco 1.
+
 - Desenvolvido um pipeline de scripts que:
   - Extrai textos binários (`scan_texts.py`);
   - Reinsere os textos traduzidos respeitando o limite de bytes do original, indicando traduções que possam quebrar os ponteiros do jogo, assim como usando linhas originais em caso de problemas (`rebuild_text.py`);
+  - Exporta problemas para serem analisados.
+  - Script para mapear overflows e facilitar a correção.
 - Os arquivos modificados são salvos como `.DAT` novos (`*_PATCHED.DAT`), prontos para serem reimportados para a ISO do jogo.
 - Estrutura organizada por pastas, com README individual em cada diretório técnico.
 - Scripts prontos para serem automatizados em pipeline de tradução em massa.
@@ -17,16 +20,15 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 ### Desafios Atuais
 
 - **Acentuação**: Embora o jogo use encoding `Shift_JIS`, os caracteres acentuados do português não são reconhecidos nativamente pelo jogo.
+  - Decidi remover todas as acentuações e `ç` de palavras em pt-br
+  - Acento agudo do `é` foram substituidos pela expressão `eh`
 
 
-- **Textos maiores que o original**: O jogo tem espaço visual para textos maiores no Codec, mas os arquivos `.DAT` usam alocação fixa por ponteiro. Ainda não sei:
-  - Como localizar e editar os ponteiros;
-  - Se o engine do jogo aceita realocação de texto;
-  - Ou se é preciso manter o tamanho byte-a-byte.
+- **Textos maiores que o original**: O jogo tem espaço visual para textos maiores no Codec, mas os arquivos `.DAT` usam alocação fixa por ponteiro.
+  - Decidi adaptar os textos em pt-br para atender o tamanho da string original;
+  - Decidi ajustar a tradução nesses cenários para que ela ocupe no maximo o mesmo espaço do texto original em inglês, portanto, a tradução fará uso de algumas contrações, como o: voce -> vc, tambem -> tbm, Coronel -> Cel, entre outros ajustes que facilitem a adequação do tamanho da tradução.
 
--> Decidi ajustar a tradução nesses cenários para que ela ocupe no maximo o mesmo espaço do texto original em inglês, portanto, a tradução fará uso de algumas contrações, como o: voce -> vc, tambem -> tbm, Coronel -> Cel, entre outros ajustes que facilitem a adequação do tamanho da tradução.
-
--  **Testes in-game**: Foram feitos testes com o arquivo `RADIO.DAT` reimportado. Foram reinseridos todos os textos de forma a não violar a estrutura do jogo evitando crashes.
+-  **Testes in-game**: Atualmente estão sendo feitos testes com os arquivos `RADIO.DAT` e `DEMO.DAT`  reimportados para verificar a quantidade de texto que ainda é necessária ser traduzida no CD1. Possiveis candidatos a tradução são os textos do `VOX.DAT` que possui muitos textos repetidos que também são utilizados ao longo do jogo.
 
 ---
 
