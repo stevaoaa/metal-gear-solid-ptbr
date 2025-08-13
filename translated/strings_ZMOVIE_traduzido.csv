@@ -8,4 +8,4 @@ id	encoding	offset	texto	tamanho_bytes	texto_traduzido	tamanho_bytes_traduzido
 7	shift_jis	0xb2c	I became a scientist	20	Eu virei cientista	25
 8	latin-1	0xb54	because I wanted to make robots like|the ones in the Japanese Animes.	70	pq queria fazer robos como|os dos Animes japoneses.	54
 9	shift_jis	0xbac	Really it's true.	18	Serio eh verdade.	18
-10	latin-1	0xbd0	It just sounds like a childish|excuse to me.	45	Parece uma desculpa infantil|pra mim.	44
+10	latin-1	0xbcc	It just sounds like a childish|excuse to me.	45	Parece uma desculpa infantil|pra mim	44
