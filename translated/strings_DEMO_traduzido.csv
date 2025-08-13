@@ -50,7 +50,7 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x10e79f0	8	shift_jis	Colonel,	Coronel,	8
 0x10e7a0c	36	shift_jis	what's a Russian gunship doing here?	o que uma aeronave russa faz aqui?	35
 0x10e7a44	17	shift_jis	I have no idea...	Nao faco ideia..	16
-0x10e7a68	60	latin-1	but it looks like our little diversion|got their attention.	mas parece que nossa pequena diversao|chamou a atencao deles.	63
+0x10e7a68	60	latin-1	but it looks like our little diversion|got their attention.	mas parece que nossa distracao|chamou a atencao deles.	63
 0x10e7ab8	45	latin-1	Now's your best chance to slip in|unnoticed!	Agora eh sua chance de entrar|despercebido!	51
 0x13d20e4	36	shift_jis	Were the all SOCOM pistols|unloaded?	Todas as pistolas estavam|descarregadas?	48
 0x13d211c	30	shift_jis	Yeah. But there was a problem.	Sim. Mas houve um problema.	27
@@ -84,12 +84,13 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x1689230	8	shift_jis	Stealth?	Stealth?	8
 0x168924c	31	shift_jis	There's an intruder besides me?	Ha um intruso alem de mim?	27
 0x168927c	65	latin-1	Anyway, I want you to increase|the security detail on the chief.	De qualquer forma, quero que aumentem|a seguranca do chefe.	64
-0x178b8e4	23	shift_jis	Who...who, who's that??	Quem.quem, quem eh esse?	26
+0x178b8e4	23	shift_jis	Who...who, who's that??	Quem.quem, quem ta ai?	26
 0x178b90c	21	shift_jis	I'm here to save you.	Estou aqui p/ te salvar.	24
-0x178b934	48	latin-1	You're the DARPA chief,|Donald Anderson, right?	Vc   o chefe da DARPA,|Donald Anderson, certo?	50
+0x178b934	48	latin-1	You're the DARPA chief,|Donald Anderson, right?	Vc eh o chefe da DARPA|Donald Anderson, certo?	50
 0x178b978	28	shift_jis	You're here to save me, huh?	Vc esta aqui p/ me salvar, ne?	33
 0x178b9a8	19	shift_jis	What's your outfit?	Qual a sua unidade?	24
 0x178b9cc	57	latin-1	I'm the pawn they sent here|to save your worthless butt.	Sou o peao que mandaram aqui|p/ salvar seu traseiro inutil.	62
+0x178ba18	7	shift_jis	Really?	Serio?	6
 0x178ba34	12	shift_jis	It's true...	Eh verdade..	12
 0x178ba54	32	shift_jis	You don't look like one of them.	Vc nao parece ser um deles.	30
 0x178ba88	47	latin-1	In that case, hurry up and|get me out of here.	Nesse caso, se apresse e|me tire daqui.	42
@@ -100,8 +101,9 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x178bb9c	27	shift_jis	What are you talking about?	Do que vc esta falando?	26
 0x178bbc8	48	latin-1	The terrorists are threatening|the White House.	Os terroristas estao ameacando|a Casa Branca.	44
 0x178bc0c	48	latin-1	They say if they don't accede|to their demands,	Eles dizem que se nao atenderem|as suas demandas,	51
+0x178bc50	32	shift_jis	they'll launch a nuclear weapon.	eles vao lancar uma arma nuclear	32
 0x178bc84	14	shift_jis	Sweet Jesus...	Santo Deus..	12
-0x178bca4	16	shift_jis	Is it possible!?	E possivel!?	13
+0x178bca4	16	shift_jis	Is it possible!?	Eh possivel!?	13
 0x178bcc8	17	shift_jis	...It's possible.	..Eh possivel.	14
 0x178bcec	7	shift_jis	They...	Eles..	7
 0x178bd04	23	shift_jis	...could launch a nuke.	..podem lancar uma ogiva	26
@@ -142,7 +144,7 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x1e12a80	20	shift_jis	These guys are pros.	Esses caras sao bons..	30
 0x1e12aa8	59	latin-1	They're all experienced in handling|and equipping weapons.	Todos tem experiencia em manusear|e equipar armas.	50
 0x1e12af4	4	shift_jis	Hey!	Ei!	3
-0x1e12b0c	24	shift_jis	Shut up in there willya!	Calem a boca ai dentro!	23
+0x1e12b0c	24	shift_jis	Shut up in there willya!	Cala a boca ai!	15
 0x1e12b38	59	latin-1	But I thought that all nuclear|warheads were equipped with	Mas pensei que todas as ogivas|tinham medidas de seguranca.	68
 0x1e12b84	16	shift_jis	safety measures.	Medidas de seguranca	21
 0x1e12ba8	55	latin-1	Some kind of detonation code|that you have to input...	Tipo um codigo de detonacao|que vc tem que inserir	60
@@ -159,24 +161,26 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x1e12df4	6	shift_jis	But...	Mas..	6
 0x1e12e0c	27	shift_jis	They found out my password.	Eles descobriram minha senha	29
 0x1e12e38	11	shift_jis	You talked?	Vc falou?	12
-0x1e12e54	38	shift_jis	Psycho Mantis can read people's minds.	Psyc Mantis pode ler a mente das pessoas	43
+0x1e12e54	38	shift_jis	Psycho Mantis can read people's minds.	Mantis pode ler a mente das pessoas	43
 0x1e12e8c	17	shift_jis	You can't resist.	Vc nao pode resistir	23
 0x1e12eb0	14	shift_jis	Psycho Mantis?	Psycho Mantis?	14
 0x1e12ed0	56	latin-1	One of the members of FOX-HOUND.|He has psychic powers.	Um dos membros do FOX-HOUND.|Ele tem poderes psiquicos.	56
 0x1e12f1c	17	shift_jis	...This is bad...	..Isso eh ruim..	16
 0x1e12f40	58	latin-1	It's just a matter of time before|they get Baker's too...	Eh so questao de tempo ate|conseguirem a do Baker tbm..	55
 0x22fc90c	36	shift_jis	If they find out Baker's password...	Se descobrirem a senha do Baker..	33
-0x22fc95c	42	latin-1	They'll be able to launch a nuke|anytime.	Poderao lancar uma ogiva|a qualquer momento.	44
+0x22fc95c	42	latin-1	They'll be able to launch a nuke|anytime.	Poderao lancar uma ogiva|a qualquer momento	44
 0x22fc998	41	latin-1	But...there is a way|to stop the launch.	Mas..ha uma maneira|de parar o lancamento.	43
+0x22fc9d4	5	shift_jis	What?	Oque?	5
 0x22fc9ec	14	shift_jis	The card keys.	Os cartoes-chave	17
 0x22fca0c	10	shift_jis	Card keys?	Chaves?	15
-0x22fca28	55	latin-1	They were designed by ArmsTech,|the system developers,	Foram projetados pela ArmsTech,|que projetou do sistema,	62
+0x22fca28	55	latin-1	They were designed by ArmsTech,|the system developers,	Foram projetados pela ArmsTech|que projetou do sistema,	62
 0x22fca70	25	shift_jis	as an emergency override.	como uma acao de emergencia.	32
 0x22fca9c	62	latin-1	Even without the passwords,|you can just insert the card keys	Mesmo sem as senhas,|vc pode simplesmente inserir os cartoes	66
 0x22fcaec	29	shift_jis	and engage the safety lock...	e ativar a trava de seguranca..	33
 0x22fcb1c	17	shift_jis	And if I do that?	E se eu fizer isso?	18
+0x22fcb40	4	shift_jis	Yes.	Sim.	4
 0x22fcb58	24	shift_jis	You can stop the launch.	Vc pode parar o lancamento.	28
-0x22fcb84	17	shift_jis	That card key...?	Esse cartao-chave..?	20
+0x22fcb84	17	shift_jis	That card key...?	Aquelas chaves?	20
 0x22fcba8	23	shift_jis	So, where are the keys?	Entao cade essas chaves?	28
 0x22fcbd0	23	shift_jis	Baker should have them.	Baker deveria te-las.	21
 0x22fcbf8	34	latin-1	Listen.|You need three card keys.	Escute.|Vc precisa de tres chaves.	41
@@ -204,9 +208,11 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x22fd0e8	47	latin-1	And the doors will open|automatically. Gotcha.	E as portas vao abrir|automaticamente. Entendi.	48
 0x28380e4	35	latin-1	OK.|I'm gonna get you out of here.	Ok.|Vou te tirar daqui.	22
 0x2838118	14	shift_jis	Wait a minute.	Espere um minuto	16
+0x2838138	11	shift_jis	What is it?	Oque foi?	9
 0x2838154	6	shift_jis	You...	Vc..	7
 0x283816c	57	latin-1	haven't heard any other way to|disarm the PAL, have you?	nao ouviu nenhuma outra maneira de|desarmar o PAL, ouviu?	58
 0x28381b8	27	shift_jis	From your bosses or anyone.	Dos seus chefes ou de outros	31
+0x28381e4	3	shift_jis	No.	Nao	3
 0x28381f8	41	latin-1	Are you sure you haven't heard|anything?	Tem certeza que nao ouviu|nada?	32
 0x2838234	15	shift_jis	I just said no.	Ja disse que nao	23
 0x2838254	69	latin-1	So, does the White House plan to|give in to the terrorist's demands?	Entao, a Casa Branca planeja|ceder as demandas dos terroristas?	65
