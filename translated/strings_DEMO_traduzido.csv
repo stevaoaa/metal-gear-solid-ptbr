@@ -242,7 +242,7 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x2b67394	18	shift_jis	You talk too much.	Vc fala demais.	17
 0x2b673b8	48	latin-1	You haven't even taken the safety| off, rookie.	Vc nem tirou a trava de seguranca,|novato.	46
 0x2b673fc	27	shift_jis	I told you I'm no rookie!!!	Eu disse que nao sou novato!	31
-0x2b67428	32	shift_jis	You're not one of them, are you?	Vc nao e um deles, e?	24
+0x2b67428	32	shift_jis	You're not one of them, are you?	Vc nao eh um deles, eh?	24
 0x2b6745c	15	shift_jis	Open that door!	Abra essa porta!	16
 0x2b6747c	29	shift_jis	You've got a card, don't you?	Vc tem um cartao, nao tem?	30
 0x2b674ac	4	shift_jis	Why?	Pq?	3
@@ -265,7 +265,7 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x2f1940c	18	shift_jis	You talk too much.	Vc fala demais.	17
 0x2f19430	48	latin-1	You haven't even taken the safety| off, rookie.	Vc nem tirou a trava de seguranca,|novato.	46
 0x2f19474	27	shift_jis	I told you I'm no rookie!!!	Eu disse que nao sou novato!	31
-0x2f194a0	32	shift_jis	You're not one of them, are you?	Vc nao e um deles, e?	24
+0x2f194a0	32	shift_jis	You're not one of them, are you?	Vc nao eh um deles, eh?	24
 0x2f194d4	15	shift_jis	Open that door!	Abra essa porta!	16
 0x2f194f4	29	shift_jis	You've got a card, don't you?	Vc tem um cartao, nao tem?	30
 0x2f19524	4	shift_jis	Why?	Pq?	3
