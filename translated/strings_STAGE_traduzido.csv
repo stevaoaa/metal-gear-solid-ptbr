@@ -66,7 +66,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 65	shift_jis	34	31	0x59df0	!to the north of the tank hangar.	!ao norte do hangar de tanques.	-3	False	-8.8
 66	shift_jis	53	46	0x59fa9	4contacting Meryl opens the door on the first floor	4contatar Meryl abre a porta no primeiro andar	-7	False	-13.2
 67	shift_jis	48	48	0x59fdf	/to the north of the tank hangar with her help.	/ao norte do hangar de tanques com a ajuda dela.	0	False	0.0
-68	shift_jis	47	38	0x5a010	.To rescue Dr. Emmerich Snake goes out of the	.Pra resgatar Dr.Emmerich Snake sai da	-9	False	-19.1
+68	shift_jis	47	38	0x5a010	.To rescue Dr. Emmerich Snake goes out of the	.P/ resgatar Dr.Emmerich Snake sai da	-9	False	-19.1
 69	shift_jis	46	49	0x5a040	-cargo exit and heads for the nuclear warhead	-saida d carga e vai p/ predio d armazenamento	0	True	6.5
 70	shift_jis	28	19	0x5a06f	storage building up north.	de ogivas ao norte.	-9	False	-32.1
 71	latin-1	37	16	0x5a097	@j`fVoVoPePlPrPd	@j`fVoVoPePlPrPd	-21	False	-56.8
@@ -125,12 +125,12 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 124	shift_jis	47	51	0x5b1ad	.launching walking tank Otacon offers to help	.lancador de misseis Otacon oferece ajuda	-6	True	8.5
 125	shift_jis	53	55	0x5b1dd	4Snake. Snake tries to meet up with Meryl to get the	4ao Snake.Ele tenta se encontrar com Meryl p/ pegar a	0	True	3.8
 126	shift_jis	49	61	0x5b213	0detonation code emergency override key that she	0chave de anulacao do codigo de detonacao q ela	12	True	24.5
-127	shift_jis	52	46	0x5b245	3has. According to Otacon Meryl is disguised as an	3tem.Segundo Otacon Meryl ta disfarcada como soldado	-8	False	-11.5
+127	shift_jis	52	46	0x5b245	3has. According to Otacon Meryl is disguised as an	3tem.Segundo Otacon ela ta disfarcada como soldado	-8	False	-11.5
 128	shift_jis	16	16	0x5b27a	enemy soldier.	inimigo.	0	False	0.0
 129	shift_jis	45	45	0x5b2cc	After meeting up with Meryl Snake gets the	Depois encontrar com Meryl Snake pega a	0	False	0.0
 130	shift_jis	50	61	0x5b2fa	1detonation code emergency override key from her.	1chave de anulacao do codigo de detonacao dela.	11	True	22.0
 131	shift_jis	45	38	0x5b32d	However she only had one of the three keys	Porem ela so tinha uma das tres chaves	-7	False	-15.6
-132	shift_jis	49	45	0x5b35b	0To stop the nuclear attack one must deactivate	0Pra parar o ataque nuclear deve-se desativar	-4	False	-8.2
+132	shift_jis	49	45	0x5b35b	0To stop the nuclear attack one must deactivate	0P/ parar o ataque nuclear deve-se desativar	-4	False	-8.2
 133	shift_jis	52	56	0x5b38d	3the detonation code or destroy Metal Gear itself.	3o codigo de detonacao ou destruir o M. Gear	0	True	7.7
 134	shift_jis	43	40	0x5b3c2	*Snake and Meryl head for the underground	*Snake e Meryl vao p/ base de manutencao	-3	False	-7.0
 135	shift_jis	44	39	0x5b3ee	+maintenance base where Metal Gear is being	+subterranea onde Metal Gear ta sendo	-7	False	-11.4
@@ -149,7 +149,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 148	latin-1	37	18	0x5b6f5	@8`4VoVoPePlOPrUPd	@8`4VoVoPePlOPrUPd	-19	False	-51.4
 149	shift_jis	50	51	0x5b725	1To stop the terrorists' nuclear attack one must	1P/parar o ataqe nuclear dos terroristas deve-se	0	True	2.0
 150	shift_jis	49	46	0x5b758	0deactivate the detonation code or destroy Metal	0desativar o codigo de detonacao ou destruir o	-3	False	-6.1
-151	shift_jis	43	41	0x5b78a	*Gear itself. Snake and Meryl head for the	*proprio Metal Gear.Snake e Meryl vao pra	-2	False	-4.7
+151	shift_jis	43	41	0x5b78a	*Gear itself. Snake and Meryl head for the	*proprio Metal Gear.Snake e Meryl vao p/	-2	False	-4.7
 152	shift_jis	42	42	0x5b7b6	)underground maintenance base where Metal	)base de manutencao subterranea onde Metal	0	False	0.0
 153	shift_jis	42	52	0x5b7e1	)Gear is being stored. However FOX-HOUND	)Gear ta sendo mantido. Porem	8	True	23.8
 154	shift_jis	38	28	0x5b80c	%member Psycho Mantis confronts them.	%Psycho Mantis os confronta.	-10	False	-26.3
@@ -159,7 +159,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 158	shift_jis	43	40	0x5b8c1	*the Commander's room and through the cave	*sala do Comandante e atraves da caverna	-3	False	-7.0
 159	shift_jis	30	28	0x5b8ed	to the Communications Tower.	ate a Torre de Comunicacoes.	-2	False	-6.7
 160	shift_jis	19	19	0x5b90c	Then Mantis dies.	E Mantis morre..	0	False	0.0
-161	shift_jis	45	44	0x5b9ef	Communications Tower -- the only way to the	Torre de Comunicacoes –o unico caminho pra	-1	False	-2.2
+161	shift_jis	45	44	0x5b9ef	Communications Tower -- the only way to the	Torre de Comunicacoes –o unico caminho p/	-1	False	-2.2
 162	shift_jis	41	50	0x5ba1d	(underground maintenance base. FOX-HOUND	(base de manutencao.O membro FOX-HOUND	-3	True	22.0
 163	shift_jis	48	37	0x5ba47	/member Sniper Wolf fires at them and Meryl is	/Sniper Wolf atira neles e Meryl fica	-11	False	-22.9
 164	shift_jis	48	52	0x5ba78	/badly wounded. It is a trap to lure out Snake.	/ferida.Eh uma armadilha p/ atrair Snake.	-7	True	8.3
@@ -171,10 +171,10 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 170	shift_jis	50	43	0x5bc6e	1the only weapon effective to fight against Wolf.	1a unica arma efetiva p/ lutar contra Wolf.	-7	False	-14.0
 171	latin-1	37	19	0x5bcb5	@` VoVoPePliuPri{Pd	@` VoVoPePliuPri{Pd	-18	False	-48.6
 172	shift_jis	43	40	0x5bda4	*underground maintenance base. However on	*base de manutencao subterranea.Porem no	-3	False	-7.0
-173	shift_jis	49	54	0x5bdd0	0their way through the underground passage FOX-	0caminho pela passagem subterranea o membro FOX-	5	True	10.2
+173	shift_jis	49	54	0x5bdd0	0their way through the underground passage FOX-	0caminho pela passagem subterranea o membro FOX	5	True	10.2
 174	shift_jis	42	34	0x5be02	)HOUND member Sniper Wolf fires at Meryl.	)HOUND Sniper Wolf atira na Meryl.	-8	False	-19.0
 175	shift_jis	49	39	0x5be2d	0Acquiring the PSG1 -- the only weapon effective	0Pegando o PSG1 -- a unica arma efetiva	-10	False	-20.4
-176	shift_jis	49	36	0x5be5f	0to fight  against Wolf Snake heads back to the	0pra lutar contra Wolf Snake volta a	-13	False	-26.5
+176	shift_jis	49	36	0x5be5f	0to fight  against Wolf Snake heads back to the	0p/ lutar contra Wolf Snake volta a	-13	False	-26.5
 177	shift_jis	36	38	0x5be91	#underground passage to save Meryl.	#passagem subterranea p/salvar Meryl	0	True	5.6
 178	shift_jis	47	47	0x5bfdf	.their way through underground passage Sniper	.no caminho da passagem subterranea Sniper	0	False	0.0
 179	shift_jis	48	41	0x5c00f	/Wolf fires at Meryl. Acquiring the PSG1 Snake	/Wolf atira na Meryl.Pegando o PSG1 Snake	-7	False	-14.6
@@ -187,14 +187,14 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 186	shift_jis	49	46	0x5c216	0line  Snake waits for an opportunity to escape	0jogo Snake espera uma oportunidade de escapar	-3	False	-6.1
 187	shift_jis	11	8	0x5c248	the cell.	da cela.	-3	False	-27.3
 188	shift_jis	43	44	0x5c2c8	*deactivate the detonation code or destroy	*inativar o codigo de detonacao ou destruir	0	True	2.3
-189	shift_jis	49	43	0x5c2f4	0Metal Gear itself. Snake and Meryl head for the	0o proprio Metal Gear.Snake e Meryl vao pra	-6	False	-12.2
+189	shift_jis	49	43	0x5c2f4	0Metal Gear itself. Snake and Meryl head for the	0o proprio Metal Gear.Snake e Meryl vao p/	-6	False	-12.2
 190	shift_jis	49	53	0x5c399	0Suffering Ocelot's torture Snake can no longer	0Sofrendo a tortura de Ocelot Snake n consegue	4	True	8.2
-191	shift_jis	52	49	0x5c3cb	3resist the pain and submits. Ocelot tells him that	3resistir a dor e se submete.Ocelot conta a ele q	-3	False	-5.8
+191	shift_jis	52	49	0x5c3cb	3resist the pain and submits. Ocelot tells him that	3resistir a dor e se rende.Ocelot conta a ele q	-3	False	-5.8
 192	shift_jis	21	16	0x5c400	he will kill Meryl.	vai matar Meryl.	-5	False	-23.8
 193	shift_jis	48	45	0x5c457	/The government refused to fulfill the demands	/O governo se recusou a cumprir as exigencias	-3	False	-6.2
 194	shift_jis	54	63	0x5c488	5the terrorists started preparing for launch. To stop	5os terroristas comecaram o lancamento.P/ parar	-7	True	16.7
-195	shift_jis	48	49	0x5c4bf	/the launch Snake must use the detonation code	/o lancamento Snake deve usar a chave de anulacao	-2	True	2.1
-196	shift_jis	43	45	0x5c4f0	*emergency override key at the underground	*do codigo de detonacao na base	0	True	4.7
+195	shift_jis	48	49	0x5c4bf	/the launch Snake must use the detonation code	/o lancamento Snake deve usar a chave de	-2	True	2.1
+196	shift_jis	43	45	0x5c4f0	*emergency override key at the underground	*anulacao de detonacao na base	0	True	4.7
 197	shift_jis	48	60	0x5c51c	/maintenance base or destroy Metal Gear itself.	/de manutencao ou destruir o proprio Metal Gear	12	True	25.0
 198	shift_jis	47	41	0x5c54d	.Taken hostage Snake is subjected to Ocelot's	.Feito refem Snake eh submetido a tortura	-6	False	-12.8
 199	shift_jis	47	47	0x5c57d	.torture. If he submits Meryl will be killed.	.de Ocelot.Se ele desistir, Meryl morre.	0	False	0.0
@@ -212,21 +212,21 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 211	shift_jis	50	52	0x5c8f9	1After outlasting Ocelot's torture Snake escapes	1Depois d sofrer a tortura d Ocelot Snake escapa	-1	True	4.0
 212	shift_jis	51	39	0x5c92c	2from the cell. However Meryl taken as the other	2da cela.Porem Meryl tbm feita como refem	-12	False	-23.5
 213	shift_jis	51	60	0x5c960	2hostage cannot be found. The terrorist's demands	2n foi encontrada.As exigencias dos terroristas	-1	True	17.6
-214	shift_jis	47	46	0x5c994	.have been rejected and they are preparing to	.foram rejeitadas e eles se preparam pra	-1	False	-2.1
+214	shift_jis	47	46	0x5c994	.have been rejected and they are preparing to	.foram rejeitadas e eles se preparam p/	-1	False	-2.1
 215	shift_jis	47	46	0x5c9c4	.launch a new-type of nuclear warhead. To stop	.lancar uma nova ogiva nuclear.Para dete-los	-1	False	-2.1
 216	shift_jis	45	45	0x5ca51	maintenance base up north or destroy Metal	eh preciso atacar a base ao norte ou o	0	False	0.0
 217	shift_jis	14	5	0x5ca7f	Gear itself.	Metal Gear	-9	False	-64.3
 218	shift_jis	46	45	0x5ca8e	-Snake first collects his belongings and then	-Snake primeiro coleta seus pertences e entao	-1	False	-2.2
-219	shift_jis	45	34	0x5cabd	heads north for the underground maintenance	vai ao norte p/ base de manutencao	-11	False	-24.4
-220	shift_jis	7	12	0x5caeb	base.	subterranea.	5	True	71.4
+219	shift_jis	45	34	0x5cabd	heads north for the underground maintenance	vai p/ base de manutencao subterranea ao	-11	False	-24.4
+220	shift_jis	7	12	0x5caeb	base.	norte	5	True	71.4
 221	latin-1	37	20	0x5cafe	@>`:VoVoPePlKbPrKhPd	@>`:VoVoPePlKbPrKhPd	-17	False	-45.9
 222	shift_jis	48	35	0x5cb61	/from the cell with the help of Ninja. However	/da cela com a ajuda do Ninja.Porem	-13	False	-27.1
-223	shift_jis	46	44	0x5cb92	-Meryl taken as the other hostage cannot be	-Meryl feita como a outra refem nao pode ser	-2	False	-4.3
-224	shift_jis	42	47	0x5cbc1	)found. The terrorist's demands have been	)encontrada.As exigencias dos terroristas foram	5	True	11.9
+223	shift_jis	46	44	0x5cb92	-Meryl taken as the other hostage cannot be	-Meryl feita como a outra refem n pode ser	-2	False	-4.3
+224	shift_jis	42	47	0x5cbc1	)found. The terrorist's demands have been	)achada.As exigencia dos terroristas foram	5	True	11.9
 225	shift_jis	43	46	0x5cbec	*rejected and they are preparing to launch	*rejeitadas e tao se preparando p/ lancar	-2	True	7.0
-226	shift_jis	43	44	0x5cc18	*a new-type nuclear warhead. To stop that	*um novo tipo de ogiva nuclear.P/parar isso	0	True	2.3
+226	shift_jis	43	44	0x5cc18	*a new-type nuclear warhead. To stop that	*uma ogiva nuclear.P/ parar isso	0	True	2.3
 227	shift_jis	46	50	0x5cc44	-Snake must use the detonation code emergency	-Snake deve usar a chave de emergencia	-8	True	8.7
-228	shift_jis	45	44	0x5cc73	override key at the underground maintenance	do codigo de detonacao na base de manutencao	-1	False	-2.2
+228	shift_jis	45	44	0x5cc73	override key at the underground maintenance	do codigo de detonacao na base d manutencao	-1	False	-2.2
 229	shift_jis	46	55	0x5cca1	-base up north or destroy Metal Gear itself.	-ao norte ou destruir o proprio M. Gear	-7	True	19.6
 230	latin-1	37	18	0x5cd3d	@X`TVoVoPePlEPrKPd	@X`TVoVoPePlEPrKPd	-19	False	-51.4
 231	shift_jis	54	55	0x5cd6d	5After Snake submits to the torture Ocelot tells him	5Depois q Snake sofre a tortura, Ocelot conta a ele	-3	True	1.9
@@ -235,156 +235,156 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 234	shift_jis	50	44	0x5ce0d	1from the cell. The terrorist's demands have been	1da cela.As exigencias dos terroristas foram	-6	False	-12.0
 235	shift_jis	50	54	0x5ce40	1rejected and they are preparing to launch a new-	1rejeitadas e eles iniciaram um novo	-14	True	8.0
 236	shift_jis	51	47	0x5ce73	2type of nuclear warhead. To stop that Snake must	2tipo de ogiva nuclear.P/ parar isso Snake deve	-4	False	-7.8
-237	shift_jis	48	62	0x5cea7	/use the detonation code emergency override key	/usar a chave de anulacao do codigo de detonacao	14	True	29.2
-238	shift_jis	47	43	0x5ced8	.at the underground maintenance base up north	.na base de manutencao subterranea ao norte	-4	False	-8.5
+237	shift_jis	48	62	0x5cea7	/use the detonation code emergency override key	/usar a chave de anulacao de detonacao na	14	True	29.2
+238	shift_jis	47	43	0x5ced8	.at the underground maintenance base up north	.base de manutencao subterranea ao norte	-4	False	-8.5
 239	shift_jis	52	55	0x5cf08	3or destroy Metal Gear itself. Snake first collects	3ou destruir o proprio M. Gear.Snake primeiro coleta	0	True	5.8
-240	shift_jis	45	39	0x5cf3d	his belongings and then heads north for the	seus pertences e entao vai ao norte pra	-6	False	-13.3
-241	shift_jis	31	31	0x5cf6b	underground maintenance base.	base de manutencao subterranea.	0	False	0.0
+240	shift_jis	45	39	0x5cf3d	his belongings and then heads north for the	seus pertences e entao vai ao norte p/ base	-6	False	-13.3
+241	shift_jis	31	31	0x5cf6b	underground maintenance base.	de manutencao subterranea.	0	False	0.0
 242	latin-1	37	20	0x5cf96	@e`aVoVoPePlKbPrKhPd	@e`aVoVoPePlKbPrKhPd	-17	False	-45.9
 243	shift_jis	49	46	0x5d034	0the feelings of regret Snake escapes from the	0sentimentos de arrependimento Snake escapa da	-3	False	-6.1
 244	shift_jis	54	56	0x5d066	5cell with the help of Ninja. The terrorist's demands	5cela com ajuda do Ninja.As exigencias dos terroristas	0	True	3.7
-245	shift_jis	46	46	0x5d09d	-have been rejected and they are preparing to	-foram rejeitadas e eles tao se preparando pra	0	False	0.0
+245	shift_jis	46	46	0x5d09d	-have been rejected and they are preparing to	-foram rejeitadas e eles tao se preparando p/	0	False	0.0
 246	shift_jis	53	51	0x5d0cc	4launch a new-type of nuclear warhead. To stop that	4lancar um novo tipo de ogiva nuclear.P/ parar isso	-2	False	-3.8
 247	shift_jis	50	52	0x5d131	1override key at the underground maintenance base	1chave-anulacao na base de manutencao subterranea	-1	True	4.0
 248	shift_jis	53	57	0x5d164	4up north or destroy Metal Gear itself. Snake first	4ao norte ou destruir o M. Gear.Snake primeiro	-7	True	7.5
-249	shift_jis	50	47	0x5d19a	1collects his belongings and then heads north for	1coleta seus pertences e entao vai ao norte pra	-3	False	-6.0
+249	shift_jis	50	47	0x5d19a	1collects his belongings and then heads north for	1coleta seus pertences e entao vai ao norte p/	-3	False	-6.0
 250	shift_jis	35	32	0x5d1cd	"""the underground maintenance base."	base de manutencao subterranea.	-4	False	-8.6
 251	shift_jis	51	52	0x5d22c	2The terrorists have started preparing to launch a	2Os terroristas comecaram o lancamento de um	-7	True	2.0
 252	shift_jis	50	47	0x5d260	1new-type of nuclear warhead. To stop that Snake	1novo tipo de ogiva nuclear.P/ parar isso Snake	-3	False	-6.0
-253	shift_jis	49	67	0x5d293	0must use the detonation code emergency override	0deve usar a chave de anulacao do codigo de detonacao	18	True	36.7
-254	shift_jis	44	37	0x5d2c5	+key at the underground maintenance base up	+na base de manutencao subterranea ao	-7	False	-15.9
-255	shift_jis	55	60	0x5d2f2	6north or destroy Metal Gear itself. After outlasting	6norte ou destruir o proprio M. Gear.Depois de resistir a	2	True	9.1
+253	shift_jis	49	67	0x5d293	0must use the detonation code emergency override	0deve usar a chave de anulacao de detonacao	18	True	36.7
+254	shift_jis	44	37	0x5d2c5	+key at the underground maintenance base up	+na base de manutencao subterranea ao norte	-7	False	-15.9
+255	shift_jis	55	60	0x5d2f2	6north or destroy Metal Gear itself. After outlasting	6ou destruir o proprio M. Gear.Depois de resistir a	2	True	9.1
 256	shift_jis	48	40	0x5d32a	/Ocelot's torture Snake escapes from the cell.	/tortura de Ocelot Snake escapa da cela.	-8	False	-16.7
 257	shift_jis	45	36	0x5d35b	However Meryl taken as the other hostage	Porem Meryl feita como a outra refem	-9	False	-20.0
 258	shift_jis	50	57	0x5d389	1cannot be found. Snake makes a detour around the	1nao pode ser encontrada.Snake desvia ao redor das	0	True	14.0
 259	shift_jis	49	40	0x5d3bc	0glaciers and heads for the Communications Tower	0geleiras e vai p/ Torre de Comunicacoes	-9	False	-18.4
-260	shift_jis	44	46	0x5d3ee	+to enter the underground maintenance base.	+pra entrar na base de manutencao.	-10	True	4.5
+260	shift_jis	44	46	0x5d3ee	+to enter the underground maintenance base.	+p/ entrar na base de manutencao.	-10	True	4.5
 261	latin-1	37	20	0x5d429	@F`BVoVoPePlKbPrKhPd	@F`BVoVoPePlKbPrKhPd	-17	False	-45.9
 262	shift_jis	52	43	0x5d557	3Ocelot's torture Snake escapes from the cell with	3tortura de Ocelot Snake escapa da cela com	-9	False	-17.3
-263	shift_jis	53	42	0x5d58c	4the help of the Ninja. However Meryl taken as the	4a ajuda do Ninja.Porem Meryl feita como a	-11	False	-20.8
-264	shift_jis	47	49	0x5d5c2	.other hostage cannot be found. Snake makes a	.outra refem n pode ser encontrada.Snake faz um	0	True	4.3
-265	shift_jis	46	39	0x5d5f2	-detour around the glaciers and heads for the	-desvio ao redor das geleiras e vai pra	-7	False	-15.2
+263	shift_jis	53	42	0x5d58c	4the help of the Ninja. However Meryl taken as the	4a ajuda do Ninja.Porem Meryl tbm feita como	-11	False	-20.8
+264	shift_jis	47	49	0x5d5c2	.other hostage cannot be found. Snake makes a	.refem n pode ser encontrada.Snake faz um	0	True	4.3
+265	shift_jis	46	39	0x5d5f2	-detour around the glaciers and heads for the	-desvio ao redor das geleiras e vai p/	-7	False	-15.2
 266	shift_jis	47	40	0x5d621	.Communications Tower to enter the underground	.Torre de Comunicacoes p/ entrar na base	-7	False	-14.9
 267	shift_jis	19	26	0x5d651	maintenance base.	de manutencao.	-5	True	36.8
 268	latin-1	37	18	0x5d670	@J`FVoVoPePlEPrKPd	@J`FVoVoPePlEPrKPd	-19	False	-51.4
 269	shift_jis	52	47	0x5d6d7	3that Meryl will be killed. While in despair Snake	3q Meryl sera morta.Enquanto em desespero Snake	-5	False	-9.6
 270	shift_jis	52	40	0x5d70c	3escapes from the cell. The terrorists have started	3escapa da cela.Os terroristas comecaram	-12	False	-23.1
 271	shift_jis	51	54	0x5d741	2preparing to launch the new-type nuclear warhead.	2a se preparar p/ lancar o novo tipo de ogiva.	-5	True	5.9
-272	shift_jis	45	50	0x5d775	To stop that Snake must use the detonation	Pra parar isso Snake deve usar a chave de	-4	True	11.1
+272	shift_jis	45	50	0x5d775	To stop that Snake must use the detonation	P/ parar isso Snake deve usar a chave de	-4	True	11.1
 273	shift_jis	48	57	0x5d7a3	/code emergency override key at the underground	/de emergencia do codigo de detonacao na base	-3	True	18.8
 274	shift_jis	50	37	0x5d802	1Gear itself. After escaping from the cell Snake	1Gear.Depois de escapar da cela Snake	-13	False	-26.0
 275	shift_jis	46	42	0x5d835	-makes a detour around the glaciers and heads	-faz um desvio ao redor das geleiras e vai	-4	False	-8.7
-276	shift_jis	43	39	0x5d864	*for the Communications Tower to enter the	*pra Torre de Comunicacoes p/ entrar na	-4	False	-9.3
+276	shift_jis	43	39	0x5d864	*for the Communications Tower to enter the	*p/ Torre de Comunicacoes p/ entrar na	-4	False	-9.3
 277	latin-1	37	16	0x5d8bb	@`VoVoPePlEPrKPd	@`VoVoPePlEPrKPd	-21	False	-56.8
 278	shift_jis	51	37	0x5d957	2escapes from the cell with the help of the Ninja.	2escapa da cela com a ajuda do Ninja.	-14	False	-27.5
-279	shift_jis	50	49	0x5d9bf	1new-type of nuclear warhead. To stop the launch	1novo tipo de ogiva nuclear.P/ parar o lancamento	-1	False	-2.0
-280	shift_jis	47	49	0x5da54	.up north or destroy Metal Gear itself. After	.ao norte ou destruir o proprio M. Gear.Depois	-1	True	4.3
+279	shift_jis	50	49	0x5d9bf	1new-type of nuclear warhead. To stop the launch	1novo tipo de ogiva nuclear.P/parar o lancamento	-1	False	-2.0
+280	shift_jis	47	49	0x5da54	.up north or destroy Metal Gear itself. After	.ao norte ou destruir o Metal Gear.Depois	-1	True	4.3
 281	shift_jis	52	40	0x5da84	3escaping from the cell with the help of the Ninja	3de escapar da cela com a ajuda do Ninja	-12	False	-23.1
 282	shift_jis	46	44	0x5dab9	-Snake makes a detour around the glaciers and	-Snake faz um desvio ao redor das geleiras e	-2	False	-4.3
 283	shift_jis	49	42	0x5dae8	0heads for the Communications Tower to enter the	0vai p/ Torre de Comunicacoes p/ entrar na	-7	False	-14.3
 284	latin-1	37	18	0x5db42	@d``VoVoPePlSPrYPd	@d``VoVoPePlSPrYPd	-19	False	-51.4
-285	shift_jis	52	54	0x5dc36	3base up north or destroy Metal Gear itself. After	3base ao norte ou destruir o proprio M. Gear.Depois	-1	True	3.8
-286	shift_jis	50	49	0x5dc6b	1outlasting Ocelot's torture Snake escapes from.	1de resistir a tortura de Ocelot Snake escapa da.	-1	False	-2.0
-287	shift_jis	46	36	0x5dc9e	-the cell. However Meryl taken as the other	-cela.Porem Meryl feita como a outra	-10	False	-21.7
-288	shift_jis	49	51	0x5dccd	0hostage cannot be found. Snake infiltrates the	0refem n pode ser encontrada.Snake se infiltra na	0	True	4.1
+285	shift_jis	52	54	0x5dc36	3base up north or destroy Metal Gear itself. After	3base ao norte ou destruir o Metal Gear.Depois	-1	True	3.8
+286	shift_jis	50	49	0x5dc6b	1outlasting Ocelot's torture Snake escapes from.	1de resistir a tortura de Ocelot Snake escapa da	-1	False	-2.0
+287	shift_jis	46	36	0x5dc9e	-the cell. However Meryl taken as the other	-cela.Porem Meryl q tbm era refem continua	-10	False	-21.7
+288	shift_jis	49	51	0x5dccd	0hostage cannot be found. Snake infiltrates the	0desaparecida. Snake se infiltra na	0	True	4.1
 289	shift_jis	49	41	0x5dcff	0Communications Tower and heads for the walk way	0Torre de Comunicacoes e vai p/ passarela	-8	False	-16.3
 290	shift_jis	49	52	0x5dd31	0on an upper floor to detour around the glaciers	0num andar p/ desviar ao redor das geleiras	-6	True	6.1
 291	shift_jis	51	56	0x5dd63	2that block the way to the underground maintenance	2q bloqueiam o caminho p/ base de manutencao	-7	True	9.8
 292	latin-1	37	18	0x5dda7	@u`qVoVoPePlSPrYPd	@u`qVoVoPePlSPrYPd	-19	False	-51.4
 293	shift_jis	52	55	0x5de78	3preparing to launch a new-type of nuclear warhead.	3se preparando p/ lancar um novo tipo de ogiva.	-5	True	5.8
-294	shift_jis	51	59	0x5dead	2To stop the launch Snake must use the detonation	2Pra parar o lancamento Snake deve usar a chave	-4	True	15.7
+294	shift_jis	51	59	0x5dead	2To stop the launch Snake must use the detonation	2P/ parar o lancamento Snake deve usar a chave	-4	True	15.7
 295	shift_jis	52	44	0x5df40	3Gear itself. After escaping Snake infiltrates the	3Gear.Depois de escapar Snake se infiltra na	-8	False	-15.4
 296	shift_jis	54	54	0x5dfa7	5on an upper floor to detour around the glaciers that	5num andar superior p/ desviar ao redor das geleiras q	0	False	0.0
 297	shift_jis	46	54	0x5dfde	-block the way to the underground maintenance	-bloqueiam o caminho p/ base de manutencao	-4	True	17.4
-298	shift_jis	45	32	0x5e080	from the cell. However Meryl taken as the	da cela.Porem Meryl feita como a	-13	False	-28.9
-299	shift_jis	43	47	0x5e0ae	*other hostage cannot be found. To detour	*outra refem nao pode ser encontrada.P/desviar	3	True	9.3
-300	shift_jis	45	46	0x5e0da	around the glaciers blocking the way to the	ao redor das geleiras bloqueando o caminho p/	0	True	2.2
+298	shift_jis	45	32	0x5e080	from the cell. However Meryl taken as the	da cela.Porem Meryl q tbm foi feita como	-13	False	-28.9
+299	shift_jis	43	47	0x5e0ae	*other hostage cannot be found. To detour	*refem n pode ser encontrada.P/desviar ao	3	True	9.3
+300	shift_jis	45	46	0x5e0da	around the glaciers blocking the way to the	redor das geleiras bloqueando o caminho p/	0	True	2.2
 301	shift_jis	44	42	0x5e108	+underground maintenance base Snake climbs	+base de manutencao subterranea Snake sobe	-2	False	-4.5
-302	shift_jis	47	42	0x5e135	.up to the roof of the Communications Tower A.	.ate o telhado da Torre de Comunicacoes A.	-5	False	-10.6
+302	shift_jis	47	42	0x5e135	.up to the roof of the Communications Tower A.	.ate o telhado da Torre de Comunicacoes-A.	-5	False	-10.6
 303	shift_jis	48	44	0x5e165	/However Liquid and his Hind D are waiting for	/Porem Liquid e seu Hind D tao esperando por	-4	False	-8.3
 304	shift_jis	44	33	0x5e196	+him. The walkway collapses from the Hind's	+ele.A passarela desaba do ataque	-11	False	-25.0
 305	shift_jis	47	55	0x5e1c3	.attack. The only way left to proceed is to go	.do Hind.A unica forma de prosseguir eh descer	-1	True	17.0
 306	shift_jis	49	40	0x5e1f3	0down the wall on the north side of the roof of	0pela parede do lado norte do telhado da	-9	False	-18.4
-307	shift_jis	45	47	0x5e225	Communications Tower A. A rope is necessary	Torre de Comunicacoes-A.Precisa de uma corda	-1	True	4.4
-308	shift_jis	11	15	0x5e253	to do so.	pra fazer isso.	4	True	36.4
-309	shift_jis	50	49	0x5e297	1After Snake submits to the torture Ocelot tells	1Depois q Snake se submete a tortura Ocelot conta	-1	False	-2.0
+307	shift_jis	45	47	0x5e225	Communications Tower A. A rope is necessary	T. de Comunicacoes-A.Precisa de uma corda	-1	True	4.4
+308	shift_jis	11	15	0x5e253	to do so.	p/ descer	4	True	36.4
+309	shift_jis	50	49	0x5e297	1After Snake submits to the torture Ocelot tells	1Depois q Snake se submete a tortura Ocelot fala	-1	False	-2.0
 310	shift_jis	47	42	0x5e2ca	.him that Meryl will be killed. While being in	.a ele q Meryl sera morta.Enquanto ta em	-7	False	-10.6
 311	shift_jis	49	42	0x5e2fa	0despair Snake escapes from the cell. To detour	0desespero Snake escapa da cela.P/ desviar	-7	False	-14.3
 312	shift_jis	45	41	0x5e35a	underground maintenance base Snake climbs	base de manutencao subterranea Snake sobe	-4	False	-8.9
 313	shift_jis	48	40	0x5e446	/down the wall on the north side of the roof of	/pela parede do lado norte do telhado da	-8	False	-16.7
 314	shift_jis	48	44	0x5e601	/However Liquid and his Hind D are waitinf for	/Porem Liquid e seu Hind D tao esperando por	-4	False	-8.3
-315	shift_jis	46	44	0x5e6c0	-Communications Tower A. With his rope Snake	-Torre de Comunicacoes A.Com sua corda Snake	-2	False	-4.3
+315	shift_jis	46	44	0x5e6c0	-Communications Tower A. With his rope Snake	-Torre de Comunicacoes-A.Com sua corda Snake	-2	False	-4.3
 316	shift_jis	43	32	0x5e6ef	*heads for the northern end of the roof of	*vai pro fim norte do telhado da	-11	False	-25.6
-317	shift_jis	25	24	0x5e71b	Communications Tower A.	Torre de Comunicacoes A.	-1	False	-4.0
+317	shift_jis	25	24	0x5e71b	Communications Tower A.	Torre de Comunicacoes-A	-1	False	-4.0
 318	latin-1	37	18	0x5e9c3	@\`XVoVoPePlvPr|Pd	@\`XVoVoPePlvPr|Pd	-19	False	-51.4
-319	shift_jis	47	53	0x5e9f3	.To stop the launch of the new-type of nuclear	.Pra parar o lancamento do novo tipo de ogiva	-2	True	12.8
-320	shift_jis	45	58	0x5ea23	warhead Snake must use the detonation code	Snake deve usar a chave de anulacao detonacao na	13	True	28.9
-321	shift_jis	50	51	0x5ea7d	1maintenance base up north or destroy Metal Gear	1base de manutencao norte ou destruir Metal Gear	-2	True	2.0
-322	shift_jis	52	43	0x5eab0	3itself. After escaping from the cell Snake climbs	3em si.Depois de escapar da cela Snake sobe	-9	False	-17.3
+319	shift_jis	47	53	0x5e9f3	.To stop the launch of the new-type of nuclear	.P/ parar o lancamento do novo tipo de ogiva	-2	True	12.8
+320	shift_jis	45	58	0x5ea23	warhead Snake must use the detonation code	Snake deve anular a detonacao na base	13	True	28.9
+321	shift_jis	50	51	0x5ea7d	1maintenance base up north or destroy Metal Gear	1de manutencao norte ou destruir Metal Gear.	-2	True	2.0
+322	shift_jis	52	43	0x5eab0	3itself. After escaping from the cell Snake climbs	3Depois de escapar da cela Snake sobe	-9	False	-17.3
 323	shift_jis	48	50	0x5eae5	/up Communications Tower A to detour around the	/a Torre de Comunicacoes-A p/desviar das	-8	True	4.2
 324	shift_jis	46	38	0x5eb16	-glaciers blocking the way to the underground	-geleiras bloqueando o caminho p/ base	-8	False	-17.4
 325	shift_jis	44	51	0x5eb45	+maintenance base. However Liquid's Hind D	+de manutencao.Porem o Hind D de Liquid	-5	True	15.9
 326	shift_jis	51	52	0x5eb72	2destroys the walkway. To get out of this terrible	2destroi a passarela.P/sair desta situacao terrivel	0	True	2.0
 327	shift_jis	54	42	0x5eba6	5situation Snake starts rappelling along the wall of	5Snake comeca a fazer rapel pela parede da	-12	False	-22.2
 328	shift_jis	50	53	0x5ebdd	1Communications Tower A depending totally on his	1Torre de Comunicacoes-A dependendo da sua	-8	True	6.0
-329	shift_jis	7	6	0x5ec10	rope.	corda.	-1	False	-14.3
+329	shift_jis	7	6	0x5ec10	rope.	corda	-1	False	-14.3
 330	latin-1	37	16	0x5ec20	@`VoVoPePlvPr|Pd	@`VoVoPePlvPr|Pd	-21	False	-56.8
-331	shift_jis	46	53	0x5ec50	-To stop the launch of the new-type ofnuclear	-Pra parar o lancamento do novo tipo de ogiva	-1	True	15.2
+331	shift_jis	46	53	0x5ec50	-To stop the launch of the new-type ofnuclear	-P/ parar o lancamento do novo tipo de ogiva	-1	True	15.2
 332	shift_jis	49	51	0x5ecd9	0maintenance base up north or destroy Metal Gear	0base de manutencao ao norte ou destruir M. Gear	-1	True	4.1
-333	shift_jis	50	55	0x5edcd	1blocks Snake's way. Snake starts rappelling down	1bloqueia o caminho de Snake.El comeca a fazer rapel	2	True	10.0
+333	shift_jis	50	55	0x5edcd	1blocks Snake's way. Snake starts rappelling down	1bloqueia o caminho de Snake.Snake faz rapel	2	True	10.0
 334	shift_jis	46	51	0x5ee00	-the wall of Communications Tower A to get to	-pela parede da Torre-A p/ chegar a	-11	True	10.9
-335	shift_jis	45	35	0x5ee2f	Communications Tower B. It was obvious that	Torre de Comunicacoes B.Era obvio q	-10	False	-22.2
-336	shift_jis	51	50	0x5ee5d	2there was no way for Snake to fight the Hind with	2nao havia forma pro Snake lutar contra o Hind com	-1	False	-2.0
-337	shift_jis	31	31	0x5ee91	any of his current weapons...	qualquer de suas armas atuais..	0	False	0.0
+335	shift_jis	45	35	0x5ee2f	Communications Tower B. It was obvious that	Torre de Comunicacoes-B.Era obvio q	-10	False	-22.2
+336	shift_jis	51	50	0x5ee5d	2there was no way for Snake to fight the Hind with	2nao havia como Snake lutar contra o Hind D com	-1	False	-2.0
+337	shift_jis	31	31	0x5ee91	any of his current weapons...	qualquer de suas armas atuais	0	False	0.0
 338	shift_jis	55	43	0x5efa2	6itself. After escaping from the cell Snake climbs up	6em si.Depois de escapar da cela Snake sobe	-12	False	-21.8
 339	shift_jis	45	47	0x5efda	Communications Tower A to detour around the	Torre de Comunicacoes-A p/desviar das	-8	True	4.4
-340	shift_jis	50	53	0x5f0c6	1Communications Tower B. To fight the Hind Snake	1T. de Comunicacoes-B.P/ lutar contra o Hind Snake	0	True	6.0
-341	shift_jis	49	44	0x5f0f9	0must aquire the Stinger missiles at the Tower B	0deve adquirir os misseis Stinger na entrada	-5	False	-10.2
-342	shift_jis	11	11	0x5f12b	entrance.	da Torre B.	0	False	0.0
+340	shift_jis	50	53	0x5f0c6	1Communications Tower B. To fight the Hind Snake	1T. de Comunicacoes-B.P/lutar contra HinD Snake	0	True	6.0
+341	shift_jis	49	44	0x5f0f9	0must aquire the Stinger missiles at the Tower B	0deve adquirir os misseis Stinger na entrada da	-5	False	-10.2
+342	shift_jis	11	11	0x5f12b	entrance.	Torre B.	0	False	0.0
 343	shift_jis	48	46	0x5f2be	/maintenance base but gets attacked by Liquid's	/base de manutencao mas eh atacado pelo Hind D	-2	False	-4.2
 344	shift_jis	50	52	0x5f2ef	1Hind D. Snake dodges the Hind's insistent attack	1de Liquid.Snake desvia do ataque do Hind	-9	True	4.0
-345	shift_jis	45	32	0x5f322	and rappels down the wall of Communications	e faz rapel pela parede da Torre	-13	False	-28.9
-346	shift_jis	46	55	0x5f350	-Tower A. Acquiring a portable Stinger Snake	-de Comunicacoes-A.Adquirindo um Stinger Snake	0	True	19.6
-347	shift_jis	49	47	0x5f37f	0heads for the roof of Communications Tower B to	0vai pro telhado da Torre de Comunicacoes B pra	-2	False	-4.1
+345	shift_jis	45	32	0x5f322	and rappels down the wall of Communications	e faz rapel pela parede da Torre de	-13	False	-28.9
+346	shift_jis	46	55	0x5f350	-Tower A. Acquiring a portable Stinger Snake	-Comunicacoes-A.Adquirindo um Stinger Snake	0	True	19.6
+347	shift_jis	49	47	0x5f37f	0heads for the roof of Communications Tower B to	0vai pro telhado da Torre de Comunicacoes-B p/	-2	False	-4.1
 348	shift_jis	32	30	0x5f3b1	finish the battle with Liquid.	terminar a batalha com Liquid.	-2	False	-6.2
 349	latin-1	37	18	0x5f3d7	@>`:VoVoPePlKPrQPd	@>`:VoVoPePlKPrQPd	-19	False	-51.4
-350	shift_jis	44	53	0x5f407	+To stop the launch of the new-type nuclear	+Pra parar o lancamento do novo tipo de ogiva	1	True	20.5
+350	shift_jis	44	53	0x5f407	+To stop the launch of the new-type nuclear	+P/ parar o lancamento do novo tipo de ogiva	1	True	20.5
 351	shift_jis	52	48	0x5f4c0	3itself. Snake gets attacked by Liquid's  Hind D at	3em si.Snake eh atacado pelo Hind D de Liquid na	-4	False	-7.7
-352	shift_jis	49	47	0x5f4f5	0Communications Tower A but he rappels down the	0Torre de Comunicacoes A mas ele faz rapel pela	-2	False	-4.1
+352	shift_jis	49	47	0x5f4f5	0Communications Tower A but he rappels down the	0Torre de Comunicacoes-A mas ele faz rapel pela	-2	False	-4.1
 353	shift_jis	44	44	0x5f527	+communications tower wall and acquires the	+parede da torre de comunicacoes e adquire o	0	False	0.0
 354	shift_jis	49	43	0x5f554	0Stinger -- a weapon effective against the Hind.	0Stinger -- uma arma efetiva contra o Hind.	-6	False	-12.2
 355	shift_jis	49	49	0x5f586	0Snake asks Otacon to move the elevator and then	0Snake pede ao Otacon p/ mover o elevador e entao	0	False	0.0
 356	latin-1	37	18	0x5f616	@`VoVoPePl3[Pr3aPd	@`VoVoPePl3[Pr3aPd	-19	False	-51.4
 357	shift_jis	53	57	0x5f703	4itself. Snake fights Liquid's Hind D on the roof of	4em si.Snake luta contra o HindD no telhado da	-7	True	7.5
-358	shift_jis	46	42	0x5f739	-Communications Tower B and defeats it. Snake	-Torre de Comunicacoes B e o derrota.Snake	-4	False	-8.7
+358	shift_jis	46	42	0x5f739	-Communications Tower B and defeats it. Snake	-Torre de Comunicacoes-B e o derrota.Snake	-4	False	-8.7
 359	shift_jis	51	39	0x5f768	2gets the message from Otacon that the elevator of	2recebe a msg do Otacon q o elevador da	-12	False	-23.5
 360	shift_jis	50	52	0x5f79c	1Communications Tower B has started moving again.	1Torre de Comunicacoes-B comecou a se mover.	-6	True	4.0
 361	shift_jis	50	44	0x5f7cf	1The entrance to the underground maintenance base	1A entrada p/ base de manutencao subterranea	-6	False	-12.0
 362	shift_jis	49	45	0x5f802	0is beyond the Snowfield north of Communications	0fica alem do Campo de Neve ao norte da Torre	-4	False	-8.2
 363	shift_jis	42	44	0x5f834	)Tower B. Snake heads for the elevator of	)de Comunicacoes-B.Snake vai p/elevador da	0	True	4.8
-364	shift_jis	42	37	0x5f85f	)Communications Tower B to go down to the	)Torre de Comunicacoes B p/ descer ao	-5	False	-11.9
-365	shift_jis	12	14	0x5f88a	Snowfield.	Campo d Neve	0	True	16.7
+364	shift_jis	42	37	0x5f85f	)Communications Tower B to go down to the	)Torre de Comunicacoes-B p/ descer ao cam	-5	False	-11.9
+365	shift_jis	12	14	0x5f88a	Snowfield.	po nevado	0	True	16.7
 366	latin-1	37	20	0x5f89c	@:`6VoVoPePl3[Pr3aPd	@:`6VoVoPePl3[Pr3aPd	-17	False	-45.9
-367	shift_jis	46	43	0x5f9bf	-Communications Tower B and defeats it. After	-Torre de Comunicacoes B e o derrota.Depois	-3	False	-6.5
-368	shift_jis	47	47	0x5f9ee	.taking the elevator in Communications Tower B	.de pegar o elevador na Torre de Comunicacoes B	0	False	0.0
+367	shift_jis	46	43	0x5f9bf	-Communications Tower B and defeats it. After	-Torre de Comunicacoes-B e o derrota.Depois	-3	False	-6.5
+368	shift_jis	47	47	0x5f9ee	.taking the elevator in Communications Tower B	.de pegar o elevador na Torre de Comunicacoes-B	0	False	0.0
 369	shift_jis	48	45	0x5fa1e	/and defeating the stealth camouflage soldiers	/e derrotar os soldados de camuflagem stealth	-3	False	-6.2
 370	shift_jis	49	43	0x5fa4f	0Snake heads for the entrance to the underground	0Snake vai p/ entrada da base de manutencao	-6	False	-12.2
 371	shift_jis	48	46	0x5fa81	/maintenance base beyond the Snowfield north of	/subterranea alem do Campo de Neve ao norte da	-2	False	-4.2
-372	shift_jis	25	24	0x5fab2	Communications Tower B.	Torre de Comunicacoes B.	-1	False	-4.0
+372	shift_jis	25	24	0x5fab2	Communications Tower B.	Torre de Comunicacoes-B	-1	False	-4.0
 373	latin-1	37	20	0x5fad7	@R`NVoVoPePl3[Pr3aPd	@R`NVoVoPePl3[Pr3aPd	-17	False	-45.9
-374	shift_jis	50	45	0x5fc29	1takes the elevator in Communications Tower B and	1pega o elevador na Torre de Comunicacoes B e	-5	False	-10.0
+374	shift_jis	50	45	0x5fc29	1takes the elevator in Communications Tower B and	1pega o elevador na Torre de Comunicacoes-B e	-5	False	-10.0
 375	shift_jis	52	53	0x5fc5c	3defeats the stealth camouflage solders and gets to	3derrota os soldados stealth e chega ao	-13	True	1.9
-376	shift_jis	48	51	0x5fc91	/the Snowfield north of Communications Tower B.	/Campo de Neve ao norte da T. de Comunicacoes B.	0	True	6.2
-377	shift_jis	42	46	0x5fcf4	)maintenance base north of the Snowfield.	)base de manutencao ao norte do Campo de Neve.	4	True	9.5
-378	shift_jis	48	44	0x5fe4d	/Communications Tower B and defeats it and gets	/Torre de Comunicacoes B e o derrota e chega	-4	False	-8.3
-379	shift_jis	51	54	0x5fe7e	2to the Snowfield north of Communications Tower B.	2ao Campo de Neve ao norte da T. de Comunicacoes B.	0	True	5.9
+376	shift_jis	48	51	0x5fc91	/the Snowfield north of Communications Tower B.	/Campo de Neve ao norte da T. de Comunicacoes-B.	0	True	6.2
+377	shift_jis	42	46	0x5fcf4	)maintenance base north of the Snowfield.	)base ao norte do Campo Nevado	4	True	9.5
+378	shift_jis	48	44	0x5fe4d	/Communications Tower B and defeats it and gets	/Torre de Comunicacoes-B e o derrota e chega	-4	False	-8.3
+379	shift_jis	51	54	0x5fe7e	2to the Snowfield north of Communications Tower B.	2ao Campo Nevado ao norte da T. de Comunicacoes-B.	0	True	5.9
 380	shift_jis	50	45	0x5feb2	1However there awaits Sniper Wolf. After winning	1Porem la espera Sniper Wolf.Depois de vencer	-5	False	-10.0
-381	shift_jis	51	51	0x5fee5	2the sniping battle on the Snowfield he heads for	2a batalha de precisao no Campo de Neve ele vai pra	0	False	0.0
+381	shift_jis	51	51	0x5fee5	2the sniping battle on the Snowfield he heads for	2a batalha de precisao no Campo Nevado ele vai p/	0	False	0.0
 382	shift_jis	50	42	0x5ff19	1the entrance to the underground maintenance base	1entrada da base de manutencao subterranea	-8	False	-16.0
-383	shift_jis	25	26	0x5ff4c	north of the Snowfield.	ao norte do Campo d Neve.	0	True	4.0
+383	shift_jis	25	26	0x5ff4c	north of the Snowfield.	a norte do Campo Nevado	0	True	4.0
 384	shift_jis	48	48	0x600f9	/However Sniper Wolf is waiting for him. After	/Porem Sniper Wolf ta esperando por ele.Depois	-2	False	0.0
 385	shift_jis	47	45	0x6012a	.beating her again Snake and Otacon stay with	.de vence-la de novo Snake e Otacon ficam com	-2	False	-4.3
-386	shift_jis	48	43	0x6015a	/her until her moment of death Snake heads for	/ela ate seu momento de morte Snake vai pra	-5	False	-10.4
+386	shift_jis	48	43	0x6015a	/her until her moment of death Snake heads for	/ela ate seu momento de morte Snake vai p/	-5	False	-10.4
 387	shift_jis	45	41	0x6018b	the entrance to the underground maintenance	entrada da base de manutencao subterranea	-4	False	-8.9
 388	shift_jis	30	26	0x601b9	base north of the Snowfield.	ao norte do Campo de Neve.	-4	False	-13.3
 389	shift_jis	47	42	0x60399	.beating her again Sanek and Otacon stay with	.vence-la de novo Snake e Otacon ficam com	-5	False	-10.6
@@ -393,9 +393,9 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 392	shift_jis	45	39	0x60428	maintenance base north of the Snowfield and	subterranea ao norte do Campo de Neve e	-6	False	-13.3
 393	shift_jis	47	40	0x60456	.heads for the lower level to get to the Metal	.vai pro nivel inferior p/ chegar a base	-7	False	-14.9
 394	shift_jis	36	41	0x60486	#Gear underground maintenance base.	#de manutencao do Metal Gear.	-7	True	13.9
-395	shift_jis	48	46	0x605d0	/Communications Tower B and defeats it. He then	/Torre de Comunicacoes B e o derrota.Ele entao	-2	False	-4.2
+395	shift_jis	48	46	0x605d0	/Communications Tower B and defeats it. He then	/Torre de Comunicacoes-B e o derrota.Ele entao	-2	False	-4.2
 396	shift_jis	47	41	0x60601	.gets to the Snowfield north of Communications	.chega ao Campo de Neve ao norte da Torre	-6	False	-12.8
-397	shift_jis	46	55	0x60631	-Tower B and defeats Sniper Wolf again. After	-de Comunicacoes-B e derrota Wolf de novo.Depois	2	True	19.6
+397	shift_jis	46	55	0x60631	-Tower B and defeats Sniper Wolf again. After	-de Comunicacoes-B e derrota Wolf. Depois	2	True	19.6
 398	shift_jis	44	44	0x606ef	+maintenance base and takes the large cargo	+base de manutencao e pega o grande elevador	0	False	0.0
 399	shift_jis	49	45	0x6071c	0elevator to get to the lower level of the Metal	0de carga p/ chegar ao nivel inferior da base	-4	False	-8.2
 400	shift_jis	37	40	0x6074e	$Gear underground maintenance base.	$base de manutencao do M.Gear.	-7	True	8.1
@@ -405,40 +405,40 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 404	shift_jis	53	55	0x608c4	4Snowfield to get to the lower level after defeating	4de Neve p/chegar ao nivel inferior depois d derrotar	0	True	3.8
 405	shift_jis	51	48	0x608fa	2Sniper Wolf again Snake hears from Master Miller	2Sniper Wolf de novo Snake ouve do Master Miller	-3	False	-5.9
 406	shift_jis	49	56	0x6092e	0that Naomi could be a spy. Snake cannot believe	0q Naomi pode ser uma espia.Snake nao acredita	-3	True	14.3
-407	shift_jis	46	38	0x60960	-it but all he can do now is to head for the	-mas tudo q pode fazer agora eh ir pra	-8	False	-17.4
+407	shift_jis	46	38	0x60960	-it but all he can do now is to head for the	-mas tudo q pode fazer agora eh ir p/	-8	False	-17.4
 408	shift_jis	42	40	0x60a1a	)warhead Snake rushes to the underground	)ogiva Snake corre p/ base de manutencao	-2	False	-4.8
 409	shift_jis	44	36	0x60a45	+maintenance base. However Vulcan Raven is	+subterranea.Porem Vulcan Raven esta	-8	False	-18.2
-410	shift_jis	45	53	0x60a72	waiting for him. While Raven is dying after	esperando por ele.Enquanto Raven morre depois	0	True	17.8
-411	shift_jis	46	48	0x60aa0	-being defeated by Snake he tells Snake that	-d ser derrotado por Snake ele conta a Snake q	0	True	4.3
+410	shift_jis	45	53	0x60a72	waiting for him. While Raven is dying after	esperando ele. No leito de morte apos ser	0	True	17.8
+411	shift_jis	46	48	0x60aa0	-being defeated by Snake he tells Snake that	-d derrotado. Raven conta a Snake que	0	True	4.3
 412	shift_jis	44	45	0x60acf	+the DARPA Chief who died in front of Snake	+o Chefe da DARPA q morreu na frente d Snake	0	True	2.3
 413	shift_jis	45	47	0x60afc	was actually FOX-HOUND member Decoy Octopus	era o membro FOX-HOUND Decoy Octopus	-9	True	4.4
-414	shift_jis	49	42	0x60b2a	0in disguise. Snake who has been told by Master	0disfarado.Snake q foi contado pelo Master	-7	False	-14.3
-415	shift_jis	45	49	0x60b5c	that Naomi was lying about her identity is	q Naomi estava fingindo sua identidade esta	-2	True	8.9
-416	shift_jis	47	38	0x60b8a	.confused and filled with doubt but heads for	.confuso e cheio de duvida mas vai pra	-9	False	-19.1
-417	shift_jis	46	41	0x60bba	-the underground maintenance base just beyond	-base de manutencao subterranea logo alem	-5	False	-10.9
+414	shift_jis	49	42	0x60b2a	0in disguise. Snake who has been told by Master	0disfarado.Snake q soube pelo Master que	-7	False	-14.3
+415	shift_jis	45	49	0x60b5c	that Naomi was lying about her identity is	Naomi estava fingindo sua identidade esta	-2	True	8.9
+416	shift_jis	47	38	0x60b8a	.confused and filled with doubt but heads for	.confuso e cheio de duvida mas vai p/ a base	-9	False	-19.1
+417	shift_jis	46	41	0x60bba	-the underground maintenance base just beyond	-de manutencao subterranea logo alem	-5	False	-10.9
 418	shift_jis	11	9	0x60be9	the door.	da porta.	-2	False	-18.2
 419	shift_jis	44	37	0x60dfd	+the underground maintenance base and heads	+base de manutencao subterranea e vai	-7	False	-15.9
-420	shift_jis	23	21	0x60e2a	for the control room.	pra sala de controle.	-2	False	-8.7
+420	shift_jis	23	21	0x60e2a	for the control room.	p/ sala de controle.	-2	False	-8.7
 421	shift_jis	42	32	0x6104a	)the control room on the 3rd floor of the	)sala de controle no 3o andar da	-10	False	-23.8
 422	shift_jis	48	48	0x610cd	/Master repeatedly warns Snake that Naomi is an	/Master repetidamente avisa Snake q Naomi eh uma	0	False	0.0
-423	shift_jis	51	51	0x610fe	2enemy spy. While filled with doubt Snake arrives	2espia inimiga.Enquanto cheio de duvida Snake chega	0	False	0.0
-424	shift_jis	43	36	0x61132	*at the underground maintenance base. From	*a base de manutencao subterranea.Da	-7	False	-16.3
+423	shift_jis	51	51	0x610fe	2enemy spy. While filled with doubt Snake arrives	2espia inimiga.Cheio de duvidas Snake chega	0	False	0.0
+424	shift_jis	43	36	0x61132	*at the underground maintenance base. From	*a base de manutencao subterranea. Por uma	-7	False	-16.3
 425	shift_jis	50	47	0x6115e	1Otacon's call Snake finds out that the new-type	1ligacao do Otacon Snake descobre q o novo tipo	-3	False	-6.0
-426	shift_jis	45	45	0x61191	nuclear warhead equipped on Metal Gear is a	de ogiva nuclear equipada no Metal Gear eh um	0	False	0.0
+426	shift_jis	45	45	0x61191	nuclear warhead equipped on Metal Gear is a	de ogiva equipada no Metal Gear eh um	0	False	0.0
 427	shift_jis	55	54	0x611bf	6stealth ballistic missile utilizing a rail gun. Snake	6missil balistico stealth utilizando um rail gun.Snake	-1	False	-1.8
-428	shift_jis	50	54	0x611f7	1doubts Campbell who kept that fact a secret but	1duvida d Campbell q manteve o fato em segredo mas	0	True	8.0
+428	shift_jis	50	54	0x611f7	1doubts Campbell who kept that fact a secret but	1duvida d Campbell q manteve tudo em segredo mas	0	True	8.0
 429	shift_jis	51	43	0x6122a	2he heads for the control room on the 3rd floor of	2ele vai p/ sala de controle no 3o andar da	-8	False	-15.7
 430	shift_jis	46	42	0x6125e	-the underground maintenance base to stop the	-base de manutencao subterranea p/ parar o	-4	False	-8.7
-431	shift_jis	45	44	0x6128d	launch of this new-type of nuclear warhead.	lancamento deste novo tipo de ogiva nuclear.	-1	False	-2.2
+431	shift_jis	45	44	0x6128d	launch of this new-type of nuclear warhead.	lancamento deste novo tipo de ogiva nuclear	-1	False	-2.2
 432	shift_jis	50	46	0x612f9	1Snake finally arrived at the control room on the	1Snake finalmente chegou a sala de controle no	-4	False	-8.0
 433	shift_jis	48	43	0x6132c	/3rd floor of the underground maintenance base	/3o andar da base de manutencao subterranea	-5	False	-10.4
 434	shift_jis	51	43	0x6135d	2but the detonation code has already been entered.	2mas o codigo de detonacao ja foi inserido.	-8	False	-15.7
 435	shift_jis	42	33	0x61391	)However Snake hears from Otacon that he	)Porem Snake ouve do Otacon q ele	-9	False	-21.4
 436	shift_jis	43	40	0x613bc	*discovered how to use the detonation code	*descobriu como usar a chave de anulacao	-3	False	-7.0
-437	shift_jis	50	62	0x613e8	1emergency override key. The key is made of shape	1de emergencia do codigo de detonacao.A chave eh feita de liga	12	True	24.0
-438	shift_jis	50	50	0x6141b	1memory alloy and changes into 3 shapes according	1com memoria de forma e muda p/ 3 formas de acordo	0	False	0.0
-439	shift_jis	44	44	0x6144e	+to temperature each shape matching to the	+com temperatura cada forma combinando com o	0	False	0.0
-440	shift_jis	45	44	0x6147b	corresponding terminal in the control room.	terminal correspondente na sala de controle.	-1	False	-2.2
+437	shift_jis	50	62	0x613e8	1emergency override key. The key is made of shape	1do codigo de detonacao.A chave eh feita de uma	12	True	24.0
+438	shift_jis	50	50	0x6141b	1memory alloy and changes into 3 shapes according	1liga que muda p/ 3 formas de acordo com	0	False	0.0
+439	shift_jis	44	44	0x6144e	+to temperature each shape matching to the	+a temperatura. Cada forma combinando com	0	False	0.0
+440	shift_jis	45	44	0x6147b	corresponding terminal in the control room.	o respectivo terminal na sala de controle.	-1	False	-2.2
 441	shift_jis	45	43	0x614a9	But Snake gets shot by Ocelot and drops the	Mas Snake eh baleado por Ocelot e derruba a	-2	False	-4.4
 442	shift_jis	48	45	0x614d7	/key into the drainage ditch on the first floor	/chave no canal de drenagem no primeiro andar	-3	False	-6.2
 443	shift_jis	38	35	0x61508	%of the underground maintenance base.	%da base de manutencao subterranea.	-3	False	-7.9
@@ -451,8 +451,8 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 450	shift_jis	54	55	0x61914	5floor. Snake looks for the key in the drainage ditch	5inferior.Snake procura pela chave no canal d drenagem	0	True	1.9
 451	shift_jis	51	40	0x6194b	2on the first floor of the underground maintenance	2no primeiro andar da base de manutencao	-11	False	-21.6
 452	shift_jis	53	53	0x6197f	4base but does not find it there. Master advises the	4subterranea mas nao a encontra la.Master aconselha o	0	False	0.0
-453	shift_jis	51	44	0x619b5	2puzzled Snake that a rat might have swallowed the	2Snake confuso q um rato pode ter engolido a	-7	False	-13.7
-454	shift_jis	6	6	0x619e9	key.	chave.	0	False	0.0
+453	shift_jis	51	44	0x619b5	2puzzled Snake that a rat might have swallowed the	2confuso Snake q um rato pode ter engolido a chave	-7	False	-13.7
+454	shift_jis	6	6	0x619e9	key.	.	0	False	0.0
 455	shift_jis	53	53	0x61b52	4floor. Snake finds the key in the drainage ditch on	4andar.Snake encontra a chave no canal de drenagem no	0	False	0.0
 456	shift_jis	51	47	0x61b88	2the first floor. Snake rushes to the control room	2primeiro andar.Snake corre p/ sala de controle	-4	False	-7.8
 457	shift_jis	49	34	0x61bbc	0on the 3rd floor of the underground maintenance	0no 3o andar da base de manutencao	-15	False	-30.6
@@ -463,37 +463,37 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 462	shift_jis	48	46	0x61dcb	/underground maintenance base collects the key	/base de manutencao subterranea coleta a chave	-2	False	-4.2
 463	shift_jis	49	39	0x61dfc	0from the rat and rushes to the control room on	0do rato e corre p/ sala de controle no	-10	False	-20.4
 464	shift_jis	51	43	0x61e2e	2the 3rd floor of the underground maintenance base	23o andar da base de manutencao subterranea	-8	False	-15.7
-465	shift_jis	50	60	0x61e62	1to input the first PAL code with the key at room	1pra inserir o codigo PAL com a chave a temperatura	1	True	20.0
+465	shift_jis	50	60	0x61e62	1to input the first PAL code with the key at room	1p/ inserir o codigo PAL com a chave a temperatura	1	True	20.0
 466	shift_jis	14	9	0x61e95	temperature.	ambiente.	-5	False	-35.7
 467	latin-1	37	20	0x61eac	@U`QVoVoPePlÂ¨TPrÂ¨ZPd	@U`QVoVoPePlÂ¨TPrÂ¨ZPd	-17	False	-45.9
 468	shift_jis	45	43	0x61edc	The detonation code of the new-type nuclear	O codigo de detonacao do novo tipo de ogiva	-2	False	-4.4
 469	shift_jis	47	36	0x61f0a	.warhead has already been entered. Snake tries	.nuclear ja foi inserido.Snake tenta	-11	False	-23.4
-470	shift_jis	47	39	0x61f3a	.to use the detonation code emergency override	.usar a chave de anulacao de emergencia	-8	False	-17.0
-471	shift_jis	47	68	0x61f6a	.key to prevent the launch. The key is made of	.do codigo de detonacao p/ prevenir o lancamento.A chave eh feita de	21	True	44.7
+470	shift_jis	47	39	0x61f3a	.to use the detonation code emergency override	.usar a chave de anulacao de detonacao	-8	False	-17.0
+471	shift_jis	47	68	0x61f6a	.key to prevent the launch. The key is made of	.p/ prevenir o lancamento.A chave eh feita de	21	True	44.7
 472	shift_jis	46	45	0x61f9a	-shape memory alloy and changes into 3 shapes	-liga com memoria de forma e muda p/ 3 formas	-1	False	-2.2
 473	shift_jis	47	48	0x61fc9	.according to temperature each shape matching	.conforme a temperatura cada forma combinando	-2	True	2.1
 474	shift_jis	49	51	0x61ff9	0the corresponding terminal in the control room.	0com o terminal correspondente na sala controle.	-1	True	4.1
 475	shift_jis	47	48	0x6202b	.Snake entered the first PAL code with the key	.Snake insere o primeiro codigo PAL com a chave	0	True	2.1
-476	shift_jis	49	50	0x6205b	0at room temperature. To enter the 2nd PAL code	0a temperatura ambiente.P/inserir o 2o codigo PAL	0	True	2.0
+476	shift_jis	49	50	0x6205b	0at room temperature. To enter the 2nd PAL code	0temperatura ambiente.P/inserir o 2o codigo PAL	0	True	2.0
 477	shift_jis	44	40	0x6208d	+Snake must make the key change to the cold	+Snake deve fazer a chave mudar p/ forma	-4	False	-9.1
-478	shift_jis	47	54	0x620ba	.temperature shape. Snake must find a place to	.de temperatura fria.Snake deve ir a um lugar pra	2	True	14.9
-479	shift_jis	15	16	0x620ea	cool the key.	esfriar a chave	0	True	6.7
+478	shift_jis	47	54	0x620ba	.temperature shape. Snake must find a place to	.temperatura fria.Snake deve ir a um lugar p/	2	True	14.9
+479	shift_jis	15	16	0x620ea	cool the key.	esfriar-la	0	True	6.7
 480	latin-1	37	20	0x62102	@S`OVoVoPePlÂ¨TPrÂ¨ZPd	@S`OVoVoPePlÂ¨TPrÂ¨ZPd	-17	False	-45.9
 481	shift_jis	47	38	0x622e3	.Snake heads for the warehouse where he fought	.Snake vai pro deposito onde ele lutou	-9	False	-19.1
-482	shift_jis	49	39	0x62313	0Raven to change the key to the cold temperature	0contra Raven p/ mudar a chave p/ forma	-10	False	-20.4
-483	shift_jis	8	20	0x62345	shape.	de temperatura fria.	12	True	150.0
+482	shift_jis	49	39	0x62313	0Raven to change the key to the cold temperature	0contra Raven p/ mudar a chave p/ a temperatura	-10	False	-20.4
+483	shift_jis	8	20	0x62345	shape.	fria.	12	True	150.0
 484	shift_jis	48	43	0x62505	/at room temperature. Snake has changed the key	/a temperatura ambiente.Snake mudou a chave	-5	False	-10.4
-485	shift_jis	45	39	0x62536	to the cold temperature shape and heads for	pra forma de temperatura fria e vai pra	-6	False	-13.3
+485	shift_jis	45	39	0x62536	to the cold temperature shape and heads for	p/ forma de temperatura fria e vai p/	-6	False	-13.3
 486	shift_jis	47	47	0x6258f	.underground maintenance base to input the 2nd	.base de manutencao subterranea p/ inserir o 2o	0	False	0.0
-487	shift_jis	11	11	0x625bf	PAL code.	codigo PAL.	0	False	0.0
+487	shift_jis	11	11	0x625bf	PAL code.	PAL code.	0	False	0.0
 488	latin-1	37	20	0x625d0	@?`;VoVoPePlÂ¨TPrÂ¨ZPd	@?`;VoVoPePlÂ¨TPrÂ¨ZPd	-17	False	-45.9
 489	shift_jis	49	45	0x6274f	0Snake has completed inputting the 2nd PAL code.	0Snake completou a insercao do 2o codigo PAL.	-4	False	-8.2
-490	shift_jis	47	45	0x62781	.Snake has to warm the key to change it to the	.Snake tem q esquentar a chave p/ muda-la pra	-2	False	-4.3
-491	shift_jis	45	54	0x627b1	warm temperature shape to input the 3rd PAL	forma de temperatura quente p/ inserir o 3o codigo PAL	9	True	20.0
+490	shift_jis	47	45	0x62781	.Snake has to warm the key to change it to the	.Snake tem q esquentar a chave p/ muda-la p/	-2	False	-4.3
+491	shift_jis	45	54	0x627b1	warm temperature shape to input the 3rd PAL	temperatura quente p/ inserir o 3o PAL code	9	True	20.0
 492	shift_jis	37	31	0x627df	$code. Snake heads for a warm place.	$.Snake vai p/ um lugar quente.	-6	False	-16.2
 493	shift_jis	42	33	0x62a1f	)code. Snake heads for the blast furnace.	)codigo.Snake vai pro alto-forno.	-9	False	-21.4
-494	shift_jis	46	50	0x62b13	-key to prevent the launch. While Snake heads	-chave p/ prevenir o lancamento.Enquanto Snake vai	4	True	8.7
-495	shift_jis	46	40	0x62b42	-for the blast furnace to warm the key to the	-pro alto-forno p/ esquentar a chave pra	-6	False	-13.0
+494	shift_jis	46	50	0x62b13	-key to prevent the launch. While Snake heads	-chave p/ prevenir o lancamento.Enquanto Snake	4	True	8.7
+495	shift_jis	46	40	0x62b42	-for the blast furnace to warm the key to the	-vai pro alto-forno p/ esquentar a chave p/	-6	False	-13.0
 496	shift_jis	47	38	0x62b9f	.code Master points out that Naomi might have	.codigo Master aponta q Naomi pode ter	-9	False	-19.1
 497	shift_jis	44	42	0x62bcf	+used FoxDie a virus weapon to assassinate	+usado FoxDie uma arma virus p/ assassinar	-2	False	-4.5
 498	shift_jis	44	44	0x62bfc	+specific targets. Campbell tells Snake who	+alvos especificos.Campbell conta ao Snake q	0	False	0.0
@@ -502,15 +502,15 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 501	shift_jis	48	44	0x62ca7	/The detonation code of the new-type of nuclear	/O codigo de detonacao do novo tipo de ogiva	-4	False	-8.3
 502	shift_jis	48	37	0x62cd8	/warhead has already been entered. Master tells	/nuclear ja foi inserido.Master conta	-11	False	-22.9
 503	shift_jis	49	38	0x62d09	0Snake who is trying to use the detonation code	0ao Snake q ta tentando usar a chave	-13	False	-22.4
-504	shift_jis	50	74	0x62d3b	1emergency override key to prevent the launch of	1de anulacao do codigo de detonacao p/prevenir o lancamento	24	True	48.0
+504	shift_jis	50	74	0x62d3b	1emergency override key to prevent the launch of	1de anulacao d detonacao p/prevenir o lancamento	24	True	48.0
 505	shift_jis	49	43	0x62d6e	0the existence of the assassination virus weapon	0da existencia da arma virus de assassinato	-6	False	-12.2
 506	shift_jis	43	35	0x62da0	*FoxDie and that Naomi might have used it.	*FoxDie e q Naomi pode te-la usado.	-8	False	-18.6
 507	shift_jis	49	44	0x62dcc	0Campbell tells the puzzled Snake that Naomi has	0Campbell conta ao Snake confuso q Naomi foi	-5	False	-10.2
 508	shift_jis	47	40	0x62dfe	.been arrested as a spy. Arriving at the blast	.presa como espia.Chegando ao alto-forno	-7	False	-14.9
-509	shift_jis	47	35	0x62e2e	.furnace Snake tries to change the key to the	.Snake tenta mudar a chave p/ forma	-12	False	-25.5
-510	shift_jis	7	7	0x62e8c	code.	codigo.	0	False	0.0
+509	shift_jis	47	35	0x62e2e	.furnace Snake tries to change the key to the	.Snake tenta mudar a forma da chave	-12	False	-25.5
+510	shift_jis	7	7	0x62e8c	code.	.	0	False	0.0
 511	shift_jis	51	42	0x62ff1	2Campbell tells Snake that Naomi has been arrested	2Campbell conta ao Snake q Naomi foi presa	-9	False	-17.6
-512	shift_jis	51	52	0x63025	2as a spy. Although confused by feelings of doubt	2como espia.Embora confuso por sentimentos d duvida	0	True	2.0
+512	shift_jis	51	52	0x63025	2as a spy. Although confused by feelings of doubt	2como espia.Embora tomado pela duvida	0	True	2.0
 513	shift_jis	46	41	0x63059	-Snake warms the key at the blast furnace it	-Snake esquenta a chave no alto-forno ela	-5	False	-10.9
 514	shift_jis	44	38	0x63088	+changes to the warm temperature shape and	+muda p/ forma de temperatura quente e	-6	False	-13.6
 515	shift_jis	52	39	0x630b5	3heads for the control room on the 3rd floor of the	3vai p/ sala de controle no 3o andar da	-13	False	-25.0
@@ -532,9 +532,9 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 531	shift_jis	50	45	0x63453	1what he is now. When the conversation got to the	1o q ele eh agora.Quando a conversa chegou ao	-5	False	-10.0
 532	shift_jis	47	40	0x63486	.subject of whom FoxDie has been used against	.assunto de contra quem FoxDie foi usado	-7	False	-14.9
 533	shift_jis	51	45	0x634b6	2the transmission was cut off. Campbell orders the	2a transmissao foi cortada.Campbell ordena ao	-6	False	-11.8
-534	shift_jis	49	46	0x634ea	0furious Snake to head to the control room after	0Snake furioso q va p/ sala de controle depois	-3	False	-6.1
-535	shift_jis	49	48	0x6351c	0changing the key to the warm temperature shape	0de mudar a chave p/ forma de temperatura quente	-1	False	-2.0
-536	shift_jis	48	39	0x6354e	/in order to stop the launch of the new-type of	/pra parar o lancamento do novo tipo de	-9	False	-18.8
+534	shift_jis	49	46	0x634ea	0furious Snake to head to the control room after	0Snake que va p/ sala de controle depois de	-3	False	-6.1
+535	shift_jis	49	48	0x6351c	0changing the key to the warm temperature shape	0mudar a chave p/ forma de temperatura quente	-1	False	-2.0
+536	shift_jis	48	39	0x6354e	/in order to stop the launch of the new-type of	/p/ parar o lancamento do novo tipo de	-9	False	-18.8
 537	shift_jis	18	14	0x6357f	nuclear warhead.	ogiva nuclear.	-4	False	-22.2
 538	shift_jis	50	47	0x635cd	1Snake finally entered the 3rd PAL code. However	1Snake finalmente inseriu o 3o codigo PAL.Porem	-3	False	-6.0
 539	shift_jis	47	37	0x63600	.the system announced that the nuclear warhead	.o sistema anunciou q a ogiva nuclear	-10	False	-21.3
@@ -545,14 +545,14 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 544	shift_jis	51	54	0x636fb	2input of the detonation code to activate the new-	2d emergencia do codigo d detonacao p/ativar o novo	0	True	5.9
 545	shift_jis	53	47	0x6372f	4type of nuclear warhead. Liquid runs to the cockpit	4tipo de ogiva nuclear.Liquid corre pro cockpit	-6	False	-11.3
 546	shift_jis	48	51	0x63765	/of Metal Gear as it starts to move. Snake goes	/do M. Gear enquanto comeca a se mover.Snake vai	0	True	6.2
-547	shift_jis	12	11	0x63796	after him.	atras dele.	-1	False	-8.3
+547	shift_jis	12	11	0x63796	after him.	atras dele	-1	False	-8.3
 548	shift_jis	47	39	0x637e1	.Snake has been used by Liquid and entered the	.Snake foi usado por Liquid e inseriu o	-8	False	-17.0
-549	shift_jis	49	51	0x63811	0detonation code. Snake mad at the fact that he	0codigo de detonacao.Snake bravo pelo fato q ele	-1	True	4.1
-550	shift_jis	45	42	0x63843	was used is told by Liquid of an even more	foi usado eh contado por Liquid de um fato	-3	False	-6.7
-551	shift_jis	45	51	0x63871	shocking fact. The Pentagon's goal from the	mais chocante.O objetivo do Pentagono desde o	0	True	13.3
+549	shift_jis	49	51	0x63811	0detonation code. Snake mad at the fact that he	0codigo de detonacao.Snake bravo por ter sido	-1	True	4.1
+550	shift_jis	45	42	0x63843	was used is told by Liquid of an even more	usado, sabe por Liquid de um fato	-3	False	-6.7
+551	shift_jis	45	51	0x63871	shocking fact. The Pentagon's goal from the	chocante.O objetivo do Pentagono desde o	0	True	13.3
 552	shift_jis	50	39	0x6389f	1beginning was to assassinate the terrorists and	1comeco era assassinar os terroristas e	-11	False	-22.0
-553	shift_jis	51	53	0x638d2	2others involved with FoxDie carried by Snake to	2outros envolvidos com FoxDie levado por Snake p/	-2	True	3.9
-554	shift_jis	47	51	0x63906	.hide the facts about the development of Metal	.esconder os fatos sobre o Metal	-15	True	8.5
+553	shift_jis	51	53	0x638d2	2others involved with FoxDie carried by Snake to	2outros envolvidos com FoxDie levado por Snake	-2	True	3.9
+554	shift_jis	47	51	0x63906	.hide the facts about the development of Metal	.p/ esconder os fatos sobre o Metal	-15	True	8.5
 555	shift_jis	52	50	0x63936	3Gear. Liquid also tells Snake that they are twins.	3Gear.Liquid tbm conta ao Snake q eles sao gemeos.	-2	False	-3.8
 556	shift_jis	46	40	0x6396b	-While Snake is shocked from what he has been	-Enquanto Snake ta chocado com o q foi	-8	False	-13.0
 557	shift_jis	47	51	0x6399a	.told Liquid finally starts controlling Metal	.contado Liquid finalmente controla Metal	-6	True	8.5
@@ -560,9 +560,9 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 559	shift_jis	48	47	0x63a0f	/Snake himself has entered the detonation code.	/O proprio Snake inseriu o codigo de detonacao.	-1	False	-2.1
 560	shift_jis	43	43	0x63a40	*Pentagon's goal from the beginning was to	*O objetivo do Pentagono desde o comeco era	0	False	0.0
 561	shift_jis	49	46	0x63a6c	0assassinate the terrorists and others involved	0assassinar os terroristas e outros envolvidos	-3	False	-6.1
-562	shift_jis	50	52	0x63a9e	1with FoxDie carried by Snake to hide the facts	1com FoxDie levado por Snake p/ esconder os fatos	-1	True	4.0
+562	shift_jis	50	52	0x63a9e	1with FoxDie carried by Snake to hide the facts	1com FoxDie levado por Snake p/ esconder tudo	-1	True	4.0
 563	shift_jis	46	42	0x63ad1	-about the development of Metal Gear and that	-sobre o desenvolvimento do Metal Gear e q	-4	False	-8.7
-564	shift_jis	17	16	0x63b00	they are twins.	eles sao gemeos.	-1	False	-5.9
+564	shift_jis	17	16	0x63b00	they are twins.	eles sao gemeos	-1	False	-5.9
 565	shift_jis	52	57	0x63b41	3told Liquid finally starts controlling Metal Gear.	3contado Liquid finalmente controla Metal Gear.	-5	True	9.6
 566	shift_jis	52	48	0x63b76	3With Gray Fox giving his life to assist him Snake	3Com Gray Fox dando sua vida p/ assisti-lo Snake	-4	False	-7.7
 567	shift_jis	44	41	0x63bab	+successfully destroys Metal Gear but loses	+destrÃ³i Metal Gear com sucesso mas perde	-3	False	-6.8
@@ -571,7 +571,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 570	shift_jis	47	43	0x63c68	.successfully destroyed Metal Gear. Liquid has	.destruiu Metal Gear com sucesso.Liquid foi	-4	False	-8.5
 571	shift_jis	53	47	0x63c98	4been used as sacrifice for the creation of Snake as	4usado como sacrificio p/ criacao do Snake como	-6	False	-11.3
 572	shift_jis	54	47	0x63cce	5the superior clone of Big Boss. Liquid with all the	5o clone superior do Big Boss.Liquid com todo o	-7	False	-13.0
-573	shift_jis	49	49	0x63d05	0resentment challenges Snake for a final battle	0ressentimento desafia Snake p/ uma batalha final	0	False	0.0
+573	shift_jis	49	49	0x63d05	0resentment challenges Snake for a final battle	0ressentimento desafia Snake p/ a batalha final	0	False	0.0
 574	shift_jis	48	46	0x63d37	/on top of the destroyed Metal Gear. Meanwhile	/no topo do Metal Gear destruido.Enquanto isso	-2	False	-4.2
 575	shift_jis	50	47	0x63d68	1the Secretary of Defense has ordered an air raid	1o Secretario de Defesa ordenou um ataque aereo	-3	False	-6.0
 576	shift_jis	51	45	0x63d9b	2of the base. Campbell tried to stop the air raid	2da base.Campbell tentou parar o ataque aereo	-6	False	-11.8
@@ -579,13 +579,13 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 578	shift_jis	40	43	0x63dff	'before the approaching moment of doom.	'antes do momento final se aproximar.	-3	True	7.5
 579	shift_jis	29	24	0x63e28	The final battle has begun.	A batalha final comecou.	-5	False	-17.2
 580	shift_jis	49	43	0x63eb4	0successfully destroyed Metal Gear. Liquid with	0destruiu Metal Gear com sucesso.Liquid com	-6	False	-12.2
-581	shift_jis	50	50	0x63ee6	1all the resentment challenges Snake for a final	1todo o ressentimento desafia Snake p/ uma batalha	0	False	0.0
+581	shift_jis	50	50	0x63ee6	1all the resentment challenges Snake for a final	1todo o ressentimento desafia Snake p/ a batalha	0	False	0.0
 582	shift_jis	48	47	0x63f19	/battle on top of Metal Gear. After winning the	/final no topo do Metal Gear.Depois de vencer a	-1	False	-2.1
-583	shift_jis	51	52	0x63f4a	2battle Snake finally rescues Meryl. Bbefore they	2batalha Snake finalmente salva Meryl.Antes q eles	-1	True	2.0
-584	shift_jis	47	52	0x63f7e	.have a chance to enjoy the moment the US Air	.tenham chance de aproveitar o momento a Forca Aerea	5	True	10.6
-585	shift_jis	41	36	0x63fae	(Force air raid starts shaking the base.	(americana comeca a balancar a base.	-5	False	-12.2
+583	shift_jis	51	52	0x63f4a	2battle Snake finally rescues Meryl. Bbefore they	2batalha Snake salva Meryl. Antes q eles	-1	True	2.0
+584	shift_jis	47	52	0x63f7e	.have a chance to enjoy the moment the US Air	.tenham chance d aproveitar o momento a Forca	5	True	10.6
+585	shift_jis	41	36	0x63fae	(Force air raid starts shaking the base.	(Aerea comeca a balancar a base.	-5	False	-12.2
 586	shift_jis	46	46	0x63fd8	-Otacon deactivated security along the escape	-Otacon desativou a seguranca ao longo da rota	0	False	0.0
-587	shift_jis	48	46	0x64007	/route. Snake and Meryl use the escape route to	/de fuga.Snake e Meryl usam a rota de fuga pra	-2	False	-4.2
+587	shift_jis	48	46	0x64007	/route. Snake and Meryl use the escape route to	/de fuga.Snake e Meryl usam a rota de fuga p/	-2	False	-4.2
 588	shift_jis	49	50	0x64038	0attempt to flee from the collapsing underground	0tentar fugir da base que ta desabando	-11	True	2.0
 589	shift_jis	47	35	0x64145	.battle on top the head of the destroyed Metal	.batalha no topo da cabeca do Metal	-12	False	-25.5
 590	shift_jis	50	54	0x64175	1Gear. Snake wins the battle and gets Meryl back	1Gear destruido.Snake vence e recupera Meryl	-6	True	8.0
@@ -596,26 +596,26 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 595	shift_jis	45	37	0x6425e	Snake and Otacon attempt to escape from the	Snake e Otacon tentam escapar da base	-8	False	-17.8
 596	shift_jis	30	29	0x6428c	collapsing underground base.	subterranea q ta desabando.	-3	False	-3.3
 597	shift_jis	50	47	0x66672	1Snake has successfully infiltrated Shadow Moses	1Snake se infiltrou com sucesso em Shadow Moses	-3	False	-6.0
-598	shift_jis	50	52	0x666a5	1Island. Once Snake reached the surface he must	1Island.Assim q Snake chegou a superficie ele deve	0	True	4.0
-599	shift_jis	51	56	0x666d8	2find a way to enter the nuclear weapons disposal	2encontrar uma forma de entrar na instalacao de descarte	5	True	9.8
-600	shift_jis	52	52	0x6670c	3facility. To rescue the DARPA Chief who was taken	3instalacao.P/ resgatar o Chefe da DARPA q foi feito	0	False	0.0
+598	shift_jis	50	52	0x666a5	1Island. Once Snake reached the surface he must	1Island.Logo que chegar a superficie ele deve	0	True	4.0
+599	shift_jis	51	56	0x666d8	2find a way to enter the nuclear weapons disposal	2entrar na instalacao de descarte de armas	5	True	9.8
+600	shift_jis	52	52	0x6670c	3facility. To rescue the DARPA Chief who was taken	3P/ resgatar o Chefe da DARPA q foi feito	0	False	0.0
 601	shift_jis	50	44	0x66741	1hostage Snake avoids been seen by the enemies'	1refem Snake evita ser visto pela vigilancia	-6	False	-12.0
-602	shift_jis	55	52	0x66774	6surveillance and infiltrates deeper into the disposal	6dos inimigos e se infiltra mais fundo na instalacao	-3	False	-5.5
-603	shift_jis	12	12	0x667ac	facility.	de descarte.	0	False	0.0
+602	shift_jis	55	52	0x66774	6surveillance and infiltrates deeper into the disposal	6dos inimigos e se infiltra mais fundo na instalacao d	-3	False	-5.5
+603	shift_jis	12	12	0x667ac	facility.	descarte.	0	False	0.0
 604	latin-1	43	20	0x667d7	@`IuIuPevPd`%PlPrPiÃ	@`IuIuPevPd`%PlPrPiÃ	-23	False	-53.5
 605	shift_jis	48	51	0x66807	/Finding an intruder enemy soldiers swarm into	/Encontrando um intruso soldados enxameiam	-6	True	6.2
 606	shift_jis	53	44	0x66838	4the cell. Snake fights back immediately. The female	4a cela.Snake revida imediatamente.A soldado	-9	False	-17.0
-607	shift_jis	49	54	0x6686e	0soldier just stands there unable to say a word.	0feminina apenas fica la sem de dizer uma palavra.	1	True	10.2
-608	shift_jis	50	44	0x668a0	1While shooting the enemies Snake shouts at the	1Enquanto atira nos inimigos Snake grita pra	-6	False	-12.0
+607	shift_jis	49	54	0x6686e	0soldier just stands there unable to say a word.	0feminina apenas fica la sem de dizer uma palavra	1	True	10.2
+608	shift_jis	50	44	0x668a0	1While shooting the enemies Snake shouts at the	1Enquanto atira nos inimigos Snake grita p/	-6	False	-12.0
 609	shift_jis	47	46	0x668d3	".female soldier. ""What are you doing? Shoot!"	.soldado feminina.O q vc ta fazendo? Atire!	-4	False	-2.1
-610	latin-1	52	51	0x66903	"3Don't be afraid!"" As if regaining consciousness"	3Nao tenha medo! Como se recuperando a consciencia	-2	False	-1.9
-611	shift_jis	47	48	0x66938	.the female soldier starts firing her FAMAS.	.a soldado feminina comeca a disparar a FAMAS.	-1	True	2.1
+610	latin-1	52	51	0x66903	"3Don't be afraid!"" As if regaining consciousness"	3N tenha medo! Como se recobrando a consciencia	-2	False	-1.9
+611	shift_jis	47	48	0x66938	.the female soldier starts firing her FAMAS.	.a soldado feminina dispara a FAMAS.	-1	True	2.1
 612	shift_jis	51	47	0x66968	2With her help the enemies have been wiped out.	2Com a ajuda dela os inimigos foram eliminados.	-4	False	-7.8
 613	shift_jis	50	47	0x6699c	1The female soldier then heads for the cell exit.	1A soldado feminina entao vai p/ saida da cela.	-3	False	-6.0
 614	latin-1	43	21	0x669fc	@+`'ItItPeÂ¡Pd`%PlPrPi	@+`'ItItPeÂ¡Pd`%PlPrPi	-22	False	-51.2
 615	shift_jis	54	39	0x66a2c	5The terrorists have already found out the detonation	5Os terroristas ja descobriram o codigo	-15	False	-27.8
 616	shift_jis	50	42	0x66a63	1code from the DARPA Chief. In order to stop the	1de detonacao do Chefe da DARPA.P/ parar o	-8	False	-16.0
-617	shift_jis	48	51	0x66a96	/nuclear launch Snake goes to rescue ArmsTech	/lancamento nuclear Snake vai resgatar o Pres.	-2	True	6.2
+617	shift_jis	48	51	0x66a96	/nuclear launch Snake goes to rescue ArmsTech	/lancamento nuclear Snake vai resgatar o Pres	-2	True	6.2
 618	shift_jis	48	45	0x66ac7	/President Kenneth Baker the person who knows	/da ArmsTech Kenneth Baker a pessoa q conhece	-3	False	-6.2
 619	shift_jis	39	40	0x66af8	&the second and final detonation code.	&o segundo e ultimo codigo d detonacao.	0	True	2.6
 620	shift_jis	37	34	0x66b74	$FOX-HOUND member Revolver Ocelot.	$membro FOX-HOUND Revolver Ocelot.	-3	False	-8.1
@@ -623,45 +623,45 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 622	shift_jis	49	49	0x66bd0	0who can even control the ricochet of his shots.	0q pode ate controlar o ricochete dos seus tiros.	0	False	0.0
 623	shift_jis	47	42	0x66c02	.However Snake drives Ocelot to bay by taking	.Porem Snake encurrala Ocelot aproveitando	-5	False	-10.6
 624	shift_jis	48	43	0x66c32	/advantage of the weakpoint of the revolver gun	/a vantagem do ponto fraco da arma revolver	-5	False	-10.4
-625	shift_jis	25	24	0x66c63	-- its reloading time.	-- seu tempo de recarga.	-1	False	-4.0
+625	shift_jis	25	24	0x66c63	-- its reloading time.	-- o tempo de recarga	-1	False	-4.0
 626	shift_jis	50	48	0x66cce	1Snake successfully rescues President Baker from	1Snake resgata o Presidente Baker com sucesso do	-2	False	-4.0
 627	shift_jis	45	38	0x66d01	FOX-HOUND member Revolver Ocelot. However	membro FOX-HOUND Revolver Ocelot.Porem	-7	False	-15.6
 628	shift_jis	52	41	0x66d2f	3Baker has already given away the detonation code.	3Baker ja entregou o codigo de detonacao.	-11	False	-21.2
 629	shift_jis	50	48	0x66d64	1The only thing that can stop the nuclear launch	1A unica coisa q pode parar o lancamento nuclear	-2	False	-4.0
-630	shift_jis	52	66	0x66d97	3now is the detonation code emergency override key	3agora eh a chave de anulacao do codigo de detonacao	14	True	26.9
-631	shift_jis	47	47	0x66dcc	.given to Meryl or Metal Gear chief engineer	.dada a Meryl ou engenheiro chefe do Metal Gear	0	False	0.0
+630	shift_jis	52	66	0x66d97	3now is the detonation code emergency override key	3agora eh a chave de anulacao de detonacao	14	True	26.9
+631	shift_jis	47	47	0x66dcc	.given to Meryl or Metal Gear chief engineer	.dada a Meryl ou ao eng. chefe do Metal Gear	0	False	0.0
 632	shift_jis	55	52	0x66dfc	6Dr. Emmerich. Right after Baker tells this to Snake	6Dr.Emmerich.Logo depois q Baker conta isso ao Snake	-3	False	-5.5
 633	shift_jis	48	51	0x66e34	/he dies of a sudden heart attack. Snake tries	/ele morre de um infarto subito.Snake tenta	-5	True	6.2
 634	shift_jis	47	41	0x66e65	.contacting Meryl at the Codec frequency from	.contatar Meryl na frequencia do Codec de	-6	False	-12.8
 635	shift_jis	26	20	0x66e95	the back of the CD case.	tras da caixa do CD.	-6	False	-23.1
-636	shift_jis	54	62	0x66f0a	5Now that the terrorists know both detonation codes	5Agora q os terroristas conhecem os codigos de detonacao	2	True	14.8
+636	shift_jis	54	62	0x66f0a	5Now that the terrorists know both detonation codes	5Agora q os terroristas tem os codigos de detonacao	2	True	14.8
 637	shift_jis	53	51	0x66f41	4the only thing that can stop the nuclear launch is	4a unica coisa q pode parar o lancamento nuclear eh	-2	False	-3.8
 638	shift_jis	50	62	0x66f77	1the detonation code emergency override key given	1a chave de anulacao do codigo de detonacao dada	12	True	24.0
 639	shift_jis	53	55	0x66faa	4to Meryl or Metal Gear chief engineer Dr. Emmerich.	4a Meryl ou engenheiro chefe do M. Gear Dr.Emmerich.	-1	True	3.8
 640	shift_jis	51	40	0x66fe0	2Snake successfully contacts Meryl and with her	2Snake contata Meryl com sucesso e com a	-11	False	-21.6
-641	shift_jis	56	49	0x67014	7help the door at the north of the first floor of the	7ajuda dela a porta ao norte do primeiro andar do	-7	False	-12.5
-642	shift_jis	50	60	0x6704d	1tank hangar is now open. To rescue Dr. Emmerich	1hangar de tanques agora ta aberta.P/ resgatar Emmerich	5	True	20.0
+641	shift_jis	56	49	0x67014	7help the door at the north of the first floor of the	7ajuda dela a porta norte do primeiro andar do hangar	-7	False	-12.5
+642	shift_jis	50	60	0x6704d	1tank hangar is now open. To rescue Dr. Emmerich	1de tanques agora ta aberta.P/ resgatar Emmerich	5	True	20.0
 643	shift_jis	51	38	0x67080	2Snake exits through the cargo entrance and heads	2Snake sai pela entrada de carga e vai	-13	False	-25.5
 644	shift_jis	43	49	0x670b4	*for the nuclear warhead storage building.	*pro predio de armazenamento de ogivas.	-4	True	14.0
-645	shift_jis	50	42	0x6713d	1The M1 tank approaches Snake on the snow filled	1O tanque M1 se aproxima do Snake no campo	-8	False	-16.0
-646	shift_jis	49	59	0x67170	0battlefield. The cannon fires and Vulcan Raven	0de batalha coberto de neve.O canhao dispara e Raven	3	True	20.4
+645	shift_jis	50	42	0x6713d	1The M1 tank approaches Snake on the snow filled	1O tanque M1 se aproxima do Snake no campo de	-8	False	-16.0
+646	shift_jis	49	59	0x67170	0battlefield. The cannon fires and Vulcan Raven	0coberto de neve.O canhao dispara e Raven	3	True	20.4
 647	shift_jis	45	37	0x671a2	mockingly laughs from the top of the tank.	ri zombeteiramente do topo do tanque.	-8	False	-17.8
-648	shift_jis	54	54	0x671d0	5The tank's cannon will not allow Snake to get close	5O canhao do tanque nao permitira q Snake chegue perto	0	False	0.0
-649	shift_jis	50	51	0x67207	1enough for combat. However Snake uses Chaff to	1o suficiente pro combate.Porem Snake usa Chaff p/	0	True	2.0
+648	shift_jis	54	54	0x671d0	5The tank's cannon will not allow Snake to get close	5O canhao do tanque n permitira q Snake chegue perto	0	False	0.0
+649	shift_jis	50	51	0x67207	1enough for combat. However Snake uses Chaff to	1p/ o combate.Porem Snake usa Chaff p/	0	True	2.0
 650	shift_jis	42	46	0x6723a	)confuse the M1's electronic devices and	)confundir os dispositivos do M1 e	-8	True	9.5
 651	shift_jis	48	46	0x67265	/approaches the tank. He throws a grenade into	/se aproxima do tanque.Ele joga uma granada na	-2	False	-4.2
 652	shift_jis	47	42	0x67296	.the hatch and successfully destroys the tank.	.escotilha e destroi o tanque com sucesso.	-5	False	-10.6
-653	shift_jis	46	46	0x67326	-To find out how to stop the nuclear launch	-Pra descobrir como parar o lancamento nuclear	0	False	0.0
-654	shift_jis	50	52	0x67355	1Snake heads to rescue Metal Gear chief engineer	1Snake vai resgatar o engenheiro chefe do M. Gear	-1	True	4.0
-655	shift_jis	47	50	0x67388	.Dr. Hal Emmerich. Inside the nuclear warhead	.Dr.Emmerich.Dentro do predio de armazenamento	-1	True	6.4
+653	shift_jis	46	46	0x67326	-To find out how to stop the nuclear launch	-P/ descobrir como parar o ataque nuclear	0	False	0.0
+654	shift_jis	50	52	0x67355	1Snake heads to rescue Metal Gear chief engineer	1Snake vai resgatar o eng. chefe do M. Gear	-1	True	4.0
+655	shift_jis	47	50	0x67388	.Dr. Hal Emmerich. Inside the nuclear warhead	.Dr.Emmerich.Dentro do predio d armazenamento	-1	True	6.4
 656	shift_jis	47	51	0x673b8	.storage building Snake sees a bunch of enemy	.de ogivas Snake ve um monte de cadaveres	-6	True	8.5
-657	shift_jis	45	44	0x673e8	soldier corpses and a flickering shadow of	de soldados inimigos e uma sombra tremulante	-1	False	-2.2
+657	shift_jis	45	44	0x673e8	soldier corpses and a flickering shadow of	soldados inimigos e uma sombra tremulante	-1	False	-2.2
 658	shift_jis	50	53	0x67416	1stealth camouflage. Sensing Dr. Emmerich's life	1de stealth.Sentindo a vida do Dr.Emmerich	-8	True	6.0
 659	shift_jis	52	49	0x67449	3is at risk Snake runs to the lab at the northeast	3em risco Snake corre pro laboratorio no nordeste	-3	False	-5.8
-660	shift_jis	46	46	0x6747e	-of the second floor basement of the nuclear	-do segundo subsolo do predio de armazenamento	0	False	0.0
+660	shift_jis	46	46	0x6747e	-of the second floor basement of the nuclear	-do subsolo-2 do predio de armazenamento	0	False	0.0
 661	shift_jis	27	20	0x674ad	warhead storage building.	de ogivas nucleares.	-7	False	-25.9
 662	shift_jis	50	52	0x67513	1Wielding a sword the Cyborg Ninja comes toward	1Empunhando uma espada o Cyborg vem em direcao	-4	True	4.0
-663	shift_jis	54	63	0x67546	5Snake. The Ninja deflects all shots fired by Snake.	5ao Snake.O Ninja deflecte os tiros disparados por Snake.	3	True	16.7
+663	shift_jis	54	63	0x67546	5Snake. The Ninja deflects all shots fired by Snake.	5ao Snake.O Ninja deflecte os tiros de Snake.	3	True	16.7
 664	shift_jis	42	42	0x6757d	")""You cannot hurt me with such weapons!"""	)Vc nao pode me machucar com tais armas!	-2	False	0.0
 665	shift_jis	50	47	0x675a8	1mocks the Ninja demanding a hand-to-hand duel.	1zomba o Ninja exigindo um duelo corpo a corpo.	-3	False	-6.0
 666	shift_jis	41	38	0x675db	(Snake accepts the offer and engages in	(Snake aceita a oferta e se envolve em	-3	False	-7.3
@@ -669,19 +669,19 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 668	shift_jis	54	42	0x67639	5battle ensues. In the midst of this fight the name	5fisica se segue.No meio desta luta o nome	-12	False	-22.2
 669	shift_jis	42	33	0x67670	)of one man comes in the mind of Snake...	)de um homem vem a mente do Snake	-9	False	-21.4
 670	shift_jis	50	50	0x676fb	1Snake successfully rescues Otacon but is shocked	1Snake resgata Otacon com sucesso mas fica chocado	0	False	0.0
-671	shift_jis	53	47	0x6772e	4when he finds out that the Ninja he just fought is	4quando descobre q o Ninja q acabou de lutar eh	-6	False	-11.3
-672	shift_jis	54	65	0x67764	5actually his former war buddy Gray Fox. After Otacon	5na verdade seu ex-companheiro de guerra Gray Fox.Depois q Otacon	11	True	20.4
+671	shift_jis	53	47	0x6772e	4when he finds out that the Ninja he just fought is	4quando descobre q o Ninja q acabou de lutar eh na	-6	False	-11.3
+672	shift_jis	54	65	0x67764	5actually his former war buddy Gray Fox. After Otacon	5verdade seu ex-companheiro Gray Fox.Depois q Otacon	11	True	20.4
 673	shift_jis	51	45	0x6779b	2discovers that Metal Gear against his will was	2descobre q Metal Gear contra sua vontade foi	-6	False	-11.8
-674	shift_jis	50	63	0x677cf	1developed as a nuclear warhead-equipped walking	1desenvolvido como um tanque andante equipado com ogiva nuclear	13	True	26.0
+674	shift_jis	50	63	0x677cf	1developed as a nuclear warhead-equipped walking	1desenvolvido p/ser um lancador de ogiva nuclear	13	True	26.0
 675	shift_jis	43	33	0x67802	*tank he offers to cooperate with Snake.	*ele oferece cooperacao ao Snake.	-10	False	-23.3
 676	shift_jis	52	52	0x6782e	3In his search for Meryl to get the detonation code	3Na sua busca por Meryl p/ pegar a chave de anulacao	0	False	0.0
-677	shift_jis	47	51	0x67863	.emergency override key from her Snake sees	.de emergencia do codigo de detonacao dela Snake ve	4	True	8.5
+677	shift_jis	47	51	0x67863	.emergency override key from her Snake sees	.de detonacao dela Snake ve	4	True	8.5
 678	shift_jis	51	45	0x67893	2Meryl enter the women's bathroom and follows her.	2Meryl entrar no banheiro feminino e a segue.	-6	False	-11.8
-679	shift_jis	46	46	0x67924	-Meeting up with Meryl again Snake gets the	-Se encontrando com Meryl de novo Snake pega a	0	False	0.0
+679	shift_jis	46	46	0x67924	-Meeting up with Meryl again Snake gets the	-Se encontrando com Meryl Snake pega a	0	False	0.0
 680	shift_jis	51	61	0x67953	2detonation code emergency override key. However	2chave-anulacao do codigo de detonacao.Porem	-7	True	19.6
 681	shift_jis	43	34	0x67987	*what she only had one of the three keys.	*ela so tinha uma das tres chaves.	-9	False	-20.9
-682	shift_jis	48	39	0x679b3	/In order to stop the nuclear launch one must	/Pra parar o lancamento nuclear deve-se	-9	False	-18.8
-683	shift_jis	50	50	0x679e4	1deactivate the detonation code or destroy Metal	1desativar o codigo de detonacao ou destruir Metal	0	False	0.0
+682	shift_jis	48	39	0x679b3	/In order to stop the nuclear launch one must	/P/ parar o lancamento nuclear deve-se	-9	False	-18.8
+683	shift_jis	50	50	0x679e4	1deactivate the detonation code or destroy Metal	1desativar o codigo de detonacao ou destruir M.	0	False	0.0
 684	shift_jis	53	42	0x67a17	4Gear itself. From the north of the commander's room	4Gear em si.Do norte da sala do comandante	-11	False	-20.8
 685	shift_jis	52	57	0x67a4d	3in the first floor basement of the nuclear warhead	3no subsolo-1 do predio de armazenamento de ogivas	-2	True	9.6
 686	shift_jis	48	36	0x67a82	/storage building Snake and Meryl head for the	/nucleares Snake e Meryl vao p/ base	-12	False	-25.0
@@ -692,25 +692,25 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 691	shift_jis	47	35	0x67bdb	.Meryl but Meryl on the other hand does not	.Meryl mas Meryl por outro lado nao	-12	False	-25.5
 692	shift_jis	52	47	0x67c0b	3hesitate to pull the trigger of her Desert Eagle.	3hesita em puxar o gatilho da sua Desert Eagle.	-5	False	-9.6
 693	shift_jis	46	41	0x67c40	-Learning from Campbell's Codec message that	-Aprendendo da msg do Codec do Campbell q	-5	False	-10.9
-694	shift_jis	48	60	0x67c6f	/Meryl is being brainwashed and controlled by	/Meryl sofreu lavagem cerebral e foi controlada por	3	True	25.0
-695	shift_jis	49	46	0x67ca0	0Psycho Mantis Snake knocks Meryl unconscious.	0Psycho Mantis Snake deixa Meryl inconsciente.	-3	False	-6.1
-696	shift_jis	54	61	0x67cd2	5Now unable to control Meryl Mantis himself finally	5Agora incapaz de controlar Meryl, Mantis finalmente	-2	True	13.0
+694	shift_jis	48	60	0x67c6f	/Meryl is being brainwashed and controlled by	/Meryl foi controlada por Psycho	3	True	25.0
+695	shift_jis	49	46	0x67ca0	0Psycho Mantis Snake knocks Meryl unconscious.	0Mantis e Snake deixa Meryl inconsciente.	-3	False	-6.1
+696	shift_jis	54	61	0x67cd2	5Now unable to control Meryl Mantis himself finally	5Agora incapaz de controlar Meryl, Mantis	-2	True	13.0
 697	shift_jis	23	17	0x67d09	makes his appearance.	faz sua aparicao.	-6	False	-26.1
 698	shift_jis	52	49	0x67d7e	3Mantis makes his appearance and Snake fights him.	3Mantis faz sua aparicao e Snake luta contra ele.	-3	False	-5.8
-699	shift_jis	51	49	0x67db3	2However Mantis dodges all of Snake's attacks as	2Porem Mantis desvia de todos os ataques do Snake	-2	False	-3.9
-700	shift_jis	54	55	0x67de7	5if he knew they were coming. Unable to do anything	5como se soubesse q estavam vindo.Incapaz d fazer algo	0	True	1.9
+699	shift_jis	51	49	0x67db3	2However Mantis dodges all of Snake's attacks as	2Porem Mantis desvia de todos ataques do Snake	-2	False	-3.9
+700	shift_jis	54	55	0x67de7	5if he knew they were coming. Unable to do anything	5como se pudesse prever.Incapaz d fazer algo	0	True	1.9
 701	shift_jis	51	55	0x67e1e	2Snake is injured by Mantis' telekinetic attacks.	2Snake eh ferido pelos ataques de Mantis.	-10	True	7.8
 702	shift_jis	50	44	0x67e52	1From Campbell's Codec message Snake learns that	1Da msg do Codec do Campbell Snake aprende q	-6	False	-12.0
 703	shift_jis	48	40	0x67e85	/Mantis has been reading Snake's mind and can	/Mantis tem lido a mente do Snake e pode	-8	False	-16.7
-704	shift_jis	53	59	0x67eb6	4anticipate Snake's attacks. Snake outsmarts Mantis'	4antecipar os ataques do Snake.Snake supera em esperteza as	6	True	11.3
-705	shift_jis	49	64	0x67eec	0mind-reading abilities and successfully defeats	0habilidades de leitura mental de Mantis e o derrota com sucesso	15	True	30.6
+704	shift_jis	53	59	0x67eb6	4anticipate Snake's attacks. Snake outsmarts Mantis'	4antecipar os seus ataques. Snake supera as	6	True	11.3
+705	shift_jis	49	64	0x67eec	0mind-reading abilities and successfully defeats	0habilidades de Mantis e o derrota com sucesso	15	True	30.6
 706	shift_jis	8	1	0x67f1e	Mantis.	.	-7	False	-87.5
 707	shift_jis	47	44	0x67f85	.The defeated Mantis tells Snake that the only	.O Mantis derrotado conta ao Snake q a unica	-3	False	-6.4
 708	shift_jis	45	42	0x67fb5	way to the underground maintenance base is	forma p/ base de manutencao subterranea eh	-3	False	-6.7
 709	shift_jis	48	48	0x67fe3	/to go north from the commander's room and over	/ir ao norte da sala do comandante e passar pela	0	False	0.0
 710	shift_jis	51	45	0x68014	2the communications tower beyond the cave. Mantis	2torre de comunicacoes alem da caverna.Mantis	-6	False	-11.8
-711	shift_jis	52	58	0x68048	3then dies. To stop the terrorists' nuclear launch	3entao morre.P/parar o lancamento nuclear terrorista	0	True	11.5
-712	shift_jis	53	52	0x6807d	3one must deactivate the detonation code or destroy	3deve-se desativar o codigo de detonacao ou destruir	-1	False	-1.9
+711	shift_jis	52	58	0x68048	3then dies. To stop the terrorists' nuclear launch	3entao morre.P/parar o lancamento nuclear é	0	True	11.5
+712	shift_jis	53	52	0x6807d	3one must deactivate the detonation code or destroy	3preciso desativar o codigo de detonacao ou destruir	-1	False	-1.9
 713	shift_jis	50	49	0x68115	1is stored. They go through the wolf-dog occupied	1ta armazenado.Eles passam pela caverna ocupada	-3	False	-2.0
 714	shift_jis	49	53	0x68148	0cave and get to the underground passage leading	0por caes-lobo e chegam a passagem q leva	-8	True	8.2
 715	shift_jis	30	24	0x6817a	to the communications tower.	a torre de comunicacoes.	-6	False	-20.0
@@ -721,8 +721,8 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 720	shift_jis	50	47	0x682c1	1and save Meryl Snake defeats Wolf in a sniping	1e salvar Meryl Snake derrota Wolf numa batalha	-3	False	-6.0
 721	shift_jis	51	55	0x682f4	2battle. However Meryl could no longer be found.	2de precisao.Porem Meryl nao tava mais la.	-9	True	7.8
 722	shift_jis	50	45	0x68328	1Snake heads north to get hints as to where she	1Snake vai ao norte p/ ter pistas de onde ela	-5	False	-10.0
-723	shift_jis	53	44	0x6835b	4went. In a blunder Snake is surrounded by awaiting	4foi.Numa gafe Snake eh cercado por inimigos	-9	False	-17.0
-724	shift_jis	10	10	0x68391	enemies.	esperando.	0	False	0.0
+723	shift_jis	53	44	0x6835b	4went. In a blunder Snake is surrounded by awaiting	4foi. Num descuido Snake eh cercado por inimigos	-9	False	-17.0
+724	shift_jis	10	10	0x68391	enemies.	.	0	False	0.0
 725	shift_jis	50	49	0x68424	1maintenance base to stop the terrorists' nuclear	1base de manutencao p/ parar o lancamento nuclear	-1	False	-2.0
 726	shift_jis	51	59	0x68457	2launch. But on the way Meryl gets shot by Sniper	2dos terroristas.Mas Meryl eh baleada por Sniper	-3	True	15.7
 727	shift_jis	49	47	0x6848b	0Wolf and is taken prisoner. Snake is also taken	0Wolf e eh feita prisioneira.Snake tbm eh feito	-2	False	-4.1
@@ -730,70 +730,70 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 729	shift_jis	54	56	0x684f2	5Snake that if Snake submits to torture he will kill	5ao Snake q se Snake sofrer a tortura ele vai matar	-3	True	3.7
 730	shift_jis	55	53	0x68529	6Meryl. Snake resists the torture with Meryl's life at	6Meryl.Snake resiste a tortura com a vida de Meryl em	-2	False	-3.6
 731	shift_jis	40	38	0x68561	'stake but then is locked up in a cell.	'jogo mas entao eh trancado numa cela.	-2	False	-5.0
-732	shift_jis	45	50	0x6862a	Now a prisoner Snake was being tortured by	Agora preso Snake estava sendo torturado por	-1	True	11.1
-733	shift_jis	52	52	0x68658	3Ocelot. If he submits Meryl will be killed. While	3Ocelot.Se ele se submeter Meryl sera morta.Enquanto	0	False	0.0
+732	shift_jis	45	50	0x6862a	Now a prisoner Snake was being tortured by	Agora preso Snake foi torturado por	-1	True	11.1
+733	shift_jis	52	52	0x68658	3Ocelot. If he submits Meryl will be killed. While	3Ocelot.Se ele se render Meryl sera morta.Enquanto	0	False	0.0
 734	shift_jis	54	43	0x6868d	5resisting the repetitive torture and waiting for the	5resiste a tortura repetitiva e espera pelo	-11	False	-20.4
-735	shift_jis	48	50	0x686c4	/right timing to escape Snake receives a Codec	/momento certo p/escapar Snake receb uma ligacao	0	True	4.2
-736	shift_jis	20	21	0x686f5	call from Campbell.	do Codec do Campbell	0	True	5.0
-737	shift_jis	49	44	0x687a0	0Ocelot.  If he submits Meryl will be killed.	0Ocelot.Se ele se submeter Meryl sera morta.	-5	False	-10.2
-738	latin-1	48	46	0x687d2	0However Snake was unable to resist Ocelot's	0Porem Snake foi incapaz de resistir a tortura	-2	False	-4.2
-739	shift_jis	51	47	0x68804	2tough torture. Ocelot cold-bloodedly tells Snake	2dura de Ocelot.Ocelot conta friamente ao Snake	-4	False	-7.8
+735	shift_jis	48	50	0x686c4	/right timing to escape Snake receives a Codec	/momento p/ escapar. Snake receb uma ligacao	0	True	4.2
+736	shift_jis	20	21	0x686f5	call from Campbell.	de Campbell.	0	True	5.0
+737	shift_jis	49	44	0x687a0	0Ocelot.  If he submits Meryl will be killed.	0Ocelot.Se ele se render Meryl sera morta.	-5	False	-10.2
+738	latin-1	48	46	0x687d2	0However Snake was unable to resist Ocelot's	0Porem Snake nao resistiu a dura tortura	-2	False	-4.2
+739	shift_jis	51	47	0x68804	2tough torture. Ocelot cold-bloodedly tells Snake	2de Ocelot.Ocelot conta friamente ao Snake	-4	False	-7.8
 740	shift_jis	52	45	0x68838	3that he will kill Meryl.  While suffering in deep	3q vai matar Meryl.Enquanto sofre em profundo	-7	False	-13.5
-741	shift_jis	53	54	0x6886d	4regret and waiting for the right timing to escape	4arrependimento e espera pelo momento certo p/escapar	0	True	1.9
+741	shift_jis	53	54	0x6886d	4regret and waiting for the right timing to escape	4arrependimento e espera pelo momento p/escapar	0	True	1.9
 742	shift_jis	44	47	0x688a3	+Snake receives a Codec call from Campbell.	+Snake recebe uma ligacao de Campbell.	-6	True	6.8
 743	shift_jis	55	46	0x68902	6Snake resists Ocelot's torture until the very end and	6Snake resiste a tortura de Ocelot ate o fim e	-9	False	-16.4
 744	shift_jis	47	41	0x6893a	.then escapes from the cell. However he had no	.entao escapa da cela.Porem ele nao tinha	-6	False	-12.8
 745	shift_jis	51	54	0x6896a	2idea where the other prisoner Meryl was. To enter	2ideia onde a prisioneira Meryl estava.P/ entrar	-3	True	5.9
 746	shift_jis	47	44	0x6899e	.the underground maintenance base by detouring	.na base de manutencao subterranea desviando	-3	False	-6.4
-747	shift_jis	48	38	0x689ce	/over the blocking glacier Snake heads for the	/pela geleira q bloqueia Snake vai pra	-10	False	-20.8
+747	shift_jis	48	38	0x689ce	/over the blocking glacier Snake heads for the	/pela geleira q bloqueia Snake vai p/	-10	False	-20.8
 748	shift_jis	50	41	0x689ff	1communications tower and gets to the underground	1torre de comunicacoes e chega a passagem	-9	False	-18.0
 749	shift_jis	50	40	0x68a32	1passage. That was where Meryl had been sniped...	1subterranea.Foi la q Meryl foi alvejada	-10	False	-20.0
-750	shift_jis	53	65	0x68ab3	4Snake couldn't resist Ocelot's torture and couldn't	4Snake nao conseguiu resistir a tortura de Ocelot e nao conseguiu	12	True	22.6
+750	shift_jis	53	65	0x68ab3	4Snake couldn't resist Ocelot's torture and couldn't	4Snake nao resistiu a tortura d Ocelot e n conseguiu	12	True	22.6
 751	shift_jis	49	42	0x68ae9	0rescue Meryl...  After escaping from the cell	0resgatar Meryl..Depois de escapar da cela	-7	False	-14.3
 752	shift_jis	47	37	0x68b1b	.Snake heads for the communications tower and	.Snake vai p/ torre de comunicacoes e	-10	False	-21.3
 753	shift_jis	48	45	0x68b4b	/gets to the underground passage. He can enter	/chega a passagem subterranea.Ele pode entrar	-3	False	-6.2
 754	shift_jis	51	32	0x68bac	2over the glacier.  That was where Meryl had been	2pela geleira.Foi la q Meryl foi	-19	False	-37.3
-755	shift_jis	10	10	0x68be0	sniped...	alvejada..	0	False	0.0
+755	shift_jis	10	10	0x68be0	sniped...	alvejada.	0	False	0.0
 756	shift_jis	52	46	0x68c1e	3The terrorists have already started preparing for	3Os terroristas ja comecaram a se preparar pro	-6	False	-11.5
 757	shift_jis	45	41	0x68c53	the launch of the new-type nuclear warhead.	lancamento do novo tipo de ogiva nuclear.	-4	False	-8.9
-758	shift_jis	50	44	0x68c81	1To stop the launch one must use the detonation	1Pra parar o lancamento deve-se usar a chave	-6	False	-12.0
+758	shift_jis	50	44	0x68c81	1To stop the launch one must use the detonation	1P/ parar o lancamento deve-se usar a chave	-6	False	-12.0
 759	shift_jis	49	57	0x68cb4	0code emergency override key at the underground	0de anulacao do codigo de detonacao na base	-6	True	16.3
 760	shift_jis	50	53	0x68ce6	1maintenance base in the north or destroy Metal	1de manutencao ao norte ou destruir M. Gear	-7	True	6.0
 761	shift_jis	54	51	0x68d19	5Gear itself. Infiltrating the communications tower	5Gear em si.Se infiltrando na torre de comunicacoes	-3	False	-5.6
-762	shift_jis	49	48	0x68d50	0Snake climbed to the tower roof to detour over	0Snake subiu ao telhado da torre p/ desviar pela	-1	False	-2.0
-763	shift_jis	51	52	0x68d82	2the glacier blocking the way. But as Snake tries	2geleira q bloqueia o caminho.Mas qndo Snake tenta	-1	True	2.0
+762	shift_jis	49	48	0x68d50	0Snake climbed to the tower roof to detour over	0Snake subiu ao telhado da torre p/desviar pela	-1	False	-2.0
+763	shift_jis	51	52	0x68d82	2the glacier blocking the way. But as Snake tries	2geleira q bloqueia o caminho.Mas qnd Snake tenta	-1	True	2.0
 764	shift_jis	53	57	0x68db6	4to cross the walkway a sudden missile attack hits	4atravessar a passarela um ataque de missil atinge	-3	True	7.5
 765	shift_jis	18	17	0x68dec	the huge antenna.	a antena gigante.	-1	False	-5.6
 766	shift_jis	47	50	0x68e5a	.Liquid's Hind D attacked Snake who was trying	.O HindD de Liquid atacou Snake q tava tentando	0	True	6.4
 767	shift_jis	46	46	0x68e8a	-for the walkway of communications tower A in	-chegar a passarela da torre de comunicacoes A	0	False	0.0
-768	shift_jis	51	46	0x68eb9	2order to detour over the glacier blocking the way	2pra desviar pela geleira q bloqueia o caminho	-5	False	-9.8
-769	shift_jis	46	45	0x68eed	-to the underground maintenance base. Dodging	-pra base de manutencao subterranea.Desviando	-1	False	-2.2
-770	shift_jis	50	48	0x68f1c	1the Hind's insistent attacks and rappelling down	1dos ataques insistentes do Hind e fazendo rapel	-2	False	-4.0
-771	shift_jis	51	51	0x68f4f	2the wall of communications tower A Snake obtains	2pela parede da torre de comunicacoes A Snake obtem	0	False	0.0
+768	shift_jis	51	46	0x68eb9	2order to detour over the glacier blocking the way	2p/ desviar pela geleira q bloqueia o caminho	-5	False	-9.8
+769	shift_jis	46	45	0x68eed	-to the underground maintenance base. Dodging	-p/ base de manutencao subterranea.Desviando	-1	False	-2.2
+770	shift_jis	50	48	0x68f1c	1the Hind's insistent attacks and rappelling down	1dos ataques insistentes do Hind D e fazendo rapel	-2	False	-4.0
+771	shift_jis	51	51	0x68f4f	2the wall of communications tower A Snake obtains	2na parede da torre de comunicacoes A Snake obtem	0	False	0.0
 772	shift_jis	53	49	0x68f83	4the Stinger missile. To end the battle Snake heads	4o missil Stinger.P/ terminar a batalha Snake vai	-4	False	-7.5
 773	shift_jis	54	50	0x68fb9	4for the roof of communications tower B. On the way	4pro telhado da torre de comunicacoes B.No caminho	-4	False	-7.4
 774	shift_jis	54	57	0x68fef	3he notices a strange existence awaiting him. Snake	3ele nota uma existencia esperando por ele.Snake	-6	True	5.6
 775	shift_jis	46	36	0x69024	-holds his Socom and jumps around the corner.	-segura sua Socom e pula na esquina.	-10	False	-21.7
 776	latin-1	44	24	0x6907d	@d``ItItPedPd`%PlKPrQPi:	@d``ItItPedPd`%PlKPrQPi:	-20	False	-45.5
-777	shift_jis	43	43	0x690ad	*Snake was attacked by Liquid's Hind D at	*Snake foi atacado pelo Hind D de Liquid na	0	False	0.0
+777	shift_jis	43	43	0x690ad	*Snake was attacked by Liquid's Hind D at	*Snake foi atacado pelo Hind D na	0	False	0.0
 778	shift_jis	47	43	0x690d9	.communications tower A but rappelled down the	.torre de comunicacoes A mas fez rapel pela	-4	False	-8.5
 779	shift_jis	52	43	0x69109	2wall and obtained the Stinger a weapon effective	2parede e obteve o Stinger uma arma efetiva	-9	False	-17.3
 780	shift_jis	50	51	0x6913d	1against the Hind. Snake meets Otacon on his way	1contra o Hind.Snake encontra Otacon no caminho	-3	True	2.0
-781	shift_jis	49	46	0x69170	0to use the elevator. Snake gets to the roof of	0pra usar o elevador.Snake chega ao telhado da	-3	False	-6.1
-782	shift_jis	51	50	0x691a2	2communications tower B to finish the battle with	2torre de comunicacoes B p/ terminar a batalha com	-1	False	-2.0
+781	shift_jis	49	46	0x69170	0to use the elevator. Snake gets to the roof of	0p/ usar o elevador.Snake chega ao telhado da	-3	False	-6.1
+782	shift_jis	51	50	0x691a2	2communications tower B to finish the battle with	2torre de comunicacoes-B p/terminar a batalha com	-1	False	-2.0
 783	shift_jis	9	7	0x691d6	Liquid.	Liquid.	-2	False	-22.2
-784	shift_jis	54	54	0x6922e	2Snake faces Liquid's Hind D on the roof of commu-	2Snake enfrenta o Hind D de Liquid no telhado da torre	0	False	0.0
+784	shift_jis	54	54	0x6922e	2Snake faces Liquid's Hind D on the roof of commu-	2Snake enfrenta o Hind D no telhado da torre	0	False	0.0
 785	shift_jis	57	50	0x69262	3nications tower B. The 12.7mm Vulcan cannon shoots	3de comunicacoes B.O canhao Vulcan de 12.7mm atira	-7	False	-12.3
 786	shift_jis	50	44	0x69297	1at Snake. Snake dodges the firing and shoots his	1no Snake.Snake desvia dos tiros e atira seu	-6	False	-12.0
 787	shift_jis	53	45	0x692ca	4Stinger at the Hind. Snake fights this tough battle	4Stinger no Hind.Snake luta esta batalha dura	-8	False	-15.1
 788	shift_jis	51	56	0x69300	2against Russia's heavy battle helicopter and gets	2contra o HinD da Russia e fica	-20	True	9.8
 789	shift_jis	50	55	0x69334	1injured. But when one of many successful Stinger	1ferido.Mas quando um dos Stingers bem sucedidos	-2	True	10.0
-790	shift_jis	53	44	0x69367	4shots makes a hit the massive Hind starts falling.	4faz um acerto o Hind massive comeca a cair.	-9	False	-17.0
+790	shift_jis	53	44	0x69367	4shots makes a hit the massive Hind starts falling.	4faz um acerto o Hind D massive comeca a cair.	-9	False	-17.0
 791	shift_jis	45	51	0x693fe	Snake fought Liquid's Hind D on the roof of	Snake lutou contra o Hind D de Liquid na	-5	True	13.3
 792	shift_jis	48	48	0x6942c	/communications tower B and successfully shoots	/torre de comunicacoes B e o derruba com sucesso	0	False	0.0
 793	shift_jis	48	31	0x6945d	/it down. Taking a ride down on the elevator of	/.Descendo no elevador da torre	-17	False	-35.4
 794	shift_jis	43	33	0x6948e	*communications tower B Snake gets to the	*de comunicacoes B Snake chega ao	-10	False	-23.3
-795	shift_jis	49	48	0x694ba	0snowfield north of tower B. Snake heads for the	0campo de neve ao norte da torre B.Snake vai pra	-1	False	-2.0
+795	shift_jis	49	48	0x694ba	0snowfield north of tower B. Snake heads for the	0campo de neve ao norte da torre B.Snake vai p/	-1	False	-2.0
 796	shift_jis	46	42	0x694ec	-entrance of the underground maintenance base	-entrada da base de manutencao subterranea	-4	False	-8.7
 797	shift_jis	49	55	0x6951b	0north of this snowfield. He then gets sniped by	0ao norte deste campo de neve.Ele Ã© alvejado por	-1	True	12.2
 798	shift_jis	48	46	0x6954d	/someone and cannot advance. That is when Snake	/alguem e nao consegue avancar.Eh quando Snake	-2	False	-4.2
@@ -803,17 +803,17 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 802	shift_jis	45	38	0x69649	Snake accepts the challenge of Sniper Wolf.	Snake aceita o desafio de Sniper Wolf.	-7	False	-15.6
 803	shift_jis	53	57	0x69677	4The victor of the tough but quiet sniping battle in	4O vencedor da batalha de precisao silenciosa no	-5	True	7.5
 804	shift_jis	50	50	0x696ad	1the snowfield was again Snake. Convinced that he	1campo de neve foi novamente Snake.Convencido de q	0	False	0.0
-805	shift_jis	51	50	0x696e0	2won Snake heads north to infiltrate Metal Gear's	2venceu Snake vai ao norte p/ se infiltrar na base	-1	False	-2.0
+805	shift_jis	51	50	0x696e0	2won Snake heads north to infiltrate Metal Gear's	2venceu Snake vai a norte p/ se infiltrar na base	-1	False	-2.0
 806	shift_jis	45	52	0x69714	underground maintenance base. He then spots	de manutencao do Metal Gear.Ele entao ve	-5	True	15.6
-807	shift_jis	51	39	0x69742	2Wolf who has fallen onto the snow and runs toward	2Wolf q caiu na neve e corre em direcao	-12	False	-23.5
-808	shift_jis	6	6	0x69776	her.	a ela.	0	False	0.0
-809	shift_jis	50	49	0x697ed	1Snake again defeats Sniper Wolf who awaited him	1Snake novamente derrota Sniper Wolf q o esperava	-1	False	-2.0
+807	shift_jis	51	39	0x69742	2Wolf who has fallen onto the snow and runs toward	2Wolf q caiu na neve e corre em direcao a	-12	False	-23.5
+808	shift_jis	6	6	0x69776	her.	ela.	0	False	0.0
+809	shift_jis	50	49	0x697ed	1Snake again defeats Sniper Wolf who awaited him	1Snake derrota Sniper Wolf q o esperava	-1	False	-2.0
 810	shift_jis	54	52	0x69820	5in the snowfield north of the communications tower.	5no campo de neve ao norte da torre de comunicacoes.	-2	False	-3.7
 811	shift_jis	50	46	0x69857	1After watching her die along with Otacon Snake	1Depois de ve-la morrer junto com Otacon Snake	-4	False	-8.0
 812	shift_jis	48	39	0x6988a	/successfully goes through the entrance of the	/passa com sucesso pela entrada da base	-9	False	-18.8
 813	shift_jis	48	39	0x698bb	/underground maintenance base. Snake takes the	/de manutencao subterranea.Snake pega o	-9	False	-18.8
 814	shift_jis	50	46	0x698ec	1cargo elevator and heads for the lower level of	1elevador de carga e vai pro nivel inferior da	-4	False	-8.0
-815	shift_jis	45	45	0x6991f	Metal Gear's underground maintenance base.	base de manutencao subterranea do Metal Gear.	0	False	0.0
+815	shift_jis	45	45	0x6991f	Metal Gear's underground maintenance base.	base de manutencao subterranea do M. Gear.	0	False	0.0
 816	shift_jis	47	56	0x6994d	.He then gets a Codec call from Master Miller.	.Ele entao recebe uma ligacao de Master Miller.	0	True	19.1
 817	shift_jis	53	57	0x699dd	4Master Miller tells Snake who was taking the cargo	4Miller conta ao Snake q estava pegando o elevador	-3	True	7.5
 818	shift_jis	50	45	0x69a13	1elevator to the lower level that Naomi could be	1de carga pro nivel inferior q Naomi pode ser	-5	False	-10.0
@@ -822,8 +822,8 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 821	shift_jis	49	56	0x69aa5	0maintenance base to stop the launch of the new-	0de manutencao p/ parar o lancamento do novo	-5	True	14.3
 822	shift_jis	48	43	0x69ad7	/type nuclear warhead. Snake reaches the bottom	/tipo de ogiva nuclear.Snake chega ao fundo	-5	False	-10.4
 823	shift_jis	44	39	0x69b08	+and infiltrates the underground warehouse.	+e se infiltra no deposito subterraneo.	-5	False	-11.4
-824	shift_jis	48	45	0x69b35	/The underground maintenance base is within his	/A base de manutencao subterranea ta ao seu	-5	False	-6.2
-825	shift_jis	8	8	0x69b66	reach.	alcance.	0	False	0.0
+824	shift_jis	48	45	0x69b35	/The underground maintenance base is within his	/A base de manutencao subterranea ta ao alcance	-5	False	-6.2
+825	shift_jis	8	8	0x69b66	reach.	dele.	0	False	0.0
 826	shift_jis	44	38	0x69bb9	+The deadly battle between Snake and Vulcan	+A batalha mortal entre Snake e Vulcan	-6	False	-13.6
 827	shift_jis	45	38	0x69be6	Raven begins. Snake hides himself among the	Raven comeca.Snake se esconde entre os	-7	False	-15.6
 828	shift_jis	52	47	0x69c14	3containers piled up in the warehouse. Raven starts	3containers empilhados no deposito.Raven comeca	-5	False	-9.6
@@ -843,97 +843,97 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 842	shift_jis	46	55	0x69f31	-maintenance base. He then gets a Codec call	-de manutencao.Ele entao recebe uma ligacao	-3	True	19.6
 843	shift_jis	15	19	0x69f60	from Otacon.	do Otacon.	-5	True	26.7
 844	shift_jis	51	49	0x69fcd	2Snake learns from Otacon's call that the new-type	2Snake aprende da ligacao do Otacon q o novo tipo	-2	False	-3.9
-845	shift_jis	48	46	0x6a001	/of nuclear warhead equipped on Metal Gear is a	/de ogiva nuclear equipada no Metal Gear eh um	-2	False	-4.2
+845	shift_jis	48	46	0x6a001	/of nuclear warhead equipped on Metal Gear is a	/de ogiva nuclear equipada no M. Gear eh um	-2	False	-4.2
 846	shift_jis	54	56	0x6a032	5stealth ballistic missile utilizing a railgun. While	5missil stealth utilizando um railgun.Enquanto	-8	True	3.7
-847	shift_jis	49	50	0x6a069	0suspecting Campbell for hiding this fact Snake	0suspeita d Campbell por esconder este fato Snake	0	True	2.0
-848	shift_jis	47	42	0x6a09b	.heads for the underground maintenance base to	.vai p/ base de manutencao subterranea pra	-5	False	-10.6
+847	shift_jis	49	50	0x6a069	0suspecting Campbell for hiding this fact Snake	0suspeita d Campbell por esconder isso, Snake	0	True	2.0
+848	shift_jis	47	42	0x6a09b	.heads for the underground maintenance base to	.vai p/ base de manutencao subterranea p/	-5	False	-10.6
 849	shift_jis	53	52	0x6a0cb	4stop the launch of this new-type of nuclear warhead	4parar o lancamento deste novo tipo de ogiva nuclear	-1	False	-1.9
 850	shift_jis	39	38	0x6a101	&and finally gets to the command room.	&e finalmente chega a sala de comando.	-1	False	-2.6
 851	latin-1	43	24	0x6a134	@`IuIuPeQPd`%PlÂ¨TPrÂ¨ZPi]	@`IuIuPeQPd`%PlÂ¨TPrÂ¨ZPi]	-19	False	-44.2
 852	shift_jis	47	45	0x6a164	.Snake finally got to the command room on the	.Snake finalmente chegou a sala de comando no	-2	False	-4.3
-853	shift_jis	51	50	0x6a194	2third floor of the underground maintenance base.	2terceiro andar da base de manutencao subterranea.	-1	False	-2.0
+853	shift_jis	51	50	0x6a194	2third floor of the underground maintenance base.	2andar-3 da base de manutencao subterranea.	-1	False	-2.0
 854	shift_jis	50	39	0x6a1c8	1However the detonation codes have already been	1Porem os codigos de detonacao ja foram	-11	False	-22.0
 855	shift_jis	47	44	0x6a1fb	.entered. Snake learns from Otacon how to use	.inseridos.Snake aprende do Otacon como usar	-3	False	-6.4
 856	shift_jis	50	61	0x6a22b	1the detonation code emergency override key but	1a chave de anulacao do codigo de detonacao mas	11	True	22.0
 857	shift_jis	52	49	0x6a25e	3before having a chance to use it he gets shot by	3antes de ter chance de usa-la ele eh baleado por	-3	False	-5.8
-858	shift_jis	51	50	0x6a293	2Ocelot and drops the key to a lower level. Snake	2Ocelot e derruba a chave num nivel inferior.Snake	-1	False	-2.0
+858	shift_jis	51	50	0x6a293	2Ocelot and drops the key to a lower level. Snake	2Ocelot e  a chave cai num nivel inferior.Snake	-1	False	-2.0
 859	shift_jis	53	49	0x6a2c7	4successfully gets the key in the drainage ditch on	4pega a chave com sucesso no canal de drenagem no	-4	False	-7.5
 860	shift_jis	54	49	0x6a2fd	5the first floor of the underground maintenance base	5primeiro andar da base de manutencao subterranea	-5	False	-9.3
 861	shift_jis	50	42	0x6a334	1returns to the command room on the third floor	1volta a sala de comando no terceiro andar	-8	False	-16.0
-862	shift_jis	52	52	0x6a367	3and enters the first PAL code with the key's shape	3e insere o primeiro codigo PAL com a forma da chave	0	False	0.0
-863	shift_jis	23	23	0x6a39c	at room temperature .	a temperatura ambiente.	0	False	0.0
+862	shift_jis	52	52	0x6a367	3and enters the first PAL code with the key's shape	3e insere o primeiro codigo PAL com a chave na	0	False	0.0
+863	shift_jis	23	23	0x6a39c	at room temperature .	temperatura ambiente.	0	False	0.0
 864	shift_jis	53	48	0x6a408	4Snake tries to stop the nuclear launch by using the	4Snake tenta parar o lancamento nuclear usando a	-5	False	-9.4
-865	shift_jis	50	63	0x6a43e	1detonation code emergency override key. The key	1chave de anulacao do codigo de detonacao.A chave	13	True	26.0
+865	shift_jis	50	63	0x6a43e	1detonation code emergency override key. The key	1chave de anulacao de detonacao.A chave	13	True	26.0
 866	shift_jis	50	54	0x6a471	1is made of shape memory alloy and changes shape	1eh feita de liga com memoria e muda de forma	-5	True	8.0
 867	shift_jis	50	51	0x6a4a4	1in three ways according to temperature. The key	1de 3 maneiras de acordo com temperatura.A chave	-2	True	2.0
 868	shift_jis	52	49	0x6a4d7	3at each of the three shapes is to be entered into	3em cada uma das tres formas deve ser inserida no	-3	False	-5.8
-869	shift_jis	50	50	0x6a50c	1each matching terminal. Completing entry of the	1terminal correspondente.Completando a insercao do	0	False	0.0
-870	shift_jis	48	56	0x6a53f	/PAL code with the room-temperature-shape key	/codigo PAL com a chave que se molda ao ambiente	0	True	16.7
+869	shift_jis	50	50	0x6a50c	1each matching terminal. Completing entry of the	1terminal correspondente.Completando a insercao	0	False	0.0
+870	shift_jis	48	56	0x6a53f	/PAL code with the room-temperature-shape key	/dos codigos PAL com a chave especial	0	True	16.7
 871	shift_jis	48	44	0x6a570	/Snake changed the key to the cold temperature	/Snake mudou a chave p/ forma de temperatura	-4	False	-8.3
 872	shift_jis	47	39	0x6a5a1	.shape and entered the second PAL code in the	.fria e inseriu o segundo codigo PAL na	-8	False	-17.0
 873	shift_jis	15	16	0x6a5d1	command room.	sala comando.	-2	True	6.7
 874	shift_jis	46	49	0x6a63b	-Snake completed the entry of the second PAL	-Snake inseriu o segundo codigo PAL	-11	True	6.5
 875	shift_jis	50	46	0x6a66a	1code. To enter the third PAL code Snake has to	1.P/ inserir o terceiro codigo PAL Snake tem q	-4	False	-8.0
-876	shift_jis	51	37	0x6a69d	2warm the key to get it into the warm-temperature	2esquentar a chave p/ leva-la a forma	-14	False	-27.5
-877	shift_jis	50	64	0x6a6d1	1shape. When Snake gets on the cargo elevator to	1de temperatura quente.Quando Snake pega o elevador de carga pra	14	True	28.0
+876	shift_jis	51	37	0x6a69d	2warm the key to get it into the warm-temperature	2esquentar a chave p/ leva-la a forma quente.	-14	False	-27.5
+877	shift_jis	50	64	0x6a6d1	1shape. When Snake gets on the cargo elevator to	1Quando Snake pega o elevador de carga p/	14	True	28.0
 878	shift_jis	49	40	0x6a704	0head to the blast furnace -- the warmest place	0ir ao alto-forno -- o lugar mais quente	-9	False	-18.4
 879	shift_jis	43	46	0x6a736	*in the base -- he gets a Codec call from	*da base; ele recebe uma ligacao Codec do	-2	True	7.0
 880	shift_jis	16	14	0x6a762	Master Miller.	Master Miller.	-2	False	-12.5
-881	shift_jis	56	57	0x6a7c1	7Master tells Snake who is trying to stop the nuclear	7Master conta a Snake q ta tentando parar o lancamento	-2	True	1.8
-882	shift_jis	48	49	0x6a7fa	/launch by using the detonation code emergency	/nuclear usando a chave de anulacao-emergencia	-2	True	2.1
-883	shift_jis	50	52	0x6a82b	1override key of the assassination virus weapon	1do codigo de detonacao da arma de assassinato	-4	True	4.0
+881	shift_jis	56	57	0x6a7c1	7Master tells Snake who is trying to stop the nuclear	7Master conta a Snake, q busca parar o lancamento	-2	True	1.8
+882	shift_jis	48	49	0x6a7fa	/launch by using the detonation code emergency	/nuclear usando chave de anulacao de detonacao	-2	True	2.1
+883	shift_jis	50	52	0x6a82b	1override key of the assassination virus weapon	1sobre a arma de assassinato	-4	True	4.0
 884	shift_jis	49	34	0x6a85e	0FoxDie and that Naomi was the one who used it.	0FoxDie e q Naomi foi quem a usou.	-15	False	-30.6
-885	shift_jis	47	39	0x6a890	.When Snake was unsure of whether or not this	.Quando Snake nao tinha certeza se isso	-8	False	-17.0
-886	shift_jis	48	48	0x6a8c0	/was true Campbell tells Snake that Naomi was	/era verdade Campbell conta ao Snake q Naomi foi	0	False	0.0
+885	shift_jis	47	39	0x6a890	.When Snake was unsure of whether or not this	.Quando Snake nao tinha certeza se isso era	-8	False	-17.0
+886	shift_jis	48	48	0x6a8c0	/was true Campbell tells Snake that Naomi was	/verdade Campbell conta ao Snake q Naomi foi	0	False	0.0
 887	shift_jis	46	39	0x6a8f1	-arrested for spying. Filled with suspicion	-presa por espionagem.Cheio de suspeita	-7	False	-15.2
 888	shift_jis	48	43	0x6a920	/Snake changes the key to the warm temperature	/Snake muda a chave p/ forma de temperatura	-5	False	-10.4
 889	shift_jis	55	46	0x6a951	6shape at the blast furnace takes the cargo elevator	6quente no alto-forno pega o elevador de carga	-9	False	-16.4
 890	shift_jis	52	47	0x6a989	3and heads for the command room to enter the third	3e vai p/ sala de comando p/ inserir o terceiro	-5	False	-9.6
-891	shift_jis	38	50	0x6a9be	%PAL code. He then gets a Codec call.	%codigo PAL.Ele entao recebe uma ligacao do Codec.	12	True	31.6
+891	shift_jis	38	50	0x6a9be	%PAL code. He then gets a Codec call.	%PAL code.Ele recebe uma ligacao.	12	True	31.6
 892	shift_jis	50	36	0x6aa3c	1Naomi has been arrested by Campbell. There is no	1Naomi foi presa por Campbell.Nao ha	-14	False	-28.0
 893	shift_jis	53	55	0x6aa6f	4time left until the new-type of nuclear warhead is	4tempo restante ate q a nova ogiva nuclear seja	-6	True	3.8
-894	shift_jis	52	51	0x6aaa5	3launched. While feeling suspicious Snake gets to	3lancado.Enquanto se sente suspeitoso Snake chega a	-1	False	-1.9
+894	shift_jis	52	51	0x6aaa5	3launched. While feeling suspicious Snake gets to	3lancado.Enquanto se sente receoso Snake chega a	-1	False	-1.9
 895	shift_jis	49	50	0x6aada	0the command room of the Metal Gear underground	0sala comando da base d manutencao subterranea	-3	True	2.0
 896	shift_jis	49	46	0x6ab0c	0maintenance base and enters the third PAL code.	0do Metal Gear e insere o terceiro codigo PAL.	-3	False	-6.1
 897	shift_jis	21	14	0x6ab78	d`%PlIMPrISPiï¾	d`%PlIMPrISPiï¾	-7	False	-33.3
 898	shift_jis	56	53	0x6ab92	7Master Miller was actually Liquid in disguise. Liquid	7Master Miller era na verdade Liquid disfarado.Liquid	-3	False	-5.4
-899	shift_jis	49	49	0x6abcb	0actually had Snake pursue his mission and used	0na verdade fez Snake perseguir sua missao e usou	0	False	0.0
+899	shift_jis	49	49	0x6abcb	0actually had Snake pursue his mission and used	0na verdade fez Snake seguir sua missao e usou	0	False	0.0
 900	shift_jis	52	47	0x6abfd	3him in order to have him enter the detonation code	3ele p/ fazer ele inserir o codigo de detonacao	-5	False	-9.6
 901	shift_jis	53	48	0x6ac32	4and deactivate the PAL. After revealing all Liquid	4e desativar o PAL.Depois de revelar tudo Liquid	-5	False	-9.4
 902	shift_jis	48	42	0x6ac68	/locks Snake in the command room and pumps in	/tranca Snake na sala de comando e bombeia	-6	False	-12.5
-903	shift_jis	52	55	0x6ac99	3poison gas. But with Otacon's help Snake managed	3gas venenoso.Com a ajuda do Otacon Snake conseguiu	-1	True	5.8
+903	shift_jis	52	55	0x6ac99	3poison gas. But with Otacon's help Snake managed	3gas venenoso.Com a ajuda d Otacon Snake consegue	-1	True	5.8
 904	shift_jis	51	43	0x6acce	2to escape. Snake sees Liquid from behind running	2escapar.Snake ve Liquid de costas correndo	-8	False	-15.7
 905	shift_jis	50	51	0x6ad02	1towards the cockpit of Metal Gear. Snake chases	1em direcao ao cockpit do M.Gear.Snake persegue	-3	True	2.0
 906	shift_jis	15	7	0x6ad35	after Liquid.	Liquid.	-8	False	-53.3
 907	latin-1	43	24	0x6ad72	@n`jIuIuPeUPd`%Pl^Pr^PiD	@n`jIuIuPeUPd`%Pl^Pr^PiD	-19	False	-44.2
 908	shift_jis	47	41	0x6ada2	.Metal Gear has finally been activated. Liquid	.Metal Gear finalmente foi ativado.Liquid	-6	False	-12.8
-909	shift_jis	45	45	0x6add2	mocks Snake who can do nothing against the	zomba do Snake q nao pode fazer nada contra o	0	False	0.0
+909	shift_jis	45	45	0x6add2	mocks Snake who can do nothing against the	zomba d Snake q n pode fazer nada contra o	0	False	0.0
 910	shift_jis	50	43	0x6ae00	1overwhelming fire power of the nuclear-equipped	1poder de fogo devastador do tanque andante	-7	False	-14.0
 911	shift_jis	50	53	0x6ae33	1walking tank. Snake gets advice from Metal Gear	1equipado nuclear.Snake recebe conselho do eng.	-3	True	6.0
-912	shift_jis	48	47	0x6ae66	/chief engineer Otacon that if Snake destroys	/chefe do Metal Gear Otacon q se Snake destruir	-1	False	-2.1
+912	shift_jis	48	47	0x6ae66	/chief engineer Otacon that if Snake destroys	/chefe do M. Gear Otacon q se Snake destruir	-1	False	-2.1
 913	shift_jis	48	47	0x6ae97	"/the ""radome"" it will disable all sensors and"	/o radome vai desabilitar todos os sensores e	-3	False	-2.1
 914	shift_jis	51	49	0x6aec8	2force Liquid to open the cockpit. Snake can then	2forcar Liquid a abrir o cockpit.Snake pode entao	-2	False	-3.9
 915	shift_jis	46	41	0x6aefc	-shoot inside the cockpit and could destroy	-atirar dentro do cockpit e pode destruir	-5	False	-10.9
 916	shift_jis	54	45	0x6af2b	5Metal Gear. Snake shoots his Stinger missile at the	5Metal Gear.Snake atira seu missil Stinger no	-9	False	-16.7
-917	shift_jis	49	48	0x6af62	0radome while dodging Metal Gear's overwhelming	0radome enquanto desvia dos ataques devastadores	-1	False	-2.0
+917	shift_jis	49	48	0x6af62	0radome while dodging Metal Gear's overwhelming	0radome e desvia dos ataques devastadores	-1	False	-2.0
 918	shift_jis	55	64	0x6af94	6attacks. Metal Gear's massive body finally starts to	6do M. Gear.O corpo massivo do M. Gear comeca a	-8	True	16.4
 919	shift_jis	12	8	0x6afcc	shudder...	tremer..	-4	False	-33.3
 920	latin-1	43	22	0x6b023	@d``ItItPe2Pd`%PlPrPi:	@d``ItItPe2Pd`%PlPrPi:	-21	False	-48.8
-921	shift_jis	49	49	0x6b053	0Gray Fox has died. But now Metal Gear's radome	0Gray Fox morreu.Mas agora o radome do Metal Gear	0	False	0.0
+921	shift_jis	49	49	0x6b053	0Gray Fox has died. But now Metal Gear's radome	0Gray Fox morreu.Mas agora o radome do M. Gear	0	False	0.0
 922	shift_jis	51	60	0x6b085	2is completely destroyed. Liquid opens the cockpit	2ta completamente destruido.Liquid abre o cockpit	-2	True	17.6
 923	shift_jis	52	45	0x6b0b9	3door and starts attacking like wild to kill Snake.	3e comeca a atacar como louco p/ matar Snake.	-7	False	-13.5
-924	shift_jis	51	53	0x6b0ee	2Snake faces this attack and fires his Stinger in	2Snake enfrenta este ataque e dispara o Stinger com	0	True	3.9
-925	shift_jis	53	44	0x6b122	4anger and grief. The Stinger hits the now revealed	4raiva e tristeza.O Stinger atinge o cockpit	-9	False	-17.0
-926	shift_jis	42	48	0x6b158	)cockpit. Metal Gear goes down in flames.	)agora revelado.M. Gear vai abaixo em chamas.	3	True	14.3
+924	shift_jis	51	53	0x6b0ee	2Snake faces this attack and fires his Stinger in	2Snake enfrenta o ataque e dispara o Stinger com	0	True	3.9
+925	shift_jis	53	44	0x6b122	4anger and grief. The Stinger hits the now revealed	4raiva e tristeza.O Stinger atinge o cockpit agora	-9	False	-17.0
+926	shift_jis	42	48	0x6b158	)cockpit. Metal Gear goes down in flames.	)revelado.M. Gear vai abaixo em chamas.	3	True	14.3
 927	shift_jis	51	47	0x6b1d4	2Snake and Liquid engage in their final battle on	2Snake e Liquid se envolvem na batalha final no	-4	False	-7.8
-928	shift_jis	49	49	0x6b208	0top of the head of Metal Gear. The air raid is	0topo da cabeca do Metal Gear.O ataque aereo esta	0	False	0.0
+928	shift_jis	49	49	0x6b208	0top of the head of Metal Gear. The air raid is	0topo da cabeca do M. Gear.O ataque aereo esta	0	False	0.0
 929	shift_jis	52	60	0x6b23a	3approaching and the time bomb counter is ticking.	3se aproximando e a bomba relogio ta correndo.	-6	True	15.4
 930	shift_jis	47	39	0x6b26f	.On goes the very basic fight with no weapons	.Continua a luta muito basica sem armas	-8	False	-17.0
 931	shift_jis	52	47	0x6b29f	3other than their fists...At the end of the deadly	3alem dos seus punhos..No fim da batalha mortal	-5	False	-9.6
 932	shift_jis	49	37	0x6b2d4	0battle between the two Snake's finishing blow	0entre os dois o golpe final do Snake	-12	False	-24.5
 933	shift_jis	42	38	0x6b306	)knocks Liquid off the top of Metal Gear.	)derruba Liquid do topo do Metal Gear.	-4	False	-9.5
 934	shift_jis	50	39	0x6b380	1Trying to escape from the base Snake and Meryl	1Tentando escapar da base Snake e Meryl	-11	False	-22.0
-935	shift_jis	48	47	0x6b3b3	/hop into a jeep they found in the underground	/pulam num jeep q encontraram no estacionamento	-1	False	-2.1
+935	shift_jis	48	47	0x6b3b3	/hop into a jeep they found in the underground	/pulam num jeep q estava no estacionamento	-1	False	-2.1
 936	shift_jis	52	47	0x6b3e4	3parking lot and drive down the escape route. After	3subterraneo e dirigem pela rota de fuga.Depois	-5	False	-9.6
 937	shift_jis	52	50	0x6b419	3breaking through two checkpoints they noticed one	3de romper dois postos de controle eles notaram um	-2	False	-3.8
 938	latin-1	53	49	0x6b44e	"4jeep coming after them. ""Snake!It's not over yet!"""	4jeep vindo atras deles.Snake!Ainda nao acabou!	-6	False	-7.5
@@ -987,7 +987,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 986	shift_jis	52	52	0x3b50089	3establish its military superiority over the entire	3estabelecer sua superioridade militar sobre o mundo	0	False	0.0
 987	shift_jis	46	37	0x3b500be	-world. In order to destroy Metal Gear Snake	-inteiro.P/ destruir Metal Gear Snake	-9	False	-19.6
 988	shift_jis	52	55	0x3b500ed	3rescues Metal Gear's chief engineer Dr. Pettrovich	3resgata o eng. chefe do Metal Gear Dr.Pettrovich	-3	True	5.8
-989	shift_jis	50	39	0x3b50122	1and his daughter Elen who was taken hostage for	1e sua filha Elen q foi feita refem pra	-11	False	-22.0
+989	shift_jis	50	39	0x3b50122	1and his daughter Elen who was taken hostage for	1e sua filha Elen q foi feita refem p/	-11	False	-22.0
 990	shift_jis	50	44	0x3b50155	1her father to continue with his development and	1seu pai continuar com seu desenvolvimento e	-6	False	-12.0
 991	shift_jis	54	48	0x3b50188	5hears from Dr. Pettrovich how to destroy Metal Gear.	5ouve do Dr.Pettrovich como destruir Metal Gear.	-6	False	-11.1
 992	shift_jis	43	42	0x3b501bf	*However as Snake approaches the heart of	*Porem qndo Snake se aproxima do coracao	-1	False	-2.3
@@ -1045,7 +1045,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 1044	shift_jis	51	44	0x3b50add	2The 21st century was expected to be one of chaos.	2O seculo 21 era esperado p/ ser um de caos.	-7	False	-13.7
 1045	shift_jis	51	46	0x3b50b11	2One man's invention changed the entire situation.	2A invencao de um homem mudou toda a situacao.	-5	False	-9.8
 1046	shift_jis	53	47	0x3b50b45	4A Czech genius and biologist Dr. Kio Marv invented	4Um genio e biologo tcheco Dr.Kio Marv inventou	-6	False	-11.3
-1047	shift_jis	51	48	0x3b50b7b	"2""OILIX"" a microorganism that refines petroleum to"	2OILIX um microorganismo q refina petroleo pra	-5	False	-5.9
+1047	shift_jis	51	48	0x3b50b7b	"2""OILIX"" a microorganism that refines petroleum to"	2OILIX um microorganismo q refina petroleo p/	-5	False	-5.9
 1048	shift_jis	46	53	0x3b50baf	-produce a highly purified form of petroleum.	-produzir uma forma purificada de petroleo.	-3	True	15.2
 1049	shift_jis	51	54	0x3b50bde	2The world was filled with hope upon the discovery	2O mundo teve nova esperanca com a descoberta	-6	True	5.9
 1050	shift_jis	52	52	0x3b50c12	3of this messiah to solve the energy crisis but at	3capaz de resolver a crise energetica mas ao	0	False	0.0
@@ -1098,7 +1098,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 1097	shift_jis	44	38	0x3b514e0	+Natasha Dr. Marv's guard and former Czech	+Natasha guarda do Dr.Marv e ex-agente	-6	False	-13.6
 1098	shift_jis	51	51	0x3b5150d	2International Secret Police agent and then heads	2da PoliciaSecretaInternacionalTcheca e entao vai	0	False	0.0
 1099	shift_jis	51	49	0x3b51541	2for the confinement facility deep in the fortress	2pro centro de confinamento no fundo da fortaleza	-2	False	-3.9
-1100	shift_jis	19	18	0x3b51575	to save Dr. Marv.	pra salvar Marv	-1	False	-5.3
+1100	shift_jis	19	18	0x3b51575	to save Dr. Marv.	p/ salvar Marv	-1	False	-5.3
 1101	shift_jis	48	52	0x3b51589	/When Pettrovich and Natasha crossed the narrow	/Quando Pettrovich e Natasha atravessaram a	4	True	8.3
 1102	shift_jis	51	47	0x3b515ba	2suspension bridge over the deep valley a missile	2ponte suspensa sobre o vale profundo um missil	-4	False	-7.8
 1103	shift_jis	23	17	0x3b515ee	blew the bridge away.	explodiu a ponte.	-6	False	-26.1
