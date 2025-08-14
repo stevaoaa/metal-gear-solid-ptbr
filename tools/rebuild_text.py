@@ -23,9 +23,9 @@ logger = setup_logger()
 
 # Caminhos padrão para os arquivos
 DEFAULT_PATHS = {
-    'original': BASE_DIR / "assets" / "fontes" / "CD1" / "DEMO.DAT",
-    'csv': BASE_DIR / "translated" / "strings_DEMO_traduzido.csv",
-    'output': BASE_DIR / "patches" / "DEMO_PATCHED.DAT",
+    'original': BASE_DIR / "assets" / "fontes" / "CD1" / "STAGE.DIR",
+    'csv': BASE_DIR / "translated" / "strings_STAGE_traduzido.csv",
+    'output': BASE_DIR / "patches" / "STAGE_PATCHED.DIR",
     'analysis': BASE_DIR / "output" / "insertion_problems.txt"
 }
 

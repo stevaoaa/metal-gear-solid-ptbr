@@ -34,14 +34,14 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x7a8194	60	latin-1	And finally, in charge of them...|FOX-HOUND's squad leader,	E finalmente, no comando deles..|lider do esquadrao FOX-HOUND,	62
 0x7a81e4	13	shift_jis	Liquid Snake.	Liquid Snake.	13
 0x7a8204	13	shift_jis	Liquid Snake?	Liquid Snake?	13
-0x7a8224	40	latin-1	The man with the same code|name as you.	O homem com o mesmo nome|codigo que vc.	42
+0x7a8224	40	latin-1	The man with the same code|name as you.	O homem com o mesmo|codinome que vc.	42
 0x7a8260	63	latin-1	The nuclear weapons disposal facility|covers the whole island.	A instalacao de descarte de armas nucleares|cobre toda a ilha.	68
 0x7a82b0	56	latin-1	I'll instruct you by codec after|you reach your target.	Vou te instruir por codec depois|que chegar ao seu alvo.	58
 0x7a82fc	21	shift_jis	Anyone going with me?	Alguem vai comigo?	19
 0x7a8324	50	latin-1	As usual, this is a one-man|infiltration mission.	Como sempre, esta eh uma missao|de infiltracao solo.	59
 0x7a8368	49	latin-1	Weapons and equipment OSP|(on-site procurement)?	Armas e equipamentos OSP|(obtencao no local)?	47
 0x7a83ac	4	shift_jis	Yes.	Sim.	4
-0x7a83c4	30	shift_jis	This is a top-secret black op.	Esta eh uma operacao negra secreta.	35
+0x7a83c4	30	shift_jis	This is a top-secret black op.	Essa eh uma operacao de alto nivel.	35
 0x7a83f4	34	shift_jis	Don't expect any official support.	Nao espere nenhum apoio oficial.	32
 0xa1f934	11	shift_jis	Stay alert!	Fique alerta	13
 0xa1f950	36	latin-1	He'll be through here...|I know it.	Ele vai passar por aqui..|Eu sei disso.	44
@@ -230,7 +230,7 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x283843c	7	shift_jis	Dead...	Morto..	8
 0x2b67148	11	shift_jis	Don't move!	Nao se mova!	13
 0x2b67164	41	latin-1	So you killed the Chief.|You bastard...!	Entao vc matou o Chefe.|Seu bastardo..!	44
-0x2b671a0	26	latin-1	Liquid!?|No...you're not.	Liquid!?|Nao..vc nao e.	27
+0x2b671a0	26	latin-1	Liquid!?|No...you're not.	Liquid!?|Nao.. nao eh vc	27
 0x2b671cc	13	shift_jis	Don't move!!!	Nao se mova!!!	15
 0x2b671ec	59	latin-1	Is this the first time you ever|pointed a gun at a person?	E a primeira vez que vc aponta|uma arma p/ uma pessoa?	58
 0x2b67238	23	shift_jis	Your hands are shaking.	Suas maos estao tremendo	25
@@ -251,6 +251,29 @@ offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 0x2b67534	19	shift_jis	What're you doing!?	O que vc ta fazendo?	26
 0x2b67558	12	shift_jis	Don't think!	Nao pense!	11
 0x2b67578	6	shift_jis	Shoot!	Atire!	6
+0x2f191c0	11	shift_jis	Don't move!	Nao se mova!	13
+0x2f191dc	41	latin-1	So you killed the Chief.|You bastard...!	Entao vc matou o Chefe.|Seu bastardo..!	44
+0x2f19218	26	latin-1	Liquid!?|No...you're not.	Liquid!?|Nao.. nao eh vc	27
+0x2f19244	13	shift_jis	Don't move!!!	Nao se mova!!!	15
+0x2f19264	59	latin-1	Is this the first time you ever|pointed a gun at a person?	E a primeira vez que vc aponta|uma arma p/ uma pessoa?	58
+0x2f192b0	23	shift_jis	Your hands are shaking.	Suas maos estao tremendo	25
+0x2f192ec	25	shift_jis	Can you shoot me, rookie?	Consegue me atirar, novato?	27
+0x2f19318	24	shift_jis	Careful, I'm no rookie!!	Cuidado, eu nao sou novato!!	28
+0x2f19344	60	latin-1	Liar! That nervous glance...|that scared look in your eyes.	Mentiroso! Esse olhar nervoso..|.. assustado nos seus olhos	71
+0x2f19394	42	latin-1	They're rookie's eyes if I ever|saw them.	Sao olhos de novato se eu|ja vi algum.	40
+0x2f193d0	40	latin-1	You've never shot a person,|am I right?	Vc nunca atirou numa pessoa,|estou certo?	45
+0x2f1940c	18	shift_jis	You talk too much.	Vc fala demais.	17
+0x2f19430	48	latin-1	You haven't even taken the safety| off, rookie.	Vc nem tirou a trava de seguranca,|novato.	46
+0x2f19474	27	shift_jis	I told you I'm no rookie!!!	Eu disse que nao sou novato!	31
+0x2f194a0	32	shift_jis	You're not one of them, are you?	Vc nao e um deles, e?	24
+0x2f194d4	15	shift_jis	Open that door!	Abra essa porta!	16
+0x2f194f4	29	shift_jis	You've got a card, don't you?	Vc tem um cartao, nao tem?	30
+0x2f19524	4	shift_jis	Why?	Pq?	3
+0x2f1953c	36	latin-1	So we can get the hell out of|here.	P/ podermos sair|daqui.	24
+0x2f19574	38	latin-1	Looks like we'll be a little|delayed.	Parece que vamos atrasar|um pouquinho.	40
+0x2f195ac	19	shift_jis	What're you doing!?	O que vc ta fazendo?	26
+0x2f195d0	12	shift_jis	Don't think!	Nao pense!	11
+0x2f195f0	6	shift_jis	Shoot!	Atire!	6
 0x33158bc	20	shift_jis	Thanks for the help.	Obrigada pela ajuda.	20
 0x33158e4	5	shift_jis	Wait!	Espere!	7
 0x33158fc	13	shift_jis	Who are you!?	Quem e vc!?	14
