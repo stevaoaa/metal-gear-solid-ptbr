@@ -425,13 +425,13 @@ def main():
     
     parser = argparse.ArgumentParser(description="Inspetor de Offsets - Análise detalhada pós-patch")
     parser.add_argument("--original", type=Path, 
-                       default=BASE_DIR / "assets" / "fontes" / "CD1" / "RADIO.DAT",
+                       default=BASE_DIR / "assets" / "fontes" / "CD1" / "DEMO.DAT",
                        help="Arquivo original")
     parser.add_argument("--patched", type=Path,
-                       default=BASE_DIR / "patches" / "RADIO_PATCHED.DAT", 
+                       default=BASE_DIR / "patches" / "DEMO_PATCHED.DAT", 
                        help="Arquivo patcheado")
     parser.add_argument("--csv", type=Path,
-                       default=BASE_DIR / "translated" / "strings_RADIO_traduzido.csv",
+                       default=BASE_DIR / "translated" / "strings_DEMO_traduzido.csv",
                        help="Arquivo CSV com traduções")
     parser.add_argument("--offsets", nargs="+", required=True,
                        help="Lista de offsets para inspecionar (ex: 0x114a01 0x123456)")
@@ -467,7 +467,8 @@ if __name__ == "__main__":
     
     """
     Uso:
-        python .\tools\offset_analizer.py --offsets 0x114569 0x1145f1 0x114687 0x1146d5 0x11473f 0x1147cf 0x114889 0x1148cf 0x11491b 0x114978 0x114a01 0x114b24
+        python .\tools\offset_analizer.py --offsets 0x2f19244 0x2f19264 0x2f192b0
+
     """
     
     main()
