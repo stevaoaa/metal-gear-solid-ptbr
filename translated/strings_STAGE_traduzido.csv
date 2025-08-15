@@ -14,7 +14,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 13	shift_jis	46	36	0x58ea8	"-government to turn over the remains of "" The"	-governo a entregar os restos de  O	-11	False	-21.7
 14	shift_jis	53	44	0x58f71	4government to settle the situation Snake overhears	4governo p/ resolver a situacao Snake escuta	-9	False	-17.0
 15	shift_jis	51	48	0x58fa7	2the enemies' conversation that the DARPA Chief is	2a conversa dos inimigos q o Chefe da DARPA esta	-3	False	-5.9
-16	shift_jis	54	40	0x58fdb	5locked up in the cell on the first floor basement of	5trancado na cela no primeiro subsolo do	-14	False	-25.9
+16	shift_jis	54	40	0x58fdb	5locked up in the cell on the first floor basement of	5trancado na cela no subsolo-1 do	-14	False	-25.9
 17	shift_jis	18	18	0x59012	the tank hanger.	hangar d tanques	0	False	0.0
 18	shift_jis	51	50	0x59060	2Snake gets in touch with the DARPA Chief. But the	2Snake entra em contato com o Chefe da DARPA.Mas o	-1	False	-2.0
 19	shift_jis	53	46	0x59094	4Chief says that the terrorists found out one of the	4Chefe diz q os terroristas descobriram um dos	-7	False	-13.2
@@ -23,13 +23,13 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 22	shift_jis	53	48	0x5912d	4possible to deactivate the detonation code by using	4possivel desativar o codigo de detonacao usando	-5	False	-9.4
 23	shift_jis	49	65	0x59163	0the detonation code emergency override key held	0a chave de anulacao de detonacao mantida	16	True	32.7
 24	shift_jis	44	49	0x59195	+by ArmsTech President Kenneth Baker who is	+pelo Presidente da ArmsTech Baker q esta	-3	True	11.4
-25	shift_jis	51	31	0x591c2	2trapped on the 2nd floor basement. However right	2preso no 2o subsolo.Porem logo	-20	False	-39.2
+25	shift_jis	51	31	0x591c2	2trapped on the 2nd floor basement. However right	2preso no subsolo-2.Porem logo	-20	False	-39.2
 26	shift_jis	56	56	0x591f6	7after that he dies from a heart attack right in front	7depois disso ele morre de infarto bem na frente	0	False	0.0
 27	shift_jis	13	10	0x5922f	of Snake...	do Snake..	-3	False	-23.1
 28	latin-1	37	14	0x5924b	@`VoVoPePlPrPd	@`VoVoPePlPrPd	-23	False	-62.2
 29	shift_jis	48	48	0x59411	/after that he dies from a heart attack. Snake	/depois disso ele morre de infarto.Snake	0	False	0.0
 30	shift_jis	50	41	0x59442	1cooperates with a female soldier that he met and	1coopera com uma soldado q ele conheceu e	-9	False	-18.0
-31	shift_jis	46	36	0x59475	-escapes the cell and heads for the 2nd floor	-escapa da cela e vai pro 2o subsolo	-10	False	-21.7
+31	shift_jis	46	36	0x59475	-escapes the cell and heads for the 2nd floor	-escapa da cela e vai pro subsolo-2	-10	False	-21.7
 32	shift_jis	46	40	0x594a4	-basement of the tank hangar to rescue Baker.	-do hangar de tanques p/ resgatar Baker.	-6	False	-13.0
 33	latin-1	37	15	0x594db	@`}VoVoPePlPrPd	@`}VoVoPePlPrPd	-22	False	-59.5
 34	shift_jis	47	41	0x595d8	.possible to deactivate the detonation code by	.possivel desativar o codigo de detonacao	-6	False	-12.8
@@ -37,12 +37,12 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 36	shift_jis	49	57	0x5963b	0held by ArmsTech President Kenneth Baker who is	0mantida pelo Presidente da ArmsTech Baker q esta	0	True	16.3
 37	shift_jis	53	53	0x596a1	4after that he dies from a heart attack. Snake must	4depois disso ele morre de infarto.Snake deve	0	False	0.0
 38	shift_jis	49	44	0x596d7	0try to rescue Baker who is trapped on the other	0tentar resgatar Baker q ta preso do outro	-7	False	-10.2
-39	shift_jis	44	39	0x59709	+side of the cemented wall on the 2nd floor	+lado da parede cimentada no 2o subsolo	-5	False	-11.4
+39	shift_jis	44	39	0x59709	+side of the cemented wall on the 2nd floor	+lado da parede cimentada no subsolo-2	-5	False	-11.4
 40	shift_jis	30	21	0x59736	basement of the tank hangar.	do hangar de tanques.	-9	False	-30.0
 41	shift_jis	52	56	0x598bd	3held by ArmsTech President Kenneth Baker. However	3mantida pelo Presidente da ArmsTech Baker.Porem	-4	True	7.7
 42	shift_jis	54	53	0x598f2	5right after that he dies from a heart attack. Snake	5logo depois disso ele morre de infarto.Snake	-1	False	-1.9
 43	shift_jis	48	43	0x59929	/must try to rescue Baker who is trapped on the	/deve tentar resgatar Baker q ta preso do	-7	False	-10.4
-44	shift_jis	50	45	0x5995a	1other side of the cemented wall on the 2nd floor	1outro lado da parede cimentada no 2o subsolo	-5	False	-10.0
+44	shift_jis	50	45	0x5995a	1other side of the cemented wall on the 2nd floor	1outro lado da parede cimentada no subsolo-2	-5	False	-10.0
 45	shift_jis	44	51	0x599e7	+Snake saves President Baker from FOX-HOUND	+Snake salva Baker do membro FOX-HOUND	-6	True	15.9
 46	shift_jis	49	29	0x59a14	0member Revolver Ocelot. However he has already	0Revolver Ocelot.Porem ele ja	-20	False	-40.8
 47	shift_jis	48	45	0x59a46	/given away the detonation code. The only thing	/entregou o codigo de detonacao.A unica coisa	-3	False	-6.2
@@ -88,10 +88,10 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 87	shift_jis	47	53	0x5a6b2	.his M1 tank were waiting for him. Dodging the	.seu tanque M1 estavam esperando.Desviando do	-2	True	12.8
 88	shift_jis	52	49	0x5a6e2	3attack of the tank cannon and destroying the tank	3ataque do canhao do tanque e destruindo o tanque	-3	False	-5.8
 89	shift_jis	44	38	0x5a717	+Snake succeeds in infiltrating the nuclear	+Snake consegue se infiltrar no predio	-6	False	-13.6
-90	shift_jis	48	42	0x5a744	/warhead storage building. He heads for the 2nd	/de armazenamento de ogivas.Ele vai pro 2o	-6	False	-12.5
-91	shift_jis	47	37	0x5a775	.floor basement where Dr. Emmerich is trapped.	.subsolo onde Dr.Emmerich ta preso.	-12	False	-21.3
+90	shift_jis	48	42	0x5a744	/warhead storage building. He heads for the 2nd	/de armazenamento de ogivas.Ele vai pro	-6	False	-12.5
+91	shift_jis	47	37	0x5a775	.floor basement where Dr. Emmerich is trapped.	.subsolo-2 onde Dr.Emmerich ta preso.	-12	False	-21.3
 92	shift_jis	46	60	0x5a7e3	-Snake must try to rescue of Metal Gear chief	-Snake deve resgatar o eng. chefe do M. Gear	14	True	30.4
-93	shift_jis	49	47	0x5a846	0the nuclear launch. Snake gets to the 2nd floor	0o lancamento nuclear.Snake chega ao 2o subsolo	-2	False	-4.1
+93	shift_jis	49	47	0x5a846	0the nuclear launch. Snake gets to the 2nd floor	0o lancamento nuclear.Snake chega ao subsolo-2	-2	False	-4.1
 94	shift_jis	50	47	0x5a878	1basement of the nuclear warhead storage building	1do predio de armazenamento de ogivas nucleares	-3	False	-6.0
 95	shift_jis	48	43	0x5a8ab	/where Dr. Emmerich is trapped. However a floor	/onde Dr.Emmerich ta preso.Porem um andar	-7	False	-10.4
 96	shift_jis	53	63	0x5a8dc	4with high voltage electric currents blocks his way.	4com correntes eletricas bloqueia seu caminho.	-7	True	18.9
@@ -104,7 +104,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 103	shift_jis	49	56	0x5ac38	0gets ready to shoot the remote control missile.	0se prepara p/ disparar o missil teleguiado.	-5	True	14.3
 104	shift_jis	55	70	0x5ad09	6the nuclear launch. Floors with high voltage electric	6Andares com correntes eletricas de alta voltagem	15	True	27.3
 105	shift_jis	49	50	0x5ad41	0currents blocked his way in the nuclear warhead	0bloquearam o caminho no predio de armazenamento	-1	True	2.0
-106	shift_jis	47	39	0x5ad73	.storage building 2nd floor basement but with	.de ogivas nucleares 2o subsolo mas com	-8	False	-17.0
+106	shift_jis	47	39	0x5ad73	.storage building 2nd floor basement but with	.de ogivas nucleares subsolo-2 mas com	-8	False	-17.0
 107	shift_jis	50	46	0x5ada3	1Deepthroat's advice Snake destroys the electric	1conselho do Deepthroat Snake destroi o painel	-4	False	-8.0
 108	shift_jis	51	54	0x5add6	2control panel with a remote missile and goes past	2de controle com um missil remoto e passa por	-6	True	5.9
 109	shift_jis	49	36	0x5ae0a	0this area. Snake heads for the northeast of the	0esta area.Snake vai pro nordeste do	-13	False	-26.5
@@ -112,12 +112,12 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 111	shift_jis	11	8	0x5ae69	basement.	subsolo.	-3	False	-27.3
 112	shift_jis	47	44	0x5af17	.the nuclear launch. After going past the high	.o lancamento nuclear.Depois de passar pelas	-3	False	-6.4
 113	shift_jis	48	47	0x5af47	/voltage electric floors in the nuclear warhead	/correntes eletricas de alta voltagem no predio	-1	False	-2.1
-114	shift_jis	49	47	0x5af78	0storage building 2nd floor basement Snake sees	0de armazenamento de ogivas 2o subsolo Snake ve	-2	False	-4.1
+114	shift_jis	49	47	0x5af78	0storage building 2nd floor basement Snake sees	0de armazenamento de ogivas subsolo-2 Snake ve	-2	False	-4.1
 115	shift_jis	48	48	0x5afaa	/a bunch of dead enemy soldiers and the stealth	/um monte de soldados inimigos mortos e a sombra	0	False	0.0
 116	shift_jis	43	48	0x5afdb	*camouflage shadow. Sensing the endangered	*da stealth.Sentindo a vida em perigo	-6	True	11.6
 117	shift_jis	50	44	0x5b007	1life of Dr. Emmerich Snake heads for the lab in	1do Dr.Emmerich Snake vai pro laboratorio no	-6	False	-12.0
 118	shift_jis	46	46	0x5b03a	-the northwest of the nuclear warhead storage	-noroeste do predio de armazenamento de ogivas	0	False	0.0
-119	shift_jis	50	42	0x5b069	1building 2nd floor basement where he is trapped.	1nucleares 2o subsolo onde ele ta preso.	-10	False	-16.0
+119	shift_jis	50	42	0x5b069	1building 2nd floor basement where he is trapped.	1nucleares subsolo-2 onde ele ta preso.	-10	False	-16.0
 120	shift_jis	51	50	0x5b0da	2Snake successfully rescues Otacon but is shocked	2Snake resgata Otacon mas fica chocado	-1	False	-2.0
 121	shift_jis	53	58	0x5b10e	4by the fact that the Ninja he drove away is his war	4pelo fato deq o Ninja q ele lutou eh seu companheiro	1	True	9.4
 122	shift_jis	49	48	0x5b144	0buddy Gray Fox. Discovering that Metal Gear has	0de guerra Gray Fox.Descobrindo q Metal Gear foi	-1	False	-2.0
@@ -137,13 +137,13 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 136	shift_jis	10	11	0x5b41b	stored.	mantido	0	True	10.0
 137	shift_jis	48	41	0x5b426	/According to Meryl there is no way other than	/Segundo Meryl nao ha outro caminho senao	-7	False	-14.6
 138	shift_jis	46	37	0x5b457	-going north from the Commander's room on the	-ir ao norte da sala do Comandante no	-9	False	-19.6
-139	shift_jis	43	38	0x5b486	*1st floor basement in the nuclear warhead	*1o subsolo do predio de armazenamento de	-5	False	-11.6
+139	shift_jis	43	38	0x5b486	*1st floor basement in the nuclear warhead	*subsolo-1 do predio de armazenamento de	-5	False	-11.6
 140	shift_jis	19	20	0x5b4b2	storage building.	ogivas nucleares	0	True	5.3
 141	shift_jis	46	40	0x5b562	-However she only had one of the three keys.	-Porem ela so tinha uma das tres chaves.	-6	False	-13.0
 142	shift_jis	51	56	0x5b5c3	2the detonation code or destroy Metal Gear itself.	2o codigo de detonacao ou destruir o M. Gear	1	True	9.8
 143	shift_jis	42	38	0x5b5f7	)Snake and Meryl head for the underground	)Snake e Meryl vao p/ base subterranea	-4	False	-9.5
-144	shift_jis	46	39	0x5b64f	-stored from the Commander's room on the 1st	-armazenado da sala do Comandante no 1o	-7	False	-15.2
-145	shift_jis	47	45	0x5b67e	.floor basement in the nuclear warhead storage	.subsolo do predio de armazenamento de ogivas	-2	False	-4.3
+144	shift_jis	46	39	0x5b64f	-stored from the Commander's room on the 1st	-armazenado da sala do Comandante no	-7	False	-15.2
+145	shift_jis	47	45	0x5b67e	.floor basement in the nuclear warhead storage	.subsolo-1 do predio de armazenamento de ogivas	-2	False	-4.3
 146	shift_jis	45	44	0x5b6ae	building. But suddenly Meryl starts acting	nucleares.Mas Meryl comeca a agir	-1	False	-2.2
 147	shift_jis	10	10	0x5b6dc	weird...	estranho	0	False	0.0
 148	latin-1	37	18	0x5b6f5	@8`4VoVoPePlOPrUPd	@8`4VoVoPePlOPrUPd	-19	False	-51.4
@@ -166,8 +166,8 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 165	shift_jis	45	48	0x5baa9	Snake must get a PSG1 to beat Wolf and save	Snake pega um PSG1 p/ vencer Wolf e salvar	-3	True	6.7
 166	shift_jis	40	41	0x5bbb2	'Communications Tower. FOX-HOUND member	'Torre de Comunicacoes.O membro FOXHOUND	0	True	2.5
 167	shift_jis	47	48	0x5bbdb	.Sniper Wolf fires at them and Meryl is badly	.Sniper Wolf atira neles e Meryl fica	-10	True	2.1
-168	shift_jis	48	39	0x5bc0b	/wounded. To save Meryl Snake heads to the 2nd	/ferida.P/ salvar Meryl Snake vai ao 2o	-9	False	-18.8
-169	shift_jis	49	39	0x5bc3c	0floor basement of the tank hangar for the PSG1	0subsolo do hangar de tanques pelo PSG1	-10	False	-20.4
+168	shift_jis	48	39	0x5bc0b	/wounded. To save Meryl Snake heads to the 2nd	/ferida.P/ salvar Meryl Snake vai ao	-9	False	-18.8
+169	shift_jis	49	39	0x5bc3c	0floor basement of the tank hangar for the PSG1	0subsolo-2 do hangar de tanques pelo PSG1	-10	False	-20.4
 170	shift_jis	50	43	0x5bc6e	1the only weapon effective to fight against Wolf.	1a unica arma efetiva p/ lutar contra Wolf.	-7	False	-14.0
 171	latin-1	37	19	0x5bcb5	@` VoVoPePliuPri{Pd	@` VoVoPePliuPri{Pd	-18	False	-48.6
 172	shift_jis	43	40	0x5bda4	*underground maintenance base. However on	*base de manutencao subterranea.Porem no	-3	False	-7.0
@@ -1000,7 +1000,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 999	shift_jis	45	36	0x3b50310	the deadly battles with Outer Heaven's best	as batalhas mortais com os melhores	-9	False	-20.0
 1000	shift_jis	14	12	0x3b5033e	mercenaries.	mercenarios.	-2	False	-14.3
 1001	shift_jis	45	43	0x3b5034d	But Snake's indomitable spirit leads him to	Mas o espirito indomavel do Snake o leva ao	-2	False	-4.4
-1002	shift_jis	51	34	0x3b5037b	2the 100th floor basement of the secret base where	2100o subsolo da base secreta onde	-17	False	-33.3
+1002	shift_jis	51	34	0x3b5037b	2the 100th floor basement of the secret base where	subsolo da base secreta onde	-17	False	-33.3
 1003	shift_jis	49	48	0x3b503af	0Metal Gear was developed.  Evading the powerful	0Metal Gear foi desenvolvido.Evadindo o poderoso	-1	False	-2.0
 1004	shift_jis	46	46	0x3b503e1	-defense system that wipes out all intruders	-sistema de defesa q elimina os intrusos	0	False	0.0
 1005	shift_jis	47	41	0x3b50410	.Snake ultimately succeeds in destroying Metal	.Snake finalmente consegue destruir Metal	-6	False	-12.8
@@ -1027,7 +1027,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 1026	shift_jis	47	54	0x3b507ab	.While the countdown to destruction continues	.Enquanto a contagem p/ destruicao continua	-4	True	14.9
 1027	shift_jis	37	25	0x3b507db	$his scream echoes in the emptiness.	$seu grito ecoa no vazio.	-12	False	-32.4
 1028	shift_jis	35	34	0x3b50801	"""You have gone too far. Too far!"	Vc foi longe demais.Longe demais	-2	False	-2.9
-1029	shift_jis	49	32	0x3b50828	0On the 100th floor basement the battle between	0No 100o subsolo a batalha entre	-17	False	-34.7
+1029	shift_jis	49	32	0x3b50828	0On the 100th floor basement the battle between	0No subsolo a batalha entre	-17	False	-34.7
 1030	shift_jis	43	43	0x3b5085a	*two men commences -- free of ideology and	*dois homens comeca -- livre de ideologia e	0	False	0.0
 1031	shift_jis	13	10	0x3b50886	politics...	politica..	-3	False	-23.1
 1032	shift_jis	42	38	0x3b50894	)The armed fortress nation Outer Heaven	)A nacao fortaleza armada Outer Heaven	-4	False	-9.5

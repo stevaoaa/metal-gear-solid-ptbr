@@ -3590,7 +3590,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 3589	0xb801b	latin-1	135	Yeah, they'll use Metal Gear to do it...#NColonel, did you know they were#Nconducting a military exercise here#Nusing Metal Gear?	Sim, vao usar Metal Gear p/ isso.#NCel., vc sabia q estavam#Nconduzindo um exercicio militar aqui#Nusando Metal Gear?	-18
 3590	0xb80b6	shift_jis	18	...I didn't know.	..Eu nao sabia	-4
 3591	0xb80ee	latin-1	78	Snake, you've got to understand. I'm#Njust the middleman in this operation.	Snake, vc tem q entender. Sou#Napenas o intermediario nesta operacao	-10
-3592	0xb8165	latin-1	143	Anyway, hurry up and get to the 2nd#Nfloor basement! You've got to save#Nthe ArmsTech president before the#Nterrorists find out his code.	De todo modo, se apresse e va#Npara o 2 subsolo! vc tem q#Nsalvar o presidente da ArmsTech antes#Nque os terroristas descubram seu codigo	-1
+3592	0xb8165	latin-1	143	Anyway, hurry up and get to the 2nd#Nfloor basement! You've got to save#Nthe ArmsTech president before the#Nterrorists find out his code.	De todo modo, se apresse e va#Npara o subsolo-2! vc tem q#Nsalvar o presidente da ArmsTech antes#Nque os terroristas descubram seu codigo	-1
 3593	0xb8211	latin-1	93	President Baker should be#Nsomewhere to the south of where you#Nblasted through the wall.	O Presidente Baker deve estar em#Nalgum lugar ao sul de onde vc#Nexplodiu a parede	-11
 3594	0xb8279	latin-1	62	Hurry and save him before the#Nterrorists discover his code.	Se apresse salve-o antes#Nterroristas descubram codigo	-8
 3595	0xb82cd	shift_jis	8	6111	6111	-4

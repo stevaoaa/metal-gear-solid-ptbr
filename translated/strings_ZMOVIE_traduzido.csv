@@ -1,11 +1,11 @@
-id	encoding	offset	texto	tamanho_bytes	texto_traduzido	tamanho_bytes_traduzido
-1	latin-1	0x9b4	Japan was the first country to|successfully make bipedal robots.	65	O Japao foi o primeiro pais a|fazer robos bipedais com sucesso.	64
-2	latin-1	0xa08	They're still the best|in the field of robotics.	49	Eles ainda sao os melhores|no campo da robotica.	53
-3	latin-1	0xa4c	And Japanese cartoons played|some part in that?	48	E animes japoneses tiveram|alguma parte nisso?	51
-4	shift_jis	0xa90	They did.	9	Tiveram.	9
-5	latin-1	0xaac	I didn't get into science to make|nuclear weapons you know.	61	Eu nao entrei na ciencia pra fazer|armas nucleares sabe.	58
-6	shift_jis	0xafc	That's what all scientists say.	31	Isso eh oq os cientistas dizem.	39
-7	shift_jis	0xb2c	I became a scientist	20	Eu virei cientista	25
-8	latin-1	0xb54	because I wanted to make robots like|the ones in the Japanese Animes.	70	pq queria fazer robos como|os dos Animes japoneses.	54
-9	shift_jis	0xbac	Really it's true.	18	Serio eh verdade.	18
-10	latin-1	0xbcc	It just sounds like a childish|excuse to me.	45	Parece uma desculpa infantil|pra mim	44
+id	encoding	tamanho_bytes	offset	texto	texto_traduzido	tamanho_bytes_traduzido
+1	latin-1	65	0x9b4	Japan was the first country to|successfully make bipedal robots.	O Japao foi o primeiro pais a|fazer robos bipedais com sucesso.	64
+2	latin-1	49	0xa08	They're still the best|in the field of robotics.	Eles ainda sao os melhores|no campo da robotica.	53
+3	latin-1	48	0xa4c	And Japanese cartoons played|some part in that?	E animes japoneses tiveram|alguma parte nisso?	51
+4	shift_jis	9	0xa90	They did.	Tiveram.	9
+5	latin-1	61	0xaac	I didn't get into science to make|nuclear weapons you know.	Eu nao entrei na ciencia pra fazer|armas nucleares sabe.	58
+6	shift_jis	31	0xafc	That's what all scientists say.	Isso eh oq os cientistas dizem.	39
+7	shift_jis	20	0xb2c	I became a scientist	Eu virei cientista	25
+8	latin-1	70	0xb54	because I wanted to make robots like|the ones in the Japanese Animes.	pq queria fazer robos como|os dos Animes japoneses.	54
+9	shift_jis	18	0xbac	Really it's true.	Serio eh verdade.	18
+10	latin-1	45	0xbcc	It just sounds like a childish|excuse to me.	Parece uma desculpa infantil|pra mim	44
