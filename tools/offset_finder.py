@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple, Union
 import pandas as pd
+import argparse
 
 # Adiciona o diretório raiz ao sys.path
 BASE_DIR = Path(__file__).parent.parent.absolute()
@@ -16,6 +17,101 @@ sys.path.append(str(BASE_DIR))
 from util.logger_config import setup_logger
 
 logger = setup_logger()
+
+# Mapeamento de arquivos disponíveis por CD (mesmo do scan_texts.py)
+FILE_MAPPING = {
+    "CD1": {
+        # arquivos do CD1
+        "radio": "RADIO.DAT",
+        "stage": "STAGE.DIR",
+        "demo": "DEMO.DAT",
+        "vox": "VOX.DAT",
+        "zmovie": "ZMOVIE.STR"
+    },
+    "CD2": {
+        # arquivos do CD2
+        "radio": "RADIO.DAT",
+        "stage": "STAGE.DIR",
+        "demo": "DEMO.DAT",
+        "vox": "VOX.DAT",
+        "zmovie": "ZMOVIE.STR"
+    }
+}
+
+class FileResolver:
+    """Resolve arquivos baseado em parâmetros intuitivos."""
+    
+    def __init__(self, cd: str = "CD1"):
+        self.cd = cd
+        self.base_path = BASE_DIR / "assets" / "fontes" / cd
+        self.extracted_path = BASE_DIR / "extracted"
+        self.translated_path = BASE_DIR / "translated"
+    
+    def get_available_files(self) -> Dict[str, str]:
+        """Retorna os arquivos disponíveis para o CD atual."""
+        return FILE_MAPPING.get(self.cd, {})
+    
+    def get_file_path(self, file_key: str) -> Optional[Path]:
+        """Converte uma chave de arquivo para o caminho completo."""
+        available_files = self.get_available_files()
+        if file_key in available_files:
+            file_path = self.base_path / available_files[file_key]
+            return file_path if file_path.exists() else None
+        return None
+    
+    def get_csv_path(self, file_key: str, prefer_translated: bool = True) -> Optional[Path]:
+        """Encontra o CSV correspondente ao arquivo."""
+        available_files = self.get_available_files()
+        if file_key not in available_files:
+            return None
+        
+        filename = available_files[file_key]
+        base_name = Path(filename).stem
+        
+        # Tenta encontrar arquivo traduzido primeiro
+        if prefer_translated:
+            translated_csv = self.translated_path / f"strings_{base_name}_traduzido.csv"
+            if translated_csv.exists():
+                return translated_csv
+        
+        # Fallback para arquivo extraído
+        extracted_csv = self.extracted_path / f"strings_{base_name}.csv"
+        if extracted_csv.exists():
+            return extracted_csv
+        
+        return None
+    
+    def list_available_files(self) -> List[str]:
+        """Lista todos os arquivos disponíveis no diretório do CD."""
+        if not self.base_path.exists():
+            return []
+        
+        available_files = []
+        file_mapping = self.get_available_files()
+        
+        for key, filename in file_mapping.items():
+            file_path = self.base_path / filename
+            csv_path = self.get_csv_path(key)
+            
+            status = "✓" if file_path.exists() else "✗"
+            csv_status = "✓" if csv_path else "✗"
+            
+            size = ""
+            if file_path.exists():
+                size_bytes = file_path.stat().st_size
+                if size_bytes > 1024*1024:
+                    size = f"({size_bytes // (1024*1024)} MB)"
+                else:
+                    size = f"({size_bytes // 1024} KB)"
+            
+            csv_info = f"CSV:{csv_status}"
+            if csv_path:
+                csv_info += f" ({csv_path.name})"
+            
+            available_files.append(f"{status} --{key:<8} {filename:<15} {size:<8} {csv_info}")
+        
+        return available_files
+
 
 class TextOffsetFinder:
     """
@@ -82,7 +178,7 @@ class TextOffsetFinder:
         try:
             with open(file_path, 'rb') as f:
                 self.target_file = f.read()
-            logger.info(f" Arquivo carregado: {len(self.target_file)} bytes")
+            logger.info(f" Arquivo carregado: {file_path.name} ({len(self.target_file)} bytes)")
         except Exception as e:
             logger.error(f" Erro ao carregar arquivo: {e}")
             return False
@@ -90,10 +186,20 @@ class TextOffsetFinder:
         # Carrega CSV se fornecido
         if csv_path and csv_path.exists():
             try:
-                self.csv_data = pd.read_csv(csv_path, delimiter="\t")
-                logger.info(f" CSV carregado: {len(self.csv_data)} entradas")
+                # Tenta diferentes delimitadores
+                for delimiter in ['\t', ',', ';']:
+                    try:
+                        self.csv_data = pd.read_csv(csv_path, delimiter=delimiter)
+                        if len(self.csv_data.columns) > 1:  # Se tem mais de uma coluna, provavelmente é o delimiter correto
+                            break
+                    except:
+                        continue
+                
+                logger.info(f" CSV carregado: {csv_path.name} ({len(self.csv_data)} entradas)")
             except Exception as e:
                 logger.warning(f" Erro ao carregar CSV: {e}")
+        elif csv_path:
+            logger.warning(f" CSV não encontrado: {csv_path}")
         
         return True
     
@@ -121,7 +227,7 @@ class TextOffsetFinder:
                         'text': original_text,
                         'translated': translated_text,
                         'encoding': str(row.get('encoding', 'N/A')),
-                        'size': str(row.get('size', 'N/A'))
+                        'size': str(row.get('tamanho_bytes', row.get('size', 'N/A')))
                     })
                 
                 # Busca no texto traduzido
@@ -132,7 +238,7 @@ class TextOffsetFinder:
                         'text': translated_text,
                         'original': original_text,
                         'encoding': str(row.get('encoding', 'N/A')),
-                        'size': str(row.get('size', 'N/A'))
+                        'size': str(row.get('tamanho_bytes', row.get('size', 'N/A')))
                     })
         
         except Exception as e:
@@ -461,45 +567,203 @@ class TextOffsetFinder:
             logger.error(f"Erro ao exportar resultados: {e}")
 
 
+def create_parser() -> argparse.ArgumentParser:
+    """Cria o parser de argumentos da linha de comando."""
+    parser = argparse.ArgumentParser(
+        description="Text to Offset Finder - Busca offsets por texto",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Exemplos de uso:
+  %(prog)s --vox --text "Continue"               # Busca 'Continue' no VOX.DAT do CD1
+  %(prog)s --demo --text "Snake" --case-sensitive # Busca case-sensitive no DEMO.DAT
+  %(prog)s --cd CD2 --radio --text "Metal Gear"  # Busca no RADIO.DAT do CD2
+  %(prog)s --list                                # Lista arquivos disponíveis
+  %(prog)s --brf --text "0x00ff4d65"            # Busca padrão hexadecimal
+  %(prog)s --stage --text "Solid" --export results.csv # Exporta resultados
+        """
+    )
+    
+    # Grupo para seleção de CD
+    cd_group = parser.add_argument_group('Seleção de CD')
+    cd_group.add_argument(
+        "--cd", 
+        choices=list(FILE_MAPPING.keys()),
+        default="CD1",
+        help="CD para processar (padrão: CD1)"
+    )
+    
+    # Grupo para seleção de arquivo
+    file_group = parser.add_argument_group('Seleção de arquivo')
+    file_group.add_argument(
+        "--list", 
+        action="store_true",
+        help="Lista arquivos disponíveis e sai"
+    )
+    
+    # Coleta todos os tipos de arquivo únicos de todos os CDs
+    all_file_types = set()
+    file_descriptions = {}
+    
+    for cd, files in FILE_MAPPING.items():
+        for key, filename in files.items():
+            all_file_types.add(key)
+            if key not in file_descriptions:
+                file_descriptions[key] = filename
+    
+    # Adiciona argumentos para cada tipo de arquivo único
+    for file_key in sorted(all_file_types):
+        file_group.add_argument(
+            f"--{file_key}", 
+            action="store_true",
+            help=f"Busca em {file_descriptions[file_key]}"
+        )
+    
+    # Argumentos para compatibilidade com versão anterior
+    compat_group = parser.add_argument_group('Compatibilidade (argumentos antigos)')
+    compat_group.add_argument(
+        "--file", 
+        type=Path,
+        help="Caminho específico do arquivo (compatibilidade)"
+    )
+    compat_group.add_argument(
+        "--csv", 
+        type=Path,
+        help="Caminho específico do CSV (compatibilidade)"
+    )
+    
+    # Configurações de busca
+    search_group = parser.add_argument_group('Configurações de busca')
+    search_group.add_argument(
+        "--text", 
+        help="Texto para buscar"
+    )
+    search_group.add_argument(
+        "--case-sensitive", 
+        action="store_true",
+        help="Busca case-sensitive"
+    )
+    search_group.add_argument(
+        "--type", 
+        choices=['exact', 'partial'], 
+        default='exact',
+        help="Tipo de busca (exact/partial)"
+    )
+    search_group.add_argument(
+        "--max-results", 
+        type=int, 
+        default=100,
+        help="Máximo de resultados (default: 100)"
+    )
+    search_group.add_argument(
+        "--context-size", 
+        type=int, 
+        default=100,
+        help="Tamanho do contexto (default: 100)"
+    )
+    search_group.add_argument(
+        "--no-csv", 
+        action="store_true",
+        help="Não buscar no CSV"
+    )
+    
+    # Outras opções
+    other_group = parser.add_argument_group('Outras opções')
+    other_group.add_argument(
+        "--export", 
+        type=Path,
+        help="Exportar resultados para CSV"
+    )
+    other_group.add_argument(
+        "--verbose", "-v", 
+        action="store_true",
+        default=True,
+        help="Saída detalhada (padrão: habilitado)"
+    )
+    
+    return parser
+
+
 def main():
     """Função principal do finder."""
-    import argparse
-    
-    parser = argparse.ArgumentParser(description="Text to Offset Finder - Busca offsets por texto")
-    parser.add_argument("--file", type=Path, 
-                       default=BASE_DIR / "assets" / "fontes" / "CD1" / "DEMO.DAT",
-                       help="Arquivo para busca")
-    parser.add_argument("--csv", type=Path,
-                       default=BASE_DIR / "translated" / "strings_DEMO_traduzido.csv",
-                       help="Arquivo CSV com traduções")
-    parser.add_argument("--text", required=True,
-                       help="Texto para buscar")
-    parser.add_argument("--case-sensitive", action="store_true",
-                       help="Busca case-sensitive")
-    parser.add_argument("--type", choices=['exact', 'partial'], default='exact',
-                       help="Tipo de busca (exact/partial)")
-    parser.add_argument("--max-results", type=int, default=100,
-                       help="Máximo de resultados (default: 100)")
-    parser.add_argument("--context-size", type=int, default=100,
-                       help="Tamanho do contexto (default: 100)")
-    parser.add_argument("--no-csv", action="store_true",
-                       help="Não buscar no CSV")
-    parser.add_argument("--export", type=Path,
-                       help="Exportar resultados para CSV")
-    
+    parser = create_parser()
     args = parser.parse_args()
     
+    # Resolver arquivos
+    file_resolver = FileResolver(args.cd)
+    
+    # Lista arquivos e sai se solicitado
+    if args.list:
+        print(f"\n Arquivos disponíveis em {args.cd}:")
+        print("-" * 70)
+        available = file_resolver.list_available_files()
+        if available:
+            for line in available:
+                print(f"  {line}")
+        else:
+            print(f"   Diretório {args.cd} não encontrado")
+        print(f"\nUso: {parser.prog} --cd {args.cd} --<arquivo> --text 'texto'")
+        print(f"Exemplo: {parser.prog} --cd {args.cd} --vox --text 'Continue'")
+        return
+    
+    # Valida se --text foi fornecido (obrigatório exceto para --list)
+    if not args.text:
+        logger.error("Argumento --text é obrigatório")
+        parser.print_help()
+        return
+    
+    # Determina arquivo e CSV para busca
+    target_file = None
+    target_csv = None
+    
+    if args.file:
+        # Compatibilidade: usa arquivo especificado
+        target_file = args.file
+        target_csv = args.csv
+        logger.info("Usando argumentos de compatibilidade")
+    else:
+        # Usa novo sistema: verifica qual arquivo foi selecionado
+        selected_files = []
+        available_files = file_resolver.get_available_files()
+        
+        for key in available_files.keys():
+            if getattr(args, key, False):
+                selected_files.append(key)
+        
+        if len(selected_files) == 0:
+            logger.error("Nenhum arquivo selecionado!")
+            logger.info(f"Use --list para ver arquivos disponíveis ou especifique um arquivo com --vox, --radio, etc.")
+            return
+        elif len(selected_files) > 1:
+            logger.error(f"Múltiplos arquivos selecionados: {', '.join(selected_files)}")
+            logger.info("Selecione apenas um arquivo por vez para busca")
+            return
+        
+        # Resolve arquivo selecionado
+        file_key = selected_files[0]
+        target_file = file_resolver.get_file_path(file_key)
+        target_csv = file_resolver.get_csv_path(file_key) if not args.no_csv else None
+        
+        if not target_file:
+            logger.error(f"Arquivo não encontrado: {file_key} ({args.cd})")
+            return
+        
+        logger.info(f" Arquivo selecionado: {file_key} -> {target_file.name}")
+        if target_csv:
+            logger.info(f" CSV encontrado: {target_csv.name}")
+        else:
+            logger.info(f" CSV não encontrado para {file_key}")
+    
     # Valida arquivo
-    if not args.file.exists():
-        logger.error(f"Arquivo não encontrado: {args.file}")
-        sys.exit(1)
+    if not target_file or not target_file.exists():
+        logger.error(f"Arquivo não encontrado: {target_file}")
+        return
     
     # Cria e executa o finder
-    finder = TextOffsetFinder()
+    finder = TextOffsetFinder(verbose=getattr(args, 'verbose', True))
     
-    if not finder.load_file(args.file, args.csv if not args.no_csv else None):
+    if not finder.load_file(target_file, target_csv):
         logger.error("Falha ao carregar arquivo!")
-        sys.exit(1)
+        return
     
     # Executa busca
     results = finder.search_text(
@@ -525,26 +789,37 @@ def main():
 
 
 if __name__ == "__main__":
+    
+    main()
+
     """
     Exemplos de uso:
     
-    # Busca texto exato
-    python tools/text_finder.py --text "Don't move!!!"
+    # Busca texto no VOX.DAT do CD1
+    python tools/text_finder.py --vox --text "Continue"
     
-    # Busca case-sensitive
-    python tools/text_finder.py --text "Is this the first time you ever|pointed a gun at a person?" --case-sensitive
+    # Busca case-sensitive no DEMO.DAT
+    python tools/text_finder.py --demo --text "Metal Gear" --case-sensitive
+    
+    # Busca no RADIO.DAT do CD2 (quando disponível)
+    python tools/text_finder.py --cd CD2 --radio --text "Snake"
     
     # Busca parcial (palavras separadas)
-    python tools/text_finder.py --text "Metal Gear" --type partial
+    python tools/text_finder.py --stage --text "Solid Snake" --type partial
     
     # Busca padrão hexadecimal
-    python tools/text_finder.py --text "0x00ff4d65"
+    python tools/text_finder.py --brf --text "0x00ff4d65"
+    
+    # Lista arquivos disponíveis
+    python tools/text_finder.py --list
     
     # Exporta resultados
-    python tools/text_finder.py --text "Continue" --export results.csv
+    python tools/text_finder.py --face --text "Continue" --export results.csv
     
     # Busca apenas nos dados binários (ignora CSV)
-    python tools/text_finder.py --text "Solid" --no-csv
+    python tools/text_finder.py --vox --text "Solid" --no-csv
+    
+    # Compatibilidade com versão anterior
+    python tools/text_finder.py --file caminho/arquivo.dat --text "texto"
     """
     
-    main()
