@@ -2,6 +2,7 @@
 """
 Script para analisar overflows em traduções.
 Calcula tamanhos em bytes, identifica overflows e destaca células problemáticas.
+Recalcula as colunas de tamanho para garantir sincronização.
 """
 
 import pandas as pd
@@ -27,6 +28,7 @@ def calcular_tamanho_bytes(texto):
 def analisar_overflows(arquivo_csv, arquivo_saida=None):
     """
     Analisa overflows em arquivo CSV de traduções.
+    SEMPRE recalcula as colunas de tamanho para garantir sincronização.
     
     Args:
         arquivo_csv (str): Caminho para o arquivo CSV
@@ -61,34 +63,32 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
         logger.warning(f" Colunas obrigatórias não encontradas: {colunas_faltando}")
         return None, None
     
-    # Calcula tamanho em bytes da tradução
-    logger.info(" Calculando tamanhos em bytes...")
-    df['tamanho_bytes_traducao'] = df['texto_traduzido'].apply(calcular_tamanho_bytes)
-    
-    # Verifica se existe coluna de referência (tamanho original ou disponível)
-    coluna_referencia = None
-    if 'tamanho_bytes' in df.columns:
+    # SEMPRE recalcula tamanho_bytes baseado na coluna 'texto'
+    if 'texto' in df.columns:
+        logger.info(" Recalculando tamanho_bytes baseado na coluna 'texto'...")
+        df['tamanho_bytes'] = df['texto'].apply(calcular_tamanho_bytes)
         coluna_referencia = 'tamanho_bytes'
-        logger.info(" Usando coluna 'tamanho_bytes' como referência")
-    elif 'bytes_disponiveis' in df.columns:
-        coluna_referencia = 'bytes_disponiveis'
-        logger.info(" Usando coluna 'bytes_disponiveis' como referência")
-    elif 'tamanho_original' in df.columns:
-        coluna_referencia = 'tamanho_original'
-        logger.info(" Usando coluna 'tamanho_original' como referência")
-    elif 'texto' in df.columns:
-        logger.info(" Calculando tamanho do texto original como referência...")
-        df['tamanho_bytes_original'] = df['texto'].apply(calcular_tamanho_bytes)
-        coluna_referencia = 'tamanho_bytes_original'
     else:
-        logger.info(" Nenhuma coluna de referência encontrada. Usando análise sem comparação.")
+        logger.warning(" Coluna 'texto' não encontrada - análise sem referência")
+        coluna_referencia = None
+    
+    # SEMPRE recalcula tamanho_bytes_traduzido baseado na coluna 'texto_traduzido'
+    logger.info(" Recalculando tamanho_bytes_traduzido baseado na coluna 'texto_traduzido'...")
+    df['tamanho_bytes_traduzido'] = df['texto_traduzido'].apply(calcular_tamanho_bytes)
+    
+    # Remove colunas antigas que podem estar inconsistentes
+    colunas_antigas = ['tamanho_bytes_traducao', 'tamanho_bytes_original', 'bytes_disponiveis']
+    for col in colunas_antigas:
+        if col in df.columns:
+            logger.info(f" Removendo coluna antiga inconsistente: '{col}'")
+            df = df.drop(columns=[col])
     
     # Identifica overflows
     if coluna_referencia:
-        logger.info(f" Identificando overflows comparando com '{coluna_referencia}'...")
+        logger.info(f" Identificando overflows comparando 'tamanho_bytes_traduzido' com '{coluna_referencia}'...")
         
         # Calcula diferenças
-        df['diferenca_bytes'] = df['tamanho_bytes_traducao'] - df[coluna_referencia]
+        df['diferenca_bytes'] = df['tamanho_bytes_traduzido'] - df[coluna_referencia]
         df['tem_overflow'] = df['diferenca_bytes'] > 0
         df['percentual_diferenca'] = ((df['diferenca_bytes'] / df[coluna_referencia]) * 100).round(1)
         
@@ -110,10 +110,18 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
             logger.info(f"   Overflows detectados: {overflows}")
             logger.info(f"   Taxa de overflow: {taxa_overflow:.1f}%")
             
+            # Estatísticas de tamanho
+            logger.info(f"\n ESTATÍSTICAS DE TAMANHO:")
+            logger.info(f"   Texto original - Média: {df_com_traducao['tamanho_bytes'].mean():.1f} bytes")
+            logger.info(f"   Texto original - Máximo: {df_com_traducao['tamanho_bytes'].max()} bytes")
+            logger.info(f"   Tradução - Média: {df_com_traducao['tamanho_bytes_traduzido'].mean():.1f} bytes")
+            logger.info(f"   Tradução - Máximo: {df_com_traducao['tamanho_bytes_traduzido'].max()} bytes")
+            
             if overflows > 0:
                 maior_overflow = df_com_traducao['diferenca_bytes'].max()
                 media_overflow = df_com_traducao[df_com_traducao['tem_overflow']]['diferenca_bytes'].mean()
                 
+                logger.info(f"\n DETALHES DOS OVERFLOWS:")
                 logger.info(f"   Maior overflow: +{maior_overflow} bytes")
                 logger.info(f"   Overflow médio: +{media_overflow:.1f} bytes")
                 
@@ -125,7 +133,7 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
                     texto_orig = str(row.get('texto', ''))[:40] + ('...' if len(str(row.get('texto', ''))) > 40 else '')
                     texto_trad = str(row['texto_traduzido'])[:40] + ('...' if len(str(row['texto_traduzido'])) > 40 else '')
                     
-                    logger.info(f"   {idx:4d}: +{row['diferenca_bytes']:2d}b ({row['percentual_diferenca']:+.1f}%)")
+                    logger.info(f"   {idx:4d}: +{row['diferenca_bytes']:2d}b ({row['percentual_diferenca']:+.1f}%) | Orig:{row['tamanho_bytes']}b → Trad:{row['tamanho_bytes_traduzido']}b")
                     logger.info(f"         Original: '{texto_orig}'")
                     logger.info(f"         Tradução: '{texto_trad}'")
                     logger.info("")
@@ -144,9 +152,9 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
         
         logger.info(f"\n ESTATÍSTICAS BÁSICAS:")
         logger.info(f"   Total de traduções: {total_traducoes}")
-        logger.info(f"   Tamanho médio: {df_com_traducao['tamanho_bytes_traducao'].mean():.1f} bytes")
-        logger.info(f"   Tamanho máximo: {df_com_traducao['tamanho_bytes_traducao'].max()} bytes")
-        logger.info(f"   Tamanho mínimo: {df_com_traducao['tamanho_bytes_traducao'].min()} bytes")
+        logger.info(f"   Tamanho médio: {df_com_traducao['tamanho_bytes_traduzido'].mean():.1f} bytes")
+        logger.info(f"   Tamanho máximo: {df_com_traducao['tamanho_bytes_traduzido'].max()} bytes")
+        logger.info(f"   Tamanho mínimo: {df_com_traducao['tamanho_bytes_traduzido'].min()} bytes")
         
         stats = {
             'total_traducoes': total_traducoes,
@@ -164,8 +172,11 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
     # Salva arquivo processado
     logger.info(f"\n Salvando arquivo processado...")
     try:
-        df.to_csv(arquivo_saida, index=False, encoding='utf-8')
+        df.to_csv(arquivo_saida, index=False, sep="\t", encoding='utf-8')
         logger.info(f" Arquivo salvo: {arquivo_saida}")
+        logger.info(f" Colunas de tamanho sincronizadas:")
+        logger.info(f"   - tamanho_bytes: calculado de 'texto'")
+        logger.info(f"   - tamanho_bytes_traduzido: calculado de 'texto_traduzido'")
     except Exception as e:
         logger.error(f" Erro ao salvar: {e}")
     
@@ -219,7 +230,7 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
         colunas = {col: idx + 1 for idx, col in enumerate(df.columns)}
         
         col_traducao = colunas.get('texto_traduzido')
-        col_tamanho_trad = colunas.get('tamanho_bytes_traducao')
+        col_tamanho_trad = colunas.get('tamanho_bytes_traduzido')
         col_tem_overflow = colunas.get('tem_overflow')
         col_diferenca = colunas.get('diferenca_bytes')
         
@@ -294,7 +305,12 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
                     ["Overflow médio (bytes)", f"{df[df['tem_overflow']]['diferenca_bytes'].mean():.1f}"],
                 ])
         
+        # Adiciona informações sobre sincronização
         stats_data.extend([
+            ["", ""],
+            ["SINCRONIZAÇÃO DE DADOS", ""],
+            ["tamanho_bytes", "Recalculado de 'texto'"],
+            ["tamanho_bytes_traduzido", "Recalculado de 'texto_traduzido'"],
             ["", ""],
             ["LEGENDA DE CORES", ""],
             ["Overflow crítico (>5 bytes)", "Vermelho"],
@@ -311,9 +327,9 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
             cell.font = header_font
         
         # Adiciona cores na legenda
-        ws_stats['B8'].fill = overflow_fill  # Vermelho
-        ws_stats['B9'].fill = warning_fill   # Amarelo
-        ws_stats['B10'].fill = ok_fill       # Verde
+        ws_stats['B12'].fill = overflow_fill  # Vermelho
+        ws_stats['B13'].fill = warning_fill   # Amarelo
+        ws_stats['B14'].fill = ok_fill       # Verde
         
         # Salva arquivo
         wb.save(arquivo_excel)
@@ -339,6 +355,10 @@ def main():
         logger.info(" EXEMPLOS:")
         logger.info(f"   python {sys.argv[0]} traducoes.csv")
         logger.info(f"   python {sys.argv[0]} traducoes.csv traducoes_analisadas.csv")
+        logger.info()
+        logger.info(" NOTA: O script SEMPRE recalcula as colunas:")
+        logger.info("   - tamanho_bytes (baseado em 'texto')")
+        logger.info("   - tamanho_bytes_traduzido (baseado em 'texto_traduzido')")
         logger.info()
         
         # Tenta usar arquivo padrão se existir
@@ -370,11 +390,7 @@ def main():
             nome_base = os.path.splitext(arquivo_csv)[0]
             arquivo_excel = f"{nome_base}_relatorio.xlsx"
             
-            coluna_ref = None
-            for col in ['tamanho_bytes', 'bytes_disponiveis', 'tamanho_original']:
-                if col in df.columns:
-                    coluna_ref = col
-                    break
+            coluna_ref = 'tamanho_bytes' if 'tamanho_bytes' in df.columns else None
             
             gerar_relatorio_excel(df, arquivo_excel, coluna_ref)
         
@@ -389,6 +405,6 @@ if __name__ == "__main__":
     
     """
     Exemplo: python .\tools\overflow_checker.py .\translated\strings_RADIO_traduzido.csv out.csv
-    """
+    """    
 
     main()
