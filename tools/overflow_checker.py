@@ -2,13 +2,22 @@
 """
 Script para analisar overflows em traduções.
 Calcula tamanhos em bytes, identifica overflows e destaca células problemáticas.
-Recalcula as colunas de tamanho para garantir sincronização.
+SEMPRE recalcula as colunas de tamanho para garantir sincronização.
+
+Uso:
+    python overflow_checker.py --radio
+    python overflow_checker.py --stage
+    python overflow_checker.py --vox
+    python overflow_checker.py --zmovie
+    python overflow_checker.py --all
+    python overflow_checker.py arquivo.csv
 """
 
 import pandas as pd
 import numpy as np
 import os
 import sys
+import argparse
 from datetime import datetime
 
 # Adiciona o diretório pai ao sys.path para permitir importações relativas
@@ -19,13 +28,22 @@ from util.logger_config import setup_logger
 # Inicializa o logger personalizado
 logger = setup_logger()
 
+# Mapeamento dos parâmetros para arquivos
+ARQUIVOS_TRADUZIDOS = {
+    'demo': './translated/strings_DEMO_traduzido.csv',
+    'radio': './translated/strings_RADIO_traduzido.csv',
+    'stage': './translated/strings_STAGE_traduzido.csv', 
+    'vox': './translated/strings_VOX_traduzido.csv',
+    'zmovie': './translated/strings_ZMOVIE_traduzido.csv'
+}
+
 def calcular_tamanho_bytes(texto):
     """Calcula o tamanho em bytes usando codificação latin-1"""
     if pd.isna(texto) or texto == '':
         return 0
     return len(str(texto).encode('latin-1', errors='replace'))
 
-def analisar_overflows(arquivo_csv, arquivo_saida=None):
+def analisar_overflows(arquivo_csv, arquivo_saida=None, nome_dataset=None):
     """
     Analisa overflows em arquivo CSV de traduções.
     SEMPRE recalcula as colunas de tamanho para garantir sincronização.
@@ -33,14 +51,16 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
     Args:
         arquivo_csv (str): Caminho para o arquivo CSV
         arquivo_saida (str): Caminho para arquivo de saída (opcional)
+        nome_dataset (str): Nome do dataset para logs (opcional)
     
     Returns:
         tuple: (DataFrame processado, estatísticas de overflow)
     """
     
-    logger.info(f" ANALISADOR DE OVERFLOWS")
+    dataset_info = f" ({nome_dataset.upper()})" if nome_dataset else ""
+    logger.info(f" ANALISADOR DE OVERFLOWS{dataset_info}")
     logger.info(f" Arquivo: {arquivo_csv}")
-    logger.info("=" * 50)
+    logger.info("=" * 60)
     
     # Verifica se arquivo existe
     if not os.path.exists(arquivo_csv):
@@ -139,6 +159,7 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
                     logger.info("")
         
         stats = {
+            'dataset': nome_dataset or 'desconhecido',
             'total_traducoes': total_traducoes,
             'overflows': overflows,
             'taxa_overflow': taxa_overflow if total_traducoes > 0 else 0,
@@ -157,6 +178,7 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
         logger.info(f"   Tamanho mínimo: {df_com_traducao['tamanho_bytes_traduzido'].min()} bytes")
         
         stats = {
+            'dataset': nome_dataset or 'desconhecido',
             'total_traducoes': total_traducoes,
             'overflows': 0,
             'taxa_overflow': 0,
@@ -172,7 +194,7 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
     # Salva arquivo processado
     logger.info(f"\n Salvando arquivo processado...")
     try:
-        df.to_csv(arquivo_saida, index=False, sep="\t", encoding='utf-8')
+        df.to_csv(arquivo_saida, index=False, encoding='utf-8')
         logger.info(f" Arquivo salvo: {arquivo_saida}")
         logger.info(f" Colunas de tamanho sincronizadas:")
         logger.info(f"   - tamanho_bytes: calculado de 'texto'")
@@ -182,7 +204,7 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None):
     
     return df, stats
 
-def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
+def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None, nome_dataset=None):
     """
     Gera relatório Excel com formatação e destaque de overflows.
     
@@ -190,6 +212,7 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
         df (DataFrame): Dados processados
         arquivo_excel (str): Caminho para arquivo Excel de saída
         coluna_referencia (str): Nome da coluna de referência para comparação
+        nome_dataset (str): Nome do dataset
     """
     
     try:
@@ -207,7 +230,7 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
         # Cria workbook
         wb = Workbook()
         ws = wb.active
-        ws.title = "Análise de Overflows"
+        ws.title = f"Overflow {nome_dataset.upper()}" if nome_dataset else "Análise de Overflows"
         
         # Define estilos
         header_fill = PatternFill(start_color="366092", end_color="366092", fill_type="solid")
@@ -287,6 +310,7 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
         # Cabeçalho das estatísticas
         stats_data = [
             ["Métrica", "Valor"],
+            ["Dataset", nome_dataset.upper() if nome_dataset else "N/A"],
             ["Total de traduções", len(df[df['texto_traduzido'].notna() & (df['texto_traduzido'] != '')])],
         ]
         
@@ -327,9 +351,9 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
             cell.font = header_font
         
         # Adiciona cores na legenda
-        ws_stats['B12'].fill = overflow_fill  # Vermelho
-        ws_stats['B13'].fill = warning_fill   # Amarelo
-        ws_stats['B14'].fill = ok_fill       # Verde
+        ws_stats['B13'].fill = overflow_fill  # Vermelho
+        ws_stats['B14'].fill = warning_fill   # Amarelo
+        ws_stats['B15'].fill = ok_fill       # Verde
         
         # Salva arquivo
         wb.save(arquivo_excel)
@@ -341,70 +365,221 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None):
         logger.error(f" Erro ao gerar Excel: {e}")
         return False
 
-def main():
-    """Função principal"""
+def processar_arquivo(dataset, gerar_excel=False):
+    """
+    Processa um arquivo específico do dataset.
     
-    # Configuração padrão
-    arquivo_padrao = "./translated/strings_RADIO_traduzido.csv"
+    Args:
+        dataset (str): Nome do dataset (radio, stage, vox, etc.)
+        gerar_excel (bool): Se deve gerar relatório Excel
     
-    # Verifica argumentos da linha de comando
-    if len(sys.argv) < 2:
-        logger.info(" USO:")
-        logger.info(f"   python {sys.argv[0]} <arquivo.csv> [arquivo_saida.csv]")
-        logger.info()
-        logger.info(" EXEMPLOS:")
-        logger.info(f"   python {sys.argv[0]} traducoes.csv")
-        logger.info(f"   python {sys.argv[0]} traducoes.csv traducoes_analisadas.csv")
-        logger.info()
-        logger.info(" NOTA: O script SEMPRE recalcula as colunas:")
-        logger.info("   - tamanho_bytes (baseado em 'texto')")
-        logger.info("   - tamanho_bytes_traduzido (baseado em 'texto_traduzido')")
-        logger.info()
-        
-        # Tenta usar arquivo padrão se existir
-        if os.path.exists(arquivo_padrao):
-            logger.info(f" Arquivo padrão encontrado: {arquivo_padrao}")
-            resposta = input("Usar arquivo padrão? (s/N): ").strip().lower()
-            if resposta in ['s', 'sim', 'y', 'yes']:
-                arquivo_csv = arquivo_padrao
-            else:
-                return
-        else:
-            logger.error(f" Arquivo padrão não encontrado: {arquivo_padrao}")
-            return
-    else:
-        arquivo_csv = sys.argv[1]
+    Returns:
+        dict: Estatísticas do processamento
+    """
     
-    # Arquivo de saída
-    arquivo_saida = sys.argv[2] if len(sys.argv) > 2 else None
+    arquivo_csv = ARQUIVOS_TRADUZIDOS.get(dataset.lower())
+    
+    if not arquivo_csv:
+        logger.error(f" Dataset '{dataset}' não reconhecido!")
+        logger.info(f" Datasets disponíveis: {', '.join(ARQUIVOS_TRADUZIDOS.keys())}")
+        return None
+    
+    if not os.path.exists(arquivo_csv):
+        logger.error(f" Arquivo não encontrado: {arquivo_csv}")
+        return None
     
     # Executa análise
-    df, stats = analisar_overflows(arquivo_csv, arquivo_saida)
+    df, stats = analisar_overflows(arquivo_csv, nome_dataset=dataset)
     
     if df is not None and stats is not None:
-        # Pergunta se quer gerar Excel
-        print("\n Deseja gerar relatório Excel com formatação? (s/N): ", end="")
-        resposta = input().strip().lower()
-        
-        if resposta in ['s', 'sim', 'y', 'yes']:
+        # Gera Excel se solicitado
+        if gerar_excel:
             nome_base = os.path.splitext(arquivo_csv)[0]
             arquivo_excel = f"{nome_base}_relatorio.xlsx"
             
             coluna_ref = 'tamanho_bytes' if 'tamanho_bytes' in df.columns else None
+            gerar_relatorio_excel(df, arquivo_excel, coluna_ref, dataset)
+        
+        return stats
+    
+    return None
+
+def processar_todos_arquivos(gerar_excel=False):
+    """
+    Processa todos os arquivos de tradução disponíveis.
+    
+    Args:
+        gerar_excel (bool): Se deve gerar relatórios Excel
+    
+    Returns:
+        dict: Resumo de todos os processamentos
+    """
+    
+    logger.info(" PROCESSANDO TODOS OS DATASETS")
+    logger.info("=" * 60)
+    
+    resultados = {}
+    total_traducoes = 0
+    total_overflows = 0
+    
+    for dataset in ARQUIVOS_TRADUZIDOS.keys():
+        arquivo = ARQUIVOS_TRADUZIDOS[dataset]
+        
+        if os.path.exists(arquivo):
+            logger.info(f"\n Processando {dataset.upper()}...")
+            stats = processar_arquivo(dataset, gerar_excel)
             
-            gerar_relatorio_excel(df, arquivo_excel, coluna_ref)
-        
-        logger.info(f"\n Análise concluída!")
-        
-        if stats['overflows'] > 0:
-            logger.info(f" {stats['overflows']} overflows detectados - verifique as células destacadas")
+            if stats:
+                resultados[dataset] = stats
+                total_traducoes += stats['total_traducoes']
+                total_overflows += stats['overflows']
         else:
-            logger.info(f" Nenhum overflow detectado!")
+            logger.warning(f" Arquivo {dataset.upper()} não encontrado: {arquivo}")
+    
+    # Resumo geral
+    logger.info(f"\n" + "=" * 60)
+    logger.info(f" RESUMO GERAL")
+    logger.info("=" * 60)
+    
+    if resultados:
+        taxa_geral = (total_overflows / total_traducoes * 100) if total_traducoes > 0 else 0
+        
+        logger.info(f"   Total de datasets processados: {len(resultados)}")
+        logger.info(f"   Total de traduções: {total_traducoes}")
+        logger.info(f"   Total de overflows: {total_overflows}")
+        logger.info(f"   Taxa geral de overflow: {taxa_geral:.1f}%")
+        logger.info("")
+        
+        # Tabela por dataset
+        logger.info("   DETALHES POR DATASET:")
+        logger.info("   " + "-" * 50)
+        for dataset, stats in resultados.items():
+            logger.info(f"   {dataset.upper():8s}: {stats['overflows']:3d}/{stats['total_traducoes']:5d} overflows ({stats['taxa_overflow']:5.1f}%)")
+        
+        return {
+            'datasets_processados': len(resultados),
+            'total_traducoes': total_traducoes,
+            'total_overflows': total_overflows,
+            'taxa_geral': taxa_geral,
+            'detalhes': resultados
+        }
+    else:
+        logger.error("   Nenhum arquivo foi processado!")
+        return None
+
+def main():
+    """Função principal com parsing de argumentos"""
+    
+    parser = argparse.ArgumentParser(
+        description='Analisador de Overflows em Traduções',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=f"""
+Exemplos de uso:
+  {sys.argv[0]} --radio                    # Analisa strings_RADIO_traduzido.csv
+  {sys.argv[0]} --stage --excel            # Analisa STAGE e gera Excel
+  {sys.argv[0]} --all                      # Analisa todos os datasets
+  {sys.argv[0]} --all --excel              # Analisa todos e gera Excel
+  {sys.argv[0]} --file arquivo.csv         # Analisa arquivo específico
+
+Datasets disponíveis: {', '.join(ARQUIVOS_TRADUZIDOS.keys())}
+        """
+    )
+    
+    # Argumentos para datasets específicos
+    parser.add_argument('--demo', action='store_true', help='Analisa strings_DEMO_traduzido.csv')
+    parser.add_argument('--radio', action='store_true', help='Analisa strings_RADIO_traduzido.csv')
+    parser.add_argument('--stage', action='store_true', help='Analisa strings_STAGE_traduzido.csv')
+    parser.add_argument('--vox', action='store_true', help='Analisa strings_VOX_traduzido.csv')
+    parser.add_argument('--zmovie', action='store_true', help='Analisa strings_ZMOVIE_traduzido.csv')
+    parser.add_argument('--all', action='store_true', help='Analisa todos os datasets disponíveis')
+    
+    # Arquivo específico (agora como argumento nomeado)
+    parser.add_argument('--file', '-f', help='Arquivo CSV específico para analisar')
+    
+    # Opções adicionais
+    parser.add_argument('--excel', action='store_true', help='Gera relatório Excel com formatação')
+    parser.add_argument('-o', '--output', help='Arquivo de saída (apenas para arquivo específico)')
+    
+    args = parser.parse_args()
+    
+    # Identifica qual dataset foi selecionado
+    datasets_selecionados = []
+    if args.demo: datasets_selecionados.append('demo')
+    if args.radio: datasets_selecionados.append('radio')
+    if args.stage: datasets_selecionados.append('stage')
+    if args.vox: datasets_selecionados.append('vox')
+    if args.zmovie: datasets_selecionados.append('zmovie')
+    
+    # Verifica se múltiplos datasets foram selecionados
+    if len(datasets_selecionados) > 1:
+        logger.error(" Erro: Apenas um dataset pode ser selecionado por vez")
+        logger.info(f" Datasets selecionados: {', '.join(datasets_selecionados)}")
+        return
+    
+    # Se nenhum argumento foi fornecido, mostra ajuda
+    if not any([args.demo, args.radio, args.stage, args.vox, args.zmovie, args.all, args.file]):
+        parser.print_help()
+        return
+    
+    # Processa baseado nos argumentos
+    if args.all:
+        # Processa todos os arquivos
+        logger.info(" Processando todos os datasets...")
+        processar_todos_arquivos(args.excel)
+        
+    elif datasets_selecionados:
+        # Dataset específico foi selecionado
+        dataset = datasets_selecionados[0]
+        logger.info(f" Processando dataset: {dataset.upper()}")
+        
+        stats = processar_arquivo(dataset, args.excel)
+        
+        if stats:
+            logger.info(f"\n Análise de {dataset.upper()} concluída!")
+            
+            if stats['overflows'] > 0:
+                logger.info(f" {stats['overflows']} overflows detectados - verifique as células destacadas")
+            else:
+                logger.info(f" Nenhum overflow detectado!")
+        
+    elif args.file:
+        # Arquivo específico fornecido
+        if not os.path.exists(args.file):
+            logger.error(f" Arquivo não encontrado: {args.file}")
+            return
+        
+        logger.info(f" Processando arquivo específico: {args.file}")
+        df, stats = analisar_overflows(args.file, args.output)
+        
+        if df is not None and stats is not None:
+            if args.excel:
+                nome_base = os.path.splitext(args.file)[0]
+                arquivo_excel = f"{nome_base}_relatorio.xlsx"
+                
+                coluna_ref = 'tamanho_bytes' if 'tamanho_bytes' in df.columns else None
+                gerar_relatorio_excel(df, arquivo_excel, coluna_ref)
+            
+            logger.info(f"\n Análise concluída!")
+            
+            if stats['overflows'] > 0:
+                logger.info(f" {stats['overflows']} overflows detectados")
+            else:
+                logger.info(f" Nenhum overflow detectado!")
 
 if __name__ == "__main__":
-    
     """
-    Exemplo: python .\tools\overflow_checker.py .\translated\strings_RADIO_traduzido.csv out.csv
-    """    
+    # Datasets específicos
+    python .\tools\overflow_checker.py --vox
+    python .\tools\overflow_checker.py --radio
+    python .\tools\overflow_checker.py --stage --excel
 
+    # Todos os datasets
+    python .\tools\overflow_checker.py --all
+    python .\tools\overflow_checker.py --all --excel
+
+    # Arquivo específico
+    python .\tools\overflow_checker.py --file meuarquivo.csv
+    python .\tools\overflow_checker.py -f meuarquivo.csv --excel
+    """
+    
     main()
