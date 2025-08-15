@@ -10,7 +10,7 @@ import csv
 import argparse
 import json
 from pathlib import Path
-from typing import List, Tuple, Optional, Set
+from typing import List, Tuple, Optional, Set, Dict
 from dataclasses import dataclass
 
 # Caminho absoluto da raiz do projeto
@@ -22,6 +22,33 @@ from util.logger_config import setup_logger
 
 # Inicializa o logger
 logger = setup_logger()
+
+# Mapeamento de arquivos disponíveis por CD
+FILE_MAPPING = {
+    "CD1": {
+        # Arquivos do CD1
+        "radio": "RADIO.DAT",
+        "brf": "BRF.DAT", 
+        "stage": "STAGE.DIR",
+        "face": "FACE.DAT",
+        "demo": "DEMO.DAT",
+        "vox": "VOX.DAT",
+        "slus": "SLUS_005.94",
+        "zmovie": "ZMOVIE.STR"
+    },
+    "CD2": {
+        # Arquivos do CD2
+        "radio": "RADIO.DAT",
+        "brf": "BRF.DAT",
+        "stage": "STAGE.DIR",
+        "face": "FACE.DAT",
+        "demo": "DEMO.DAT",
+        "vox": "VOX.DAT"
+    }
+}
+
+# Arquivos padrão para processamento (mais comuns para texto)
+DEFAULT_FILES = ["radio", "brf", "stage", "face", "demo", "vox"]
 
 
 @dataclass
@@ -285,20 +312,68 @@ class TextExtractor:
 class FileManager:
     """Gerencia a lista de arquivos para processamento."""
     
-    def __init__(self):
+    def __init__(self, cd: str = "CD1"):
+        self.cd = cd
         self.config_file = BASE_DIR / "tools" / "scan_config.json"
+        self.base_path = BASE_DIR / "assets" / "fontes" / cd
+    
+    def get_available_files(self) -> Dict[str, str]:
+        """Retorna os arquivos disponíveis para o CD atual."""
+        return FILE_MAPPING.get(self.cd, {})
+    
+    def get_file_path(self, file_key: str) -> Optional[Path]:
+        """Converte uma chave de arquivo para o caminho completo."""
+        available_files = self.get_available_files()
+        if file_key in available_files:
+            file_path = self.base_path / available_files[file_key]
+            return file_path if file_path.exists() else None
+        return None
+    
+    def list_available_files(self) -> List[str]:
+        """Lista todos os arquivos disponíveis no diretório do CD."""
+        if not self.base_path.exists():
+            return []
+        
+        available_files = []
+        file_mapping = self.get_available_files()
+        
+        for key, filename in file_mapping.items():
+            file_path = self.base_path / filename
+            status = "✓" if file_path.exists() else "✗"
+            size = ""
+            if file_path.exists():
+                size_bytes = file_path.stat().st_size
+                if size_bytes > 1024*1024:
+                    size = f"({size_bytes // (1024*1024)} MB)"
+                else:
+                    size = f"({size_bytes // 1024} KB)"
+            
+            available_files.append(f"{status} --{key:<8} {filename:<15} {size}")
+        
+        return available_files
     
     def get_default_files(self) -> List[Path]:
         """Retorna a lista padrão de arquivos para processamento."""
-        base_path = BASE_DIR / "assets" / "fontes" / "CD1"
-        return [
-            base_path / "RADIO.DAT",
-            base_path / "BRF.DAT",
-            base_path / "STAGE.DIR",
-            base_path / "FACE.DAT",
-            base_path / "DEMO.DAT",
-            base_path / "VOX.DAT",
-        ]
+        files = []
+        for file_key in DEFAULT_FILES:
+            file_path = self.get_file_path(file_key)
+            if file_path:
+                files.append(file_path)
+        return files
+    
+    def resolve_files(self, file_keys: List[str]) -> List[Path]:
+        """Resolve uma lista de chaves de arquivos para caminhos completos."""
+        resolved_files = []
+        
+        for key in file_keys:
+            file_path = self.get_file_path(key)
+            if file_path:
+                resolved_files.append(file_path)
+                logger.info(f"Arquivo selecionado: {key} -> {file_path.name}")
+            else:
+                logger.warning(f"Arquivo não encontrado: {key} ({self.cd})")
+        
+        return resolved_files
     
     def load_files_from_config(self) -> List[Path]:
         """Carrega lista de arquivos do arquivo de configuração."""
@@ -317,6 +392,7 @@ class FileManager:
     def save_config(self, files: List[Path], config: TextExtractorConfig):
         """Salva a configuração atual."""
         config_data = {
+            'cd': self.cd,
             'files': [str(f) for f in files],
             'extractor_config': {
                 'min_length': config.min_length,
@@ -337,75 +413,131 @@ class FileManager:
 def create_parser() -> argparse.ArgumentParser:
     """Cria o parser de argumentos da linha de comando."""
     parser = argparse.ArgumentParser(
-        description="Extrai textos de arquivos binários do Metal Gear Solid PSX"
+        description="Extrai textos de arquivos binários do Metal Gear Solid PSX",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Exemplos de uso:
+  %(prog)s --vox                    # Processa apenas VOX.DAT do CD1
+  %(prog)s --radio --face           # Processa RADIO.DAT e FACE.DAT do CD1
+  %(prog)s --cd CD2 --vox           # Processa VOX.DAT do CD2
+  %(prog)s --list                   # Lista arquivos disponíveis
+  %(prog)s --all                    # Processa todos os arquivos padrão
+  %(prog)s --cd CD1 --all           # Processa todos os arquivos do CD1
+        """
     )
     
+    # Grupo para seleção de CD
+    cd_group = parser.add_argument_group('Seleção de CD')
+    cd_group.add_argument(
+        "--cd", 
+        choices=list(FILE_MAPPING.keys()),
+        default="CD1",
+        help="CD para processar (padrão: CD1)"
+    )
+    
+    # Grupo para seleção de arquivos
+    file_group = parser.add_argument_group('Seleção de arquivos')
+    file_group.add_argument(
+        "--list", 
+        action="store_true",
+        help="Lista arquivos disponíveis e sai"
+    )
+    
+    file_group.add_argument(
+        "--all", 
+        action="store_true",
+        help="Processa todos os arquivos padrão"
+    )
+    
+    # Coleta todos os tipos de arquivo únicos de todos os CDs
+    all_file_types = set()
+    file_descriptions = {}
+    
+    for cd, files in FILE_MAPPING.items():
+        for key, filename in files.items():
+            all_file_types.add(key)
+            if key not in file_descriptions:
+                file_descriptions[key] = filename
+    
+    # Adiciona argumentos para cada tipo de arquivo único
+    for file_key in sorted(all_file_types):
+        file_group.add_argument(
+            f"--{file_key}", 
+            action="store_true",
+            help=f"Processa {file_descriptions[file_key]}"
+        )
+    
+    # Argumentos posicionais para compatibilidade
     parser.add_argument(
         "files", 
         nargs="*", 
-        help="Arquivos específicos para processar (opcional)"
+        help="Caminhos de arquivos específicos (compatibilidade)"
     )
     
-    parser.add_argument(
+    # Configurações do extrator
+    config_group = parser.add_argument_group('Configurações do extrator')
+    config_group.add_argument(
         "--min-length", 
         type=int, 
         default=4,
         help="Comprimento mínimo do texto (padrão: 4)"
     )
     
-    parser.add_argument(
+    config_group.add_argument(
         "--max-length", 
         type=int, 
         default=1000,
         help="Comprimento máximo do texto (padrão: 1000)"
     )
     
-    parser.add_argument(
+    config_group.add_argument(
         "--encodings", 
         nargs="+",
         default=["shift_jis", "utf-8", "latin-1"],
         help="Encodings para tentar (padrão: shift_jis utf-8 latin-1)"
     )
     
-    parser.add_argument(
+    config_group.add_argument(
         "--output-dir", 
         default="extracted",
         help="Diretório de saída (padrão: extracted)"
     )
     
-    parser.add_argument(
+    config_group.add_argument(
         "--control-codes", 
         nargs="+",
         default=["#N", "#P", "#W", "#C"],
         help="Códigos de controle a tratar como delimitadores (padrão: #N #P #W #C)"
     )
     
-    parser.add_argument(
+    config_group.add_argument(
         "--skip-validation", 
         action="store_true",
         help="Pula validação de textos (captura tudo que conseguir decodificar)"
     )
     
-    parser.add_argument(
+    # Outras opções
+    other_group = parser.add_argument_group('Outras opções')
+    other_group.add_argument(
         "--save-config", 
         action="store_true",
         help="Salva a configuração atual"
     )
     
-    parser.add_argument(
+    other_group.add_argument(
         "--verbose", "-v", 
         action="store_true",
         help="Saída detalhada"
     )
     
-    parser.add_argument(
+    other_group.add_argument(
         "--merge-translations", 
         action="store_true",
         default=True,
         help="Mescla com traduções existentes (padrão: habilitado)"
     )
     
-    parser.add_argument(
+    other_group.add_argument(
         "--no-merge-translations", 
         action="store_true",
         help="Não mescla com traduções existentes"
@@ -423,6 +555,66 @@ def main():
     if args.verbose:
         logger.setLevel(10)  # DEBUG
     
+    # Gerencia arquivos
+    file_manager = FileManager(args.cd)
+    
+    # Lista arquivos e sai se solicitado
+    if args.list:
+        print(f"\n Arquivos disponíveis em {args.cd}:")
+        print("-" * 50)
+        available = file_manager.list_available_files()
+        if available:
+            for line in available:
+                print(f"  {line}")
+        else:
+            print(f"   Diretório {args.cd} não encontrado")
+        print(f"\nUso: {parser.prog} --cd {args.cd} --<arquivo>")
+        print(f"Exemplo: {parser.prog} --cd {args.cd} --vox --radio")
+        return
+    
+    # Determina quais arquivos processar
+    files_to_process = []
+    
+    if args.files:
+        # Usa arquivos especificados na linha de comando (compatibilidade)
+        files_to_process = [Path(f) for f in args.files]
+        logger.info("Usando arquivos especificados na linha de comando")
+    
+    elif args.all:
+        # Processa todos os arquivos padrão
+        files_to_process = file_manager.get_default_files()
+        logger.info(f"Processando todos os arquivos padrão do {args.cd}")
+    
+    else:
+        # Verifica quais flags de arquivo foram especificadas
+        selected_files = []
+        available_files = file_manager.get_available_files()
+        
+        for key in available_files.keys():
+            if getattr(args, key, False):
+                selected_files.append(key)
+        
+        if selected_files:
+            files_to_process = file_manager.resolve_files(selected_files)
+            logger.info(f"Processando arquivos selecionados: {', '.join(selected_files)}")
+        else:
+            # Nenhum arquivo especificado, usa padrão
+            files_to_process = file_manager.get_default_files()
+            logger.info(f"Nenhum arquivo especificado, usando arquivos padrão do {args.cd}")
+    
+    # Valida arquivos
+    valid_files = []
+    for file_path in files_to_process:
+        if file_path and file_path.exists():
+            valid_files.append(file_path)
+        else:
+            logger.warning(f"Arquivo não encontrado: {file_path}")
+    
+    if not valid_files:
+        logger.error("Nenhum arquivo válido encontrado para processar")
+        logger.info(f"Use --list para ver arquivos disponíveis em {args.cd}")
+        sys.exit(1)
+    
     # Cria configuração do extrator
     config = TextExtractorConfig(
         min_length=args.min_length,
@@ -433,28 +625,6 @@ def main():
         control_codes=args.control_codes
     )
     
-    # Gerencia arquivos
-    file_manager = FileManager()
-    
-    if args.files:
-        # Usa arquivos especificados na linha de comando
-        files_to_process = [Path(f) for f in args.files]
-    else:
-        # Usa arquivos da configuração ou padrão
-        files_to_process = file_manager.load_files_from_config()
-    
-    # Valida arquivos
-    valid_files = []
-    for file_path in files_to_process:
-        if file_path.exists():
-            valid_files.append(file_path)
-        else:
-            logger.warning(f"Arquivo não encontrado: {file_path}")
-    
-    if not valid_files:
-        logger.error("Nenhum arquivo válido encontrado para processar")
-        sys.exit(1)
-    
     # Salva configuração se solicitado
     if args.save_config:
         file_manager.save_config(valid_files, config)
@@ -464,21 +634,65 @@ def main():
     extractor = TextExtractor(config, merge_translations)
     total_texts = 0
     
+    logger.info(f" Iniciando processamento de {len(valid_files)} arquivo(s) do {args.cd}")
+    
     for file_path in valid_files:
         try:
             results = extractor.extract_texts(file_path)
             if results:
                 extractor.save_results(file_path, results)
                 total_texts += len(results)
+                logger.info(f" {file_path.name}: {len(results)} textos extraídos")
             else:
-                logger.warning(f"Nenhum texto encontrado em: {file_path.name}")
+                logger.warning(f"  {file_path.name}: Nenhum texto encontrado")
                 
         except Exception as e:
-            logger.error(f"Erro ao processar {file_path}: {e}")
+            logger.error(f" Erro ao processar {file_path.name}: {e}")
             continue
     
-    logger.info(f"Processamento concluído. Total de textos extraídos: {total_texts}")
+    logger.info(f" Processamento concluído! Total: {total_texts} textos extraídos")
 
 
 if __name__ == "__main__":
     main()
+
+    """
+    Exemplos de uso:
+
+    
+    python scan_texts.py --vox           # Apenas VOX.DAT
+    python scan_texts.py --radio --face  # RADIO.DAT e FACE.DAT
+    python scan_texts.py --brf --stage   # BRF.DAT e STAGE.DIR
+
+    python scan_texts.py --cd CD1 --vox  # VOX.DAT do CD1
+    python scan_texts.py --cd CD2 --vox  # VOX.DAT do CD2
+
+    # listagem de arquivos disponiveis
+    python scan_texts.py --list
+    python scan_texts.py --cd CD1 --list
+
+    # novos parametros
+    python scan_texts.py --all           # Todos os arquivos padrão
+    python scan_texts.py --cd CD2 --all  # Todos do CD2 
+
+    # exemplos gerais
+
+    # Analisar apenas o VOX.DAT
+    python scan_texts.py --vox
+
+    # Analisar RADIO e FACE do CD1
+    python scan_texts.py --radio --face
+
+    # Ver arquivos disponíveis
+    python scan_texts.py --list
+
+    # Processar tudo do CD1
+    python scan_texts.py --all
+
+    # Especificar CD2 (quando tiver)
+    python scan_texts.py --cd CD2 --vox
+
+    # Manter compatibilidade com versão anterior
+    python scan_texts.py caminho/para/arquivo.dat       
+
+    """
