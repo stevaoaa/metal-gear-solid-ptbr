@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Dict, Optional, Tuple, List
 import struct
 from datetime import datetime
+import argparse
 
 # Adiciona o diretório raiz ao sys.path para permitir importações internas
 BASE_DIR = Path(__file__).parent.parent.absolute()
@@ -21,13 +22,135 @@ from util.logger_config import setup_logger
 # Inicializa o logger para registrar as operações do script
 logger = setup_logger()
 
-# Caminhos padrão para os arquivos
-DEFAULT_PATHS = {
-    'original': BASE_DIR / "assets" / "fontes" / "CD1" / "STAGE.DIR",
-    'csv': BASE_DIR / "translated" / "strings_STAGE_traduzido.csv",
-    'output': BASE_DIR / "patches" / "STAGE_PATCHED.DIR",
-    'analysis': BASE_DIR / "output" / "insertion_problems.txt"
+# Mapeamento de arquivos disponíveis por CD (mesmo dos outros scripts)
+FILE_MAPPING = {
+    "CD1": {
+        # arquivos do CD1
+        "radio": "RADIO.DAT",
+        "stage": "STAGE.DIR",
+        "demo": "DEMO.DAT",
+        "vox": "VOX.DAT",
+        "zmovie": "ZMOVIE.STR"
+    },
+    "CD2": {
+        # arquivos do CD2
+        "radio": "RADIO.DAT",
+        "stage": "STAGE.DIR",
+        "demo": "DEMO.DAT",
+        "vox": "VOX.DAT",
+        "zmovie": "ZMOVIE.STR"
+    }
 }
+
+class FileResolver:
+    """Resolve arquivos baseado em parâmetros intuitivos."""
+    
+    def __init__(self, cd: str = "CD1"):
+        self.cd = cd
+        self.assets_path = BASE_DIR / "assets" / "fontes" / cd
+        self.patches_path = BASE_DIR / "patches"
+        self.extracted_path = BASE_DIR / "extracted"
+        self.translated_path = BASE_DIR / "translated"
+        self.output_path = BASE_DIR / "output"
+    
+    def get_available_files(self) -> Dict[str, str]:
+        """Retorna os arquivos disponíveis para o CD atual."""
+        return FILE_MAPPING.get(self.cd, {})
+    
+    def get_original_path(self, file_key: str) -> Optional[Path]:
+        """Retorna o caminho do arquivo original."""
+        available_files = self.get_available_files()
+        if file_key in available_files:
+            file_path = self.assets_path / available_files[file_key]
+            return file_path if file_path.exists() else None
+        return None
+    
+    def get_output_path(self, file_key: str) -> Path:
+        """Retorna o caminho do arquivo de saída (patcheado)."""
+        available_files = self.get_available_files()
+        if file_key in available_files:
+            filename = available_files[file_key]
+            base_name = Path(filename).stem
+            extension = Path(filename).suffix
+            
+            # Cria nome do arquivo patcheado
+            output_name = f"{base_name}_PATCHED{extension}"
+            return self.patches_path / output_name
+        return None
+    
+    def get_csv_path(self, file_key: str, prefer_translated: bool = True) -> Optional[Path]:
+        """Encontra o CSV correspondente ao arquivo."""
+        available_files = self.get_available_files()
+        if file_key not in available_files:
+            return None
+        
+        filename = available_files[file_key]
+        base_name = Path(filename).stem
+        
+        # Tenta encontrar arquivo traduzido primeiro
+        if prefer_translated:
+            translated_csv = self.translated_path / f"strings_{base_name}_traduzido.csv"
+            if translated_csv.exists():
+                return translated_csv
+        
+        # Fallback para arquivo extraído
+        extracted_csv = self.extracted_path / f"strings_{base_name}.csv"
+        if extracted_csv.exists():
+            return extracted_csv
+        
+        return None
+    
+    def get_analysis_path(self, file_key: str) -> Path:
+        """Retorna o caminho do arquivo de análise."""
+        available_files = self.get_available_files()
+        if file_key in available_files:
+            filename = available_files[file_key]
+            base_name = Path(filename).stem
+            
+            analysis_name = f"{base_name}_insertion_problems.txt"
+            return self.output_path / analysis_name
+        return self.output_path / "insertion_problems.txt"
+    
+    def list_available_files(self) -> List[str]:
+        """Lista todos os arquivos disponíveis no diretório do CD."""
+        if not self.assets_path.exists():
+            return []
+        
+        available_files = []
+        file_mapping = self.get_available_files()
+        
+        for key, filename in file_mapping.items():
+            original_path = self.get_original_path(key)
+            csv_path = self.get_csv_path(key)
+            output_path = self.get_output_path(key)
+            
+            original_status = "✓" if original_path else "✗"
+            csv_status = "✓" if csv_path else "✗"
+            
+            size = ""
+            if original_path:
+                size_bytes = original_path.stat().st_size
+                if size_bytes > 1024*1024:
+                    size = f"({size_bytes // (1024*1024)} MB)"
+                else:
+                    size = f"({size_bytes // 1024} KB)"
+            
+            csv_info = ""
+            if csv_path:
+                csv_info = f"CSV: {csv_path.name}"
+            
+            output_info = f"Output: {output_path.name}" if output_path else ""
+            
+            status_info = f"Orig:{original_status} CSV:{csv_status}"
+            available_files.append(f"--{key:<8} {filename:<15} {size:<8} {status_info}")
+            
+            if csv_info:
+                available_files.append(f"{'':>10} {csv_info}")
+            if output_info:
+                available_files.append(f"{'':>10} {output_info}")
+            available_files.append("")  # Linha em branco para separar
+        
+        return available_files
 
 class MGSRebuilder:
     """
@@ -618,7 +741,7 @@ class MGSRebuilder:
             self.setup_analysis_file(analysis_path)
 
             # Carrega o arquivo binário original
-            logger.info(f"Carregando arquivo binário: {binary_path}")
+            logger.info(f"Carregando arquivo binário: {binary_path.name}")
             with open(binary_path, "rb") as f:
                 original_data = f.read()
             
@@ -642,13 +765,21 @@ class MGSRebuilder:
             binary_data = bytearray(original_data)
 
             # Carrega as traduções
-            logger.info(f"Carregando traduções: {csv_path}")
-            df = pd.read_csv(csv_path, delimiter="\t")
+            logger.info(f"Carregando traduções: {csv_path.name}")
             
-            logger.info(f"Processando {len(df)} entradas em MODO CRÍTICO com DEBUG DETALHADO...")
+            # Tenta diferentes delimitadores
+            for delimiter in ['\t', ',', ';']:
+                try:
+                    df = pd.read_csv(csv_path, delimiter=delimiter)
+                    if len(df.columns) > 1:  # Se tem mais de uma coluna, provavelmente é o delimiter correto
+                        break
+                except:
+                    continue
+            
+            logger.info(f"Processando {len(df)} entradas em MODO CRÍTICO com PRESERVAÇÃO 00 FF...")
             
             # ADICIONA CONTADOR DE ENTRADA ESPECÍFICA PARA DEBUG
-            target_offset = 0x114a01  # Offset problemático que você mencionou
+            target_offset = 0x114a01  # Offset problemático para analise
             
             # Ordena por offset para processar sequencialmente
             df = df.sort_values('offset')
@@ -662,8 +793,6 @@ class MGSRebuilder:
                     offset = int(row["offset"], 16)
                     original_text = str(row["texto"]).strip()
                     
-                    # Substitua a seção de debug no seu código por esta versão sem emojis:
-
                     # DEBUG ESPECÍFICO para o offset problemático
                     is_target = (offset == target_offset)
                     if is_target:
@@ -900,8 +1029,6 @@ class MGSRebuilder:
                     
                     continue
             
-            # Resto do método permanece igual...
-            
             # Verificação final: tamanho do arquivo
             if len(binary_data) != len(original_data):
                 logger.error(f"ERRO CRÍTICO: Tamanho do arquivo mudou! {len(original_data)} -> {len(binary_data)}")
@@ -970,38 +1097,191 @@ class MGSRebuilder:
             logger.info(f"  Use este arquivo para investigar problemas de inserção em detalhes")
 
 
+def create_parser() -> argparse.ArgumentParser:
+    """Cria o parser de argumentos da linha de comando."""
+    parser = argparse.ArgumentParser(
+        description="Reconstrói arquivos binários MGS com preservação garantida do padrão crítico 00 FF",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Exemplos de uso:
+  %(prog)s --stage                              # Reconstrói STAGE.DIR do CD1
+  %(prog)s --demo --debug                       # Reconstrói DEMO.DAT com debug
+  %(prog)s --cd CD2 --vox                       # Reconstrói VOX.DAT do CD2
+  %(prog)s --list                               # Lista arquivos disponíveis
+  %(prog)s --brf --no-strict                    # Reconstrói BRF.DAT sem modo estrito
+        """
+    )
+    
+    # Grupo para seleção de CD
+    cd_group = parser.add_argument_group('Seleção de CD')
+    cd_group.add_argument(
+        "--cd", 
+        choices=list(FILE_MAPPING.keys()),
+        default="CD1",
+        help="CD para processar (padrão: CD1)"
+    )
+    
+    # Grupo para seleção de arquivo
+    file_group = parser.add_argument_group('Seleção de arquivo')
+    file_group.add_argument(
+        "--list", 
+        action="store_true",
+        help="Lista arquivos disponíveis e sai"
+    )
+    
+    # Coleta todos os tipos de arquivo únicos de todos os CDs
+    all_file_types = set()
+    file_descriptions = {}
+    
+    for cd, files in FILE_MAPPING.items():
+        for key, filename in files.items():
+            all_file_types.add(key)
+            if key not in file_descriptions:
+                file_descriptions[key] = filename
+    
+    # Adiciona argumentos para cada tipo de arquivo único
+    for file_key in sorted(all_file_types):
+        file_group.add_argument(
+            f"--{file_key}", 
+            action="store_true",
+            help=f"Reconstrói {file_descriptions[file_key]}"
+        )
+    
+    # Argumentos para compatibilidade com versão anterior
+    compat_group = parser.add_argument_group('Compatibilidade (argumentos antigos)')
+    compat_group.add_argument(
+        "--binary", 
+        type=Path,
+        help="Caminho específico do arquivo binário original (compatibilidade)"
+    )
+    compat_group.add_argument(
+        "--csv", 
+        type=Path,
+        help="Caminho específico do CSV com traduções (compatibilidade)"
+    )
+    compat_group.add_argument(
+        "--output", 
+        type=Path,
+        help="Caminho específico do arquivo de saída (compatibilidade)"
+    )
+    compat_group.add_argument(
+        "--analysis", 
+        type=Path,
+        help="Caminho específico do arquivo de análise (compatibilidade)"
+    )
+    
+    # Configurações de reconstrução
+    rebuild_group = parser.add_argument_group('Configurações de reconstrução')
+    rebuild_group.add_argument(
+        "--no-strict", 
+        action="store_true",
+        help="Desativa modo estrito"
+    )
+    rebuild_group.add_argument(
+        "--debug", 
+        action="store_true",
+        help="Modo debug com log detalhado"
+    )
+    
+    return parser
+
+
 def main():
     """Função principal do script."""
-    import argparse
-    
-    parser = argparse.ArgumentParser(description="Reconstrói arquivos binários MGS com preservação garantida do padrão crítico 00 FF e análise automática de problemas")
-    parser.add_argument("--binary", type=Path, default=DEFAULT_PATHS['original'],
-                       help="Arquivo binário original")
-    parser.add_argument("--csv", type=Path, default=DEFAULT_PATHS['csv'], 
-                       help="Arquivo CSV com traduções")
-    parser.add_argument("--output", type=Path, default=DEFAULT_PATHS['output'],
-                       help="Arquivo de saída")
-    parser.add_argument("--analysis", type=Path, default=DEFAULT_PATHS['analysis'],
-                       help="Arquivo de análise de problemas")
-    parser.add_argument("--no-strict", action="store_true",
-                       help="Desativa modo estrito")
-    parser.add_argument("--debug", action="store_true",
-                       help="Modo debug com log detalhado")
-    
+    parser = create_parser()
     args = parser.parse_args()
     
     # Configura log level
     if args.debug:
         logger.setLevel(10)  # DEBUG
     
-    # Valida arquivos de entrada
-    if not args.binary.exists():
-        logger.error(f"Arquivo binário não encontrado: {args.binary}")
-        sys.exit(1)
+    # Resolver arquivos
+    file_resolver = FileResolver(args.cd)
     
-    if not args.csv.exists():
-        logger.error(f"Arquivo CSV não encontrado: {args.csv}")
-        sys.exit(1)
+    # Lista arquivos e sai se solicitado
+    if args.list:
+        print(f"\n Arquivos disponíveis em {args.cd}:")
+        print("-" * 80)
+        available = file_resolver.list_available_files()
+        if available:
+            for line in available:
+                print(f"  {line}")
+        else:
+            print(f"   Diretório {args.cd} não encontrado")
+        print(f"\nUso: {parser.prog} --cd {args.cd} --<arquivo>")
+        print(f"Exemplo: {parser.prog} --cd {args.cd} --stage")
+        return
+    
+    # Determina arquivos para reconstrução
+    binary_file = None
+    csv_file = None
+    output_file = None
+    analysis_file = None
+    
+    if args.binary:
+        # Compatibilidade: usa arquivos especificados
+        binary_file = args.binary
+        csv_file = args.csv
+        output_file = args.output
+        analysis_file = args.analysis
+        logger.info("Usando argumentos de compatibilidade")
+    else:
+        # Usa novo sistema: verifica qual arquivo foi selecionado
+        selected_files = []
+        available_files = file_resolver.get_available_files()
+        
+        for key in available_files.keys():
+            if getattr(args, key, False):
+                selected_files.append(key)
+        
+        if len(selected_files) == 0:
+            logger.error("Nenhum arquivo selecionado!")
+            logger.info(f"Use --list para ver arquivos disponíveis ou especifique um arquivo com --stage, --demo, etc.")
+            return
+        elif len(selected_files) > 1:
+            logger.error(f"Múltiplos arquivos selecionados: {', '.join(selected_files)}")
+            logger.info("Selecione apenas um arquivo por vez para reconstrução")
+            return
+        
+        # Resolve arquivo selecionado
+        file_key = selected_files[0]
+        binary_file = file_resolver.get_original_path(file_key)
+        csv_file = file_resolver.get_csv_path(file_key)
+        output_file = file_resolver.get_output_path(file_key)
+        analysis_file = file_resolver.get_analysis_path(file_key)
+        
+        if not binary_file:
+            logger.error(f"Arquivo original não encontrado: {file_key} ({args.cd})")
+            return
+        
+        if not csv_file:
+            logger.error(f"CSV com traduções não encontrado: {file_key} ({args.cd})")
+            logger.info(f"Procurei em:")
+            logger.info(f"  - {file_resolver.translated_path}/strings_*_traduzido.csv")
+            logger.info(f"  - {file_resolver.extracted_path}/strings_*.csv")
+            return
+        
+        logger.info(f" Arquivo selecionado: {file_key}")
+        logger.info(f"   Original: {binary_file.name}")
+        logger.info(f"   CSV: {csv_file.name}")
+        logger.info(f"   Saída: {output_file.name}")
+        logger.info(f"   Análise: {analysis_file.name}")
+    
+    # Valida arquivos obrigatórios
+    if not binary_file or not binary_file.exists():
+        logger.error(f"Arquivo binário não encontrado: {binary_file}")
+        return
+    
+    if not csv_file or not csv_file.exists():
+        logger.error(f"Arquivo CSV não encontrado: {csv_file}")
+        return
+    
+    # Define caminhos padrão se não especificados
+    if not output_file:
+        output_file = Path("output_patched.bin")
+    
+    if not analysis_file:
+        analysis_file = Path("insertion_problems.txt")
     
     # Executa a reconstrução
     rebuilder = MGSRebuilder(
@@ -1009,22 +1289,49 @@ def main():
         strict_mode=not args.no_strict
     )
     
-    success = rebuilder.rebuild_binary_fixed(args.binary, args.csv, args.output, args.analysis)
+    logger.info(f" Iniciando reconstrução com preservação crítica...")
+    logger.info(f"   Modo debug: {'ATIVO' if args.debug else 'INATIVO'}")
+    logger.info(f"   Modo estrito: {'ATIVO' if not args.no_strict else 'INATIVO'}")
+    
+    success = rebuilder.rebuild_binary_fixed(binary_file, csv_file, output_file, analysis_file)
     
     if success:
-        logger.info("RECONSTRUÇÃO CONCLUÍDA COM SUCESSO!")
-        logger.info("DICAS IMPORTANTES:")
+        logger.info(" RECONSTRUÇÃO CONCLUÍDA COM SUCESSO!")
+        logger.info(" DICAS IMPORTANTES:")
         logger.info("   • Teste no emulador com save state")
         logger.info("   • Padrões críticos 00 FF foram preservados obrigatoriamente")
         logger.info("   • Substituições que danificariam o padrão foram rejeitadas")
         logger.info("   • Acentos foram removidos automaticamente para compatibilidade")
         logger.info("   • Endereços foram preservados exatamente")
         logger.info("   • Problemas de inserção foram analisados e documentados automaticamente")
-        logger.info(f"  • Consulte o arquivo de análise: {args.analysis}")
+        logger.info(f"  • Consulte o arquivo de análise: {analysis_file}")
     else:
-        logger.error("Falha na reconstrução!")
+        logger.error(" Falha na reconstrução!")
         sys.exit(1)
 
 
 if __name__ == "__main__":
+
     main()
+
+    """
+    Exemplos de uso melhorados:
+    
+    # Reconstrói STAGE.DIR do CD1
+    python tools/rebuild_text.py --stage
+    
+    # Reconstrói DEMO.DAT com debug ativo
+    python tools/rebuild_text.py --demo --debug
+    
+    # Reconstrói VOX.DAT do CD2
+    python tools/rebuild_text.py --cd CD2 --vox
+    
+    # Lista arquivos disponíveis
+    python tools/rebuild_text.py --list
+    
+    # Reconstrói RADIO.DAT sem modo estrito (não recomendado)
+    python tools/rebuild_text.py --radio --no-strict
+    
+    # Compatibilidade com versão anterior
+    python tools/rebuild_text.py --binary arquivo.dat --csv traducoes.csv --output saida.dat
+    """
