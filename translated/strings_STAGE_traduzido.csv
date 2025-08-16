@@ -960,8 +960,8 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 959	shift_jis	50	47	0x3b4fbb2	1this order Big Boss commander-in-chief of FOX-	1essa ordem Big Boss comandante a cargo da FOX-	-3	False	-6.0
 960	shift_jis	49	47	0x3b4fbe5	0HOUND sent Gray Fox the man with the code name	0HOUND enviou Gray Fox, homem com o nome codigo	-2	False	-4.1
 961	shift_jis	54	45	0x3b4fc17	"5""FOX"" which is given to the best member of the unit."	5FOX q eh dado ao melhor membro da unidade.	-11	False	-16.7
-962	shift_jis	29	25	0x3b4fc4e	"""Operation Intrude N313""..."	Operacao Intrude N313..	-6	False	-13.8
-963	shift_jis	49	42	0x3b4fc6c	"0After a few days his last message being ""Metal"	Depois de dias sua ultima msg sendo Metal	-8	False	-14.3
+962	shift_jis	29	25	0x3b4fc4e	"""Operation Intrude N313""..."	"""Operacao Intrude N313.."""	-6	False	-13.8
+963	shift_jis	49	42	0x3b4fc6c	"0After a few days his last message being ""Metal"	0Depois de dias sua ultima msg sendo Metal	-8	False	-14.3
 964	shift_jis	42	38	0x3b4fc9e	")Gear..."" Gray Fox is missing in action."	)Gear.. Gray Fox desapareceu em acao.	-5	False	-9.5
 965	shift_jis	52	49	0x3b4fcc9	3Taking the situation seriously the top men of the	3Levando a situacao a serio os homens do topo das	-3	False	-5.8
 966	shift_jis	46	60	0x3b4fcfe	"-""West"" again called for FOX-HOUND.  Big Boss"	-nacoes do Oeste chamaram a FOX-HOUND.Big Boss	12	True	30.4
@@ -1000,7 +1000,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 999	shift_jis	45	36	0x3b50310	the deadly battles with Outer Heaven's best	as batalhas mortais com os melhores	-9	False	-20.0
 1000	shift_jis	14	12	0x3b5033e	mercenaries.	mercenarios.	-2	False	-14.3
 1001	shift_jis	45	43	0x3b5034d	But Snake's indomitable spirit leads him to	Mas o espirito indomavel do Snake o leva ao	-2	False	-4.4
-1002	shift_jis	51	34	0x3b5037b	2the 100th floor basement of the secret base where	subsolo da base secreta onde	-17	False	-33.3
+1002	shift_jis	51	34	0x3b5037b	2the 100th floor basement of the secret base where	2subsolo da base secreta onde	-17	False	-33.3
 1003	shift_jis	49	48	0x3b503af	0Metal Gear was developed.  Evading the powerful	0Metal Gear foi desenvolvido.Evadindo o poderoso	-1	False	-2.0
 1004	shift_jis	46	46	0x3b503e1	-defense system that wipes out all intruders	-sistema de defesa q elimina os intrusos	0	False	0.0
 1005	shift_jis	47	41	0x3b50410	.Snake ultimately succeeds in destroying Metal	.Snake finalmente consegue destruir Metal	-6	False	-12.8
@@ -1026,7 +1026,7 @@ id	encoding	tamanho_bytes	tamanho_bytes_traducao	offset	texto	texto_traduzido	di
 1025	shift_jis	50	48	0x3b50778	1self destruction system of the underground base.	1sistema de auto destruicao da base subterranea.	-2	False	-4.0
 1026	shift_jis	47	54	0x3b507ab	.While the countdown to destruction continues	.Enquanto a contagem p/ destruicao continua	-4	True	14.9
 1027	shift_jis	37	25	0x3b507db	$his scream echoes in the emptiness.	$seu grito ecoa no vazio.	-12	False	-32.4
-1028	shift_jis	35	34	0x3b50801	"""You have gone too far. Too far!"	Vc foi longe demais.Longe demais	-2	False	-2.9
+1028	shift_jis	35	34	0x3b50801	"""You have gone too far. Too far!"	"""Vc foi longe demais.Longe demais"	-2	False	-2.9
 1029	shift_jis	49	32	0x3b50828	0On the 100th floor basement the battle between	0No subsolo a batalha entre	-17	False	-34.7
 1030	shift_jis	43	43	0x3b5085a	*two men commences -- free of ideology and	*dois homens comeca -- livre de ideologia e	0	False	0.0
 1031	shift_jis	13	10	0x3b50886	politics...	politica..	-3	False	-23.1
