@@ -194,7 +194,7 @@ def analisar_overflows(arquivo_csv, arquivo_saida=None, nome_dataset=None):
     # Salva arquivo processado
     logger.info(f"\n Salvando arquivo processado...")
     try:
-        df.to_csv(arquivo_saida, index=False, encoding='utf-8')
+        df.to_csv(arquivo_saida, index=False, sep='\t', encoding='utf-8')
         logger.info(f" Arquivo salvo: {arquivo_saida}")
         logger.info(f" Colunas de tamanho sincronizadas:")
         logger.info(f"   - tamanho_bytes: calculado de 'texto'")
