@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 """
 Script para reconstruir arquivos binários com textos traduzidos - MGS PSX.
-
+Versão completamente refeita com preservação absoluta de bytes de controle.
 """
 
 import os
 import sys
-import unicodedata
 import pandas as pd
 from pathlib import Path
 from typing import Dict, Optional, Tuple, List
-import struct
 from datetime import datetime
 import argparse
 
@@ -22,10 +20,9 @@ from util.logger_config import setup_logger
 # Inicializa o logger para registrar as operações do script
 logger = setup_logger()
 
-# Mapeamento de arquivos disponíveis por CD (mesmo dos outros scripts)
+# Mapeamento de arquivos disponíveis por CD
 FILE_MAPPING = {
     "CD1": {
-        # arquivos do CD1
         "radio": "RADIO.DAT",
         "stage": "STAGE.DIR",
         "demo": "DEMO.DAT",
@@ -33,7 +30,6 @@ FILE_MAPPING = {
         "zmovie": "ZMOVIE.STR"
     },
     "CD2": {
-        # arquivos do CD2
         "radio": "RADIO.DAT",
         "stage": "STAGE.DIR",
         "demo": "DEMO.DAT",
@@ -72,8 +68,6 @@ class FileResolver:
             filename = available_files[file_key]
             base_name = Path(filename).stem
             extension = Path(filename).suffix
-            
-            # Cria nome do arquivo patcheado
             output_name = f"{base_name}_PATCHED{extension}"
             return self.patches_path / output_name
         return None
@@ -106,7 +100,6 @@ class FileResolver:
         if file_key in available_files:
             filename = available_files[file_key]
             base_name = Path(filename).stem
-            
             analysis_name = f"{base_name}_insertion_problems.txt"
             return self.output_path / analysis_name
         return self.output_path / "insertion_problems.txt"
@@ -140,7 +133,6 @@ class FileResolver:
                 csv_info = f"CSV: {csv_path.name}"
             
             output_info = f"Output: {output_path.name}" if output_path else ""
-            
             status_info = f"Orig:{original_status} CSV:{csv_status}"
             available_files.append(f"--{key:<8} {filename:<15} {size:<8} {status_info}")
             
@@ -154,8 +146,7 @@ class FileResolver:
 
 class MGSRebuilder:
     """
-    Versão CORRIGIDA para reconstrução de textos do MGS PSX.
-    GARANTIA ABSOLUTA de preservação do padrão crítico 00 FF.
+    Rebuilder completo para MGS PSX com preservação absoluta de bytes de controle.
     """
     
     def __init__(self, debug_mode: bool = False, strict_mode: bool = True):
@@ -173,27 +164,6 @@ class MGSRebuilder:
             'critical_pattern_preserved': 0,
             'critical_pattern_lost': 0,
             'problems_analyzed': 0
-        }
-        
-        # Tabela de substituição para acentos (específica para Shift-JIS)
-        self.accent_map = {
-            # Vogais acentuadas
-            'á': 'a', 'à': 'a', 'ã': 'a', 'â': 'a', 'ä': 'a',
-            'é': 'eh', 'è': 'e', 'ê': 'e', 'ë': 'e',
-            'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
-            'ó': 'o', 'ò': 'o', 'õ': 'o', 'ô': 'o', 'ö': 'o',
-            'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
-            'Á': 'A', 'À': 'A', 'Ã': 'A', 'Â': 'A', 'Ä': 'A',
-            'É': 'Eh', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
-            'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
-            'Ó': 'O', 'Ò': 'O', 'Õ': 'O', 'Ô': 'O', 'Ö': 'O',
-            'Ú': 'U', 'Ù': 'U', 'Û': 'U', 'Ü': 'U',
-            # Caracteres específicos
-            'ç': 'c', 'Ç': 'C',
-            'ñ': 'n', 'Ñ': 'N',
-            # Caracteres especiais comuns
-            '"': '"', '"': '"', ''': "'", ''': "'",
-            '–': '-', '—': '-', '…': '...',
         }
         
         # Códigos de controle do codec (preservar exatamente)
@@ -221,7 +191,6 @@ class MGSRebuilder:
                                   translated_text: str, problem_type: str, details: str = ""):
         """
         Realiza análise detalhada do problema e exporta para arquivo.
-        Se --debug estiver ativo, também exibe no terminal.
         """
         if not self.analysis_file:
             return
@@ -271,21 +240,16 @@ class MGSRebuilder:
             offset_in_context = offset - start
             sample_data = context[offset_in_context:offset_in_context+100]
             
-            decode_lines = []
             for encoding in ['shift_jis', 'ascii', 'latin-1', 'utf-8']:
                 try:
                     decoded = sample_data.decode(encoding, errors='ignore')
                     clean_decoded = ''.join(c if ord(c) >= 32 else f'\\x{ord(c):02x}' for c in decoded[:50])
                     if clean_decoded.strip():
-                        decode_line = f"{encoding:>10}: '{clean_decoded}'"
-                        decode_lines.append(decode_line)
-                        analysis_content.append(decode_line)
+                        analysis_content.append(f"{encoding:>10}: '{clean_decoded}'")
                 except Exception as e:
-                    decode_line = f"{encoding:>10}: ERRO - {str(e)}"
-                    decode_lines.append(decode_line)
-                    analysis_content.append(decode_line)
+                    analysis_content.append(f"{encoding:>10}: ERRO - {str(e)}")
             
-            # Análise específica do padrão crítico 00 FF
+            # Análise do padrão crítico 00 FF
             analysis_content.append(f"\nANÁLISE DO PADRÃO CRÍTICO 00 FF:")
             analysis_content.append(f"{'-'*35}")
             
@@ -301,67 +265,47 @@ class MGSRebuilder:
                 search_start = pos + 1
             
             if ff_positions:
-                ff_line = f"Padrões 00 FF encontrados em: {[hex(pos) for pos in ff_positions]}"
-                analysis_content.append(ff_line)
-                
+                analysis_content.append(f"Padrões 00 FF encontrados em: {[hex(pos) for pos in ff_positions]}")
                 for pos in ff_positions:
                     if abs(pos - offset) < context_size:
                         distance = pos - offset
-                        distance_line = f"  {hex(pos)}: distância do offset = {distance} bytes"
-                        analysis_content.append(distance_line)
+                        analysis_content.append(f"  {hex(pos)}: distância do offset = {distance} bytes")
             else:
-                no_ff_line = f"Nenhum padrão 00 FF encontrado no contexto"
-                analysis_content.append(no_ff_line)
+                analysis_content.append(f"Nenhum padrão 00 FF encontrado no contexto")
             
-            # Análise do tamanho disponível
+            # Análise de espaço disponível
             analysis_content.append(f"\nANÁLISE DE ESPAÇO DISPONÍVEL:")
             analysis_content.append(f"{'-'*32}")
             
-            # Detecta boundaries da string original
             try:
-                chunk_size, original_chunk = self.detect_string_exact(binary_data, offset, original_text)
-                chunk_info = f"Chunk original detectado: {len(original_chunk)} bytes"
-                hex_info = f"Hex do chunk: {original_chunk.hex()}"
-                analysis_content.append(chunk_info)
-                analysis_content.append(hex_info)
-                
-                # Análise crítica do chunk
-                critical_analysis = self.analyze_critical_pattern(original_chunk)
-                if critical_analysis['has_00_ff']:
-                    critical_pos = f"Padrão crítico 00 FF na posição: {critical_analysis['ff_position']}"
-                    space_info = f"Espaço disponível para texto: {critical_analysis['text_space']} bytes"
-                    terminator_info = f"Terminador completo: {critical_analysis['full_terminator'].hex()}"
-                    analysis_content.extend([critical_pos, space_info, terminator_info])
-                else:
-                    no_critical = f"Sem padrão crítico - espaço total disponível: {len(original_chunk)} bytes"
-                    analysis_content.append(no_critical)
+                chunk_size, original_chunk = self.detect_string_boundaries(binary_data, offset, original_text)
+                analysis_content.append(f"Chunk original detectado: {len(original_chunk)} bytes")
+                analysis_content.append(f"Hex do chunk: {original_chunk.hex()}")
                 
                 # Calcula requisitos do texto traduzido
-                clean_translated = translated_text
                 try:
-                    translated_bytes = clean_translated.encode('shift_jis', errors='ignore')
-                    bytes_needed = f"Texto traduzido requer: {len(translated_bytes)} bytes"
-                    bytes_hex = f"Texto traduzido (hex): {translated_bytes.hex()}"
-                    analysis_content.extend([bytes_needed, bytes_hex])
+                    translated_bytes = translated_text.encode('shift_jis', errors='ignore')
+                    analysis_content.append(f"Texto traduzido requer: {len(translated_bytes)} bytes")
+                    analysis_content.append(f"Texto traduzido (hex): {translated_bytes.hex()}")
                     
-                    space_needed = len(translated_bytes) + (1 if critical_analysis['has_00_ff'] else 0)
-                    space_available = critical_analysis['text_space'] if critical_analysis['has_00_ff'] else len(original_chunk)
+                    # Calcula espaço disponível
+                    control_prefix_size = 1 if len(original_chunk) > 0 and original_chunk[0] < 32 else 0
+                    available_space = len(original_chunk) - control_prefix_size - 1  # -1 para null terminator
                     
-                    comparison = f"Comparação: {space_needed} bytes necessários vs {space_available} disponíveis"
-                    analysis_content.append(comparison)
+                    analysis_content.append(f"Espaço disponível: {available_space} bytes")
+                    analysis_content.append(f"Espaço necessário: {len(translated_bytes)} bytes")
                     
-                    if space_needed > space_available:
-                        overflow = space_needed - space_available
-                        overflow_info = f"OVERFLOW: {overflow} bytes a mais que o disponível"
-                        analysis_content.append(overflow_info)
+                    if len(translated_bytes) > available_space:
+                        overflow = len(translated_bytes) - available_space
+                        analysis_content.append(f"OVERFLOW: {overflow} bytes a mais que o disponível")
+                    else:
+                        analysis_content.append(f"CABE: {available_space - len(translated_bytes)} bytes de sobra")
                     
                 except Exception as e:
-                    error_translated = f"Erro ao analisar texto traduzido: {e}"
-                    analysis_content.append(error_translated)
+                    analysis_content.append(f"Erro ao analisar texto traduzido: {e}")
                     
             except Exception as e:
-                error_chunk = f"Erro na detecção do chunk: {e}"
-                analysis_content.append(error_chunk)
+                analysis_content.append(f"Erro na detecção do chunk: {e}")
             
             analysis_content.append(f"{'='*80}")
             analysis_content.append("")
@@ -376,365 +320,188 @@ class MGSRebuilder:
                 logger.info(f"\n{'='*60}")
                 logger.info(f" ANÁLISE DETALHADA DE PROBLEMA - DEBUG MODE")
                 logger.info(f"{'='*60}")
-                
-                # Mostra informações principais
                 logger.info(f"PROBLEMA #{self.stats['problems_analyzed']:03d}: {problem_type}")
                 logger.info(f"Offset: {hex(offset)}")
                 logger.info(f"Original:  '{original_text[:40]}{'...' if len(original_text) > 40 else ''}'")
                 logger.info(f"Traduzido: '{translated_text[:40]}{'...' if len(translated_text) > 40 else ''}'")
                 logger.info(f"Detalhes: {details}")
-                
-                # Mostra contexto hex (limitado para terminal)
-                logger.info(f"\nCONTEXTO HEX (primeiras 4 linhas):")
-                for i, hex_line in enumerate(hex_lines[:4]):
-                    logger.info(f"  {hex_line}")
-                if len(hex_lines) > 4:
-                    logger.info(f"  ... (+{len(hex_lines)-4} linhas no arquivo)")
-                
-                # Mostra decodificações
-                logger.info(f"\nTENTATIVAS DE DECODIFICAÇÃO:")
-                for decode_line in decode_lines:
-                    logger.info(f"  {decode_line}")
-                
-                # Info do padrão FF
-                if ff_positions:
-                    logger.info(f"\nPADRÃO 00 FF: {[hex(pos) for pos in ff_positions]}")
-                else:
-                    logger.info(f"\nPADRÃO 00 FF: Não encontrado")
-                
-                # Info de espaço
-                try:
-                    chunk_size, original_chunk = self.detect_string_exact(binary_data, offset, original_text)
-                    critical_analysis = self.analyze_critical_pattern(original_chunk)
-                    
-                    if critical_analysis['has_00_ff']:
-                        logger.info(f"ESPAÇO: {critical_analysis['text_space']} bytes disponíveis (padrão crítico)")
-                    else:
-                        logger.info(f"ESPAÇO: {len(original_chunk)} bytes disponíveis (sem padrão crítico)")
-                        
-                    clean_translated = translated_text
-                    translated_bytes = clean_translated.encode('shift_jis', errors='ignore')
-                    logger.info(f"NECESSÁRIO: {len(translated_bytes)} bytes")
-                    
-                except:
-                    logger.info(f"ESPAÇO: Erro na análise")
-                
-                logger.info(f"{'='*60}")
-                logger.info(f" Análise completa salva em: {self.analysis_file.name}")
                 logger.info(f"{'='*60}\n")
             
         except Exception as e:
             logger.error(f"Erro durante análise e exportação: {e}")
     
-    @staticmethod
-    def remove_accents_simple(text: str) -> str:
+    def detect_string_boundaries(self, binary_data: bytes, offset: int, expected_text: str) -> Tuple[int, bytes]:
         """
-        Remove acentos de forma simples usando apenas o mapeamento manual.
-        """
-
-        accent_map = {
-                    # Vogais acentuadas
-                    'á': 'a', 'à': 'a', 'ã': 'a', 'â': 'a', 'ä': 'a',
-                    'é': 'eh', 'è': 'e', 'ê': 'e', 'ë': 'e',
-                    'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
-                    'ó': 'o', 'ò': 'o', 'õ': 'o', 'ô': 'o', 'ö': 'o',
-                    'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
-                    'Á': 'A', 'À': 'A', 'Ã': 'A', 'Â': 'A', 'Ä': 'A',
-                    'É': 'Eh', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
-                    'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
-                    'Ó': 'O', 'Ò': 'O', 'Õ': 'O', 'Ô': 'O', 'Ö': 'O',
-                    'Ú': 'U', 'Ù': 'U', 'Û': 'U', 'Ü': 'U',
-                    # Caracteres específicos
-                    'ç': 'c', 'Ç': 'C',
-                    'ñ': 'n', 'Ñ': 'N',
-        }
-
-        if not isinstance(text, str):
-            return text
-
-        result = text
-        for accented, replacement in accent_map.items():
-            result = result.replace(accented, replacement)
-        
-        return result
-
-    
-    def detect_string_exact(self, binary_data: bytes, offset: int, expected_text: str) -> Tuple[int, bytes]:
-        """
-        Detecta com MÁXIMA precisão onde uma string termina no arquivo original.
+        VERSÃO CORRIGIDA - Detecta sequências de bytes de controle múltiplos.
         """
         try:
-            # Primeiro, limpa o texto esperado
-            clean_expected = expected_text
-            
-            # Tenta diferentes encodings para encontrar o match
+            # Codifica o texto esperado
             for encoding in ['shift_jis', 'ascii', 'latin-1']:
                 try:
-                    expected_bytes = clean_expected.encode(encoding, errors='ignore')
+                    expected_bytes = expected_text.encode(encoding, errors='ignore')
                     
-                    # Verifica se encontra uma correspondência razoável no offset
-                    max_scan = min(len(expected_bytes) + 50, len(binary_data) - offset)
-                    scan_chunk = binary_data[offset:offset + max_scan]
+                    # CORREÇÃO CRÍTICA: Detecta sequências de controle de múltiplos bytes
+                    control_sequence_length = 0
+                    scan_pos = 0
                     
-                    # Procura pela string no início
-                    if scan_chunk.startswith(expected_bytes):
-                        # Encontrou match exato! Agora detecta o final
-                        end_pos = offset + len(expected_bytes)
-                        
-                        # Conta terminadores (00, FF, etc.)
-                        while end_pos < len(binary_data):
-                            byte_val = binary_data[end_pos]
-                            if byte_val in [0x00, 0xFF]:
-                                end_pos += 1
-                            else:
-                                break
-                        
-                        total_size = end_pos - offset
-                        original_chunk = binary_data[offset:end_pos]
+                    # Escaneia bytes de controle consecutivos (< 32)
+                    max_control_scan = min(5, len(binary_data) - offset)  # Máximo 5 bytes de controle
+                    while (scan_pos < max_control_scan and 
+                        offset + scan_pos < len(binary_data) and
+                        binary_data[offset + scan_pos] < 32):
+                        control_sequence_length += 1
+                        scan_pos += 1
+                    
+                    if self.debug_mode:
+                        control_seq = binary_data[offset:offset + control_sequence_length]
+                        logger.debug(f"Sequência de controle detectada em {hex(offset)}: {control_seq.hex()} ({control_sequence_length} bytes)")
+                    
+                    # Calcula tamanho estimado: sequência_controle + texto + null_terminator
+                    estimated_size = control_sequence_length + len(expected_bytes) + 1
+                    
+                    # Limita ao máximo disponível
+                    actual_size = min(estimated_size, len(binary_data) - offset)
+                    original_chunk = binary_data[offset:offset + actual_size]
+                    
+                    # Verifica se encontra match após a sequência de controle
+                    text_start = control_sequence_length
+                    if (len(original_chunk) >= text_start + len(expected_bytes) and 
+                        original_chunk[text_start:text_start + len(expected_bytes)] == expected_bytes):
                         
                         if self.debug_mode:
-                            logger.debug(f"String detectada exatamente em {hex(offset)}: {total_size} bytes")
+                            logger.debug(f"Match encontrado em {hex(offset)}: {actual_size} bytes (control: {control_sequence_length})")
                         
-                        return total_size, original_chunk
-                    
+                        return actual_size, original_chunk
+                        
                 except UnicodeEncodeError:
                     continue
             
-            # Fallback: estimativa conservadora baseada no texto original
-            try:
-                probe_size = min(len(expected_text) * 2 + 20, len(binary_data) - offset)
-                probe_chunk = binary_data[offset:offset + probe_size]
-                
-                # Procura por terminadores a partir do offset
-                term_pos = offset
-                for i, byte_val in enumerate(probe_chunk):
-                    if i > len(expected_text):  # Além do tamanho esperado
-                        if byte_val in [0x00, 0xFF]:
-                            continue
-                        else:
-                            term_pos = offset + i
-                            break
-                
-                fallback_size = term_pos - offset
-                fallback_chunk = binary_data[offset:offset + fallback_size]
-                
-                logger.warning(f"Usando detecção fallback para {hex(offset)}: {fallback_size} bytes")
-                return fallback_size, fallback_chunk
-                
-            except:
-                # Último recurso: tamanho fixo seguro
-                safe_size = min(100, len(binary_data) - offset)
-                return safe_size, binary_data[offset:offset + safe_size]
-            
-        except Exception as e:
-            logger.error(f"Erro na detecção exata: {e}")
-            safe_size = min(64, len(binary_data) - offset)
-            return safe_size, binary_data[offset:offset + safe_size]
-    
-    def analyze_critical_pattern(self, original_chunk: bytes) -> Dict:
-        """
-        Analisa especificamente padrões críticos que DEVEM ser preservados.
-        Foco no padrão 00 FF que está sendo perdido.
-        """
-        analysis = {
-            'has_00_ff': False,
-            'ff_position': -1,
-            'text_space': len(original_chunk),
-            'control_bytes': b'',
-            'terminator_sequence': b'',
-            'full_terminator': b''
-        }
-        
-        # Busca pelo padrão crítico 00 FF
-        null_ff_pattern = b'\x00\xff'
-        ff_pos = original_chunk.find(null_ff_pattern)
-        
-        if ff_pos != -1:
-            analysis['has_00_ff'] = True
-            analysis['ff_position'] = ff_pos
-            analysis['text_space'] = ff_pos  # Texto deve caber ANTES do 00 FF
-            analysis['terminator_sequence'] = original_chunk[ff_pos:]  # Tudo após 00 FF
-            
-            # Captura TUDO depois do 00 FF para preservar
-            analysis['full_terminator'] = original_chunk[ff_pos:]
+            # Fallback: usa estimativa conservadora
+            estimated_size = len(expected_text.encode('ascii', errors='ignore')) + 3  # +3 para controles
+            actual_size = min(estimated_size, len(binary_data) - offset)
             
             if self.debug_mode:
-                logger.debug(f" PADRÃO CRÍTICO 00 FF DETECTADO:")
-                logger.debug(f"  Posição: {ff_pos}")
-                logger.debug(f"  Espaço para texto: {analysis['text_space']} bytes")
-                logger.debug(f"  Terminador completo: {analysis['full_terminator'].hex()}")
-        
-        return analysis
-    
-    def create_exact_replacement_with_critical_preservation(self, original_chunk: bytes, new_text: str,
-                                                        offset: int, binary_data: bytes, original_text: str) -> Tuple[bytes, bool]:
-        """
-        Cria substituição GARANTINDO preservação do padrão crítico 00 FF.
-        Se não conseguir preservar, REJEITA a substituição e analisa o problema.
-        """
-        try:
-            # Remove acentos do novo texto
-            clean_text = new_text
+                logger.debug(f"Fallback em {hex(offset)}: {actual_size} bytes")
             
-            # Preserva códigos de controle
-            for control in self.codec_controls:
-                if control in new_text:
-                    clean_text = new_text
-                    break
-            
-            # ANÁLISE CRÍTICA: Procura pelo padrão 00 FF
-            critical_analysis = self.analyze_critical_pattern(original_chunk)
-            
-            # Tenta codificar o texto
-            try:
-                new_bytes = clean_text.encode('shift_jis', errors='ignore')
-            except:
-                try:
-                    new_bytes = clean_text.encode('ascii', errors='ignore')
-                except:
-                    logger.error(f"Falha total no encoding para: {new_text}")
-                    self.analyze_problem_and_export(
-                        binary_data, offset, original_text, new_text,
-                        "ERRO DE ENCODING", 
-                        "Não foi possível codificar o texto em shift_jis nem ascii"
-                    )
-                    return original_chunk, False
-            
-            # VERIFICA SE TEM PADRÃO CRÍTICO
-            if critical_analysis['has_00_ff']:
-                # MODO CRÍTICO: Deve preservar 00 FF obrigatoriamente
-                ff_position = critical_analysis['ff_position']
-                
-                # Detecta se há byte de controle inicial
-                control_prefix = b''
-                text_start_pos = 0
-                
-                # Se o primeiro byte é um código de controle (< 32), preserva
-                if len(original_chunk) > 0 and original_chunk[0] < 32:
-                    control_prefix = original_chunk[0:1]
-                    text_start_pos = 1
-                
-                # CALCULA ESPAÇO REAL DISPONÍVEL
-                available_space = ff_position - text_start_pos
-                
-                # Verifica se o texto cabe (SEM adicionar null terminator extra)
-                if len(new_bytes) > available_space:
-                    logger.warning(f"REJEIÇÃO: Texto muito grande: {len(new_bytes)} > {available_space}")
-                    self.stats['critical_pattern_lost'] += 1
-                    
-                    self.analyze_problem_and_export(
-                        binary_data, offset, original_text, new_text,
-                        "OVERFLOW COM PADRÃO CRÍTICO",
-                        f"Texto requer {len(new_bytes)} bytes mas só há {available_space} disponíveis antes do padrão crítico 00 FF"
-                    )
-                    return original_chunk, False
-                
-                # RECONSTRÓI DE FORMA PRECISA
-                result = bytearray()
-                
-                # 1. Adiciona prefixo de controle se existir
-                if control_prefix:
-                    result.extend(control_prefix)
-                
-                # 2. Adiciona o novo texto
-                result.extend(new_bytes)
-                
-                # 3. Preenche com zeros até a posição do FF (se necessário)
-                while len(result) < ff_position:
-                    result.append(0x00)
-                
-                # 4. Se passou da posição do FF, trunca (não deveria acontecer devido à verificação acima)
-                if len(result) > ff_position:
-                    logger.warning(f"Truncando para preservar FF: {len(result)} -> {ff_position}")
-                    result = result[:ff_position]
-                
-                # 5. ADICIONA TODO O TERMINADOR PRESERVADO (incluindo 00 FF e tudo depois)
-                result.extend(critical_analysis['full_terminator'])
-                
-                # VERIFICAÇÃO FINAL DE TAMANHO
-                expected_size = len(original_chunk)
-                actual_size = len(result)
-                
-                if actual_size != expected_size:
-                    logger.error(f"ERRO: Tamanho final incorreto {actual_size} != {expected_size}")
-                    
-                    self.analyze_problem_and_export(
-                        binary_data, offset, original_text, new_text,
-                        "ERRO DE TAMANHO FINAL",
-                        f"Chunk final tem {actual_size} bytes mas deveria ter {expected_size} bytes. "
-                        f"FF pos: {ff_position}, terminator: {len(critical_analysis['full_terminator'])} bytes"
-                    )
-                    return original_chunk, False
-                
-                # VERIFICAÇÃO CRÍTICA: Confirma presença do padrão 00 FF
-                if b'\x00\xff' not in result:
-                    logger.error(f"FALHA CRÍTICA: Padrão 00 FF foi perdido!")
-                    self.stats['critical_pattern_lost'] += 1
-                    
-                    self.analyze_problem_and_export(
-                        binary_data, offset, original_text, new_text,
-                        "PERDA DO PADRÃO CRÍTICO",
-                        "O padrão 00 FF foi perdido durante a reconstrução"
-                    )
-                    return original_chunk, False
-                
-                self.stats['critical_pattern_preserved'] += 1
-                
-                if self.debug_mode:
-                    logger.debug(f"SUCESSO em {hex(offset)}: {len(new_bytes)} bytes inseridos, FF preservado")
-                
-                return bytes(result), True
-                
-            else:
-                # MODO NORMAL: Não há padrão crítico - usa lógica original
-                available_space = len(original_chunk)
-                
-                control_prefix = b''
-                if len(original_chunk) > 0 and original_chunk[0] < 32:
-                    control_prefix = original_chunk[0:1]
-                    available_space -= 1
-                
-                if len(new_bytes) > available_space:
-                    logger.warning(f"Texto muito grande: {len(new_bytes)} > {available_space}")
-                    self.stats['skipped_size'] += 1
-                    
-                    self.analyze_problem_and_export(
-                        binary_data, offset, original_text, new_text,
-                        "OVERFLOW SEM PADRÃO CRÍTICO",
-                        f"Texto requer {len(new_bytes)} bytes mas só há {available_space} disponíveis"
-                    )
-                    return original_chunk, False
-                
-                # Reconstrói normalmente
-                result = bytearray()
-                
-                if control_prefix:
-                    result.extend(control_prefix)
-                
-                result.extend(new_bytes)
-                
-                # Padding com zeros até o tamanho original
-                while len(result) < len(original_chunk):
-                    result.append(0x00)
-                
-                if len(result) > len(original_chunk):
-                    result = result[:len(original_chunk)]
-                
-                return bytes(result), True
+            return actual_size, binary_data[offset:offset + actual_size]
             
         except Exception as e:
-            logger.error(f"Erro na criação de substituição crítica: {e}")
+            logger.error(f"Erro na detecção de boundaries: {e}")
+            safe_size = min(50, len(binary_data) - offset)
+            return safe_size, binary_data[offset:offset + safe_size]
+    
+    def create_replacement_chunk(self, original_chunk: bytes, new_text: str,
+                           offset: int, binary_data: bytes, original_text: str) -> Tuple[bytes, bool]:
+        """
+        VERSÃO CORRIGIDA - Preserva sequências de controle completas.
+        """
+        try:
+            target_size = len(original_chunk)
             
+            if self.debug_mode:
+                logger.debug(f"Criando substituição em {hex(offset)}: {target_size} bytes")
+                logger.debug(f"Chunk original: {original_chunk.hex()}")
+            
+            # CORREÇÃO CRÍTICA: Detecta sequência de controle completa
+            control_sequence = b''
+            control_end = 0
+            
+            # Escaneia TODOS os bytes de controle consecutivos
+            while (control_end < len(original_chunk) and 
+                original_chunk[control_end] < 32):
+                control_end += 1
+            
+            if control_end > 0:
+                control_sequence = original_chunk[0:control_end]
+            
+            if self.debug_mode:
+                logger.debug(f"Sequência de controle: {control_sequence.hex()} ({len(control_sequence)} bytes)")
+            
+            # Codifica novo texto
+            try:
+                new_bytes = new_text.encode('shift_jis', errors='ignore')
+            except:
+                try:
+                    new_bytes = new_text.encode('ascii', errors='ignore')
+                except:
+                    self.analyze_problem_and_export(
+                        binary_data, offset, original_text, new_text,
+                        "ERRO DE ENCODING CRÍTICO",
+                        "Falha total no encoding"
+                    )
+                    return original_chunk, False
+            
+            # Verifica se cabe no espaço disponível
+            available_space = target_size - len(control_sequence) - 1  # -1 para null terminator
+            
+            if len(new_bytes) > available_space:
+                overflow_amount = len(new_bytes) - available_space
+                self.analyze_problem_and_export(
+                    binary_data, offset, original_text, new_text,
+                    "REJEIÇÃO POR OVERFLOW",
+                    f"Texto requer {len(new_bytes)} bytes mas só há {available_space} disponíveis. "
+                    f"Overflow: {overflow_amount} bytes. Sequência controle: {len(control_sequence)} bytes, "
+                    f"Chunk total: {target_size} bytes."
+                )
+                
+                if self.debug_mode:
+                    logger.debug(f"  REJEIÇÃO: {len(new_bytes)} > {available_space} bytes")
+                
+                self.stats['skipped_size'] += 1
+                return original_chunk, False
+            
+            # Constrói chunk com tamanho exato
+            result = bytearray(target_size)
+            
+            # 1. APLICA SEQUÊNCIA DE CONTROLE COMPLETA
+            if control_sequence:
+                result[0:len(control_sequence)] = control_sequence
+            
+            # 2. Adiciona novo texto após a sequência de controle
+            text_start = len(control_sequence)
+            text_end = text_start + len(new_bytes)
+            result[text_start:text_end] = new_bytes
+            
+            # 3. Null terminator
+            if text_end < target_size:
+                result[text_end] = 0x00
+            
+            # Verificações finais
+            if len(result) != target_size:
+                self.analyze_problem_and_export(
+                    binary_data, offset, original_text, new_text,
+                    "ERRO DE TAMANHO FINAL",
+                    f"Chunk construído tem {len(result)} bytes mas deveria ter {target_size} bytes"
+                )
+                return original_chunk, False
+            
+            # VERIFICAÇÃO CRÍTICA: Sequência de controle preservada
+            if control_sequence and not result.startswith(control_sequence):
+                self.analyze_problem_and_export(
+                    binary_data, offset, original_text, new_text,
+                    "PERDA DE SEQUÊNCIA DE CONTROLE",
+                    f"Sequência de controle perdida. Esperado: {control_sequence.hex()}, "
+                    f"Atual: {result[:len(control_sequence)].hex()}"
+                )
+                return original_chunk, False
+            
+            if self.debug_mode:
+                logger.debug(f"  SUCESSO: chunk criado com sequência {result[:len(control_sequence)].hex()}")
+            
+            return bytes(result), True
+            
+        except Exception as e:
             self.analyze_problem_and_export(
                 binary_data, offset, original_text, new_text,
-                "ERRO GERAL NA SUBSTITUIÇÃO",
-                f"Exceção durante a criação da substituição: {str(e)}"
+                "EXCEÇÃO DURANTE SUBSTITUIÇÃO",
+                f"Exceção não capturada: {str(e)}"
             )
-            return original_chunk, False
-
-    def rebuild_binary_fixed(self, binary_path: Path, csv_path: Path, output_path: Path, analysis_path: Path) -> bool:
+            logger.error(f"Erro na substituição: {e}")
+            return original_chunk, False 
+    
+    def rebuild_binary(self, binary_path: Path, csv_path: Path, output_path: Path, analysis_path: Path) -> bool:
         """
-        VERSÃO COM DEBUG DETALHADO para rastrear textos que desaparecem silenciosamente.
+        Reconstrói o arquivo binário com textos traduzidos.
         """
         try:
             # Configura arquivo de análise
@@ -745,22 +512,6 @@ class MGSRebuilder:
             with open(binary_path, "rb") as f:
                 original_data = f.read()
             
-            # Valida se há bytes inválidos para UTF-8
-            try:
-                original_data.decode("utf-8")
-            except UnicodeDecodeError as e:
-                # Descobre linha e coluna contando bytes até o erro
-                before_error = original_data[:e.start]
-                line_number = before_error.count(b'\n') + 1
-                col_number = len(before_error.split(b'\n')[-1]) + 1
-
-                logger.error(
-                    f"Erro de decodificação UTF-8 na posição {e.start} "
-                    f"(linha {line_number}, coluna {col_number}): "
-                    f"bytes={original_data[e.start:e.end]} "
-                    f"(hex={original_data[e.start:e.end].hex()})"
-                )
-
             # Cria uma cópia para modificação
             binary_data = bytearray(original_data)
 
@@ -768,18 +519,20 @@ class MGSRebuilder:
             logger.info(f"Carregando traduções: {csv_path.name}")
             
             # Tenta diferentes delimitadores
+            df = None
             for delimiter in ['\t', ',', ';']:
                 try:
                     df = pd.read_csv(csv_path, delimiter=delimiter)
-                    if len(df.columns) > 1:  # Se tem mais de uma coluna, provavelmente é o delimiter correto
+                    if len(df.columns) > 1:
                         break
                 except:
                     continue
             
-            logger.info(f"Processando {len(df)} entradas em MODO CRÍTICO com PRESERVAÇÃO 00 FF...")
+            if df is None:
+                logger.error("Não foi possível carregar o CSV")
+                return False
             
-            # ADICIONA CONTADOR DE ENTRADA ESPECÍFICA PARA DEBUG
-            target_offset = 0x114a01  # Offset problemático para analise
+            logger.info(f"Processando {len(df)} entradas...")
             
             # Ordena por offset para processar sequencialmente
             df = df.sort_values('offset')
@@ -793,177 +546,48 @@ class MGSRebuilder:
                     offset = int(row["offset"], 16)
                     original_text = str(row["texto"]).strip()
                     
-                    # DEBUG ESPECÍFICO para o offset problemático
-                    is_target = (offset == target_offset)
-                    if is_target:
-                        logger.info(f"[TARGET] RASTREANDO OFFSET PROBLEMÁTICO: {hex(offset)}")
-                        logger.info(f"   Original: '{original_text[:100]}...'")
-
                     # Verifica se há tradução
-                    translated_text = str(row.get("texto_traduzido", "")).strip()
+                    # Remove apenas quebras de linha e espaços no final, preservando espaços intencionais no início
+                    translated_text = str(row.get("texto_traduzido", "")).rstrip('\n\r ')
                     if not translated_text or translated_text.lower() in ['nan', 'none', '']:
                         text_to_use = original_text
                         is_modification = False
-                        if is_target:
-                            logger.info(f"   [NO TRANSLATION] - usando texto original")
                     else:
                         text_to_use = translated_text
                         is_modification = True
-                        if is_target:
-                            logger.info(f"   [TRANSLATION FOUND]: '{text_to_use[:100]}...'")
 
                     # Se é exatamente o mesmo texto, pula
                     if text_to_use == original_text:
                         self.stats['identical_preserved'] += 1
-                        if is_target:
-                            logger.info(f"   [IDENTICAL] - preservando sem modificacao")
-                        elif self.debug_mode:
+                        if self.debug_mode:
                             logger.debug(f"Texto idêntico em {hex(offset)}, preservando")
                         continue
 
-                    if is_target:
-                        logger.info(f"   [PROCESSING] INICIANDO PROCESSAMENTO...")
-
-                    # Detecta boundaries exatas da string
+                    # Detecta boundaries da string
                     try:
-                        chunk_size, original_chunk = self.detect_string_exact(
+                        chunk_size, original_chunk = self.detect_string_boundaries(
                             binary_data, offset, original_text
                         )
-                        
-                        if is_target:
-                            logger.info(f"   [CHUNK] DETECTADO: {len(original_chunk)} bytes")
-                            logger.info(f"       Hex: {original_chunk[:32].hex()}{'...' if len(original_chunk) > 32 else ''}")
-                        
                     except Exception as e:
-                        logger.error(f"[ERROR] FALHA NA DETECÇÃO DE STRING em {hex(offset)}: {e}")
-                        if is_target:
-                            logger.error(f"   [TARGET] FALHA CRÍTICA NA DETECÇÃO!")
-                        
                         self.analyze_problem_and_export(
                             binary_data, offset, original_text, text_to_use,
                             "FALHA NA DETECÇÃO DE STRING",
-                            f"Erro durante detect_string_exact: {str(e)}"
+                            f"Erro durante detecção de boundaries: {str(e)}"
                         )
                         continue
 
-                    # ANÁLISE CRÍTICA COM LOGGING DETALHADO
+                    # Cria substituição
                     try:
-                        critical_analysis = self.analyze_critical_pattern(original_chunk)
-                        
-                        if is_target:
-                            logger.info(f"   [CRITICAL] ANÁLISE CRÍTICA:")
-                            logger.info(f"       Padrão 00 FF: {'SIM' if critical_analysis['has_00_ff'] else 'NAO'}")
-                            if critical_analysis['has_00_ff']:
-                                logger.info(f"       Posição FF: {critical_analysis['ff_position']}")
-                                logger.info(f"       Espaço texto: {critical_analysis['text_space']} bytes")
-                                logger.info(f"       Terminador: {critical_analysis['full_terminator'].hex()}")
-                            else:
-                                logger.info(f"       Espaço total: {len(original_chunk)} bytes")
-
-                    except Exception as e:
-                        logger.error(f"[ERROR] FALHA NA ANÁLISE CRÍTICA em {hex(offset)}: {e}")
-                        if is_target:
-                            logger.error(f"   [TARGET] FALHA NA ANÁLISE CRÍTICA!")
-                        
-                        self.analyze_problem_and_export(
-                            binary_data, offset, original_text, text_to_use,
-                            "FALHA NA ANÁLISE CRÍTICA",
-                            f"Erro durante analyze_critical_pattern: {str(e)}"
-                        )
-                        continue
-
-                    # TESTE DE ENCODING COM LOGGING
-                    try:
-                        clean_text = text_to_use
-                        test_encoded = clean_text.encode('shift_jis', errors='ignore')
-                        
-                        if is_target:
-                            logger.info(f"   [ENCODING] TESTE:")
-                            logger.info(f"       Texto limpo: '{clean_text[:80]}...'")
-                            logger.info(f"       Bytes necessários: {len(test_encoded)}")
-                            logger.info(f"       Hex: {test_encoded[:32].hex()}{'...' if len(test_encoded) > 32 else ''}")
-                        
-                    except Exception as e:
-                        logger.error(f"[ERROR] FALHA NO ENCODING em {hex(offset)}: {e}")
-                        if is_target:
-                            logger.error(f"   [TARGET] FALHA NO ENCODING!")
-                        
-                        self.analyze_problem_and_export(
-                            binary_data, offset, original_text, text_to_use,
-                            "FALHA NO ENCODING",
-                            f"Erro durante teste de encoding: {str(e)}"
-                        )
-                        continue
-
-                    # VERIFICAÇÃO PRÉVIA DE ESPAÇO
-                    try:
-                        if critical_analysis['has_00_ff']:
-                            available_space = critical_analysis['text_space']
-                            # Subtrai byte de controle se existir
-                            if len(original_chunk) > 0 and original_chunk[0] < 32:
-                                available_space -= 1
-                        else:
-                            available_space = len(original_chunk)
-                            if len(original_chunk) > 0 and original_chunk[0] < 32:
-                                available_space -= 1
-                        
-                        space_needed = len(test_encoded)
-                        
-                        if is_target:
-                            logger.info(f"   [SPACE] VERIFICAÇÃO DE ESPAÇO:")
-                            logger.info(f"       Espaço disponível: {available_space} bytes")
-                            logger.info(f"       Espaço necessário: {space_needed} bytes")
-                            logger.info(f"       Resultado: {'CABE' if space_needed <= available_space else 'NAO CABE'}")
-                        
-                        if space_needed > available_space:
-                            if is_target:
-                                logger.warning(f"   [TARGET] OVERFLOW DETECTADO NA VERIFICAÇÃO PRÉVIA!")
-                            
-                            overflow_amount = space_needed - available_space
-                            self.analyze_problem_and_export(
-                                binary_data, offset, original_text, text_to_use,
-                                "OVERFLOW DETECTADO NA VERIFICAÇÃO PRÉVIA",
-                                f"Necessário: {space_needed} bytes, Disponível: {available_space} bytes, Overflow: {overflow_amount} bytes"
-                            )
-                            
-                            self.stats['skipped_size'] += 1
-                            continue
-
-                    except Exception as e:
-                        logger.error(f"[ERROR] FALHA NA VERIFICAÇÃO PRÉVIA em {hex(offset)}: {e}")
-                        if is_target:
-                            logger.error(f"   [TARGET] FALHA NA VERIFICAÇÃO PRÉVIA!")
-                        continue
-
-                    # CRIA SUBSTITUIÇÃO COM LOGGING DETALHADO
-                    if is_target:
-                        logger.info(f"   [REPLACEMENT] CRIANDO SUBSTITUIÇÃO...")
-
-                    try:
-                        new_chunk, success = self.create_exact_replacement_with_critical_preservation(
+                        new_chunk, success = self.create_replacement_chunk(
                             original_chunk, text_to_use, offset, binary_data, original_text
                         )
                         
-                        if is_target:
-                            logger.info(f"   [REPLACEMENT] RESULTADO: {'SUCESSO' if success else 'FALHA'}")
-                            if success:
-                                logger.info(f"       Chunk final: {len(new_chunk)} bytes")
-                                logger.info(f"       Hex: {new_chunk[:32].hex()}{'...' if len(new_chunk) > 32 else ''}")
-                            else:
-                                logger.info(f"       FALHA: Substituição rejeitada")
-                        
                         if not success:
-                            if is_target:
-                                logger.warning(f"   [TARGET] SUBSTITUIÇÃO FALHOU!")
-                            else:
-                                logger.warning(f"Substituição REJEITADA para offset {hex(offset)}")
+                            if self.debug_mode:
+                                logger.debug(f"Substituição rejeitada para {hex(offset)}")
                             continue
 
                     except Exception as e:
-                        logger.error(f"[ERROR] EXCEÇÃO NA CRIAÇÃO DE SUBSTITUIÇÃO em {hex(offset)}: {e}")
-                        if is_target:
-                            logger.error(f"   [TARGET] EXCEÇÃO NA SUBSTITUIÇÃO!")
-                        
                         self.analyze_problem_and_export(
                             binary_data, offset, original_text, text_to_use,
                             "EXCEÇÃO NA CRIAÇÃO DE SUBSTITUIÇÃO",
@@ -971,12 +595,8 @@ class MGSRebuilder:
                         )
                         continue
 
-                    # VERIFICAÇÃO FINAL DE TAMANHO
+                    # Verifica tamanho final
                     if len(new_chunk) != len(original_chunk):
-                        logger.error(f"[ERROR] TAMANHO FINAL INCORRETO em {hex(offset)}: {len(new_chunk)} != {len(original_chunk)}")
-                        if is_target:
-                            logger.error(f"   [TARGET] TAMANHO INCORRETO!")
-                        
                         self.analyze_problem_and_export(
                             binary_data, offset, original_text, text_to_use,
                             "TAMANHO FINAL INCORRETO",
@@ -984,7 +604,7 @@ class MGSRebuilder:
                         )
                         continue
 
-                    # APLICA A MODIFICAÇÃO
+                    # Aplica a modificação
                     try:
                         binary_data[offset:offset + len(new_chunk)] = new_chunk
                         
@@ -992,40 +612,28 @@ class MGSRebuilder:
                         if is_modification:
                             self.stats['modified_applied'] += 1
                         
-                        if is_target:
-                            logger.info(f"   [SUCCESS] APLICAÇÃO CONCLUÍDA COM SUCESSO!")
-                            logger.info(f"       Modificação aplicada ao binário")
-                        elif self.debug_mode:
+                        if self.debug_mode:
                             logger.debug(f"Aplicado em {hex(offset)}: '{text_to_use[:30]}...'")
 
                     except Exception as e:
-                        logger.error(f"[ERROR] FALHA NA APLICAÇÃO FINAL em {hex(offset)}: {e}")
-                        if is_target:
-                            logger.error(f"   [TARGET] FALHA NA APLICAÇÃO FINAL!")
-                        
                         self.analyze_problem_and_export(
                             binary_data, offset, original_text, text_to_use,
                             "FALHA NA APLICAÇÃO FINAL",
-                            f"Erro ao aplicar chunk ao binário: {str(e)}"
+                            f"Erro ao aplicar chunk: {str(e)}"
                         )
                         continue
                         
                 except Exception as e:
-                    logger.error(f" ERRO GERAL ao processar linha {index} (offset {hex(offset)}): {e}")
-                    
-                    if offset == target_offset:
-                        logger.error(f" ERRO GERAL PARA OFFSET ALVO!")
-                    
-                    # Análise de erro geral de processamento
+                    # Análise de erro geral
                     try:
                         error_text = text_to_use if 'text_to_use' in locals() else "N/A"
                         self.analyze_problem_and_export(
                             binary_data, offset, original_text, error_text,
                             "ERRO GERAL DE PROCESSAMENTO",
-                            f"Exceção não capturada durante processamento da linha {index}: {str(e)}"
+                            f"Exceção durante processamento da linha {index}: {str(e)}"
                         )
                     except:
-                        logger.error(f"Falha até mesmo para gerar análise de erro em {hex(offset)}")
+                        logger.error(f"Falha crítica ao processar {hex(offset)}: {e}")
                     
                     continue
             
@@ -1064,15 +672,13 @@ class MGSRebuilder:
     def _log_statistics(self, output_path: Path, analysis_path: Path):
         """Registra estatísticas da operação."""
         logger.info(f"{'='*50}")
-        logger.info(f"RECONSTRUÇÃO COM PRESERVAÇÃO CRÍTICA CONCLUÍDA")
+        logger.info(f"RECONSTRUÇÃO CONCLUÍDA")
         logger.info(f"{'='*50}")
         logger.info(f"Arquivo salvo em: {output_path}")
         logger.info(f"Entradas processadas: {self.stats['processed']}")
         logger.info(f"Modificações aplicadas: {self.stats['applied']}")
         logger.info(f"  - Textos idênticos preservados: {self.stats['identical_preserved']}")
         logger.info(f"  - Traduções efetivamente aplicadas: {self.stats['modified_applied']}")
-        logger.info(f"Padrões críticos preservados: {self.stats['critical_pattern_preserved']}")
-        logger.info(f"Padrões críticos perdidos (rejeitados): {self.stats['critical_pattern_lost']}")
         logger.info(f"Correções de encoding: {self.stats['encoding_fixes']}")
         logger.info(f"Puladas por tamanho: {self.stats['skipped_size']}")
         logger.info(f"Puladas por encoding: {self.stats['skipped_encoding']}")
@@ -1081,26 +687,19 @@ class MGSRebuilder:
         success_rate = (self.stats['applied'] / self.stats['processed'] * 100) if self.stats['processed'] > 0 else 0
         logger.info(f"Taxa de sucesso: {success_rate:.1f}%")
 
-        general_translation = ( (self.stats['applied'] + self.stats['identical_preserved']) / self.stats['processed'] * 100) if self.stats['processed'] > 0 else 0
-        logger.info(f"Taxa de sucesso geral (traduzidos + preservados): {general_translation:.1f}%")
-        
-        if self.stats['critical_pattern_preserved'] > 0:
-            logger.info(f"PADRÕES CRÍTICOS 00 FF PRESERVADOS COM SUCESSO!")
-        
-        if self.stats['critical_pattern_lost'] > 0:
-            logger.warning(f"  {self.stats['critical_pattern_lost']} substituições foram rejeitadas para preservar padrões críticos")
+        general_success = ((self.stats['applied'] + self.stats['identical_preserved']) / self.stats['processed'] * 100) if self.stats['processed'] > 0 else 0
+        logger.info(f"Taxa de sucesso geral (traduzidos + preservados): {general_success:.1f}%")
         
         if self.stats['problems_analyzed'] > 0:
             logger.info(f"ARQUIVO DE ANÁLISE DE PROBLEMAS:")
             logger.info(f"  Local: {analysis_path}")
             logger.info(f"  Problemas documentados: {self.stats['problems_analyzed']}")
-            logger.info(f"  Use este arquivo para investigar problemas de inserção em detalhes")
-
+            logger.info(f"  Use este arquivo para investigar problemas detalhadamente")
 
 def create_parser() -> argparse.ArgumentParser:
     """Cria o parser de argumentos da linha de comando."""
     parser = argparse.ArgumentParser(
-        description="Reconstrói arquivos binários MGS com preservação garantida do padrão crítico 00 FF",
+        description="Reconstrói arquivos binários MGS com preservação de bytes de controle",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exemplos de uso:
@@ -1108,7 +707,6 @@ Exemplos de uso:
   %(prog)s --demo --debug                       # Reconstrói DEMO.DAT com debug
   %(prog)s --cd CD2 --vox                       # Reconstrói VOX.DAT do CD2
   %(prog)s --list                               # Lista arquivos disponíveis
-  %(prog)s --brf --no-strict                    # Reconstrói BRF.DAT sem modo estrito
         """
     )
     
@@ -1129,7 +727,7 @@ Exemplos de uso:
         help="Lista arquivos disponíveis e sai"
     )
     
-    # Coleta todos os tipos de arquivo únicos de todos os CDs
+    # Coleta todos os tipos de arquivo únicos
     all_file_types = set()
     file_descriptions = {}
     
@@ -1139,7 +737,7 @@ Exemplos de uso:
             if key not in file_descriptions:
                 file_descriptions[key] = filename
     
-    # Adiciona argumentos para cada tipo de arquivo único
+    # Adiciona argumentos para cada tipo de arquivo
     for file_key in sorted(all_file_types):
         file_group.add_argument(
             f"--{file_key}", 
@@ -1147,44 +745,43 @@ Exemplos de uso:
             help=f"Reconstrói {file_descriptions[file_key]}"
         )
     
-    # Argumentos para compatibilidade com versão anterior
-    compat_group = parser.add_argument_group('Compatibilidade (argumentos antigos)')
+    # Argumentos de compatibilidade
+    compat_group = parser.add_argument_group('Compatibilidade')
     compat_group.add_argument(
         "--binary", 
         type=Path,
-        help="Caminho específico do arquivo binário original (compatibilidade)"
+        help="Caminho específico do arquivo binário original"
     )
     compat_group.add_argument(
         "--csv", 
         type=Path,
-        help="Caminho específico do CSV com traduções (compatibilidade)"
+        help="Caminho específico do CSV com traduções"
     )
     compat_group.add_argument(
         "--output", 
         type=Path,
-        help="Caminho específico do arquivo de saída (compatibilidade)"
+        help="Caminho específico do arquivo de saída"
     )
     compat_group.add_argument(
         "--analysis", 
         type=Path,
-        help="Caminho específico do arquivo de análise (compatibilidade)"
+        help="Caminho específico do arquivo de análise"
     )
     
-    # Configurações de reconstrução
-    rebuild_group = parser.add_argument_group('Configurações de reconstrução')
-    rebuild_group.add_argument(
+    # Configurações
+    config_group = parser.add_argument_group('Configurações')
+    config_group.add_argument(
         "--no-strict", 
         action="store_true",
         help="Desativa modo estrito"
     )
-    rebuild_group.add_argument(
+    config_group.add_argument(
         "--debug", 
         action="store_true",
         help="Modo debug com log detalhado"
     )
     
     return parser
-
 
 def main():
     """Função principal do script."""
@@ -1213,20 +810,15 @@ def main():
         return
     
     # Determina arquivos para reconstrução
-    binary_file = None
-    csv_file = None
-    output_file = None
-    analysis_file = None
-    
     if args.binary:
-        # Compatibilidade: usa arquivos especificados
+        # Modo compatibilidade
         binary_file = args.binary
         csv_file = args.csv
         output_file = args.output
         analysis_file = args.analysis
         logger.info("Usando argumentos de compatibilidade")
     else:
-        # Usa novo sistema: verifica qual arquivo foi selecionado
+        # Modo novo
         selected_files = []
         available_files = file_resolver.get_available_files()
         
@@ -1236,11 +828,11 @@ def main():
         
         if len(selected_files) == 0:
             logger.error("Nenhum arquivo selecionado!")
-            logger.info(f"Use --list para ver arquivos disponíveis ou especifique um arquivo com --stage, --demo, etc.")
+            logger.info("Use --list para ver arquivos disponíveis")
             return
         elif len(selected_files) > 1:
             logger.error(f"Múltiplos arquivos selecionados: {', '.join(selected_files)}")
-            logger.info("Selecione apenas um arquivo por vez para reconstrução")
+            logger.info("Selecione apenas um arquivo por vez")
             return
         
         # Resolve arquivo selecionado
@@ -1251,14 +843,11 @@ def main():
         analysis_file = file_resolver.get_analysis_path(file_key)
         
         if not binary_file:
-            logger.error(f"Arquivo original não encontrado: {file_key} ({args.cd})")
+            logger.error(f"Arquivo original não encontrado: {file_key}")
             return
         
         if not csv_file:
-            logger.error(f"CSV com traduções não encontrado: {file_key} ({args.cd})")
-            logger.info(f"Procurei em:")
-            logger.info(f"  - {file_resolver.translated_path}/strings_*_traduzido.csv")
-            logger.info(f"  - {file_resolver.extracted_path}/strings_*.csv")
+            logger.error(f"CSV com traduções não encontrado: {file_key}")
             return
         
         logger.info(f" Arquivo selecionado: {file_key}")
@@ -1289,49 +878,22 @@ def main():
         strict_mode=not args.no_strict
     )
     
-    logger.info(f" Iniciando reconstrução com preservação crítica...")
+    logger.info(f" Iniciando reconstrução...")
     logger.info(f"   Modo debug: {'ATIVO' if args.debug else 'INATIVO'}")
     logger.info(f"   Modo estrito: {'ATIVO' if not args.no_strict else 'INATIVO'}")
     
-    success = rebuilder.rebuild_binary_fixed(binary_file, csv_file, output_file, analysis_file)
+    success = rebuilder.rebuild_binary(binary_file, csv_file, output_file, analysis_file)
     
     if success:
         logger.info(" RECONSTRUÇÃO CONCLUÍDA COM SUCESSO!")
         logger.info(" DICAS IMPORTANTES:")
         logger.info("   • Teste no emulador com save state")
-        logger.info("   • Padrões críticos 00 FF foram preservados obrigatoriamente")
-        logger.info("   • Substituições que danificariam o padrão foram rejeitadas")
-        logger.info("   • Acentos foram removidos automaticamente para compatibilidade")
-        logger.info("   • Endereços foram preservados exatamente")
-        logger.info("   • Problemas de inserção foram analisados e documentados automaticamente")
-        logger.info(f"  • Consulte o arquivo de análise: {analysis_file}")
+        logger.info("   • Bytes de controle foram preservados")
+        logger.info("   • Estrutura binária mantida intacta")
+        logger.info(f"   • Consulte o arquivo de análise: {analysis_file}")
     else:
         logger.error(" Falha na reconstrução!")
         sys.exit(1)
 
-
 if __name__ == "__main__":
-
     main()
-
-    """
-    Exemplos de uso melhorados:
-    
-    # Reconstrói STAGE.DIR do CD1
-    python tools/rebuild_text.py --stage
-    
-    # Reconstrói DEMO.DAT com debug ativo
-    python tools/rebuild_text.py --demo --debug
-    
-    # Reconstrói VOX.DAT do CD2
-    python tools/rebuild_text.py --cd CD2 --vox
-    
-    # Lista arquivos disponíveis
-    python tools/rebuild_text.py --list
-    
-    # Reconstrói RADIO.DAT sem modo estrito (não recomendado)
-    python tools/rebuild_text.py --radio --no-strict
-    
-    # Compatibilidade com versão anterior
-    python tools/rebuild_text.py --binary arquivo.dat --csv traducoes.csv --output saida.dat
-    """
