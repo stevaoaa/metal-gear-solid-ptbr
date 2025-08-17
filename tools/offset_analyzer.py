@@ -228,7 +228,7 @@ class OffsetInspector:
         try:
             with open(original_path, 'rb') as f:
                 self.original_file = f.read()
-            logger.info(f" Original carregado: {original_path.name} ({len(self.original_file)} bytes)")
+            logger.info(f" Original carregado:  {original_path.name} ({len(self.original_file)} bytes)")
         except Exception as e:
             logger.error(f" Erro ao carregar original: {e}")
             return False
@@ -382,9 +382,9 @@ class OffsetInspector:
         
         if csv_info:
             logger.info(f" INFORMAÇÕES DO CSV:")
-            logger.info(f"   Original: '{csv_info['original_text'][:80]}{'...' if len(csv_info['original_text']) > 80 else ''}'")
+            logger.info(f"   Original:  '{csv_info['original_text'][:80]}{'...' if len(csv_info['original_text']) > 80 else ''}'")
             logger.info(f"   Traduzido: '{csv_info['translated_text'][:80]}{'...' if len(csv_info['translated_text']) > 80 else ''}'")
-            logger.info(f"   Encoding: {csv_info['encoding']}")
+            logger.info(f"   Encoding:   {csv_info['encoding']}")
             logger.info(f"   Size: {csv_info['size']}")
         else:
             logger.warning(f" Offset não encontrado no CSV")
@@ -450,7 +450,7 @@ class OffsetInspector:
         }
         
         logger.info(f" ANÁLISE DE PADRÕES CRÍTICOS:")
-        logger.info(f"   Original - Padrão 00 FF: {'SIM' if original_analysis['has_00_ff'] else 'NAO'}")
+        logger.info(f"   Original  - Padrão 00 FF: {'SIM' if original_analysis['has_00_ff'] else 'NAO'}")
         logger.info(f"   Patcheado - Padrão 00 FF: {'SIM' if patched_analysis['has_00_ff'] else 'NAO'}")
         
         if original_analysis['has_00_ff']:
@@ -697,7 +697,7 @@ def main():
             return
         
         logger.info(f" Arquivo selecionado: {file_key}")
-        logger.info(f"   Original: {original_file.name}")
+        logger.info(f"   Original:  {original_file.name}")
         logger.info(f"   Patcheado: {patched_file.name}")
         if csv_file:
             logger.info(f"   CSV: {csv_file.name}")
