@@ -1910,7 +1910,7 @@ class MGSRebuilder:
                         logger.info(f"   Original: '{original_text[:100]}...'")
 
                     # Verifica se há tradução
-                    translated_text = str(row.get("texto_traduzido", "")).strip()
+                    translated_text = str(row.get("texto_traduzido", "")).rstrip('\n\r ')
                     if not translated_text or translated_text.lower() in ['nan', 'none', '']:
                         text_to_use = original_text
                         is_modification = False
