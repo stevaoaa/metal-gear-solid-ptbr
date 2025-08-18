@@ -1,5 +1,5 @@
 id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	diferenca_bytes	tem_overflow	percentual_diferenca
-70	latin-1	0x1e4b64	44	We'll approach the disposal|facility by sub.	A aproximacao da instalacao|de descarte sera por submarino	58	14	True	31.8
+70	latin-1	0x1e4b64	44	We'll approach the disposal|facility by sub.	Nos aproximaremos|por submarino	58	14	True	31.8
 165	latin-1	0x407738	39	add genetic characteristics|as desired.	adicionar caracteristicas|geneticas conforme desejado	53	14	True	35.9
 3282	shift_jis	0xaa6d878	68	Those mice are Alaskan field mice. Don't worry. They can't hurt you.	Aqueles ratos sao ratos de campo do Alasca. Nao se preocupe. Nao podem te machucar	82	14	True	20.6
 3345	shift_jis	0xae39138	87	That's name rank serial number and date of birth. But you're not any old soldier Snake.	Isso eh: nome, patente, numero de serie, e data de nascimento. Mas vc nao eh um soldado comum Snake	99	12	True	13.8
@@ -28,12 +28,12 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 3328	shift_jis	0xacfe92c	47	You should hurry the time limit is running out.	Vc deveria se apressar o limite de tempo esta se esgotando	58	11	True	23.4
 3361	shift_jis	0xaf50884	107	You caught a cold Snake? In battle you need to be in top physical condition. Do you have any cold medicine?	Vc pegou um resfriado Snake? Na batalha vc precisa estar em condicao fisica perfeita. Tem algum remedio pra resfriado?	118	11	True	10.3
 3376	shift_jis	0xb051974	81	It may look pretty at first but it'll severely limit your visibility. Be careful.	Pode parecer bonito a principio mas vai limitar severamente sua visibilidade. Seja cuidadoso	92	11	True	13.6
-896	shift_jis	0x218ca88	60	Okay, so we'll meet at the nuclear warhead storage building!	Certo, nos encontramos no predio de armazenamento de ogivas nucleares!	70	10	True	16.7
+896	shift_jis	0x218ca88	60	Okay, so we'll meet at the nuclear warhead storage building!	Certo, nos encontramos no armazenamento de ogivas nucleares!	70	10	True	16.7
 304	latin-1	0x90ab44	66	they must have been interviewed|periodically by army counselors...	eles devem ter sido entrevistados|periodicamente por conselheiros militares.	76	10	True	15.2
 359	latin-1	0xaadce4	33	After you retired,|he was rescued	Depois q vc se aposentou,|ele foi resgatado	43	10	True	30.3
-561	shift_jis	0x10b835c	86	This is Mei Ling. She was assigned to us as our visual and data processing specialist.	Esta eh a Mei Ling. Ela foi designada como nossa especialista em processamento visual e de dados	96	10	True	11.6
-789	shift_jis	0x1c075b8	67	This base is owned and operated by a dummy corporation of ArmsTech.	Esta base eh de propriedade e operada por uma corporacao fantasma da ArmsTech	77	10	True	14.9
-808	shift_jis	0x1c07ad8	48	Anyway, you met Baker, huh? How's he holding up?	Enfim, vc conheceu o Baker, neh? Como ele esta aguentando?	58	10	True	20.8
+561	shift_jis	0x10b835c	86	This is Mei Ling. She was assigned to us as our visual and data processing specialist.	Esta eh a Mei Ling. Ela eh nossa especialista em processamento visual e de dados	96	10	True	11.6
+789	shift_jis	0x1c075b8	67	This base is owned and operated by a dummy corporation of ArmsTech.	Esta base eh de propriedade de uma corporacao fantasma da ArmsTech.	77	10	True	14.9
+808	shift_jis	0x1c07ad8	48	Anyway, you met Baker, huh? How's he holding up?	Enfim, vc conheceu o Baker, neh? Como ele esta?	58	10	True	20.8
 1136	shift_jis	0x2d4d9a8	60	You trying to say I'm only interested in saving my own skin?	Vc esta tentando dizer q so me interesso em salvar minha propria pele?	70	10	True	16.7
 1791	shift_jis	0x527c914	45	Take a look around in First Person View Mode.	De uma olhada ao redor no Modo Visao em Primeira Pessoa	55	10	True	22.2
 1874	shift_jis	0x56e2c00	116	I'm sorry. The radio waves were too weak to locate their source. But I'm sure he's near you...somewhere on the base.	Sinto muito. As ondas de radio estao fracas pra localizar a origem. Mas tenho certeza q ele esta perto..em algum lugar da base	126	10	True	8.6
@@ -62,7 +62,7 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 3161	shift_jis	0xa42b1c8	49	I was wondering when you'd ask. What should I do?	Estava me perguntando quando vc perguntaria. Oq devo fazer?	59	10	True	20.4
 3379	shift_jis	0xb0819a4	96	To survive in such surroundings you have to be strong enough to not rely on God nor anyone else.	Pra sobreviver em tais ambientes vc tem q ser forte o suficiente pra nao depender de Deus nem ninguem mais	106	10	True	10.4
 3413	shift_jis	0xb3198b4	89	That inner voice that warns you when danger is nearby...you can't learn that in training.	Aquela voz interior q te avisa quando o perigo esta perto..vc nao pode aprender isso no treinamento	99	10	True	11.2
-795	shift_jis	0x1c07738	73	Because they're a Special Ops group used to handling top secret missions.	Pq eles sao um grupo de Operacoes Especiais acostumados com missoes ultrassecretas	82	9	True	12.3
+795	shift_jis	0x1c07738	73	Because they're a Special Ops group used to handling top secret missions.	Pq eles sao um grupo Especial acostumados com missoes ultrassecretas.	82	9	True	12.3
 2058	shift_jis	0x60359a4	80	Could be. Let's ask Wolf. If she's still alive, I'm going to get some answers...	Pode ser. Vamos perguntar pra Wolf. Se ela estiver viva, vou conseguir algumas respostas.	89	9	True	11.2
 36	latin-1	0x4078	33	led by members of|Unit FOX-HOUND.	lideradas por membros da|Unidade FOX-HOUND	42	9	True	27.3
 122	latin-1	0x346400	65	The safety control system built|into all nuclear weapons systems.	O sistema de controle de seguranca|integrado a todos os sistemas nucleares	74	9	True	13.8
@@ -109,7 +109,7 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 1938	shift_jis	0x5a85244	69	Yeah. With that stealth camouflage, he should be able to hide safely.	Sim. Com a camuflagem furtiva, ele deveria conseguir se esconder em seguranca	77	8	True	11.6
 2804	shift_jis	0x8f65180	78	Harasho...good! You found a SOCOM. That's a Special Operations Command Pistol.	Harasho..bom! Vc achou uma SOCOM. Ela eh uma Pistola de Comando de Operacoes Especiais	86	8	True	10.3
 510	latin-1	0xe8dee8	46	Those nanomachines will|also keep your Codec's	Essas nanomaquinas tbm vao|manter as baterias do Codec	54	8	True	17.4
-89	latin-1	0x1e4f74	49	As usual, this is a one-man|infiltration mission.	Como sempre, esta eh uma missao|de infiltracao individual	57	8	True	16.3
+89	latin-1	0x1e4f74	49	As usual, this is a one-man|infiltration mission.	Esta eh uma missao|de infiltracao individual	57	8	True	16.3
 100	latin-1	0x2da238	37	Must be extremely|important exercises	Devem ser exercicios|extremamente importantes	45	8	True	21.6
 174	shift_jis	0x51bb94	34	one of the greatest soldiers ever.	um dos maiores soldados de todos os tempos	42	8	True	23.5
 208	shift_jis	0x612978	29	When did the countdown start?	Quando a contagem regressiva comecou?	37	8	True	27.6
@@ -117,9 +117,9 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 313	latin-1	0x90add8	49	Apparently, they consulted|classified information	Aparentemente, eles consultaram|informacoes classificadas	57	8	True	16.3
 315	latin-1	0x90ae44	49	and performed their own|gene therapy experiments.	e realizaram seus proprios|experimentos de terapia genica	57	8	True	16.3
 346	latin-1	0xaad9a0	40	He fought in the Gulf War|as a teenager,	Ele lutou na Guerra do Golfo|quando adolescente,	48	8	True	20.0
-581	shift_jis	0x117c1e4	29	The red dots are your enemies	Os pontos vermelhos sao seus inimigos	37	8	True	27.6
-858	shift_jis	0x1e43624	66	In a war, all of mankind's worst emotions...worst traits come out.	Numa guerra, todas as piores emocoes da humanidade..piores tracos aparecem	74	8	True	12.1
-897	shift_jis	0x218cad8	49	Wait! You said you'd stay put and be a good girl!	Espere! Vc disse q ficaria quieta e seria uma boa menina!	57	8	True	16.3
+581	shift_jis	0x117c1e4	29	The red dots are your enemies	Em vermelhos sao os inimigos	37	8	True	27.6
+858	shift_jis	0x1e43624	66	In a war, all of mankind's worst emotions...worst traits come out.	Numa guerra, as piores emocoes, os piores tracos humanos aparecem	74	8	True	12.1
+897	shift_jis	0x218cad8	49	Wait! You said you'd stay put and be a good girl!	Espera! Vc disse que se comportaria!	57	8	True	16.3
 941	shift_jis	0x2340868	15	Like old times?	Como nos velhos tempos?	23	8	True	53.3
 1040	shift_jis	0x29a0094	35	You are extremely careful of traps.	Vc eh extremamente cuidadoso com armadilhas	43	8	True	22.9
 1049	shift_jis	0x2a0d074	28	So you like adventure games?	Entao vc gosta de jogos de aventura?	36	8	True	28.6
@@ -174,12 +174,12 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 426	latin-1	0xd2c9e8	35	who know FOX-HOUND|as well as I do.	que conhecem a FOX-HOUND|tao bem quanto eu	42	7	True	20.0
 462	shift_jis	0xd9c504	21	Save my niece, Meryl!	Salve minha sobrinha, Meryl!	28	7	True	33.3
 482	latin-1	0xe8d964	46	She was in charge of|FOX-HOUND's gene therapy.	Ela estava encarregada da|terapia genica da FOX-HOUND	53	7	True	15.2
-579	shift_jis	0x10b87c4	61	...but first, let me explain about your Soliton radar system.	..mas primeiro, deixe-me explicar sobre seu sistema de radar Soliton	68	7	True	11.5
-627	shift_jis	0x139961c	39	and then all my weapons are taken away.	e depois todas as minhas armas sao confiscadas	46	7	True	17.9
-695	shift_jis	0x186e88c	22	Hiding won't help you.	Se esconder nao vai te ajudar	29	7	True	31.8
-769	shift_jis	0x1ba71e0	55	Don't worry. You'll land back on them once you meet me.	Nao se preocupe. Vc vai cair de volta neles quando me conhecer	62	7	True	12.7
-871	shift_jis	0x20de24c	31	Ha ha. You're a real bastard...	Ha ha. Vc eh um verdadeiro desgracado.	38	7	True	22.6
-888	shift_jis	0x215f170	49	Don't worry, I'm disguised in this enemy uniform.	Nao se preocupe, estou disfarcada neste uniforme inimigo	56	7	True	14.3
+579	shift_jis	0x10b87c4	61	...but first, let me explain about your Soliton radar system.	..mas primeiro, deixe-me explicar sobre seu sistema de radar.	68	7	True	11.5
+627	shift_jis	0x139961c	39	and then all my weapons are taken away.	e todas as minhas armas sao confiscadas	46	7	True	17.9
+695	shift_jis	0x186e88c	22	Hiding won't help you.	N adianta se esconder.	29	7	True	31.8
+769	shift_jis	0x1ba71e0	55	Don't worry. You'll land back on them once you meet me.	Relaxa.. Vc vai voltar para eles quando me encontrar.	62	7	True	12.7
+871	shift_jis	0x20de24c	31	Ha ha. You're a real bastard...	Haha. Vc eh um desgracado..	38	7	True	22.6
+888	shift_jis	0x215f170	49	Don't worry, I'm disguised in this enemy uniform.	Nao se preocupe, estou disfarcada como inimigo..	56	7	True	14.3
 979	shift_jis	0x23b68e8	59	They used him to test all sorts of gene therapy techniques.	Usaram ele pra testar todos os tipos de tecnicas de terapia genica	66	7	True	11.9
 1175	latin-1	0x31e5148	39	I want a sample while|he's still alive.	Quero uma amostra enquanto|ele ainda esta vivo	46	7	True	17.9
 1176	latin-1	0x31e5184	53	We need it to correct the|Genome Soldiers' mutations.	Precisamos disso pra corrigir as|mutacoes dos Soldados Genom	60	7	True	13.2
@@ -210,7 +210,7 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 3225	shift_jis	0xa7380cc	44	Wow Snake. You're like an action movie star!	Uau Snake. Vc eh como uma estrela de filme de acao!	51	7	True	15.9
 3350	shift_jis	0xaeab078	59	Snake you'll get a chance to escape. Make sure you take it.	Snake vc tera uma chance de escapar. Certifique-se de aproveita-la	66	7	True	11.9
 3415	shift_jis	0xb3408bc	78	When you're trying to hide avoid places that look like the enemy might search.	Quando vc esta tentando se esconder evite lugares q parecem q o inimigo pode procurar	85	7	True	9.0
-655	shift_jis	0x1559bb8	53	There's no one I'd rather have in a foxhole than you.	Eu n preferiria dividir uma trincheira com ninguem alem d vc	60	7	True	13.2
+655	shift_jis	0x1559bb8	53	There's no one I'd rather have in a foxhole than you.	Eu n dividiria uma trincheira com ninguem alem de vc	60	7	True	13.2
 1624	shift_jis	0x450033c	39	Hey! This isn't first grade math class!	Ei! Isso nao eh matematica da primeira serie!	45	6	True	15.4
 2500	shift_jis	0x782aa58	111	According to one estimate, as of the year 2005, America alone was storing over 50,000 tons of nuclear material.	Uma estimativa diz q, a partir do ano 2005, so a America estava armazenando mais de 50k toneladas de material nuclear	117	6	True	5.4
 133	shift_jis	0x34666c	20	you can get anything	vc pode ter qualquer coisa	26	6	True	30.0
@@ -233,11 +233,11 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 418	latin-1	0xcf763c	44	But you can't race dogs|in the snow forever.	Mas vc nao pode correr com caes|na neve pra sempre	50	6	True	13.6
 440	shift_jis	0xd2cc50	9	My niece,	Minha sobrinha,	15	6	True	66.7
 448	shift_jis	0xd9c27c	24	He died in the Gulf War,	Ele morreu na Guerra do Golfo,	30	6	True	25.0
-563	shift_jis	0x10b8414	59	Contact her if you have any questions about either of them.	Entre em contato com ela se tiver duvidas sobre qualquer um deles	65	6	True	10.2
-609	shift_jis	0x11e7048	42	...and then all my weapons are taken away.	..e depois todas as minhas armas sao confiscadas	48	6	True	14.3
-744	shift_jis	0x1ae7ac4	43	You think you're some kind of one-man army?	Vc se acha algum tipo de exercito de um homem so?	49	6	True	14.0
-807	shift_jis	0x1c07a98	46	Well...women have more hiding places than men.	Bem..mulheres tem mais lugares pra esconder q homens	52	6	True	13.0
-869	shift_jis	0x20de1e0	43	Okay, let me try to say this another way...	Certo, deixe-me tentar dizer isso de outro jeito.	49	6	True	14.0
+563	shift_jis	0x10b8414	59	Contact her if you have any questions about either of them.	Entre em contato com ela se tiver qualquer duvida.	65	6	True	10.2
+609	shift_jis	0x11e7048	42	...and then all my weapons are taken away.	..e todas as minhas armas sao confiscadas	48	6	True	14.3
+744	shift_jis	0x1ae7ac4	43	You think you're some kind of one-man army?	Vc se acha q eh um exercito de um homem so?	49	6	True	14.0
+807	shift_jis	0x1c07a98	46	Well...women have more hiding places than men.	Mulheres tem mais lugares p/ esconder q homens	52	6	True	13.0
+869	shift_jis	0x20de1e0	43	Okay, let me try to say this another way...	Ok, vou tentar dizer isso de outro jeito..	49	6	True	14.0
 934	shift_jis	0x22fe8c8	29	Now we can fight as warriors.	Agora podemos lutar como guerreiros	35	6	True	20.7
 961	shift_jis	0x23b64c0	61	They were using a soldier for their gene therapy experiments.	Estavam usando um soldado pros experimentos de terapia genica deles	67	6	True	9.8
 1046	shift_jis	0x29e1074	21	So you like SUIKODEN?	Entao vc gosta de SUIKODEN?	27	6	True	28.6
@@ -308,7 +308,7 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 3400	shift_jis	0xb20d1d8	59	After playing for a long time you should get some rest too.	Depois de jogar por muito tempo vc deveria descansar um pouco tbm	65	6	True	10.2
 3440	shift_jis	0xb537130	67	When that happens throw logic to the wind and trust your instincts.	Quando isso acontece jogue a logica pro vento e confie nos seus instintos	73	6	True	9.0
 503	shift_jis	0xe8dd98	27	It'll make me smarter, huh?	Vai me deixar mais esperto, neh?	32	5	True	18.5
-842	shift_jis	0x1d2d9b8	53	You're still too green. I want you to hide somewhere.	Vc ainda eh muito inexperiente. Se esconda em algum lugar	57	4	True	7.5
+842	shift_jis	0x1d2d9b8	53	You're still too green. I want you to hide somewhere.	Vc ainda eh inexperiente. Se esconda em algum lugar.	57	4	True	7.5
 136	shift_jis	0x407138	19	A person's remains.	Os restos de uma pessoa	23	4	True	21.1
 141	shift_jis	0x407218	15	Cell specimens?	Amostras celulares?	19	4	True	26.7
 143	shift_jis	0x407264	25	The terrorists need them.	Os terroristas precisam delas	29	4	True	16.0
@@ -326,9 +326,9 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 457	shift_jis	0xd9c430	20	With my personality,	Com minha personalidade,	24	4	True	20.0
 498	latin-1	0xe8dc9c	37	Now I don't have to|worry about food.	Agora nao preciso|me preocupar com comida	41	4	True	10.8
 504	shift_jis	0xe8ddc4	14	Anything else?	Mais alguma coisa?	18	4	True	28.6
-709	shift_jis	0x18bd0c8	21	that sulfury smell...	aquele cheiro de enxofre.	25	4	True	19.0
-797	shift_jis	0x1c077d8	47	But we must have fired nuclear warheads before.	Mas ja devemos ter disparado ogivas nucleares antes	51	4	True	8.5
-828	shift_jis	0x1d2d630	53	So they'll need him alive until that's done anyway...	Entao vao precisar dele vivo ate isso estar pronto mesmo.	57	4	True	7.5
+709	shift_jis	0x18bd0c8	21	that sulfury smell...	cheiro de enxofre..	25	4	True	19.0
+797	shift_jis	0x1c077d8	47	But we must have fired nuclear warheads before.	Mas nos ja devemos ter disparado nukes antes.	51	4	True	8.5
+828	shift_jis	0x1d2d630	53	So they'll need him alive until that's done anyway...	Entao vao precisar dele vivo ate isso estar pronto..	57	4	True	7.5
 889	shift_jis	0x2180878	44	You won't be for long with the way you walk.	Nao vai ficar por muito tempo do jeito q vc anda	48	4	True	9.1
 964	shift_jis	0x23b656c	41	My predecessor, Dr. Clark, was in charge.	Meu predecessor, Dr. Clark, estava no comando	45	4	True	9.8
 983	shift_jis	0x268f174	44	Naomi, what happened to Gray Fox after that?	Naomi, oq aconteceu com o Gray Fox depois disso?	48	4	True	9.1
@@ -351,11 +351,11 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 2216	shift_jis	0x680d880	94	Snake, Wolf is hiding somewhere in that Snowfield. First you'll have to find out where she is.	Snake, a Wolf esta se escondendo naquele Campo Nevado. Primeiro vc tera q descobrir onde ela esta	97	3	True	3.2
 2135	shift_jis	0x6407978	92	You're right, but we have no choice! The Hind can't move in tight spaces. It's our best bet!	Vc esta certo, mas nao temos escolha! O Hind nao se move em espacos apertados. Eh nossa chance!	95	3	True	3.3
 805	shift_jis	0x1c079dc	61	That's when he gave you detonation code override keys, right?	Foi quando ele te deu as chaves de anulacao de detonacao, certo?	64	3	True	4.9
-824	shift_jis	0x1d2d53c	55	Probably. He should be in the reserach lab area .......	Provavelmente. Ele deve estar perto do lab de pesquisa....	58	3	True	5.5
+824	shift_jis	0x1d2d53c	55	Probably. He should be in the reserach lab area .......	Provavelmente. Ele deve estar perto do lab de pesquisa	58	3	True	5.5
 3330	shift_jis	0xad3587c	79	Meryl must have somehow been brainwashed. There should be some way to help her.	Meryl deve ter sofrido uma lavagem cerebral. Deveria haver algum jeito de ajuda-la	82	3	True	3.8
 1846	shift_jis	0x55c9140	89	The DARPA Chief and President Baker...So now the terrorists know both detonation codes...	O Chefe da DARPA e o Presidente Baker..agora os terroristas sabem os 2 codigos de detonacao.	92	3	True	3.4
 115	latin-1	0x34629c	38	Isn't there some kind|of safety device	Nao existe algum|dispositivo de seguranca	41	3	True	7.9
-571	shift_jis	0x10b8600	51	Well I know I won't be bored for the next 18 hours.	Bem, sei q nao vou ficar entediado pelas proximas 18hs	54	3	True	5.9
+571	shift_jis	0x10b8600	51	Well I know I won't be bored for the next 18 hours.	Bem, nao ficarei entediado pelas proximas 18hs.	54	3	True	5.9
 1621	shift_jis	0x450028c	56	There were five stealth camouflage prototypes in my lab.	Havia 5 prototipos de camuflagem furtiva no meu laboratorio	59	3	True	5.4
 256	latin-1	0x7a4998	65	The six members of FOX-HOUND in|charge are all hardened veterans.	Os 6 membros da FOX-HOUND no|comando sao todos veteranos experientes	68	3	True	4.6
 2083	shift_jis	0x617188c	52	Snake, wait a minute. You forgot to take your items.	Snake, espere um pouco. Vc esqueceu de pegar seus itens	55	3	True	5.8
@@ -383,18 +383,18 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 433	shift_jis	0xd2cb44	20	you're a lousy liar.	vc eh um mentiroso ruim	23	3	True	15.0
 461	shift_jis	0xd9c4e4	14	Please, Snake!	Por favor, Snake!	17	3	True	21.4
 497	latin-1	0xe8dc60	40	nutrition and sugar in|your bloodstream.	nutricao e acucar na|sua corrente sanguinea	43	3	True	7.5
-584	latin-1	0x117c284	70	The genome soldiers have highly|developed senses of hearing and vision	Os soldados genom tem sentidos|de audicao e visao altamente desenvolvidos	73	3	True	4.3
-585	shift_jis	0x117c2dc	26	due to their gene therapy.	devido a terapia genica deles	29	3	True	11.5
-601	shift_jis	0x11e6e10	74	We're here to back you up, so call if you need some information or advice.	Estamos aqui pra te apoiar, entao ligue se precisar de informacao ou conselho	77	3	True	4.1
-621	shift_jis	0x13993e4	74	We're here to back you up, so call if you need some information or advice.	Estamos aqui pra te apoiar, entao ligue se precisar de informacao ou conselho	77	3	True	4.1
+584	latin-1	0x117c284	70	The genome soldiers have highly|developed senses of hearing and vision	Os soldados genoma tem a audicao|e visao altamente desenvolvidas	73	3	True	4.3
+585	shift_jis	0x117c2dc	26	due to their gene therapy.	devido a terapia genica	29	3	True	11.5
+601	shift_jis	0x11e6e10	74	We're here to back you up, so call if you need some information or advice.	Estamos aqui pra te apoiar, entao ligue se precisar de alguma coisa.	77	3	True	4.1
+621	shift_jis	0x13993e4	74	We're here to back you up, so call if you need some information or advice.	Estamos aqui pra te apoiar, entao ligue se precisar de alguma coisa.	77	3	True	4.1
 644	shift_jis	0x151f864	29	Is this all there is to load?	Isso eh tudo q tem pra carregar?	32	3	True	10.3
 684	shift_jis	0x17ac864	13	Hey! Shut up!	Ei! Cala a boca!	16	3	True	23.1
-689	shift_jis	0x17b8988	42	The nanomachines are functioning properly.	As nanomaquinas estao funcionando normalmente	45	3	True	7.1
+689	shift_jis	0x17b8988	42	The nanomachines are functioning properly.	As nanomaquinas estao funcionando normal	45	3	True	7.1
 698	shift_jis	0x1884894	33	I love to reload during a battle.	Adoro recarregar durante uma batalha	36	3	True	9.1
 702	shift_jis	0x189e888	16	I'm alive again!	Estou vivo de novo!	19	3	True	18.8
-733	shift_jis	0x18d8f90	42	Yes, we have no one like that in our unit.	Sim, nao temos ninguem assim na nossa unidade	45	3	True	7.1
+733	shift_jis	0x18d8f90	42	Yes, we have no one like that in our unit.	Sim nao temos ninguem assim na nossa unidade	45	3	True	7.1
 793	shift_jis	0x1c07690	117	FOX-HOUND and the Next- Generation Special Forces were called here for the test launching of a dummy nuclear warhead.	A FOX-HOUND e as Forcas Especiais de Nova Geracao foram chamadas aqui pro teste de lancamento de uma ogiva nuclear falsa	120	3	True	2.6
-831	shift_jis	0x1d2d6dc	99	In case we can't override the detonation code in time, I need to ask him how to destroy Metal Gear.	Caso nao consigamos anular o codigo de detonacao a tempo, preciso perguntar como destruir o Metal Gear	102	3	True	3.0
+831	shift_jis	0x1d2d6dc	99	In case we can't override the detonation code in time, I need to ask him how to destroy Metal Gear.	Caso n consigamos anular o codigo de detonacao a tempo, preciso saber como destruir o Metal Gear.	102	3	True	3.0
 862	shift_jis	0x1e43720	48	You're just a little jumpy from the combat high.	Vc esta apenas meio nervosa pela euforia do combate	51	3	True	6.2
 876	shift_jis	0x20de330	32	Okay Snake. I'll be a good girl.	Certo Snake. Vou ser uma boa menina	35	3	True	9.4
 928	shift_jis	0x22c78c4	25	Make me feel alive again!	Me faca sentir vivo de novo!	28	3	True	12.0
@@ -494,7 +494,7 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 3452	shift_jis	0xb8e3064	22	A surveillance camera?	Uma camera de vigilancia?	25	3	True	13.6
 211	latin-1	0x64718c	47	Naturally I'm representing|the U.S. Government.	Naturalmente to representando|o Governo Americano	49	2	True	4.3
 514	shift_jis	0xf68090	31	I need to borrow your scissors.	Preciso da sua tesoura emprestada	33	2	True	6.5
-727	shift_jis	0x18d8dfc	103	It should be okay if you do burst transmission like us, but normal transmission is probably impossible.	Deve ficar tudo bem se vc fizer transmissao em rajada, mas transmissao normal eh provavelmente impossivel	105	2	True	1.9
+727	shift_jis	0x18d8dfc	103	It should be okay if you do burst transmission like us, but normal transmission is probably impossible.	Nao deve ser problema se vc fizer transmissao em rajada, mas a transmissao normal nao eh possivel.	105	2	True	1.9
 1053	shift_jis	0x2a46070	22	You like arcade games.	Vc gosta de jogos arcade	24	2	True	9.1
 1226	shift_jis	0x339b068	22	Can you take one more?	Consegue aguentar outra?	24	2	True	9.1
 1763	shift_jis	0x506792c	51	Be careful not to make noise when you're near them.	Cuidado pra nao fazer barulho qnd estiver perto deles	53	2	True	3.9
@@ -533,9 +533,9 @@ id	encoding	offset	tamanho_bytes	texto	texto_traduzido	tamanho_bytes_traduzido	d
 472	shift_jis	0xd9c6a0	7	Agreed.	Combinado	9	2	True	28.6
 486	shift_jis	0xe8da40	16	I'm not a nurse.	Nao sou enfermeira	18	2	True	12.5
 500	shift_jis	0xe8dd0c	9	Say what?	Como assim?	11	2	True	22.2
-597	shift_jis	0x11e6d34	47	We'll be monitoring your movements by radar,...	Estaremos monitorando seus movimentos por radar,.	49	2	True	4.3
+597	shift_jis	0x11e6d34	47	We'll be monitoring your movements by radar,...	Estaremos monitorando seus movimentos por radar	49	2	True	4.3
 633	shift_jis	0x145d9d4	21	It's the fastest way,	Eh o jeito mais rapido,	23	2	True	9.5
-814	shift_jis	0x1d2d368	43	Yeah...Was either of them sick or anything?	Sim..Algum deles estava doente ou algo assim?	45	2	True	4.7
+814	shift_jis	0x1d2d368	43	Yeah...Was either of them sick or anything?	Sim..Um deles estava doente ou algo assim?	45	2	True	4.7
 827	shift_jis	0x1d2d5d8	69	I think they're forcing him to work on the nuclear launching program.	Acho q estao forcando ele a trabalhar no programa de lancamento nuclear	71	2	True	2.9
 893	shift_jis	0x218c9f0	48	It's equipped with infrared sensors. Be careful.	Esta equipada com sensores infravermelhos. Cuidado	50	2	True	4.2
 894	shift_jis	0x218ca34	42	If an intruder is sensed, gas is released.	Se um intruso for detectado, gas eh liberado	44	2	True	4.8
