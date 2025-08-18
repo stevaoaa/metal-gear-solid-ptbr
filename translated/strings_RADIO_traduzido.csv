@@ -89,7 +89,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 88	0x1110	shift_jis	5	;奉9ﾃ		-5
 89	0x1117	latin-1	50	I wasn't sure if you were one of#Nthe good guys.	Nao tinha certeza se vc era#Num dos mocinhos	-6
 90	0x1154	shift_jis	20	But I knew you were.	Eu sabia q vc era	-3
-91	0x1173	shift_jis	4	How?	Como?	1
+91	0x1173	shift_jis	4	How?	Como	1
 92	0x118e	shift_jis	15	It's your eyes.	Sao seus olhos	-1
 93	0x11a7	shift_jis	9	My eyes?	O olhar?	-1
 94	0x11b4	latin-1	5	$!Ê÷;		-5
@@ -797,7 +797,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 796	0x3911f	shift_jis	5	Oh...	Ah..	-1
 797	0x3912e	latin-1	85	What do you want, Snake? If you want#Nto talk to Naomi, why don't you call#Nher?	O q quer, Snake? Se quer#Nfalar com a Naomi, pq nao liga#Npara ela?	-18
 798	0x39198	shift_jis	34	Oh it's nothing...forget about it.	Ah, nao eh nada..esqueca	-10
-799	0x391c4	shift_jis	15	Strange guy...	Cara estranho..	0
+799	0x391c4	shift_jis	15	Strange guy...	Cara estranho	0
 800	0x39879	latin-1	48	...Naomi wasn't acting strangely or#Nanything?	..a Naomi nao tava estranha#Nou algo assim?	-5
 801	0x398b4	latin-1	80	No...I just can't believe that Naomi's#Nan enemy spy. I refuse to accept that.	Nao consigo acreditar q Naomi eh#Numa espia inimiga. Me recuso	-18
 802	0x39908	latin-1	5	2!Ê÷;		-5
@@ -1039,7 +1039,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 1038	0x4a507	shift_jis	13	Are you sure?	Tem certeza?	-1
 1039	0x4a51f	latin-1	45	Yes, we have no one like that in#Nour unit.	Sim, n temos ninguem assim na#Nnossa unidade	-1
 1040	0x4a556	shift_jis	18	...Is that right?	..Eh mesmo?	-7
-1041	0x4a586	shift_jis	28	Snake, I'm counting on you.	Snake, estou contando com vc	0
+1041	0x4a586	shift_jis	28	Snake, I'm counting on you.	Snake, conto com vc	0
 1042	0x4a5d9	latin-1	44	Snake, I unlocked the cargo door#Nfor you.	Snake destranquei a porta de carga#Npara vc	-1
 1043	0x4a610	shift_jis	22	Thanks. Where are you?	Obg. Onde vc esta?	-4
 1044	0x4a630	shift_jis	28	Where - I - can - see - ya.	Onde -eu- posso - te - ver	-2
@@ -3580,7 +3580,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 3579	0xb7b64	latin-1	55	Try to find the walls that have a#Ndifferent pattern.	Tente encontrar as paredes q tem#Num padrao diferente	-2
 3580	0xb7bd2	latin-1	5	Ku!ó		-5
 3581	0xb7bd8	latin-1	67	Did you try hitting the wall? #NMaybe it'll sound different too.	Tentou bater na parede?#NTalvez soe diferente tbm	-18
-3582	0xb7c59	latin-1	120	You'll need some kind of explosive to#Ndestroy the wall...like C4 or something.#NTake a good look around the armory.	Vai precisar de algum tipo de explosivo#Npara destruir a parede, como C4 ou#Nalgo assim. De uma boa olhada no arsenal	-2
+3582	0xb7c59	latin-1	120	You'll need some kind of explosive to#Ndestroy the wall...like C4 or something.#NTake a good look around the armory.	Vai precisar de algum tipo de explosivo#Npara destruir a parede, como C4 ou#Nalgo assim. De uma olhada no arsenal	-2
 3583	0xb7cee	latin-1	98	Those C4 explosives you've got#Nshould be able to destroy the walls#Nthat were cemented over.	Esses explosivos C4 q vc tem#Ndevem conseguir destruir as paredes#Nque foram cimentadas	-11
 3584	0xb7d79	shift_jis	9	脣1 11		-9
 3585	0xb7d9b	latin-1	78	President Baker should be#Nsomewhere around there. Hurry up#Nand find him.	O Presidente Baker deve estar#Npor ai. Se apresse#Ne o encontre	0
@@ -3824,7 +3824,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 3823	0xc06b9	latin-1	56	Well Colonel...there's nothing we#Ncan do about it...	Bem Cel... nao ha nada q#Npossamos fazer sobre isso..	-3
 3824	0xc070f	shift_jis	25	...I guess you're right.	..Acho q vc ta certo	-5
 3825	0xc0733	latin-1	147	Snake, don't worry about it. There's#Nmore to being a good person than just#Nhaving a stereo television. You can do#Nit just the way you are!	Snake, nao se preocupe com isso. Ha#Nmais em ser uma boa pessoa do q#Napenas ter uma televisao estereo. vc#Nconsegue do jeito q eh!	-16
-3826	0xc07e4	shift_jis	13	A mono TV...	Uma TV mono..	0
+3826	0xc07e4	shift_jis	13	A mono TV...	Uma TV Mono	0
 3827	0xc0d7c	latin-1	46	You did it, Snake!#NYou shot down the Hind!	Conseguiu, Snake!#NDerrubou o Hind!	-11
 3828	0xc0dc8	shift_jis	20	I was so worried...	Eu tava preocupada	0
 3829	0xc0dfa	shift_jis	36	Liquid couldn't have survived that.	Liquid nao poderia sobrevivido isso	-1
@@ -4413,7 +4413,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 4412	0x12a3b6	latin-1	9	1g01b		-9
 4413	0x12dbcb	latin-1	11	´0B1		-11
 4414	0x12dc1e	shift_jis	5	"""3ｯ笥"		-5
-4415	0x12dc24	shift_jis	26	You found Meryl. Harasho!	"Vc encontrou Meryl. ""bom""!"	0
+4415	0x12dc24	shift_jis	26	You found Meryl. Harasho!	Vc encontrou Meryl.. bom!	0
 4416	0x12dc94	shift_jis	34	Meryl is acting kind of strange...	Meryl ta agindo meio estranho..	-3
 4417	0x12dcc1	latin-1	88	"It could be the stress of battle.#N...I have a friend who had ""Chechan#NSyndrome."""	"Pode ser o estresse da batalha#N..Tenho um amigo q teve ""Sindrome#NChechena."""	-11
 4418	0x12dd24	latin-1	90	He became depressed six months#Nafter returning from Chechnya and #Ntook his own life.	Ele ficou deprimido 6 meses#Napos retornar da Chechenia e#Ntirou a propria vida	-11
@@ -4660,7 +4660,7 @@ id	offset	encoding	tamanho_bytes	texto	texto_traduzido	diferenca_bytes
 4659	0x15a8e0	shift_jis	12	0=11		-12
 4660	0x15a93d	shift_jis	5	73ｯ@ﾃ		-5
 4661	0x15a943	latin-1	47	Snake, you are in danger!#NGet out of there!	Snake, vc ta em perigo!#NSaia dai!	-13
-4662	0x15a97c	shift_jis	14	Yeah but how?	Sim, mas como?	0
+4662	0x15a97c	shift_jis	14	Yeah but how?	Sim,mas como?	0
 4663	0x15a9b3	latin-1	46	Isn't there someone who knows this#Nbase...?	Nao ha alguem q conhece esta#Nbase..?	-9
 4664	0x15a9e5	shift_jis	5	43ｯ@ﾃ		-5
 4665	0x15a9ec	latin-1	43	Dr. Emmerich! Maybe he can do#Nsomething.	Dr. Emmerich! Talvez possa fazer#Nalgo	-5
