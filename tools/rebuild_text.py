@@ -933,6 +933,9 @@ class MGSRebuilderUnified:
         success_rate = (self.stats['applied'] / self.stats['processed'] * 100) if self.stats['processed'] > 0 else 0
         logger.info(f"Taxa de sucesso: {success_rate:.1f}%")
 
+        general_success = ((self.stats['applied'] + self.stats['identical_preserved']) / self.stats['processed'] * 100) if self.stats['processed'] > 0 else 0
+        logger.info(f"Taxa de sucesso geral (traduzidos + preservados): {general_success:.1f}%")
+
         if self.stats['problems_analyzed'] > 0:
             logger.info(f"Arquivo de análise: {analysis_path}")
 
