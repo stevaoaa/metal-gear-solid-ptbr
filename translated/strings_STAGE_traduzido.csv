@@ -961,7 +961,7 @@ VoVoPePliuPri{Pd"	@` VoVoPePliuPri{Pd	-18	False	-48.6
 959	shift_jis	50	47	0x3b4fbb2	1this order, Big Boss, commander-in-chief of FOX-	1essa ordem Big Boss comandante a cargo da FOX-	-3	False	-6.0
 960	shift_jis	49	47	0x3b4fbe5	0HOUND sent Gray Fox, the man with the code name	0HOUND enviou Gray Fox, homem com o codinome	-2	False	-4.1
 961	shift_jis	54	45	0x3b4fc17	"5""FOX"" which is given to the best member of the unit."	"5""FOX"" que eh dado ao melhor membro da unidade."	-11	False	-16.7
-962	shift_jis	29	25	0x3b4fc4e	"""Operation Intrude N313""..."	"""Operacao Intrude N313"".."	-6	False	-13.8
+962	shift_jis	29	25	0x3b4fc4e	"""Operation Intrude N313""..."	 Operacao Intrude N313..	-6	False	-13.8
 963	shift_jis	49	42	0x3b4fc6c	"0After a few days, his last message being ""Metal"	"0Depois de dias sua ultima msg sendo ""Metal"	-8	False	-14.3
 964	shift_jis	42	38	0x3b4fc9e	")Gear..."", Gray Fox is missing in action."	")Gear..."" Gray Fox desapareceu em acao."	-5	False	-9.5
 965	shift_jis	52	49	0x3b4fcc9	3Taking the situation seriously, the top men of the	3Levando a situacao a serio os homens do topo das	-3	False	-5.8
@@ -1139,9 +1139,9 @@ VoVoPePliuPri{Pd"	@` VoVoPePliuPri{Pd	-18	False	-48.6
 1137	shift_jis	43	34	0x3b51c10	*and challenges Snake to the final battle.	*e desafia Snake p/ batalha final.	-9	False	-20.9
 1138	shift_jis	50	45	0x3b51c3c	1In the midst of a minefield, Snake and Fox fight	1No meio de um campo minado Snake e Fox lutam	-5	False	-10.0
 1139	shift_jis	52	44	0x3b51c6f	3without any weapons. A fist-to-fist duel involving	3sem armas.Um duelo punho a punho sem	-8	False	-15.4
-1140	shift_jis	48	56	0x3b51ca4	/no hatred or murder intent.  During that weird	/nenhuma intencao de matar.Durante o momento	3	True	16.7
-1141	shift_jis	47	48	0x3b51cd5	.moment of purity, the two are bound in forces	.estranho d pureza os dois unidos em forcas	-4	True	2.1
-1142	shift_jis	33	32	0x3b51d05	transcending words and emotion.	 transcendendo palavras e emocao	-1	False	-3.0
+1140	shift_jis	48	56	0x3b51ca4	/no hatred or murder intent.  During that weird	/nenhuma intencao de matar. Durante aquele mo-	3	True	16.7
+1141	shift_jis	47	48	0x3b51cd5	.moment of purity, the two are bound in forces	.mento de pureza os dois unidos em forcas	-4	True	2.1
+1142	shift_jis	33	32	0x3b51d05	transcending words and emotion.	 superando palavras e emocoes.	-1	False	-3.0
 1143	shift_jis	46	43	0x3b51d27	-Snake wins the tough but pure battle against	-Snake vence a batalha dura mas pura contra	-3	False	-6.5
 1144	shift_jis	50	39	0x3b51d56	1Gray Fox.  However, there still was someone else	1Gray Fox.Porem ainda havia alguem mais	-11	False	-22.0
 1145	shift_jis	52	47	0x3b51d89	3Snake had to fight -- Big Boss.  Just like 4 years	3q Snake tinha q lutar -- Big Boss.Igual 4 anos	-5	False	-9.6
