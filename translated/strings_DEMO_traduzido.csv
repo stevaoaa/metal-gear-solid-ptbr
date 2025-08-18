@@ -643,7 +643,7 @@ id	offset	tamanho_bytes	encoding	texto	texto_traduzido	tamanho_bytes_traduzido
 642	0x6fe3aa4	42	latin-1	You sure you're not forgetting|something?	Tem certeza que nao esta esquecendo|algo?	42
 643	0x6fe3ae0	59	latin-1	It's true that Metal Gear has a|missile module on his back	Eh verdade que Metal Gear tem um|modulo de missil nas costas	63
 644	0x6fe3b2c	40	latin-1	that can carry up to 8 missiles.|But...	que pode carregar ate 8 misseis.|Mas..	38
-645	0x6fe3b68	42	latin-1	...are you saying it was|originally meant	vocÃª esta dizendo que foi|originalmente projetado	51
+645	0x6fe3b68	42	latin-1	...are you saying it was|originally meant	...vc esta dizendo que ele foi|projetado	51
 646	0x6fe3ba4	26	shift_jis	to carry nuclear missiles?	p/ carregar armas nucleares?	31
 647	0x71238d0	33	shift_jis	Yeah. But that's not all I think.	Sim. Mas nao eh so isso que penso.	34
 648	0x7123904	52	latin-1	If Metal Gear fired only standard|nuclear missiles,	Se Metal Gear disparasse apenas misseis|nucleares padrao	56
