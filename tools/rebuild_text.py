@@ -12,51 +12,27 @@ from typing import Dict, Optional, Tuple, List
 from datetime import datetime
 import argparse
 
-# Adiciona o diretório raiz ao sys.path para permitir importações internas
-BASE_DIR = Path(__file__).parent.parent.absolute()
-sys.path.append(str(BASE_DIR))
+# Adiciona a raiz do projeto ao sys.path
+_ROOT = Path(__file__).parent.parent.absolute()
+sys.path.insert(0, str(_ROOT))
+
+import config as cfg
+from config import BASE_DIR, FILE_MAPPING, FILE_STRATEGIES
 from util.logger_config import setup_logger
 
 # Inicializa o logger para registrar as operações do script
 logger = setup_logger()
-
-# Mapeamento de arquivos disponíveis por CD
-FILE_MAPPING = {
-    "CD1": {
-        "radio": "RADIO.DAT",
-        "stage": "STAGE.DIR",
-        "demo": "DEMO.DAT",
-        "vox": "VOX.DAT",
-        "zmovie": "ZMOVIE.STR"
-    },
-    "CD2": {
-        "radio": "RADIO.DAT",
-        "stage": "STAGE.DIR",
-        "demo": "DEMO.DAT",
-        "vox": "VOX.DAT",
-        "zmovie": "ZMOVIE.STR"
-    }
-}
-
-# Configuração de estratégias por tipo de arquivo
-FILE_STRATEGIES = {
-    "STAGE.DIR": "stage_strategy",    # Usa estratégia avançada para STAGE
-    "RADIO.DAT": "generic_strategy",  # Usa estratégia genérica
-    "DEMO.DAT": "generic_strategy",   # Usa estratégia genérica
-    "VOX.DAT": "generic_strategy",    # Usa estratégia genérica
-    "ZMOVIE.STR": "generic_strategy"  # Usa estratégia genérica
-}
 
 class FileResolver:
     """Resolve arquivos baseado em parâmetros intuitivos."""
     
     def __init__(self, cd: str = "CD1"):
         self.cd = cd
-        self.assets_path = BASE_DIR / "assets" / "fontes" / cd
-        self.patches_path = BASE_DIR / "patches"
-        self.extracted_path = BASE_DIR / "extracted"
-        self.translated_path = BASE_DIR / "translated"
-        self.output_path = BASE_DIR / "output"
+        self.assets_path = cfg.CD_PATHS.get(cd, BASE_DIR / "assets" / "fontes" / cd)
+        self.patches_path = cfg.DIRS["patches"]
+        self.extracted_path = cfg.DIRS["extracted"]
+        self.translated_path = cfg.DIRS["translated"]
+        self.output_path = cfg.DIRS["output"]
     
     def get_available_files(self) -> Dict[str, str]:
         """Retorna os arquivos disponíveis para o CD atual."""
@@ -78,7 +54,7 @@ class FileResolver:
             base_name = Path(filename).stem
             extension = Path(filename).suffix
             output_name = f"{base_name}_PATCHED{extension}"
-            return self.patches_path / output_name
+            return self.patches_path / self.cd / output_name
         return None
     
     def get_csv_path(self, file_key: str, prefer_translated: bool = True) -> Optional[Path]:
@@ -92,7 +68,7 @@ class FileResolver:
         
         # Tenta encontrar arquivo traduzido primeiro
         if prefer_translated:
-            translated_csv = self.translated_path / f"strings_{base_name}_traduzido.csv"
+            translated_csv = self.translated_path / self.cd / f"strings_{base_name}_traduzido.csv"
             if translated_csv.exists():
                 return translated_csv
         

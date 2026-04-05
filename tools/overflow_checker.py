@@ -20,22 +20,27 @@ import sys
 import argparse
 from datetime import datetime
 
-# Adiciona o diretório pai ao sys.path para permitir importações relativas
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Adiciona a raiz do projeto ao sys.path
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, _ROOT)
+
+import config as cfg
 from util.logger_config import setup_logger
 
 
 # Inicializa o logger personalizado
 logger = setup_logger()
 
-# Mapeamento dos parâmetros para arquivos
-ARQUIVOS_TRADUZIDOS = {
-    'demo': './translated/strings_DEMO_traduzido.csv',
-    'radio': './translated/strings_RADIO_traduzido.csv',
-    'stage': './translated/strings_STAGE_traduzido.csv', 
-    'vox': './translated/strings_VOX_traduzido.csv',
-    'zmovie': './translated/strings_ZMOVIE_traduzido.csv'
-}
+
+def get_arquivos_traduzidos(cd: str = "CD1") -> dict[str, str]:
+    """
+    Gera dinamicamente o mapeamento dataset → caminho do CSV traduzido
+    para o CD informado, usando os caminhos definidos em config.py.
+    """
+    return {
+        key: str(cfg.get_translated_path(cd, key))
+        for key in cfg.FILE_MAPPING.get(cd, {})
+    }
 
 def calcular_tamanho_bytes(texto):
     """Calcula o tamanho em bytes usando codificação latin-1"""
@@ -365,23 +370,25 @@ def gerar_relatorio_excel(df, arquivo_excel, coluna_referencia=None, nome_datase
         logger.error(f" Erro ao gerar Excel: {e}")
         return False
 
-def processar_arquivo(dataset, gerar_excel=False):
+def processar_arquivo(dataset, gerar_excel=False, cd="CD1"):
     """
     Processa um arquivo específico do dataset.
     
     Args:
         dataset (str): Nome do dataset (radio, stage, vox, etc.)
         gerar_excel (bool): Se deve gerar relatório Excel
+        cd (str): CD a processar (CD1 ou CD2)
     
     Returns:
         dict: Estatísticas do processamento
     """
     
-    arquivo_csv = ARQUIVOS_TRADUZIDOS.get(dataset.lower())
+    arquivos_traduzidos = get_arquivos_traduzidos(cd)
+    arquivo_csv = arquivos_traduzidos.get(dataset.lower())
     
     if not arquivo_csv:
-        logger.error(f" Dataset '{dataset}' não reconhecido!")
-        logger.info(f" Datasets disponíveis: {', '.join(ARQUIVOS_TRADUZIDOS.keys())}")
+        logger.error(f" Dataset '{dataset}' não reconhecido para {cd}!")
+        logger.info(f" Datasets disponíveis: {', '.join(arquivos_traduzidos.keys())}")
         return None
     
     if not os.path.exists(arquivo_csv):
@@ -404,30 +411,33 @@ def processar_arquivo(dataset, gerar_excel=False):
     
     return None
 
-def processar_todos_arquivos(gerar_excel=False):
+def processar_todos_arquivos(gerar_excel=False, cd="CD1"):
     """
     Processa todos os arquivos de tradução disponíveis.
     
     Args:
         gerar_excel (bool): Se deve gerar relatórios Excel
+        cd (str): CD a processar (CD1 ou CD2)
     
     Returns:
         dict: Resumo de todos os processamentos
     """
     
-    logger.info(" PROCESSANDO TODOS OS DATASETS")
+    arquivos_traduzidos = get_arquivos_traduzidos(cd)
+    
+    logger.info(f" PROCESSANDO TODOS OS DATASETS ({cd})")
     logger.info("=" * 60)
     
     resultados = {}
     total_traducoes = 0
     total_overflows = 0
     
-    for dataset in ARQUIVOS_TRADUZIDOS.keys():
-        arquivo = ARQUIVOS_TRADUZIDOS[dataset]
+    for dataset in arquivos_traduzidos.keys():
+        arquivo = arquivos_traduzidos[dataset]
         
         if os.path.exists(arquivo):
             logger.info(f"\n Processando {dataset.upper()}...")
-            stats = processar_arquivo(dataset, gerar_excel)
+            stats = processar_arquivo(dataset, gerar_excel, cd)
             
             if stats:
                 resultados[dataset] = stats
@@ -475,22 +485,25 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
 Exemplos de uso:
-  {sys.argv[0]} --radio                    # Analisa strings_RADIO_traduzido.csv
-  {sys.argv[0]} --stage --excel            # Analisa STAGE e gera Excel
-  {sys.argv[0]} --all                      # Analisa todos os datasets
+  {sys.argv[0]} --radio                    # Analisa strings_RADIO_traduzido.csv do CD1
+  {sys.argv[0]} --cd CD2 --stage --excel   # Analisa STAGE do CD2 e gera Excel
+  {sys.argv[0]} --all                      # Analisa todos os datasets do CD1
   {sys.argv[0]} --all --excel              # Analisa todos e gera Excel
   {sys.argv[0]} --file arquivo.csv         # Analisa arquivo específico
-
-Datasets disponíveis: {', '.join(ARQUIVOS_TRADUZIDOS.keys())}
         """
     )
     
-    # Argumentos para datasets específicos
-    parser.add_argument('--demo', action='store_true', help='Analisa strings_DEMO_traduzido.csv')
-    parser.add_argument('--radio', action='store_true', help='Analisa strings_RADIO_traduzido.csv')
-    parser.add_argument('--stage', action='store_true', help='Analisa strings_STAGE_traduzido.csv')
-    parser.add_argument('--vox', action='store_true', help='Analisa strings_VOX_traduzido.csv')
-    parser.add_argument('--zmovie', action='store_true', help='Analisa strings_ZMOVIE_traduzido.csv')
+    parser.add_argument('--cd', choices=['CD1', 'CD2'], default='CD1',
+                        help='CD a processar (padrão: CD1)')
+
+    # Argumentos para datasets — gerados dinamicamente a partir do config
+    all_keys = set()
+    for mapping in cfg.FILE_MAPPING.values():
+        all_keys.update(mapping.keys())
+    for key in sorted(all_keys):
+        parser.add_argument(f'--{key}', action='store_true',
+                            help=f'Analisa strings_{key.upper()}_traduzido.csv')
+
     parser.add_argument('--all', action='store_true', help='Analisa todos os datasets disponíveis')
     
     # Arquivo específico (agora como argumento nomeado)
@@ -502,13 +515,11 @@ Datasets disponíveis: {', '.join(ARQUIVOS_TRADUZIDOS.keys())}
     
     args = parser.parse_args()
     
+    cd = args.cd
+    arquivos_traduzidos = get_arquivos_traduzidos(cd)
+
     # Identifica qual dataset foi selecionado
-    datasets_selecionados = []
-    if args.demo: datasets_selecionados.append('demo')
-    if args.radio: datasets_selecionados.append('radio')
-    if args.stage: datasets_selecionados.append('stage')
-    if args.vox: datasets_selecionados.append('vox')
-    if args.zmovie: datasets_selecionados.append('zmovie')
+    datasets_selecionados = [key for key in arquivos_traduzidos if getattr(args, key, False)]
     
     # Verifica se múltiplos datasets foram selecionados
     if len(datasets_selecionados) > 1:
@@ -517,22 +528,20 @@ Datasets disponíveis: {', '.join(ARQUIVOS_TRADUZIDOS.keys())}
         return
     
     # Se nenhum argumento foi fornecido, mostra ajuda
-    if not any([args.demo, args.radio, args.stage, args.vox, args.zmovie, args.all, args.file]):
+    if not datasets_selecionados and not args.all and not args.file:
         parser.print_help()
         return
     
     # Processa baseado nos argumentos
     if args.all:
-        # Processa todos os arquivos
-        logger.info(" Processando todos os datasets...")
-        processar_todos_arquivos(args.excel)
+        logger.info(f" Processando todos os datasets ({cd})...")
+        processar_todos_arquivos(args.excel, cd)
         
     elif datasets_selecionados:
-        # Dataset específico foi selecionado
         dataset = datasets_selecionados[0]
-        logger.info(f" Processando dataset: {dataset.upper()}")
+        logger.info(f" Processando dataset: {dataset.upper()} ({cd})")
         
-        stats = processar_arquivo(dataset, args.excel)
+        stats = processar_arquivo(dataset, args.excel, cd)
         
         if stats:
             logger.info(f"\n Análise de {dataset.upper()} concluída!")

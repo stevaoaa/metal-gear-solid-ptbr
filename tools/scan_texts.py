@@ -13,42 +13,16 @@ from pathlib import Path
 from typing import List, Tuple, Optional, Set, Dict
 from dataclasses import dataclass
 
-# Caminho absoluto da raiz do projeto
-BASE_DIR = Path(__file__).parent.parent.absolute()
+# Adiciona a raiz do projeto ao sys.path
+_ROOT = Path(__file__).parent.parent.absolute()
+sys.path.insert(0, str(_ROOT))
 
-# Adiciona o diretório raiz ao sys.path para permitir imports relativos
-sys.path.append(str(BASE_DIR))
+import config as cfg
+from config import BASE_DIR, FILE_MAPPING, DEFAULT_FILES
 from util.logger_config import setup_logger
 
 # Inicializa o logger
 logger = setup_logger()
-
-# Mapeamento de arquivos disponíveis por CD
-FILE_MAPPING = {
-    "CD1": {
-        # Arquivos do CD1
-        "radio": "RADIO.DAT",
-        "brf": "BRF.DAT", 
-        "stage": "STAGE.DIR",
-        "face": "FACE.DAT",
-        "demo": "DEMO.DAT",
-        "vox": "VOX.DAT",
-        "slus": "SLUS_005.94",
-        "zmovie": "ZMOVIE.STR"
-    },
-    "CD2": {
-        # Arquivos do CD2
-        "radio": "RADIO.DAT",
-        "brf": "BRF.DAT",
-        "stage": "STAGE.DIR",
-        "face": "FACE.DAT",
-        "demo": "DEMO.DAT",
-        "vox": "VOX.DAT"
-    }
-}
-
-# Arquivos padrão para processamento (mais comuns para texto)
-DEFAULT_FILES = ["radio", "brf", "stage", "face", "demo", "vox"]
 
 
 @dataclass
@@ -264,7 +238,7 @@ class TextExtractor:
         output_file = self.output_dir / f"strings_{base_name}.csv"
         
         # Verifica se existe arquivo traduzido para mesclar
-        translated_dir = BASE_DIR / "translated"
+        translated_dir = cfg.DIRS["translated"]
         existing_translated = translated_dir / f"strings_{base_name}_traduzido.csv"
         
         existing_translations = {}
@@ -315,7 +289,7 @@ class FileManager:
     def __init__(self, cd: str = "CD1"):
         self.cd = cd
         self.config_file = BASE_DIR / "tools" / "scan_config.json"
-        self.base_path = BASE_DIR / "assets" / "fontes" / cd
+        self.base_path = cfg.CD_PATHS.get(cd, BASE_DIR / "assets" / "fontes" / cd)
     
     def get_available_files(self) -> Dict[str, str]:
         """Retorna os arquivos disponíveis para o CD atual."""

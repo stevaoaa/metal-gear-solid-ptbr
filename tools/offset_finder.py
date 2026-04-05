@@ -11,41 +11,24 @@ from typing import List, Dict, Optional, Tuple, Union
 import pandas as pd
 import argparse
 
-# Adiciona o diretório raiz ao sys.path
-BASE_DIR = Path(__file__).parent.parent.absolute()
-sys.path.append(str(BASE_DIR))
+# Adiciona a raiz do projeto ao sys.path
+_ROOT = Path(__file__).parent.parent.absolute()
+sys.path.insert(0, str(_ROOT))
+
+import config as cfg
+from config import BASE_DIR, FILE_MAPPING
 from util.logger_config import setup_logger
 
 logger = setup_logger()
-
-# Mapeamento de arquivos disponíveis por CD (mesmo do scan_texts.py)
-FILE_MAPPING = {
-    "CD1": {
-        # arquivos do CD1
-        "radio": "RADIO.DAT",
-        "stage": "STAGE.DIR",
-        "demo": "DEMO.DAT",
-        "vox": "VOX.DAT",
-        "zmovie": "ZMOVIE.STR"
-    },
-    "CD2": {
-        # arquivos do CD2
-        "radio": "RADIO.DAT",
-        "stage": "STAGE.DIR",
-        "demo": "DEMO.DAT",
-        "vox": "VOX.DAT",
-        "zmovie": "ZMOVIE.STR"
-    }
-}
 
 class FileResolver:
     """Resolve arquivos baseado em parâmetros intuitivos."""
     
     def __init__(self, cd: str = "CD1"):
         self.cd = cd
-        self.base_path = BASE_DIR / "assets" / "fontes" / cd
-        self.extracted_path = BASE_DIR / "extracted"
-        self.translated_path = BASE_DIR / "translated"
+        self.base_path = cfg.CD_PATHS.get(cd, BASE_DIR / "assets" / "fontes" / cd)
+        self.extracted_path = cfg.DIRS["extracted"]
+        self.translated_path = cfg.DIRS["translated"]
     
     def get_available_files(self) -> Dict[str, str]:
         """Retorna os arquivos disponíveis para o CD atual."""
