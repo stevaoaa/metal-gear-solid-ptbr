@@ -4,17 +4,15 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 
 > **Nota:** Este é um projeto experimental de aprendizado. Não tenho experiência prévia com ROM hacking e estou aprendendo ao longo do processo, através de tentativa e erro, estudo de ferramentas da comunidade e engenharia reversa dos arquivos do jogo.
 
-## Estado Atual do Projeto (17/08/2025)
+## Estado Atual do Projeto (05/04/2026)
 
-- Foram extraídos os textos armazenados nos arquivos: `RADIO.DAT`, `DEMO.DAT`, `STAGE.DIR`, `VOX.DAT`, `ZMOVIE.STR` do disco 1.
+- Todos os textos do CD1 foram extraídos, traduzidos e reinseridos com sucesso nos arquivos: `RADIO.DAT`, `DEMO.DAT`, `STAGE.DIR`, `VOX.DAT`, `ZMOVIE.STR`
 
-- Todos os textos foram inicialmente traduzidos.
+- O processo de reinserção foi validado sem problemas de overflow — todas as traduções respeitam o tamanho original das strings.
 
-- Foi corrigido um cálculo errado de caracteres de controle e padding. Após isso, foi necessário realizar a revisão das traduções de todos os arquivos.
+- **Próximo passo:** testes in-game no CD1 para validar a tradução em contexto real.
 
-- A revisão foi concluída nos arquivos: `RADIO.DAT`, `STAGE.DIR`, `ZMOVIE.STR`
-
-- Ainda é necessário realizar os ajustes no arquivo `DEMO.DAT` e finalizar a adaptação da tradução para o arquivo `VOX.DAT`.
+- CD2 ainda não iniciado: A princípio, o CD2 utiliza os mesmos endereços de memória para armazenamento de strings que o CD1. Tecnicamente, isso significa que bastaria aplicar a reinserção das traduções do CD1 diretamente no CD2, sem necessidade de nova extração ou processo de tradução. Porém, essa hipótese ainda não foi validada in-game.
 
 
 ### Desafios Atuais
