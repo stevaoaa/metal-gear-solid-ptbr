@@ -6,10 +6,7 @@ Alguns programas são úceis para extrair/inserir os arquivos `.DAT` modificados
 
 ### CDmage
 - Manipulação de arquivos em imagens `.bin/.cue`
-- [CDmage B5 Download](https://cdmage.sourceforge.net/) (ou defina via env)
-```env
-CDMAGE_URL=https://cdmage.sourceforge.net/files/CDmage1-02-1B5.zip
-```
+- [CDmage B5 Download](https://cdmage.sourceforge.net/)
 
 ---
 
@@ -25,10 +22,6 @@ Utilizamos o DuckStation para testar a ISO modificada do Metal Gear Solid.
 Você pode baixar a versão mais recente do DuckStation em:
 - [https://github.com/stenzek/duckstation/releases](https://github.com/stenzek/duckstation/releases)
 
-Ou defina a variável de ambiente para apontar para o link desejado:
-```env
-DUCKSTATION_URL=https://github.com/stenzek/duckstation/releases/latest/download/duckstation-windows-x64.zip
-```
 
 ## Recomendações
 
