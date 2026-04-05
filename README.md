@@ -6,13 +6,13 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 
 ## Estado Atual do Projeto (17/08/2025)
 
-- Foram extraidos os textos armazenados nos arquivos: `RADIO.DAT`, `DEMO.DAT`, `STAGE.DIR`, `VOX.DAT`, `ZMOVIE.STR`  do disco 1.
+- Foram extraídos os textos armazenados nos arquivos: `RADIO.DAT`, `DEMO.DAT`, `STAGE.DIR`, `VOX.DAT`, `ZMOVIE.STR` do disco 1.
 
-- Todos os textos foram inicialmente traduzidos
+- Todos os textos foram inicialmente traduzidos.
 
-- Foi corrigido um calculo errado de caracteres de controle e padding. Após isso, foi necessário realizar a revisão das traduções de todos os arquivos.
+- Foi corrigido um cálculo errado de caracteres de controle e padding. Após isso, foi necessário realizar a revisão das traduções de todos os arquivos.
 
-- A revisão foi concluida nos arquivos: `RADIO.DAT`, `STAGE.DIR`, `ZMOVIE.STR`
+- A revisão foi concluída nos arquivos: `RADIO.DAT`, `STAGE.DIR`, `ZMOVIE.STR`
 
 - Ainda é necessário realizar os ajustes no arquivo `DEMO.DAT` e finalizar a adaptação da tradução para o arquivo `VOX.DAT`.
 
@@ -21,28 +21,89 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 
 - **Acentuação**: Embora o jogo use encoding `Shift_JIS`, os caracteres acentuados do português não são reconhecidos nativamente pelo jogo.
   - Decidi remover todas as acentuações e `ç` de palavras em pt-br
-  - Acento agudo do `é` foram substituidos pela expressão `eh`
-
+  - Acento agudo do `é` foi substituído pela expressão `eh`
 
 - **Textos maiores que o original**: O jogo tem espaço visual para textos maiores no Codec, mas os arquivos `.DAT` usam alocação fixa por ponteiro.
-  - Decidi adaptar os textos em pt-br para atender o tamanho da string original;
-  - Decidi ajustar a tradução nesses cenários para que ela ocupe no maximo o mesmo espaço do texto original em inglês, portanto, a tradução fará uso de algumas contrações, como o: voce -> vc, tambem -> tbm, Coronel -> Cel, entre outros ajustes que facilitem a adequação do tamanho da tradução.
+  - Decidi adaptar os textos em pt-br para atender o tamanho da string original
+  - A tradução fará uso de algumas contrações: `voce → vc`, `tambem → tbm`, `Coronel → Cel`, entre outros ajustes
 
--  **Testes in-game**: Atualmente estão sendo feitos testes com todos os arquivos reimportados para verificar a quantidade de texto que ainda é necessária ser traduzida no CD1. 
+- **Testes in-game**: Atualmente estão sendo feitos testes com todos os arquivos reimportados para verificar a quantidade de texto que ainda é necessária ser traduzida no CD1.
 
 ---
 
 ## Estrutura do Projeto
 
 ```plaintext
-├── tools/              # Scripts para extração, tradução e reempacotamento de arquivos
-├── assets/             # Arquivos extraídos dos discos do jogo (ex: RADIO.DAT)
-├── translated/         # CSVs com textos traduzidos e prontos para reempacotamento
-├── extracted/          # Arquivos CSV com textos extraídos dos binários
-├── duckstation/        # Configurações e save states para testes rápidos
-├── programs/           # Softwares utilizados no processo (alguns precisam ser baixados)
-├── .env                # Arquivo com chaves de API e links de ferramentas (opcional)
+├── main.py             # Ponto de entrada unificado — executa todos os scripts via subcomandos
+├── config.py           # Configuração centralizada: caminhos, mapeamento de arquivos, estratégias
+├── .env                # Caminhos dos CDs (opcional, ver .env.example)
+├── tools/              # Scripts de extração, análise e reempacotamento
+├── assets/             # Arquivos originais extraídos dos discos (RADIO.DAT, VOX.DAT, etc.)
+├── extracted/          # CSVs com textos extraídos dos binários (por CD: extracted/CD1/)
+├── translated/         # CSVs com textos traduzidos prontos para reempacotamento (por CD)
+├── patches/            # Arquivos binários patcheados gerados pelo rebuild (por CD)
+├── output/             # Relatórios de overflow e análise de inserção (por CD)
+├── duckstation/        # Emulador e configurações para testes rápidos
+├── programs/           # Softwares auxiliares utilizados no processo
+└── screenshots/        # Capturas de tela dos testes in-game
 ```
+
+---
+
+## Requisitos
+
+- Python 3.9+
+- Dependências: `pip install -r requirements.txt`
+- Arquivo `.env` na raiz (copie o `.env.example` e ajuste os caminhos se necessário)
+
+---
+
+## Como Executar
+
+Todos os scripts são orquestrados pelo `main.py`. Use `python main.py --help` para ver todos os comandos disponíveis.
+
+### Listar arquivos disponíveis por CD
+
+```bash
+python main.py info --cd CD1
+python main.py info --cd CD2
+```
+
+### 1. Extração de textos
+
+```bash
+python main.py extract --cd CD1 --vox
+python main.py extract --cd CD1 --all       # todos os arquivos padrão
+```
+
+### 2. Verificar overflows nas traduções
+
+```bash
+python main.py check --cd CD1 --vox
+python main.py check --cd CD1 --all --excel  # gera relatório Excel
+```
+
+### 3. Reempacotar binário com textos traduzidos
+
+```bash
+python main.py rebuild --cd CD1 --vox
+python main.py rebuild --cd CD1 --stage
+```
+
+### 4. Inspecionar offsets após patch
+
+```bash
+python main.py analyze --cd CD1 vox 0x1fc 0x24c
+python main.py analyze --cd CD1 --patched vox 0x1fc   # analisa o arquivo patcheado
+```
+
+### 5. Pipeline completo (extract → check → rebuild)
+
+```bash
+python main.py pipeline --cd CD1 --vox
+python main.py pipeline --cd CD1 --all --skip-check
+```
+
 ---
 
 ## Screenshots
@@ -61,40 +122,11 @@ Este projeto tem como objetivo traduzir o jogo **Metal Gear Solid (PS1)** para o
 
 ---
 
-## Como Executar
-
-### 1. Extração de textos
-
-```bash
-python tools/scan_texts.py
-```
-
-
-### 2. Analisar traduções maiores que o texto original
-
-```bash
-python tools/overflow_checker.py
-```
-
-### 3. Reempacotar binário com os textos traduzidos
-
-```bash
-python tools/rebuild_text.py
-```
-
-### 4. Comparar offsets Originais e Patechados
-
-```bash
-python tools/offset_analyzer.py
-```
-
----
-
 ## Contribuições Futuras
 
-* Desenvolver ou adaptar ferramentas de localização de ponteiros;
-* Criar um patch `.xdelta` ou `.ppf` para aplicar a tradução na ISO original;
-* Traduzir menus, videos, legendas e assets gráficos.
+- Desenvolver ou adaptar ferramentas de localização de ponteiros
+- Criar um patch `.xdelta` ou `.ppf` para aplicar a tradução na ISO original
+- Traduzir menus, vídeos, legendas e assets gráficos
 
 ---
 
