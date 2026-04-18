@@ -203,10 +203,9 @@ def build_rebuild_parser(sub):
 
 def cmd_analyze(args):
     extra = ["--cd", args.cd, f"--{args.file}"]
-    if getattr(args, "patched", False):
-        extra.append("--patched")
-    # Offsets são passados como args posicionais para o script
-    extra += args.offsets
+    if getattr(args, "use_patched", False):
+        extra += ["--use-patched", str(cfg.get_output_path(args.cd, args.file))]
+    extra += ["--offsets"] + args.offsets
     rc = _run("offset_analyzer.py", extra)
     sys.exit(rc) if rc != 0 else None
 
@@ -217,7 +216,7 @@ def build_analyze_parser(sub):
     p.add_argument("file", help="Chave do arquivo (ex: vox, radio, stage)")
     p.add_argument("offsets", nargs="+",
                    help="Offsets em hex para inspecionar (ex: 0x1fc 0x24c)")
-    p.add_argument("--patched", action="store_true",
+    p.add_argument("--patched", action="store_true", dest="use_patched",
                    help="Analisa o arquivo patcheado em vez do original")
     return p
 

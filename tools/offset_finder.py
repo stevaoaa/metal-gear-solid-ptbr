@@ -53,12 +53,12 @@ class FileResolver:
         
         # Tenta encontrar arquivo traduzido primeiro
         if prefer_translated:
-            translated_csv = self.translated_path / f"strings_{base_name}_traduzido.csv"
+            translated_csv = self.translated_path / self.cd / f"strings_{base_name}_traduzido.csv"
             if translated_csv.exists():
                 return translated_csv
         
         # Fallback para arquivo extraído
-        extracted_csv = self.extracted_path / f"strings_{base_name}.csv"
+        extracted_csv = self.extracted_path / self.cd / f"strings_{base_name}.csv"
         if extracted_csv.exists():
             return extracted_csv
         
@@ -805,4 +805,3 @@ if __name__ == "__main__":
     # Compatibilidade com versão anterior
     python tools/text_finder.py --file caminho/arquivo.dat --text "texto"
     """
-    

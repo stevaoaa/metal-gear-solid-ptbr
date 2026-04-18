@@ -63,7 +63,7 @@ class FileResolver:
             ]
             
             for name in possible_names:
-                patched_path = self.patches_path / name
+                patched_path = self.patches_path / self.cd / name
                 if patched_path.exists():
                     return patched_path
         
@@ -80,12 +80,12 @@ class FileResolver:
         
         # Tenta encontrar arquivo traduzido primeiro
         if prefer_translated:
-            translated_csv = self.translated_path / f"strings_{base_name}_traduzido.csv"
+            translated_csv = self.translated_path / self.cd / f"strings_{base_name}_traduzido.csv"
             if translated_csv.exists():
                 return translated_csv
         
         # Fallback para arquivo extraído
-        extracted_csv = self.extracted_path / f"strings_{base_name}.csv"
+        extracted_csv = self.extracted_path / self.cd / f"strings_{base_name}.csv"
         if extracted_csv.exists():
             return extracted_csv
         
@@ -571,8 +571,9 @@ Exemplos de uso:
         help="Caminho específico do arquivo original (compatibilidade)"
     )
     compat_group.add_argument(
-        "--patched", 
+        "--use-patched", 
         type=Path,
+        dest="patched",
         help="Caminho específico do arquivo patcheado (compatibilidade)"
     )
     compat_group.add_argument(
